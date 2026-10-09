@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xaalya - Comparateur des taux de transfert pour la diaspora</title>
+    <!-- Tailwind CSS pour un design moderne et responsive -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col justify-between">
+
+    <!-- En-tête -->
+    <header class="bg-blue-900 text-white shadow-md">
+        <div class="max-w-6xl mx-auto px-4 py-6 flex flex-col sm:flex-row justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <span class="text-3xl font-extrabold tracking-tight">Xaalya<span class="text-emerald-400">.</span></span>
+                <span class="text-xs bg-blue-800 text-blue-200 px-2.5 py-1 rounded-full font-medium">UEMOA / CEMAC</span>
+            </div>
+            <p class="text-sm text-blue-200 mt-2 sm:mt-0">Le comparateur en temps réel des transferts d'argent</p>
+        </div>
+    </header>
+
+    <!-- Contenu Principal -->
+    <main class="max-w-6xl mx-auto px-4 py-10 flex-grow w-full">
+        
+        <!-- Titre de la section -->
+        <div class="mb-8 text-center sm:text-left">
+            <h1 class="text-2xl sm:text-3xl font-bold text-slate-900">Meilleurs taux du jour</h1>
+            <p class="text-slate-500 text-sm mt-1">Comparatif automatisé des frais et taux de change pour vos envois vers l'Afrique.</p>
+        </div>
+
+        <!-- Tableau des taux -->
+        <div class="bg-white shadow-xl rounded-2xl overflow-hidden border border-slate-100">
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="bg-slate-100/70 text-slate-600 uppercase text-xs tracking-wider border-b border-slate-200">
+                            <th class="py-4 px-6 font-semibold">Opérateur</th>
+                            <th class="py-4 px-6 font-semibold">Taux de change</th>
+                            <th class="py-4 px-6 font-semibold">Frais d'envoi</th>
+                            <th class="py-4 px-6 font-semibold">Dernière mise à jour</th>
+                            <th class="py-4 px-6 font-semibold text-right">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="rates-table-body" class="divide-y divide-slate-100 text-sm">
+                        <!-- Les données de rates.json seront injectées ici par JavaScript -->
+                        <tr>
+                            <td colspan="5" class="py-8 text-center text-slate-400 italic">Chargement des taux en direct...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <!-- Pied de page -->
+    <footer class="bg-white border-t border-slate-200 py-6 text-center text-xs text-slate-400">
+        <p>&copy; 2026 Xaalya. Tous droits réservés. Données actualisées automatiquement.</p>
+    </footer>
+
+    <!-- Script JavaScript pour charger rates.json -->
+    <script>
+        async function loadRates() {
+            try {
+                const response = await fetch('rates.json');
+                if (!response.ok) throw new Error("Impossible de charger les taux");
+                const data = await response.json();
+
+                const tbody = document.getElementById('rates-table-body');
+                tbody.innerHTML = '';
+
+                data.forEach(item => {
+                    const tr = document.createElement('tr');
+                    tr.className = "hover:bg-slate-50/80 transition-colors";
+
+                    tr.innerHTML = `
+                        <td class="py-4 px-6 font-semibold text-slate-900 flex items-center space-x-2">
+                            <span>${item.provider}</span>
+                        </td>
+                        <td class="py-4 px-6 text-emerald-600 font-bold">${item.rate}</td>
+                        <td class="py-4 px-6 text-slate-600">${item.fee}</td>
+                        <td class="py-4 px-6 text-slate-400 text-xs">${item.lastUpdated || 'Récemment'}</td>
+                        <td class="py-4 px-6 text-right">
+                            <a href="${item.url}" target="_blank" class="inline-block bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold px-4 py-2 rounded-lg shadow-sm transition-all">
+                                Envoyer &rarr;
+                            </a>
+                        </td>
+                    `;
+                    tbody.appendChild(tr);
+                });
+            } catch (error) {
+                console.error(error);
+                document.getElementById('rates-table-body').innerHTML = `
+                    <tr><td colspan="5" class="py-8 text-center text-rose-500 font-medium">Erreur lors du chargement des taux. Veuillez réessayer plus tard.</td></tr>
+                `;
+            }
+        }
+
+        loadRates();
+    </script>
+</body>
+</html>
