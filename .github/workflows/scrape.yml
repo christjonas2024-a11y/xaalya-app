@@ -2,7 +2,7 @@ name: Actualisation Taux Xaalya
 
 on:
   schedule:
-    - cron: '0 */4 * * *' # S'exécute toutes les 4 heures
+    - cron: '0 */4 * * *'
   workflow_dispatch:
 
 jobs:
@@ -24,14 +24,12 @@ jobs:
         run: node scraper.js
 
       - name: Commit et push des nouveaux taux sur GitHub
-   	run: |
-     					git config --global user.name "Xaalya Bot"
-     					git config --global user.email "bot@xaalya.com"
-     					git add rates.json
-     					git commit -m "Mise automatique des taux par le Bot" || exit 0
-     					git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git HEAD:main
-
-
-
-
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git config --global user.name "Xaalya Bot"
+          git config --global user.email "bot@xaalya.com"
+          git add rates.json
+          git commit -m "Mise automatique des taux par le Bot" || exit 0
+          git push origin main
 
