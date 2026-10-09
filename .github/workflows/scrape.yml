@@ -31,5 +31,7 @@ jobs:
           git config --global user.email "bot@xaalya.com"
           git add rates.json
           git commit -m "Mise automatique des taux par le Bot" || exit 0
-          git push origin main
+          git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git HEAD:main
+
+
 
