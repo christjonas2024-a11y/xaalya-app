@@ -1,0 +1,32 @@
+name: Actualisation Taux Xaalya
+
+on:
+  schedule:
+    - cron: '0 */4 * * *' # S'exécute toutes les 4 heures
+  workflow_dispatch:
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Code checkout
+        uses: actions/checkout@v4
+
+      - name: Configuration Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Installation des dépendances
+        run: npm install
+
+      - name: Execution du script de scraping
+        run: node scraper.js
+
+      - name: Commit et push des nouveaux taux sur GitHub
+        run: |
+          git config --global user.name "Xaalya Bot"
+          git config --global user.email "bot@xaalya.com"
+          git add rates.json
+          git commit -m "Mise automatique des taux par le Bot" || exit 0
+          git push

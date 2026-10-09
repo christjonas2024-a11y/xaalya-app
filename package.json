@@ -1,0 +1,13 @@
+{
+  "name": "xaalya-scraper",
+  "version": "1.0.0",
+  "description": "Script de scraping automatique pour Xaalya",
+  "main": "scraper.js",
+  "scripts": {
+    "start": "node scraper.js"
+  },
+  "dependencies": {
+    "axios": "^1.6.8",
+    "cheerio": "^1.0.0-rc.12"
+  }
+}

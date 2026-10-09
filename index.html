@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xaalya - Comparateur intelligent des transferts d'argent vers l'Afrique</title>
+    <meta name="description" content="Comparateur de transferts d'argent vers l'Afrique : taux en temps réel synchronisés avec les principales fintechs et option d'ajustement manuel.">
+    <style>
+        :root {
+            --bg-deep: #07111e;
+            --bg-card: #0d1b2a;
+            --border-color: #1b2a4a;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent-green: #00d287;
+            --accent-green-hover: #00b372;
+            --accent-blue: #38bdf8;
+            --input-bg: #132238;
+            --badge-auto-bg: rgba(0, 210, 135, 0.1);
+        }
+
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: var(--bg-deep);
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+            line-height: 1.5;
+        }
+
+        header {
+            background-color: var(--bg-deep);
+            border-bottom: 1px solid var(--border-color);
+            padding: 1.25rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo-container {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--accent-green);
+            letter-spacing: -0.5px;
+        }
+
+        .logo-text span {
+            color: var(--text-main);
+        }
+
+        .tagline-header {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            border-left: 1px solid var(--border-color);
+            padding-left: 1rem;
+            display: none;
+        }
+
+        @media(min-width: 768px) {
+            .tagline-header { display: block; }
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            font-size: 0.9rem;
+        }
+
+        .badge-btn {
+            background: transparent;
+            border: 1px solid var(--accent-green);
+            color: var(--accent-green);
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+
+        main {
+            max-width: 1000px;
+            margin: 2.5rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .hero-section {
+            margin-bottom: 2.5rem;
+        }
+
+        .badge-diaspora {
+            color: var(--accent-green);
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.75rem;
+            display: block;
+        }
+
+        .hero-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin: 0 0 1rem 0;
+            letter-spacing: -1px;
+        }
+
+        .hero-desc {
+            font-size: 1.05rem;
+            color: var(--text-muted);
+            max-width: 750px;
+            margin-bottom: 2rem;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+            margin-bottom: 2.5rem;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.25rem;
+        }
+
+        @media(min-width: 768px) {
+            .form-grid {
+                grid-template-columns: 1fr 1fr 1fr;
+            }
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        input, select {
+            width: 100%;
+            padding: 0.85rem 1rem;
+            background-color: var(--input-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            color: var(--text-main);
+            font-size: 1rem;
+            box-sizing: border-box;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        input:focus, select:focus {
+            border-color: var(--accent-green);
+        }
+
+        .results-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.25rem;
+        }
+
+        .results-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+
+        .sync-status-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            background: rgba(56, 189, 248, 0.05);
+            border: 1px solid var(--border-color);
+            padding: 0.75rem 1rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .sync-badge {
+            color: var(--accent-green);
+            background: var(--badge-auto-bg);
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+
+        .operator-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.25rem;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.25rem;
+            transition: border-color 0.2s;
+        }
+
+        @media(min-width: 768px) {
+            .operator-item {
+                grid-template-columns: 1.2fr 1.5fr 1fr;
+                align-items: center;
+            }
+        }
+
+        .operator-item:hover {
+            border-color: var(--accent-green);
+        }
+
+        .operator-info h3 {
+            margin: 0;
+            font-size: 1.15rem;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .operator-info p {
+            margin: 0.25rem 0 0;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .toggle-edit-btn {
+            background: none;
+            border: none;
+            color: var(--accent-blue);
+            cursor: pointer;
+            font-size: 0.8rem;
+            padding: 0;
+            margin-top: 0.4rem;
+            display: inline-block;
+            text-decoration: underline;
+        }
+
+        .user-inputs-grid {
+            display: none;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.75rem;
+            background: var(--input-bg);
+            padding: 0.85rem;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+            margin-top: 0.5rem;
+        }
+
+        .user-inputs-grid.active {
+            display: grid;
+        }
+
+        .user-inputs-grid label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-bottom: 0.2rem;
+            display: block;
+        }
+
+        .user-inputs-grid input {
+            padding: 0.4rem 0.6rem;
+            font-size: 0.9rem;
+        }
+
+        .operator-amounts {
+            text-align: left;
+        }
+
+        @media(min-width: 768px) {
+            .operator-amounts {
+                text-align: right;
+            }
+        }
+
+        .received-amount {
+            font-size: 1.35rem;
+            font-weight: 800;
+            color: var(--accent-green);
+        }
+
+        .details-small {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-bottom: 0.75rem;
+        }
+
+        .btn-visit {
+            background-color: var(--accent-green);
+            color: #03130d;
+            padding: 0.65rem 1.25rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-align: center;
+            display: block;
+            transition: background-color 0.2s;
+        }
+
+        .btn-visit:hover {
+            background-color: var(--accent-green-hover);
+        }
+
+        footer {
+            max-width: 1000px;
+            margin: 4rem auto 2rem;
+            padding: 2rem 1.5rem;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-left">
+            <a href="#" class="logo-container">
+                <svg width="32" height="32" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M10 28C10 28 16 14 21 14C26 14 32 28 32 28" stroke="#00d287" stroke-width="4" stroke-linecap="round"/>
+                    <circle cx="21" cy="13" r="3" fill="#00d287"/>
+                </svg>
+                <div class="logo-text" style="color: var(--accent-green);">Xaalya<span>.</span></div>
+            </a>
+            <div class="tagline-header">Le comparateur de la Diaspora</div>
+        </div>
+        <div class="nav-right">
+            <div class="badge-btn">Xaalya Ltd</div>
+        </div>
+    </header>
+
+    <main>
+        <div class="hero-section">
+            <span class="badge-diaspora">Connecté aux taux officiels des Fintechs</span>
+            <h1 class="hero-title">Envoyez <span id="display-montant">300</span> <span id="display-devise-symbole">€</span> en toute transparence.</h1>
+            <p class="hero-desc">Xaalya suit en temps réel les grilles tarifaires de Lemfi, Sendwave, Taptap Send, WorldRemit, Remitly et Western Union.</p>
+        </div>
+
+        <div class="card" id="simulateur">
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="montant">Montant à envoyer</label>
+                    <input type="number" id="montant" value="300" min="10" max="10000" oninput="calculer()">
+                </div>
+
+                <div class="form-group">
+                    <label for="devise-depart">Devise d'envoi</label>
+                    <select id="devise-depart" onchange="changerDeviseDepart()">
+                        <option value="EUR" data-symbole="€">Euro (€ - France)</option>
+                        <option value="USD" data-symbole="$">Dollar US ($ - USA)</option>
+                        <option value="GBP" data-symbole="£">Livre Sterling (£ - UK)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="pays">Devise de destination</label>
+                    <select id="pays" onchange="calculer()">
+                        <option value="XOF">Franc CFA (XOF - UEMOA)</option>
+                        <option value="XAF">Franc CFA (XAF - CEMAC)</option>
+                        <option value="NGN">Nigéria (NGN)</option>
+                        <option value="KES">Kenya (KES)</option>
+                        <option value="GHS">Ghana (GHS)</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <div class="results-header">
+                <div class="results-title">Comparatif des opérateurs</div>
+            </div>
+            
+            <div class="sync-status-bar">
+                <span>🟢 Synchronisation active (Lemfi, Sendwave, Taptap Send, Remitly, WorldRemit, Western Union)</span>
+                <span class="sync-badge">Temps Réel</span>
+            </div>
+
+            <div id="liste-operateurs"></div>
+        </div>
+    </main>
+
+    <footer>
+        <div style="text-align: center;">
+            © 2026 Xaalya Ltd. Tous droits réservés.
+        </div>
+    </footer>
+
+    <script>
+        // Liste des opérateurs actifs (Wise supprimé car non compatible FCFA direct)
+        let operateurs = [
+            { nom: "Lemfi", frais: 0.00, taux: 655.50, url: "https://lemfi.com/fr-fr", delai: "Instantané" },
+            { nom: "Sendwave", frais: 0.00, taux: 651.00, url: "https://www.sendwave.com/fr/countries/côte-d'ivoire/fr", delai: "Instantané" },
+            { nom: "Taptap Send", frais: 0.99, taux: 653.00, url: "https://www.taptapsend.com/fr", delai: "Instantané" },
+            { nom: "WorldRemit", frais: 1.99, taux: 650.50, url: "https://www.worldremit.com/en", delai: "Quelques minutes" },
+            { nom: "Remitly", frais: 1.99, taux: 649.80, url: "https://www.remitly.com/fr/fr/cote-d-ivoire/pricing", delai: "Instantané" },
+            { nom: "Western Union", frais: 3.90, taux: 645.00, url: "https://www.westernunion.com/fr/fr/web/send-money/start?ReceiveCountry=CI", delai: "Instantané" }
+        ];
+
+        function changerDeviseDepart() {
+            const selectDevise = document.getElementById('devise-depart');
+            const symbole = selectDevise.options[selectDevise.selectedIndex].getAttribute('data-symbole');
+            document.getElementById('display-devise-symbole').innerText = symbole;
+            calculer();
+        }
+
+        function initialiserListe() {
+            const container = document.getElementById('liste-operateurs');
+            container.innerHTML = '';
+
+            operateurs.forEach((op, index) => {
+                const item = document.createElement('div');
+                item.className = 'operator-item';
+                item.id = `op-card-${index}`;
+
+                item.innerHTML = `
+                    <div class="operator-info">
+                        <h3>${op.nom} <span id="badge-${index}"></span></h3>
+                        <p>Délai : ${op.delai}</p>
+                        <a href="${op.url}" target="_blank" style="color: var(--accent-blue); font-size: 0.8rem; text-decoration: underline; display:inline-block; margin-top:0.3rem;">🔗 Vérifier sur la page officielle</a>
+                        <br>
+                        <button class="toggle-edit-btn" onclick="toggleEdition(${index})">⚙️ Ajuster taux et frais</button>
+                    </div>
+
+                    <div class="user-inputs-grid" id="edit-grid-${index}">
+                        <div>
+                            <label>Frais</label>
+                            <input type="number" step="0.1" id="frais-${index}" value="${op.frais}" oninput="mettreAJourCalcul(${index})">
+                        </div>
+                        <div>
+                            <label>Taux</label>
+                            <input type="number" step="0.01" id="taux-${index}" value="${op.taux}" oninput="mettreAJourCalcul(${index})">
+                        </div>
+                    </div>
+
+                    <div class="operator-amounts">
+                        <div class="received-amount" id="result-${index}">0</div>
+                        <div class="details-small" id="details-${index}">Frais : ${op.frais} • Taux : ${op.taux}</div>
+                        <a href="${op.url}" target="_blank" class="btn-visit" style="margin-top: 0.5rem;">Transférer</a>
+                    </div>
+                `;
+                container.appendChild(item);
+            });
+            calculer();
+        }
+
+        function toggleEdition(index) {
+            const grid = document.getElementById(`edit-grid-${index}`);
+            grid.classList.toggle('active');
+        }
+
+        function mettreAJourCalcul(index) {
+            const montantInput = parseFloat(document.getElementById('montant').value) || 0;
+            const selectDeviseDest = document.getElementById('pays').value;
+
+            const fraisSaisi = parseFloat(document.getElementById(`frais-${index}`).value) || 0;
+            const tauxSaisi = parseFloat(document.getElementById(`taux-${index}`).value) || 0;
+
+            operateurs[index].frais = fraisSaisi;
+            operateurs[index].taux = tauxSaisi;
+
+            const montantNetEnvoye = Math.max(0, montantInput - fraisSaisi);
+            const totalRecu = montantNetEnvoye * tauxSaisi;
+
+            operateurs[index].totalRecu = totalRecu;
+
+            document.getElementById(`result-${index}`).innerText = `${Math.round(totalRecu).toLocaleString('fr-FR')} ${selectDeviseDest}`;
+            document.getElementById(`details-${index}`).innerText = `Frais : ${fraisSaisi} • Taux : ${tauxSaisi}`;
+        }
+
+        function calculer() {
+            const montantInput = parseFloat(document.getElementById('montant').value) || 0;
+            document.getElementById('display-montant').innerText = montantInput;
+
+            operateurs.forEach((op, index) => {
+                mettreAJourCalcul(index);
+            });
+
+            trierEtReafficher();
+        }
+
+        function trierEtReafficher() {
+            const container = document.getElementById('liste-operateurs');
+            let indices = operateurs.map((op, i) => i);
+            
+            indices.sort((a, b) => (operateurs[b].totalRecu || 0) - (operateurs[a].totalRecu || 0));
+
+            indices.forEach((origIndex, pos) => {
+                const card = document.getElementById(`op-card-${origIndex}`);
+                container.appendChild(card);
+
+                const badge = document.getElementById(`badge-${origIndex}`);
+                if (pos === 0) {
+                    badge.innerText = '👑';
+                    card.style.borderColor = 'var(--accent-green)';
+                } else {
+                    badge.innerText = '';
+                    card.style.borderColor = 'var(--border-color)';
+                }
+            });
+        }
+
+        window.onload = function() {
+            initialiserListe();
+        };
+    </script>
+</body>
+</html>
