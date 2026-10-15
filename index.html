@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Xaalya - Comparateur des taux de transfert pour la diaspora</title>
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col justify-between selection:bg-emerald-500 selection:text-slate-950">
@@ -19,7 +18,6 @@
             
             <div class="flex items-center space-x-4">
                 <p class="text-xs text-slate-400 hidden md:block" data-i18n="header_subtitle">Le comparateur indépendant de la diaspora</p>
-                <!-- Bouton de bascule de langue -->
                 <div class="bg-slate-800 p-1 rounded-xl border border-slate-700 flex items-center space-x-1">
                     <button onclick="setLanguage('fr')" id="lang-fr" class="px-2.5 py-1 text-xs font-bold rounded-lg transition-all bg-emerald-500 text-slate-950">FR</button>
                     <button onclick="setLanguage('en')" id="lang-en" class="px-2.5 py-1 text-xs font-bold rounded-lg transition-all text-slate-400 hover:text-white">EN</button>
@@ -30,8 +28,6 @@
 
     <!-- Contenu Principal -->
     <main class="max-w-6xl mx-auto px-4 py-8 flex-grow w-full">
-        
-        <!-- Bloc Saisie & Douleur Émotionnelle -->
         <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 sm:p-8 shadow-2xl mb-8">
             <div class="mb-6">
                 <span class="text-xs font-semibold uppercase tracking-widest text-emerald-400" data-i18n="transparency">Transparence radicale</span>
@@ -39,7 +35,6 @@
                 <p class="text-slate-400 text-sm mt-1" data-i18n="hero_desc">Comparez en temps réel les frais réels et les taux de change pour vos transferts vers l'Afrique.</p>
             </div>
 
-            <!-- Paramètres de conversion -->
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 bg-slate-950/60 p-4 rounded-xl border border-slate-800/80">
                 <div>
                     <label class="block text-xs font-medium text-slate-400 mb-1" data-i18n="label_amount">Montant à envoyer</label>
@@ -66,7 +61,6 @@
             </div>
         </div>
 
-        <!-- Indicateur Statut / Synchronisation -->
         <div class="flex items-center justify-between mb-4">
             <h2 class="text-lg font-bold text-white" data-i18n="section_comparative">Comparatif des opérateurs</h2>
             <div class="flex items-center space-x-2 text-xs text-slate-400 bg-slate-900 px-3 py-1.5 rounded-full border border-slate-800">
@@ -75,40 +69,18 @@
             </div>
         </div>
 
-        <!-- Liste des cartes opérateurs -->
-        <div id="operators-container" class="space-y-4">
-            <div class="bg-slate-900 border border-slate-800 p-8 text-center text-slate-400 rounded-2xl" data-i18n="loading">
-                Chargement des meilleurs taux en direct...
-            </div>
-        </div>
+        <div id="operators-container" class="space-y-4"></div>
 
-        <!-- Section À Propos & Mentions Légales -->
         <div class="mt-16 bg-slate-900/40 border border-slate-800/80 rounded-2xl p-6 sm:p-8 space-y-6">
             <div>
                 <h3 class="text-base font-bold text-white mb-2" data-i18n="about_title">À propos de Xaalya</h3>
                 <p class="text-slate-300 text-sm leading-relaxed" data-i18n="about_text">
-                    <strong>Xaalya</strong> (qui signifie « Enfant sophistiqué » en langue africaine) est un comparateur indépendant conçu pour la diaspora. Notre mission est d'apporter une transparence radicale sur les frais réels et les taux de change pour les transferts vers l'Afrique, afin d'optimiser chaque somme envoyée à vos proches.
+                    <strong>Xaalya</strong> est un comparateur indépendant conçu pour la diaspora. Notre mission est d'apporter une transparence radicale sur les frais réels et les taux de change pour les transferts vers l'Afrique.
                 </p>
-            </div>
-            
-            <div class="border-t border-slate-800/80 pt-6">
-                <h4 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2" data-i18n="legal_title">Mentions légales</h4>
-                <div class="text-xs text-slate-400 space-y-1">
-                    <p><strong data-i18n="legal_editor">Éditeur du site :</strong> Xaalya Ltd</p>
-                    <p><strong data-i18n="legal_contact">Contact :</strong> <a href="mailto:contact@xaalya.com" class="text-emerald-400 hover:underline">contact@xaalya.com</a></p>
-                    <p><strong data-i18n="legal_hosting">Hébergement :</strong> Netlify, Inc.</p>
-                    <p data-i18n="legal_independence"><strong>Indépendance :</strong> Xaalya est un comparateur neutre. Les liens redirigeant vers les sites officiels des opérateurs n'impliquent aucun partenariat commercial exclusif. Les frais et taux sont actualisés en temps réel.</p>
-                </div>
             </div>
         </div>
     </main>
 
-    <!-- Pied de page -->
-    <footer class="bg-slate-900 border-t border-slate-800 py-6 text-center text-xs text-slate-500 mt-12">
-        <p>&copy; 2026 Xaalya Ltd. <span data-i18n="footer_rights">Tous droits réservés.</span></p>
-    </footer>
-
-    <!-- Logique JavaScript Complètement Sécurisée -->
     <script>
         const translations = {
             fr: {
@@ -121,20 +93,13 @@
                 label_dest_curr: "Devise / Corridor de destination",
                 section_comparative: "Comparatif des opérateurs",
                 sync_status: "Connecté aux taux officiels des fintechs",
-                loading: "Chargement des meilleurs taux en direct...",
                 best_rate: "Meilleur taux",
                 transfer_btn: "Transférer",
                 fee_label: "Frais",
                 corridor_label: "Corridor",
                 est_rate: "Taux estimé en direct",
                 about_title: "À propos de Xaalya",
-                about_text: "<strong>Xaalya</strong> (qui signifie « Enfant sophistiqué » en langue africaine) est un comparateur indépendant conçu pour la diaspora. Notre mission est d'apporter une transparence radicale sur les frais réels et les taux de change pour les transferts vers l'Afrique, afin d'optimiser chaque somme envoyée à vos proches.",
-                legal_title: "Mentions légales",
-                legal_editor: "Éditeur du site :",
-                legal_contact: "Contact :",
-                legal_hosting: "Hébergement :",
-                legal_independence: "<strong>Indépendance :</strong> Xaalya est un comparateur neutre. Les liens redirigeant vers les sites officiels des opérateurs n'impliquent aucun partenariat commercial exclusif. Les frais et taux sont actualisés en temps réel.",
-                footer_rights: "Tous droits réservés."
+                about_text: "<strong>Xaalya</strong> est un comparateur indépendant conçu pour la diaspora. Notre mission est d'apporter une transparence radicale sur les frais réels et les taux de change pour les transferts vers l'Afrique."
             },
             en: {
                 badge: "UEMOA / CEMAC / Diaspora",
@@ -146,20 +111,13 @@
                 label_dest_curr: "Destination currency / Corridor",
                 section_comparative: "Operators comparison",
                 sync_status: "Connected to official fintech rates",
-                loading: "Loading live best rates...",
                 best_rate: "Best rate",
                 transfer_btn: "Transfer",
                 fee_label: "Fees",
                 corridor_label: "Corridor",
                 est_rate: "Estimated live rate",
                 about_title: "About Xaalya",
-                about_text: "<strong>Xaalya</strong> (meaning « Sophisticated child » in African language) is an independent comparison platform designed for the diaspora. Our mission is to bring radical transparency to real fees and exchange rates for transfers to Africa, helping you optimize every amount sent to your loved ones.",
-                legal_title: "Legal Notice",
-                legal_editor: "Site publisher:",
-                legal_contact: "Contact:",
-                legal_hosting: "Hosting:",
-                legal_independence: "<strong>Independence:</strong> Xaalya is a neutral comparator. Links redirecting to official operator websites do not imply any exclusive commercial partnership. Fees and rates are updated in real time.",
-                footer_rights: "All rights reserved."
+                about_text: "<strong>Xaalya</strong> is an independent comparison platform designed for the diaspora."
             }
         };
 
@@ -168,7 +126,7 @@
         const destSymbols = { XOF_UEMOA: 'XOF', XOF_CEMAC: 'XOF', NGN: 'NGN', KES: 'KES', GHS: 'GHS' };
         const currencyMultipliers = { EUR: 1, GBP: 1.17, USD: 0.92 };
 
-        const fallbackOperators = [
+        let currentRates = [
             { provider: "Lemfi", rate: "658", fee: "0.00", url: "https://lemfi.com" },
             { provider: "Sendwave", rate: "656", fee: "1.00", url: "https://sendwave.com" },
             { provider: "Taptap Send", rate: "657", fee: "0.99", url: "https://taptapsend.com" },
@@ -196,7 +154,23 @@
             } catch (e) {
                 setLanguage('fr');
             }
-            loadAndRender();
+            renderUI();
+            fetchLatestRates();
+        }
+
+        async function fetchLatestRates() {
+            try {
+                const response = await fetch('rates.json');
+                if (response.ok) {
+                    const data = await response.json();
+                    if (Array.isArray(data) && data.length > 0) {
+                        currentRates = data;
+                        renderUI();
+                    }
+                }
+            } catch (e) {
+                console.log("Utilisation des taux enregistrés");
+            }
         }
 
         function setLanguage(lang) {
@@ -217,10 +191,10 @@
                     el.innerHTML = translations[lang][key];
                 }
             });
-            loadAndRender();
+            renderUI();
         }
 
-        async function loadAndRender() {
+        function renderUI() {
             const amountInput = parseFloat(document.getElementById('send-amount').value) || 300;
             const sendCurr = document.getElementById('send-currency').value;
             const destCurr = document.getElementById('dest-currency').value;
@@ -232,19 +206,10 @@
                 document.getElementById('hero-title').innerText = `You send ${amountInput} ${currencySymbol}. How much actually arrives?`;
             }
 
-            let operatorsData = [];
-            try {
-                const response = await fetch('./rates.json');
-                if (!response.ok) throw new Error("Fichier absent");
-                operatorsData = await response.json();
-            } catch (err) {
-                operatorsData = fallbackOperators;
-            }
-
             const container = document.getElementById('operators-container');
             container.innerHTML = '';
 
-            const filteredOperators = operatorsData.filter(item => {
+            const filteredOperators = currentRates.filter(item => {
                 const name = item.provider.toLowerCase();
                 if (name === 'wise' && (destCurr === 'XOF_UEMOA' || destCurr === 'XOF_CEMAC')) {
                     return false;
@@ -254,22 +219,16 @@
 
             filteredOperators.forEach((item, index) => {
                 const name = item.provider.toLowerCase();
-                let baseRate = 655.95;
+                let baseRate = parseFloat(item.rate) || 655.95;
 
                 if (name === 'wise') baseRate = (destCurr === 'NGN') ? 1750 : (destCurr === 'KES') ? 145 : (destCurr === 'GHS') ? 16 : 660;
-                else if (name === 'lemfi') baseRate = 658;
-                else if (name === 'sendwave') baseRate = 656;
-                else if (name === 'taptap send') baseRate = 657;
-                else if (name === 'worldremit') baseRate = 653;
-                else if (name === 'remitly') baseRate = 654;
-                else if (name === 'western union') baseRate = 648;
 
                 let conversionFactor = currencyMultipliers[sendCurr] || 1;
                 let adjustedRate = baseRate;
 
-                if (destCurr === 'NGN') adjustedRate = baseRate * 2.6;
-                if (destCurr === 'KES') adjustedRate = baseRate * 0.22;
-                if (destCurr === 'GHS') adjustedRate = baseRate * 0.024;
+                if (destCurr === 'NGN' && name !== 'wise') adjustedRate = baseRate * 2.6;
+                if (destCurr === 'KES' && name !== 'wise') adjustedRate = baseRate * 0.22;
+                if (destCurr === 'GHS' && name !== 'wise') adjustedRate = baseRate * 0.024;
 
                 const totalReceived = Math.round((amountInput / conversionFactor) * (adjustedRate / 655.95) * (destCurr.includes('XOF') ? 655.95 : 100));
                 const isBest = index === 0;
@@ -305,9 +264,9 @@
             });
         }
 
-        document.getElementById('send-amount').addEventListener('input', loadAndRender);
-        document.getElementById('send-currency').addEventListener('change', loadAndRender);
-        document.getElementById('dest-currency').addEventListener('change', loadAndRender);
+        document.getElementById('send-amount').addEventListener('input', renderUI);
+        document.getElementById('send-currency').addEventListener('change', renderUI);
+        document.getElementById('dest-currency').addEventListener('change', renderUI);
 
         detectUserLocationAndPreferences();
     </script>
