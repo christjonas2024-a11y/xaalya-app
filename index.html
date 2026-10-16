@@ -45,7 +45,79 @@
   </script>
 
   <!-- ========================================== -->
-  <!-- 2. SUIVI GOOGLE ANALYTICS 4 (GA4)          -->
+  <!-- 2. STYLES PERSONNALISÉS THÈMES SOMBRE/CLAIR -->
+  <!-- ========================================== -->
+  <style>
+    :root {
+      --bg-color: #0b0f19;
+      --card-bg: #111827;
+      --card-border: #1f2937;
+      --text-main: #ffffff;
+      --text-muted: #9ca3af;
+    }
+
+    body.light-mode {
+      --bg-color: #f8fafc;
+      --card-bg: #ffffff;
+      --card-border: #e2e8f0;
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+    }
+
+    body.light-mode {
+      background-color: var(--bg-color) !important;
+      color: var(--text-main) !important;
+    }
+
+    body.light-mode header {
+      background-color: rgba(248, 250, 252, 0.9) !important;
+      border-color: var(--card-border) !important;
+    }
+
+    body.light-mode section, body.light-mode article {
+      background-color: var(--card-bg) !important;
+      border-color: var(--card-border) !important;
+      color: var(--text-main) !important;
+    }
+
+    body.light-mode input, body.light-mode select {
+      background-color: #f1f5f9 !important;
+      color: #0f172a !important;
+      border-color: var(--card-border) !important;
+    }
+
+    body.light-mode h1, body.light-mode h2, body.light-mode h3, body.light-mode h4 {
+      color: var(--text-main) !important;
+    }
+
+    /* Style du bouton de bascule */
+    .theme-toggle-btn {
+      background: rgba(31, 41, 55, 0.5);
+      border: 1px solid #374151;
+      color: #ffffff;
+      padding: 6px 10px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .theme-toggle-btn:hover {
+      border-color: #10b981;
+    }
+
+    body.light-mode .theme-toggle-btn {
+      background: #f1f5f9;
+      border-color: #cbd5e1;
+      color: #0f172a;
+    }
+  </style>
+
+  <!-- ========================================== -->
+  <!-- 3. SUIVI GOOGLE ANALYTICS 4 (GA4)          -->
   <!-- ========================================== -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-W5M59BZS6N"></script>
   <script>
@@ -56,7 +128,7 @@
   </script>
 
   <!-- ========================================== -->
-  <!-- 3. DONNÉES STRUCTURÉES JSON-LD (GOOGLE SEO)  -->
+  <!-- 4. DONNÉES STRUCTURÉES JSON-LD (GOOGLE SEO)  -->
   <!-- ========================================== -->
   <script type="application/ld+json">
   {
@@ -123,6 +195,11 @@
           <button onclick="setLanguage('ar')" id="lang-ar" class="px-2 py-1 rounded text-[11px] font-bold transition hover:text-white text-slate-400">العربية</button>
           <button onclick="setLanguage('pt')" id="lang-pt" class="px-2 py-1 rounded text-[11px] font-bold transition hover:text-white text-slate-400">PT</button>
         </div>
+
+        <!-- BOUTON BASCULE MODE SOMBRE / CLAIR -->
+        <button id="theme-toggle" class="theme-toggle-btn" title="Changer le mode d'affichage">
+          <span id="theme-icon">🌙</span>
+        </button>
       </div>
 
     </div>
@@ -783,11 +860,12 @@
         const isBestRate = index === 0;
 
         const card = document.createElement('div');
-        card.className = `bg-slate-900/80 p-5 rounded-2xl border transition-all ${
+        card.className = `p-5 rounded-2xl border transition-all ${
           isBestRate 
-            ? 'border-brand-500/80 shadow-lg shadow-brand-950/40 ring-1 ring-brand-500/30' 
+            ? 'border-brand-500/80 shadow-lg ring-1 ring-brand-500/30' 
             : 'border-slate-800 hover:border-slate-700'
         }`;
+        card.style.backgroundColor = 'var(--card-bg)';
 
         card.innerHTML = `
           <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
@@ -797,7 +875,7 @@
               </div>
               <div>
                 <div class="flex items-center gap-2">
-                  <h4 class="font-bold text-white text-lg">${item.name}</h4>
+                  <h4 class="font-bold text-lg" style="color: var(--text-main);">${item.name}</h4>
                   ${isBestRate ? `<span class="bg-brand-500/20 text-brand-400 border border-brand-500/30 text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full">${t.bestRateBadge}</span>` : ''}
                 </div>
                 <p class="text-xs text-slate-400">${t.feeText} ${item.fee.toFixed(2)} ${sourceCurrency} | ${t.rateText} 1 ${sourceCurrency} = ${item.rate} ${targetCurrency}</p>
@@ -833,6 +911,29 @@
         });
       }
     }
+
+    // GESTION DU MODE SOMBRE / CLAIR MANUEL
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    const themeIcon = document.getElementById('theme-icon');
+
+    const savedTheme = localStorage.getItem('xaalya-theme');
+    if (savedTheme === 'light') {
+      document.body.classList.add('light-mode');
+      themeIcon.textContent = '☀️';
+    } else {
+      themeIcon.textContent = '🌙';
+    }
+
+    themeToggleBtn.addEventListener('click', () => {
+      document.body.classList.toggle('light-mode');
+      if (document.body.classList.contains('light-mode')) {
+        themeIcon.textContent = '☀️';
+        localStorage.setItem('xaalya-theme', 'light');
+      } else {
+        themeIcon.textContent = '🌙';
+        localStorage.setItem('xaalya-theme', 'dark');
+      }
+    });
 
     // ÉCOUTEURS D'ÉVÉNEMENTS
     document.getElementById('send-amount').addEventListener('input', calculateAndRender);
