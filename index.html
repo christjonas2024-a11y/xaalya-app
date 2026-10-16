@@ -114,6 +114,17 @@
       border-color: #cbd5e1;
       color: #0f172a;
     }
+
+    /* --- Adaptation dynamique du fond du logo en Mode Clair --- */
+    body.light-mode .logo-badge {
+      background-color: #ffffff !important;
+      border-color: #cbd5e1 !important;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    }
+    
+    body.light-mode .logo-badge span.text-white {
+      color: #0f172a !important;
+    }
   </style>
 
   <!-- ========================================== -->
@@ -160,7 +171,7 @@
       <!-- LOGO OFFICIEL CORRIGÉ (ICÔNE ET TEXTE STABLE SANS LIENS CASSÉS) -->
       <div class="flex items-center gap-3 cursor-pointer" onclick="closeAllModalSections()">
         <a href="https://xaalya-app.pages.dev/" class="flex items-center gap-3 group">
-          <div class="flex items-center gap-2 bg-slate-900/80 border border-slate-800 px-3 py-1.5 rounded-xl">
+          <div class="flex items-center gap-2 bg-slate-900/80 border border-slate-800 px-3 py-1.5 rounded-xl logo-badge">
             <!-- Icône vectorielle stylisée reprenant l'identité du logo officiel -->
             <div class="w-8 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 font-black text-sm tracking-tighter">
               €$£
@@ -647,7 +658,7 @@
         faqQ4: "Quais moedas são suportadas?",
         faqA4: "Você pode comparar envios do Canadá (CAD), Reino Unido (GBP), Zona Euro (EUR) e EUA (USD) para todas as moedas africanas.",
         secHeader: "Política de Privacidade e Segurança",
-        secP1: "A Xaalya aplica princípios rigorosos de privacidade e proteção de dados:",
+        secP1: "A Aaalya aplica princípios rigorosos de privacidade e proteção de dados:",
         secPoint1Title: "Nenhum dado bancário processado:",
         secPoint1Body: "Nunca solicitamos dados bancários ou cartões. As transações ocorrem nas plataformas oficiais das operadoras.",
         secPoint2Title: "Simulações 100% anônimas:",
