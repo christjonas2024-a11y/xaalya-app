@@ -172,7 +172,6 @@
       <div class="flex items-center gap-3 cursor-pointer" onclick="closeAllModalSections()">
         <a href="https://xaalya.com/" class="flex items-center gap-3 group">
           <div class="flex items-center gap-2 bg-slate-900/80 border border-slate-800 px-3 py-1.5 rounded-xl logo-badge">
-            <!-- Icône élargie intégrant les symboles monétaires mondiaux -->
             <div class="w-9 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 font-black text-xs tracking-tighter">
               €$¥ƒ
             </div>
@@ -243,7 +242,7 @@
           <input type="number" id="send-amount" value="500" min="1" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white font-bold focus:outline-none focus:border-brand-500 transition">
         </div>
 
-        <!-- Devise Source (7 Devises : EUR, USD, CAD, GBP, CNY, CHF, AED) -->
+        <!-- Devise Source -->
         <div>
           <label for="source-currency" data-i18n="labelSource" class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Devise d'envoi</label>
           <select id="source-currency" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white font-semibold focus:outline-none focus:border-brand-500 transition">
@@ -257,7 +256,7 @@
           </select>
         </div>
 
-        <!-- Devise Destination (20 Devises Africaines) -->
+        <!-- Devise Destination -->
         <div>
           <label for="target-currency" data-i18n="labelTarget" class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Devise Destination / Pays</label>
           <select id="target-currency" onchange="handleTargetCurrencyChange()" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white font-semibold focus:outline-none focus:border-brand-500 transition">
@@ -320,7 +319,7 @@
       </div>
     </section>
 
-    <!-- CONTENUS D'INFORMATION (AFFICHÉS SUR CLIC & TRADUITS DYNAMIQUEMENT) -->
+    <!-- CONTENUS D'INFORMATION -->
     <div id="info-sections-container" class="hidden pt-6 border-t border-slate-800/80">
       
       <!-- SECTION : À PROPOS -->
@@ -397,11 +396,11 @@
 
   </main>
 
-  <!-- PIED DE PAGE -->
+  <!-- PIED DE PAGE DYNAMIQUE MULTILINGUE -->
   <footer class="border-t border-slate-800/80 bg-slate-950 py-8 text-center text-xs text-slate-500">
     <div class="max-w-4xl mx-auto px-4 space-y-2">
-      <p>© 2026 Xaalya. Tous droits réservés. Plateforme indépendante de comparaison de services financiers.</p>
-      <p>Les marques citées (Lemfi, Sendwave, Taptap Send, WorldRemit, Western Union...) appartiennent à leurs propriétaires respectifs.</p>
+      <p data-i18n="footerCopy">© 2026 Xaalya. Tous droits réservés. Plateforme indépendante de comparaison de services financiers.</p>
+      <p data-i18n="footerDisclaimer">Les marques citées (Lemfi, Sendwave, Taptap Send, WorldRemit, Western Union...) appartiennent à leurs propriétaires respectifs.</p>
     </div>
   </footer>
 
@@ -449,7 +448,7 @@
     };
 
     /**
-     * DICTIONNAIRE MULTILINGUE COMPLET (AVEC MANDARIN 'zh')
+     * DICTIONNAIRE MULTILINGUE COMPLET (AVEC TRADUCTION DU FOOTER)
      */
     const TRANSLATIONS = {
       fr: {
@@ -474,28 +473,30 @@
         noOperator: "Aucun opérateur répertorié pour le corridor",
         bestRateBadge: "MEILLEUR TAUX",
         aboutHeaderPrefix: "À propos de",
-        aboutP1: "Xaalya est la plateforme indépendante de comparaison en temps réel dédiée aux transferts d'argent vers l'Afrique. Notre mission est d'offrir une transparence totale sur les frais de change et les coûts de transaction appliqués aux transferts d'argent vers l'Afrique depuis les principaux hubs mondiaux (Europe, Amérique du Nord, Chine/Asie, Suisse et Émirats Arabes Unis).",
-        aboutP2: "En analysant en continu les taux de change et frais appliqués par les principaux acteurs du secteur, Xaalya vous indique immédiatement quelle application vous permet de transférer le montant net le plus élevé vers votre destinataire.",
-        aboutContact: "Pour toute question, suggestion de partenariat ou intégration d'un nouvel opérateur, contactez notre équipe à :",
+        aboutP1: "Xaalya est la plateforme indépendante de comparaison en temps réel dédiée aux transferts d'argent vers l'Afrique.",
+        aboutP2: "En analysant en continu les taux de change et frais appliqués par les principaux acteurs du secteur.",
+        aboutContact: "Pour toute question ou suggestion, contactez notre équipe à :",
         faqHeader: "Foire Aux Questions (FAQ)",
         faqQ1: "Comment Xaalya compare-t-il les taux de transfert d'argent ?",
-        faqA1: "Xaalya interroge et calcule en temps réel les taux de change et les frais fixes prélevés par les fintechs pour l'ensemble de nos corridors mondiaux.",
+        faqA1: "Xaalya interroge et calcule en temps réel les taux de change et les frais fixes.",
         faqQ2: "Quelles fintechs sont comparées sur le site ?",
-        faqA2: "Nous couvrons les opérateurs leaders desservant la diaspora africaine globale : Lemfi, Sendwave, Taptap Send, NALA, Chipper Cash, WorldRemit, Western Union, Wise, Remitly et Paysend.",
+        faqA2: "Lemfi, Sendwave, Taptap Send, NALA, Chipper Cash, WorldRemit, Western Union, Wise, Remitly et Paysend.",
         faqQ3: "Xaalya prend-il une commission sur mes transferts ?",
-        faqA3: "Non. Xaalya est un service d'information gratuit à 100 %. Nous ne prélevons aucun frais sur vos envois.",
+        faqA3: "Non. Xaalya est un service d'information gratuit à 100 %.",
         faqQ4: "Quelles sont les monnaies prises en charge ?",
-        faqA4: "Vous pouvez comparer les transferts en provenance de l'Europe (EUR), du Canada (CAD), du Royaume-Uni (GBP), des USA (USD), de la Chine (CNY), de la Suisse (CHF) et des EAU (AED) vers 20 monnaies africaines.",
+        faqA4: "EUR, CAD, GBP, USD, CNY, CHF, AED vers 20 monnaies africaines.",
         secHeader: "Politique de Confidentialité & Sécurité",
-        secP1: "Xaalya applique un principe strict de respect de la vie privée et de protection des données :",
+        secP1: "Xaalya applique un principe strict de respect de la vie privée :",
         secPoint1Title: "Aucune donnée bancaire traitée :",
-        secPoint1Body: "Xaalya ne vous demandera jamais de saisir vos identifiants bancaires ou mots de passe.",
-        secPoint2Title: "Anonymat total des simulations :",
-        secPoint2Body: "Vos recherches de corridors et simulations sont exécutées localement dans votre navigateur.",
-        secPoint3Title: "Liens de redirection sécurisés :",
-        secPoint3Body: "Les clics sur « Transfert → » vous redirigent via des liaisons chiffrées HTTPS vers les plateformes officielles.",
-        secPoint4Title: "Cookies et mesures d'audience :",
-        secPoint4Body: "Xaalya utilise uniquement des outils statistiques anonymes (Google Analytics 4)."
+        secPoint1Body: "Xaalya ne vous demandera jamais de saisir vos identifiants.",
+        secPoint2Title: "Anonymat total :",
+        secPoint2Body: "Recherches exécutées localement.",
+        secPoint3Title: "Liens sécurisés :",
+        secPoint3Body: "Redirection HTTPS officielle.",
+        secPoint4Title: "Cookies :",
+        secPoint4Body: "Google Analytics 4 anonyme.",
+        footerCopy: "© 2026 Xaalya. Tous droits réservés. Plateforme indépendante de comparaison de services financiers.",
+        footerDisclaimer: "Les marques citées (Lemfi, Sendwave, Taptap Send, WorldRemit, Western Union...) appartiennent à leurs propriétaires respectifs."
       },
       en: {
         badgeTitle: "PAN-AFRICAN DIASPORA",
@@ -519,28 +520,30 @@
         noOperator: "No listed operators for corridor",
         bestRateBadge: "BEST RATE",
         aboutHeaderPrefix: "About",
-        aboutP1: "Xaalya is an independent real-time comparison platform dedicated to money transfers to Africa from major global hubs.",
-        aboutP2: "By continuously analyzing exchange rates and fees from top providers, Xaalya instantly highlights which app delivers the highest net amount.",
-        aboutContact: "For questions or partnerships, contact our team at:",
+        aboutP1: "Xaalya is an independent real-time comparison platform dedicated to money transfers to Africa.",
+        aboutP2: "By continuously analyzing exchange rates and fees from top providers.",
+        aboutContact: "For questions or partnerships, contact us at:",
         faqHeader: "Frequently Asked Questions (FAQ)",
         faqQ1: "How does Xaalya compare money transfer rates?",
-        faqA1: "Xaalya queries and calculates real-time exchange rates and fixed fees charged by fintechs.",
+        faqA1: "Xaalya queries and calculates real-time exchange rates and fixed fees.",
         faqQ2: "Which fintechs are compared on the platform?",
-        faqA2: "We cover leading providers serving the global African diaspora.",
+        faqA2: "Lemfi, Sendwave, Taptap Send, NALA, Chipper Cash, WorldRemit, Western Union, Wise, Remitly, and Paysend.",
         faqQ3: "Does Xaalya charge a commission on my transfers?",
         faqA3: "No. Xaalya is a 100% free information service.",
         faqQ4: "Which currencies are supported?",
-        faqA4: "You can compare transfers from EUR, CAD, GBP, USD, CNY, CHF and AED to all African currencies.",
+        faqA4: "EUR, CAD, GBP, USD, CNY, CHF and AED to all African currencies.",
         secHeader: "Privacy & Security Policy",
-        secP1: "Xaalya applies strict principles regarding privacy and data protection:",
+        secP1: "Xaalya applies strict principles regarding privacy:",
         secPoint1Title: "No banking data processed:",
         secPoint1Body: "Xaalya will never ask for your banking credentials.",
-        secPoint2Title: "100% Anonymous simulations:",
-        secPoint2Body: "Your corridor searches run locally in your browser.",
-        secPoint3Title: "Secure redirection links:",
-        secPoint3Body: "Clicking 'Transfer →' redirects you via encrypted HTTPS links.",
+        secPoint2Title: "100% Anonymous:",
+        secPoint2Body: "Simulations run locally.",
+        secPoint3Title: "Secure links:",
+        secPoint3Body: "Official HTTPS redirection.",
         secPoint4Title: "Cookies & Analytics:",
-        secPoint4Body: "Xaalya uses only anonymous analytics (Google Analytics 4)."
+        secPoint4Body: "Anonymous Google Analytics 4.",
+        footerCopy: "© 2026 Xaalya. All rights reserved. Independent financial services comparison platform.",
+        footerDisclaimer: "The brands mentioned (Lemfi, Sendwave, Taptap Send, WorldRemit, Western Union...) belong to their respective owners."
       },
       es: {
         badgeTitle: "DIASPORA PANAFRICANA",
@@ -561,23 +564,23 @@
         btnTransfer: "Transferir →",
         feeText: "Comisión:",
         rateText: "Tasa:",
-        noOperator: "No hay operadores registrados para el corredor",
+        noOperator: "No hay operadores registrados",
         bestRateBadge: "MEJOR TASA",
         aboutHeaderPrefix: "Acerca de",
-        aboutP1: "Xaalya es la plataforma independiente de comparación en tiempo real para transferencias hacia África.",
-        aboutP2: "Al analizar continuamente las tasas y comisiones de los principales operadores.",
-        aboutContact: "Para dudas o alianzas, contáctenos en:",
+        aboutP1: "Xaalya es la plataforma independiente de comparación en tiempo real para transferencias.",
+        aboutP2: "Al analizar continuamente las tasas y comisiones.",
+        aboutContact: "Contáctenos en:",
         faqHeader: "Preguntas Frecuentes",
         faqQ1: "¿Cómo compara Xaalya?",
-        faqA1: "Xaalya calcula en tiempo real las tasas de cambio.",
+        faqA1: "Calcula en tiempo real las tasas de cambio.",
         faqQ2: "¿Qué fintechs se comparan?",
-        faqA2: "Cubrimos a los líderes de la diáspora africana.",
+        faqA2: "Líderes de la diáspora africana.",
         faqQ3: "¿Xaalya cobra comisiones?",
         faqA3: "No. Servicio 100% gratuito.",
         faqQ4: "¿Qué monedas son compatibles?",
-        faqA4: "EUR, CAD, GBP, USD, CNY, CHF y AED hacia África.",
-        secHeader: "Política de Privacidad y Seguridad",
-        secP1: "Xaalya aplica un principio estricto de privacidad:",
+        faqA4: "EUR, CAD, GBP, USD, CNY, CHF y AED.",
+        secHeader: "Política de Privacidad",
+        secP1: "Xaalya aplica privacidad estricta:",
         secPoint1Title: "Sin datos bancarios:",
         secPoint1Body: "Nunca pediremos credenciales.",
         secPoint2Title: "Anónimo:",
@@ -585,7 +588,9 @@
         secPoint3Title: "Redirección segura:",
         secPoint3Body: "Enlaces HTTPS oficiales.",
         secPoint4Title: "Analítica:",
-        secPoint4Body: "Google Analytics 4 anónimo."
+        secPoint4Body: "Google Analytics 4 anónimo.",
+        footerCopy: "© 2026 Xaalya. Todos los derechos reservados. Plataforma independiente de comparación.",
+        footerDisclaimer: "Las marcas mencionadas (Lemfi, Sendwave, Taptap Send, WorldRemit, Western Union...) pertenecen a sus propietarios."
       },
       ar: {
         badgeTitle: "الشتات الأفريقي",
@@ -609,7 +614,7 @@
         noOperator: "لا يوجد مشغلون لهذا المسار",
         bestRateBadge: "أفضل سعر",
         aboutHeaderPrefix: "عن",
-        aboutP1: "Xaalya هي منصة مقارنة مستقلة لتحويل الأموال إلى أفريقيا من المراكز العالمية.",
+        aboutP1: "Xaalya هي منصة مقارنة مستقلة لتحويل الأموال إلى أفريقيا.",
         aboutP2: "من خلال التحليل المستمر للأسعار والرسوم.",
         aboutContact: "للاستفسارات:",
         faqHeader: "الأسئلة الشائعة",
@@ -626,11 +631,13 @@
         secPoint1Title: "لا بيانات مصرفية:",
         secPoint1Body: "لن نطلب بياناتك أبداً.",
         secPoint2Title: "محاكاة مجهولة:",
-        secPoint2Body: " محلياً في متصفحك.",
+        secPoint2Body: "محلياً في متصفحك.",
         secPoint3Title: "روابط آمنة:",
-        secPoint3Body: "مباشرة ومفتوحة عبر HTTPS.",
+        secPoint3Body: "مباشرة عبر HTTPS.",
         secPoint4Title: "التحليلات:",
-        secPoint4Body: "Google Analytics 4."
+        secPoint4Body: "Google Analytics 4.",
+        footerCopy: "© 2026 Xaalya. جميع الحقوق محفوظة. منصة مستقلة لمقارنة الخدمات المالية.",
+        footerDisclaimer: "العلامات التجارية المذكورة (Lemfi, Sendwave, Taptap Send, WorldRemit, Western Union...) مملوكة لأصحابها."
       },
       pt: {
         badgeTitle: "DIASPORA PAN-AFRICANA",
@@ -654,14 +661,14 @@
         noOperator: "Nenhuma operadora listada",
         bestRateBadge: "MELHOR TAXA",
         aboutHeaderPrefix: "Sobre a",
-        aboutP1: "A Xaalya é uma plataforma independente de comparação para envios de dinheiro para a África.",
+        aboutP1: "A Xaalya é uma plataforma independente de comparação para envios de dinheiro.",
         aboutP2: "Analisando continuamente as taxas.",
         aboutContact: "Para dúvidas ou parcerias:",
         faqHeader: "Perguntas Frequentes",
         faqQ1: "Como a Xaalya compara?",
         faqA1: "Calcula em tempo real.",
         faqQ2: "Quais fintechs?",
-        faqA2: "Cobrimos os principais provedores.",
+        faqA2: "Principais provedores da diáspora.",
         faqQ3: "A Xaalya cobra comissão?",
         faqA3: "Não, 100% gratuito.",
         faqQ4: "Quais moedas?",
@@ -675,7 +682,9 @@
         secPoint3Title: "Seguro:",
         secPoint3Body: "Redirecionamento HTTPS.",
         secPoint4Title: "Cookies:",
-        secPoint4Body: "Google Analytics 4."
+        secPoint4Body: "Google Analytics 4.",
+        footerCopy: "© 2026 Xaalya. Todos os direitos reservados. Plataforma independente de comparação.",
+        footerDisclaimer: "As marcas mencionadas (Lemfi, Sendwave, Taptap Send, WorldRemit, Western Union...) pertencem aos seus proprietários."
       },
       zh: {
         badgeTitle: "泛非 diaspora",
@@ -699,28 +708,30 @@
         noOperator: "该走廊暂无收录服务商",
         bestRateBadge: "最优汇率",
         aboutHeaderPrefix: "关于",
-        aboutP1: "Xaalya 是一个独立的实时汇款比较平台，专注于从全球主要枢纽（欧洲、北美、中国/亚洲、瑞士和阿联酋）向非洲汇款。",
-        aboutP2: "通过持续分析主要服务商的汇率和费用，Xaalya 为您直观呈现最优选择。",
-        aboutContact: "如有合作或咨询，请联系我们：",
+        aboutP1: "Xaalya 是一个独立的实时汇款比较平台，专注于向非洲汇款。",
+        aboutP2: "通过持续分析主要服务商的汇率和费用。",
+        aboutContact: "如有合作或咨询，请联系：",
         faqHeader: "常见问题 (FAQ)",
         faqQ1: "Xaalya 如何比较汇率？",
-        faqA1: "Xaalya 实时抓取并计算各机构的汇率与固定费用。",
+        faqA1: "Xaalya 实时抓取并计算汇率。",
         faqQ2: "平台上收录了哪些机构？",
-        faqA2: "我们涵盖服务全球非洲侨民的领先服务商。",
+        faqA2: "服务全球非洲侨民的领先机构。",
         faqQ3: "Xaalya 会收取佣金吗？",
-        faqA3: "不会。Xaalya 是 100% 免费的信息服务平台。",
+        faqA3: "不会。100% 免费的信息服务平台。",
         faqQ4: "支持哪些货币？",
-        faqA4: "支持从 EUR、CAD、GBP、USD、CNY、CHF 和 AED 汇往 20 种非洲货币。",
+        faqA4: "支持 EUR、CAD、GBP、USD、CNY、CHF 和 AED。",
         secHeader: "隐私与安全政策",
         secP1: "Xaalya 严格保护您的隐私：",
         secPoint1Title: "不处理银行数据：",
         secPoint1Body: "我们绝不要求您输入银行凭证。",
         secPoint2Title: "100% 匿名模拟：",
-        secPoint2Body: "您的搜索均在本地浏览器中运行。",
+        secPoint2Body: "搜索均在本地运行。",
         secPoint3Title: "安全重定向：",
-        secPoint3Body: "通过加密 HTTPS 链接跳转至官方平台。",
+        secPoint3Body: "加密 HTTPS 链接跳转。",
         secPoint4Title: "数据分析：",
-        secPoint4Body: "仅使用匿名分析工具 (Google Analytics 4)。"
+        secPoint4Body: "匿名分析工具。",
+        footerCopy: "© 2026 Xaalya. 版权所有。独立的金融服务比较平台。",
+        footerDisclaimer: "提及的品牌（Lemfi、Sendwave、Taptap Send、WorldRemit、Western Union...）属于其各自的所有者。"
       }
     };
 
