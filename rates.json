@@ -3,7 +3,7 @@
     "nom": "Lemfi",
     "frais": 0,
     "taux": 655.5,
-    "misAJour": "2026-10-17T04:17:53.381Z",
+    "misAJour": "2026-10-17T08:15:32.772Z",
     "delai": "Instantané",
     "url": "https://lemfi.com/fr-fr"
   },
@@ -11,7 +11,7 @@
     "nom": "Sendwave",
     "frais": 0,
     "taux": 651,
-    "misAJour": "2026-10-17T04:17:53.381Z",
+    "misAJour": "2026-10-17T08:15:32.772Z",
     "delai": "Instantané",
     "url": "https://www.sendwave.com/fr/countries/côte-d'ivoire/fr"
   },
@@ -19,7 +19,7 @@
     "nom": "Taptap Send",
     "frais": 0.99,
     "taux": 653,
-    "misAJour": "2026-10-17T04:17:53.381Z",
+    "misAJour": "2026-10-17T08:15:32.772Z",
     "delai": "Instantané",
     "url": "https://www.taptapsend.com/fr"
   },
@@ -27,7 +27,7 @@
     "nom": "WorldRemit",
     "frais": 1.99,
     "taux": 650.5,
-    "misAJour": "2026-10-17T04:17:53.381Z",
+    "misAJour": "2026-10-17T08:15:32.772Z",
     "delai": "Quelques minutes",
     "url": "https://www.worldremit.com/en"
   },
@@ -35,7 +35,7 @@
     "nom": "Remitly",
     "frais": 1.99,
     "taux": 649.8,
-    "misAJour": "2026-10-17T04:17:53.381Z",
+    "misAJour": "2026-10-17T08:15:32.772Z",
     "delai": "Instantané",
     "url": "https://www.remitly.com/fr/fr/cote-d-ivoire/pricing"
   },
@@ -43,7 +43,7 @@
     "nom": "Western Union",
     "frais": 3.9,
     "taux": 645,
-    "misAJour": "2026-10-17T04:17:53.381Z",
+    "misAJour": "2026-10-17T08:15:32.772Z",
     "delai": "Instantané",
     "url": "https://www.westernunion.com/fr/fr/web/send-money/start?ReceiveCountry=CI"
   }
