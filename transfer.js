@@ -27,10 +27,24 @@ function calculateTransfer({ amountSent, fixedFee, percentageFeeRate, exchangeRa
  * Vérifie si un taux est périmé en fonction d'un seuil de tolérance (en minutes).
  */
 function isRateStale(rateTimestamp, maxAgeMinutes = 30) {
-  const now = Date.now();
-  const ageMs = now - rateTimestamp;
-  const ageMinutes = ageMs / (1000 * 60);
-  return ageMinutes > maxAgeMinutes;
+  if (
+    typeof rateTimestamp !== "number" ||
+    !Number.isFinite(rateTimestamp) ||
+    typeof maxAgeMinutes !== "number" ||
+    !Number.isFinite(maxAgeMinutes) ||
+    maxAgeMinutes < 0
+  ) {
+    return true;
+  }
+
+  const ageMs = Date.now() - rateTimestamp;
+
+  // Une date future est invalide : ne pas accepter le taux.
+  if (ageMs < 0) {
+    return true;
+  }
+
+  return ageMs > maxAgeMinutes * 60 * 1000;
 }
 
 /**
@@ -38,7 +52,8 @@ function isRateStale(rateTimestamp, maxAgeMinutes = 30) {
  */
 function calculateMultipleCorridors(corridors) {
   return corridors.map(corridor => {
-    if (isRateStale(corridor.rateTimestamp, corridor.maxAgeMinutes || 30)) {
+    // Utilisation de l'opérateur ?? pour préserver un seuil personnalisé égal à zéro
+    if (isRateStale(corridor.rateTimestamp, corridor.maxAgeMinutes ?? 30)) {
       return {
         corridorId: corridor.id,
         status: "REJECTED_STALE_RATE",
