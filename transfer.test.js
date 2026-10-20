@@ -136,8 +136,6 @@ describe('Moteur de calcul financier - Tests Avancés de Xaalya', () => {
 
 });
 
-// --- NOUVEAUX TESTS DE VALIDATION DES TAUX ET SEUILS ---
-
 describe("Validation des taux et seuils personnalisés", () => {
   test("Accepte un taux récent avec un seuil personnalisé", () => {
     const timestamp = Date.now() - 2 * 60 * 1000;
@@ -175,4 +173,76 @@ describe("Validation des taux et seuils personnalisés", () => {
 
     expect(result.status).toBe("REJECTED_STALE_RATE");
   });
+});
+
+describe("Validation de la robustesse financière (Taux nuls, négatifs, infinis et arrondis)", () => {
+  test("Rejette un taux de change égal à zéro, négatif ou infini", () => {
+    const baseParams = { amountSent: 100, fixedFee: 1, percentageFeeRate: 0.01 };
+
+    expect(() => calculateTransfer({ ...baseParams, exchangeRate: 0 })).toThrow();
+    expect(() => calculateTransfer({ ...baseParams, exchangeRate: -655 })).toThrow();
+    expect(() => calculateTransfer({ ...baseParams, exchangeRate: Infinity })).toThrow();
+    expect(() => calculateTransfer({ ...baseParams, exchangeRate: NaN })).toThrow();
+  });
+
+  test("Rejette des frais invalides ou aberrants", () => {
+    const baseParams = { amountSent: 100, exchangeRate: 655 };
+
+    expect(() => calculateTransfer({ ...baseParams, fixedFee: -5, percentageFeeRate: 0.01 })).toThrow();
+    expect(() => calculateTransfer({ ...baseParams, fixedFee: 1, percentageFeeRate: 1.2 })).toThrow();
+  });
+
+  test("Valide le respect strict des règles d'arrondi sur les décimales", () => {
+    const result = calculateTransfer({
+      amountSent: 150.50,
+      fixedFee: 1.00,
+      percentageFeeRate: 0.02,
+      exchangeRate: 655.957,
+      decimalPlaces: 2
+    });
+
+    expect(result.amountReceived.toString()).toMatch(/^\d+(\.\d{1,2})?$/);
+  });
+  test("Rejette un nombre de décimales invalide", () => {
+    const baseParams = { amountSent: 100, fixedFee: 1, percentageFeeRate: 0.01, exchangeRate: 655 };
+    expect(() => calculateTransfer({ ...baseParams, decimalPlaces: -1 })).toThrow();
+    expect(() => calculateTransfer({ ...baseParams, decimalPlaces: 10 })).toThrow();
+  });
+
+  test("Gère un calcul produisant un résultat non fini (Infini)", () => {
+    const baseParams = { amountSent: 100, fixedFee: 0, percentageFeeRate: 0, exchangeRate: Infinity };
+    // Bien que le taux Infinity soit déjà bloqué en amont, testons un cas limite ou simulons
+    expect(() => calculateTransfer({ amountSent: 100, fixedFee: 0, percentageFeeRate: 0, exchangeRate: NaN })).toThrow();
+  });
+
+  test("Retourne un tableau vide si calculateMultipleCorridors reçoit autre chose qu'un tableau", () => {
+    const result = calculateMultipleCorridors(null);
+    expect(result).toEqual([]);
+  });
+  test("Rejette un dépassement de capacité numérique (Overflow vers Infinity)", () => {
+    expect(() => calculateTransfer({
+      amountSent: Number.MAX_VALUE,
+      fixedFee: 0,
+      percentageFeeRate: 0,
+      exchangeRate: 2, // 2 * MAX_VALUE devient Infinity
+      decimalPlaces: 2
+    })).toThrow();
+  });
+test("Utilise UNKNOWN si un corridor périmé n'a pas d'identifiant", () => {
+  const corridors = [
+    {
+      rateTimestamp: Date.now() - 60 * 60 * 1000,
+      maxAgeMinutes: 30
+    }
+  ];
+
+  const results = calculateMultipleCorridors(corridors);
+
+  expect(results).toHaveLength(1);
+  expect(results[0]).toEqual({
+    corridorId: "UNKNOWN",
+    status: "REJECTED_STALE_RATE",
+    error: "Taux périmé, offre non disponible"
+  });
+});
 });

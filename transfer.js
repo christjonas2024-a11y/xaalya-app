@@ -1,9 +1,38 @@
 /**
- * Calcule le montant net reçu et les frais pour un couloir de transfert.
+ * Calcule le montant net reçu et les frais pour un couloir de transfert de manière ultra-sécurisée.
  */
 function calculateTransfer({ amountSent, fixedFee, percentageFeeRate, exchangeRate, decimalPlaces = 2 }) {
-  if (amountSent <= 0 || isNaN(amountSent)) {
-    throw new Error("Le montant envoyé doit être supérieur à zéro.");
+  // 1. Validation stricte du montant envoyé
+  if (typeof amountSent !== "number" || !Number.isFinite(amountSent) || amountSent <= 0 || isNaN(amountSent)) {
+    throw new Error("Le montant envoyé doit être un nombre valide supérieur à zéro.");
+  }
+  
+  // 2. Validation stricte des frais (fixes et pourcentage)
+  if (
+    typeof fixedFee !== "number" || !Number.isFinite(fixedFee) || fixedFee < 0 ||
+    typeof percentageFeeRate !== "number" || !Number.isFinite(percentageFeeRate) || percentageFeeRate < 0 || percentageFeeRate >= 1
+  ) {
+    throw new Error("Les paramètres de frais sont invalides.");
+  }
+
+  // 3. Validation stricte du taux de change (doit être un nombre fini strictement positif)
+  if (
+    typeof exchangeRate !== "number" || 
+    !Number.isFinite(exchangeRate) || 
+    exchangeRate <= 0 || 
+    isNaN(exchangeRate)
+  ) {
+    throw new Error("Le taux de change doit être strictement supérieur à zéro.");
+  }
+
+  // 4. Validation des décimales
+  if (
+    typeof decimalPlaces !== "number" || 
+    !Number.isFinite(decimalPlaces) || 
+    decimalPlaces < 0 || 
+    decimalPlaces > 6
+  ) {
+    throw new Error("Le nombre de décimales est invalide.");
   }
   
   const totalFees = fixedFee + (amountSent * percentageFeeRate);
@@ -14,6 +43,12 @@ function calculateTransfer({ amountSent, fixedFee, percentageFeeRate, exchangeRa
   }
   
   const rawReceived = effectiveAmount * exchangeRate;
+  
+  // Protection contre les valeurs infinies ou NaN issues du calcul
+  if (!Number.isFinite(rawReceived)) {
+    throw new Error("Erreur de calcul critique : résultat non fini.");
+  }
+
   const amountReceived = Number(rawReceived.toFixed(decimalPlaces));
   
   return {
@@ -39,7 +74,6 @@ function isRateStale(rateTimestamp, maxAgeMinutes = 30) {
 
   const ageMs = Date.now() - rateTimestamp;
 
-  // Une date future est invalide : ne pas accepter le taux.
   if (ageMs < 0) {
     return true;
   }
@@ -51,11 +85,14 @@ function isRateStale(rateTimestamp, maxAgeMinutes = 30) {
  * Calcule plusieurs couloirs en filtrant les taux périmés.
  */
 function calculateMultipleCorridors(corridors) {
+  if (!Array.isArray(corridors)) {
+    return [];
+  }
+
   return corridors.map(corridor => {
-    // Utilisation de l'opérateur ?? pour préserver un seuil personnalisé égal à zéro
-    if (isRateStale(corridor.rateTimestamp, corridor.maxAgeMinutes ?? 30)) {
+    if (isRateStale(corridor?.rateTimestamp, corridor?.maxAgeMinutes ?? 30)) {
       return {
-        corridorId: corridor.id,
+        corridorId: corridor?.id || "UNKNOWN",
         status: "REJECTED_STALE_RATE",
         error: "Taux périmé, offre non disponible"
       };
