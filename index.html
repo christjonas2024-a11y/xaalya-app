@@ -232,67 +232,30 @@
       </p>
     </section>
 
-    <!-- FORMULAIRE DE SELECTION DU CORRIDOR (140 PAIRES POSSIBLES) -->
+    <!-- FORMULAIRE DE SELECTION DU CORRIDOR (294 CORRIDORS DYNAMIQUES) -->
     <section class="bg-slate-900/90 border border-slate-800 p-6 rounded-2xl shadow-xl space-y-6">
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div class="comparator-form grid grid-cols-1 md:grid-cols-3 gap-4">
         
-        <!-- Montant -->
-        <div>
-          <label for="send-amount" data-i18n="labelAmount" class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Montant à envoyer</label>
-          <input type="number" id="send-amount" value="500" min="1" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white font-bold focus:outline-none focus:border-brand-500 transition">
-        </div>
-
         <!-- Devise Source -->
-        <div>
-          <label for="source-currency" data-i18n="labelSource" class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Devise d'envoi</label>
-          <select id="source-currency" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white font-semibold focus:outline-none focus:border-brand-500 transition">
-            <option value="EUR" selected>€ Euro (EUR - Europe)</option>
-            <option value="CAD">$ Dollar Canadien (CAD - Canada)</option>
-            <option value="GBP">£ Livre Sterling (GBP - UK)</option>
-            <option value="USD">$ Dollar US (USD - USA)</option>
-            <option value="CNY">¥ Yuan Chinois (CNY - Chine)</option>
-            <option value="CHF">CHF Franc Suisse (CHF - Suisse)</option>
-            <option value="AED">د.إ Dirham EAU (AED - Dubaï/Golfe)</option>
+        <div class="field">
+          <label for="sourceCurrency" data-i18n="labelSource" class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Devise d'envoi :</label>
+          <select id="sourceCurrency" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white font-semibold focus:outline-none focus:border-brand-500 transition">
+            <!-- Rempli dynamiquement par JS -->
           </select>
         </div>
 
         <!-- Devise Destination -->
-        <div>
-          <label for="target-currency" data-i18n="labelTarget" class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Devise Destination / Pays</label>
-          <select id="target-currency" onchange="handleTargetCurrencyChange()" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white font-semibold focus:outline-none focus:border-brand-500 transition">
-            <optgroup label="🌍 Zone UEMOA & CEMAC (Franc CFA)">
-              <option value="XOF" selected>FCFA - Afrique de l'Ouest (XOF)</option>
-              <option value="XAF">FCFA - Afrique Centrale (XAF)</option>
-            </optgroup>
-            <optgroup label="🌍 Afrique de l'Ouest (Autres)">
-              <option value="GHS">Cedi (GHS - Ghana)</option>
-              <option value="NGN">Naira (NGN - Nigeria)</option>
-              <option value="GNF">Franc Guinéen (GNF - Guinée)</option>
-              <option value="GMD">Dalasi (GMD - Gambie)</option>
-              <option value="SLE">Leone (SLE - Sierra Leone)</option>
-              <option value="CVE">Escudo (CVE - Cap-Vert)</option>
-            </optgroup>
-            <optgroup label="🌍 Afrique Centrale & Australe">
-              <option value="AOA">Kwanza (AOA - Angola)</option>
-              <option value="CDF">Franc Congolais (CDF - RDC)</option>
-              <option value="ZMW">Kwacha (ZMW - Zambie)</option>
-              <option value="MZN">Metical (MZN - Mozambique)</option>
-              <option value="ZAR">Rand (ZAR - Afrique du Sud)</option>
-            </optgroup>
-            <optgroup label="🌍 Afrique de l'Est">
-              <option value="KES">Shilling (KES - Kenya)</option>
-              <option value="UGX">Shilling (UGX - Ougande)</option>
-              <option value="TZS">Shilling (TZS - Tanzanie)</option>
-              <option value="RWF">Franc (RWF - Rwanda)</option>
-              <option value="ETB">Birr (ETB - Éthiopie)</option>
-            </optgroup>
-            <optgroup label="🌍 Afrique du Nord">
-              <option value="MAD">Dirham (MAD - Maroc)</option>
-              <option value="DZD">Dinar (DZD - Algérie)</option>
-              <option value="TND">Dinar (TND - Tunisie)</option>
-              <option value="EGP">Livre (EGP - Égypte)</option>
-            </optgroup>
+        <div class="field">
+          <label for="targetCurrency" data-i18n="labelTarget" class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Devise de réception (Afrique) :</label>
+          <select id="targetCurrency" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white font-semibold focus:outline-none focus:border-brand-500 transition">
+            <!-- Rempli dynamiquement par JS -->
           </select>
+        </div>
+
+        <!-- Montant -->
+        <div class="field">
+          <label for="sendAmount" data-i18n="labelAmount" class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Montant envoyé :</label>
+          <input type="number" id="sendAmount" value="100" min="1" step="10" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white font-bold focus:outline-none focus:border-brand-500 transition">
         </div>
 
       </div>
@@ -308,14 +271,31 @@
     </section>
 
     <!-- RÉSULTATS COMPARATIFS DYNAMIQUES -->
-    <section class="space-y-4">
+    <section id="resultsContainer" class="space-y-4">
       <h3 class="text-xl font-bold text-white flex items-center justify-between">
         <span data-i18n="resultsTitle">Comparatif des opérateurs</span>
         <span data-i18n="resultsRank" class="text-xs font-normal text-slate-400">Classé par meilleur taux net</span>
       </h3>
 
-      <div id="operators-container" class="space-y-4">
-        <!-- Rempli automatiquement par JS -->
+      <div id="lastUpdatedInfo" class="text-xs text-slate-400 mb-2"></div>
+
+      <div class="overflow-x-auto">
+        <table id="comparisonTable" class="w-full text-left border-collapse">
+          <thead>
+            <tr class="border-b border-slate-800 text-slate-400 text-xs uppercase">
+              <th class="py-3 px-4">Rang</th>
+              <th class="py-3 px-4">Opérateur</th>
+              <th class="py-3 px-4">Taux de change</th>
+              <th class="py-3 px-4">Frais de transfert</th>
+              <th class="py-3 px-4">Montant reçu</th>
+              <th class="py-3 px-4">Délai estimé</th>
+              <th class="py-3 px-4">Action</th>
+            </tr>
+          </thead>
+          <tbody id="operatorsList" class="divide-y divide-slate-800/60">
+            <!-- Les lignes seront injectées dynamiquement par le script -->
+          </tbody>
+        </table>
       </div>
     </section>
 
@@ -405,10 +385,11 @@
   </footer>
 
   <!-- ========================================== -->
-  <!-- 5. ENGINE JS, I18N COMPLET ET GEOLOC IP    -->
+  <!-- 5. ENGINE JS POUR LES 294 CORRIDORS        -->
   <!-- ========================================== -->
   <script>
     let currentLang = 'fr';
+    let catalogueCorridors = [];
 
     function toggleSection(sectionId) {
       const container = document.getElementById('info-sections-container');
@@ -434,22 +415,6 @@
       });
     }
 
-    /**
-     * SYMBOLES DES 7 DEVISES SOURCE DYNAMIQUES
-     */
-    const CURRENCY_SYMBOLS = {
-      EUR: "500€",
-      USD: "$500",
-      CAD: "$500",
-      GBP: "£500",
-      CNY: "¥500",
-      CHF: "500 CHF",
-      AED: "500 AED"
-    };
-
-    /**
-     * DICTIONNAIRE MULTILINGUE COMPLET (AVEC TRADUCTION DU FOOTER)
-     */
     const TRANSLATIONS = {
       fr: {
         badgeTitle: "DIASPORA PANAFRICAINE",
@@ -457,46 +422,23 @@
         navAbout: "À Propos",
         navFaq: "FAQ",
         navSecurity: "Sécurité",
-        heroTitle: (sym) => `Vous envoyez ${sym}. Combien arrive vraiment?`,
-        heroSub: "Comparez en temps réel les taux de transfert d'argent vers l'Afrique depuis l'Europe, l'Amérique, l'Asie et le Golfe",
-        labelAmount: "Montant à envoyer",
+        heroTitle: "Comparez les taux de transfert vers toute l'Afrique",
+        heroSub: "294 corridors financiers actualisés en temps réel",
         labelSource: "Devise d'envoi",
-        labelTarget: "Devise Destination / Pays",
-        statusConnected: "Connecté aux API officielles des fintechs",
+        labelTarget: "Devise de réception (Afrique)",
+        labelAmount: "Montant envoyé",
+        statusConnected: "Connecté aux taux mondiaux",
         statusUpdated: "Actualisé en temps réel",
         resultsTitle: "Comparatif des opérateurs",
         resultsRank: "Classé par meilleur taux net",
-        estimatedNet: "Montant net estimé",
-        btnTransfer: "Transfert →",
+        estimatedNet: "Montant reçu",
+        btnTransfer: "Envoyer →",
         feeText: "Frais :",
         rateText: "Taux :",
         noOperator: "Aucun opérateur répertorié pour le corridor",
-        bestRateBadge: "MEILLEUR TAUX",
-        aboutHeaderPrefix: "À propos de",
-        aboutP1: "Xaalya est la plateforme indépendante de comparaison en temps réel dédiée aux transferts d'argent vers l'Afrique.",
-        aboutP2: "En analysant en continu les taux de change et frais appliqués par les principaux acteurs du secteur.",
-        aboutContact: "Pour toute question ou suggestion, contactez notre équipe à :",
-        faqHeader: "Foire Aux Questions (FAQ)",
-        faqQ1: "Comment Xaalya compare-t-il les taux de transfert d'argent ?",
-        faqA1: "Xaalya interroge et calcule en temps réel les taux de change et les frais fixes.",
-        faqQ2: "Quelles fintechs sont comparées sur le site ?",
-        faqA2: "Lemfi, Sendwave, Taptap Send, NALA, Chipper Cash, WorldRemit, Western Union, Wise, Remitly et Paysend.",
-        faqQ3: "Xaalya prend-il une commission sur mes transferts ?",
-        faqA3: "Non. Xaalya est un service d'information gratuit à 100 %.",
-        faqQ4: "Quelles sont les monnaies prises en charge ?",
-        faqA4: "EUR, CAD, GBP, USD, CNY, CHF, AED vers 20 monnaies africaines.",
-        secHeader: "Politique de Confidentialité & Sécurité",
-        secP1: "Xaalya applique un principe strict de respect de la vie privée :",
-        secPoint1Title: "Aucune donnée bancaire traitée :",
-        secPoint1Body: "Xaalya ne vous demandera jamais de saisir vos identifiants.",
-        secPoint2Title: "Anonymat total :",
-        secPoint2Body: "Recherches exécutées localement.",
-        secPoint3Title: "Liens sécurisés :",
-        secPoint3Body: "Redirection HTTPS officielle.",
-        secPoint4Title: "Cookies :",
-        secPoint4Body: "Google Analytics 4 anonyme.",
+        bestRateBadge: "MOINS CHER",
         footerCopy: "© 2026 Xaalya. Tous droits réservés. Plateforme indépendante de comparaison de services financiers.",
-        footerDisclaimer: "Les marques citées (Lemfi, Sendwave, Taptap Send, WorldRemit, Western Union...) appartiennent à leurs propriétaires respectifs."
+        footerDisclaimer: "Les marques citées appartiennent à leurs propriétaires respectifs."
       },
       en: {
         badgeTitle: "PAN-AFRICAN DIASPORA",
@@ -504,495 +446,137 @@
         navAbout: "About Us",
         navFaq: "FAQ",
         navSecurity: "Security",
-        heroTitle: (sym) => `You send ${sym}. How much actually arrives?`,
-        heroSub: "Compare real-time money transfer rates to Africa from Europe, America, Asia and the Gulf",
-        labelAmount: "Amount to send",
+        heroTitle: "Compare money transfer rates to all of Africa",
+        heroSub: "294 financial corridors updated in real-time",
         labelSource: "Sending Currency",
-        labelTarget: "Destination Currency / Country",
-        statusConnected: "Connected to official fintech APIs",
+        labelTarget: "Destination Currency (Africa)",
+        labelAmount: "Amount to send",
+        statusConnected: "Connected to global rates",
         statusUpdated: "Updated in real-time",
         resultsTitle: "Operator Comparison",
         resultsRank: "Ranked by best net rate",
-        estimatedNet: "Estimated net amount",
-        btnTransfer: "Transfer →",
+        estimatedNet: "Amount received",
+        btnTransfer: "Send →",
         feeText: "Fee:",
         rateText: "Rate:",
         noOperator: "No listed operators for corridor",
         bestRateBadge: "BEST RATE",
-        aboutHeaderPrefix: "About",
-        aboutP1: "Xaalya is an independent real-time comparison platform dedicated to money transfers to Africa.",
-        aboutP2: "By continuously analyzing exchange rates and fees from top providers.",
-        aboutContact: "For questions or partnerships, contact us at:",
-        faqHeader: "Frequently Asked Questions (FAQ)",
-        faqQ1: "How does Xaalya compare money transfer rates?",
-        faqA1: "Xaalya queries and calculates real-time exchange rates and fixed fees.",
-        faqQ2: "Which fintechs are compared on the platform?",
-        faqA2: "Lemfi, Sendwave, Taptap Send, NALA, Chipper Cash, WorldRemit, Western Union, Wise, Remitly, and Paysend.",
-        faqQ3: "Does Xaalya charge a commission on my transfers?",
-        faqA3: "No. Xaalya is a 100% free information service.",
-        faqQ4: "Which currencies are supported?",
-        faqA4: "EUR, CAD, GBP, USD, CNY, CHF and AED to all African currencies.",
-        secHeader: "Privacy & Security Policy",
-        secP1: "Xaalya applies strict principles regarding privacy:",
-        secPoint1Title: "No banking data processed:",
-        secPoint1Body: "Xaalya will never ask for your banking credentials.",
-        secPoint2Title: "100% Anonymous:",
-        secPoint2Body: "Simulations run locally.",
-        secPoint3Title: "Secure links:",
-        secPoint3Body: "Official HTTPS redirection.",
-        secPoint4Title: "Cookies & Analytics:",
-        secPoint4Body: "Anonymous Google Analytics 4.",
         footerCopy: "© 2026 Xaalya. All rights reserved. Independent financial services comparison platform.",
-        footerDisclaimer: "The brands mentioned (Lemfi, Sendwave, Taptap Send, WorldRemit, Western Union...) belong to their respective owners."
-      },
-      es: {
-        badgeTitle: "DIASPORA PANAFRICANA",
-        logoSlogan: "Compare y Transfiera con Facilidad",
-        navAbout: "Acerca de",
-        navFaq: "FAQ",
-        navSecurity: "Seguridad",
-        heroTitle: (sym) => `¿Envías ${sym}? ¿Cuánto llega realmente?`,
-        heroSub: "Compare en tiempo real las tasas de transferencia hacia África desde Europa, América, Asia y el Golfo",
-        labelAmount: "Monto a enviar",
-        labelSource: "Moneda de envío",
-        labelTarget: "Moneda de destino / País",
-        statusConnected: "Conectado a las API oficiales",
-        statusUpdated: "Actualizado en tiempo real",
-        resultsTitle: "Comparativa de operadores",
-        resultsRank: "Clasificado por mejor tasa neta",
-        estimatedNet: "Monto neto estimado",
-        btnTransfer: "Transferir →",
-        feeText: "Comisión:",
-        rateText: "Tasa:",
-        noOperator: "No hay operadores registrados",
-        bestRateBadge: "MEJOR TASA",
-        aboutHeaderPrefix: "Acerca de",
-        aboutP1: "Xaalya es la plataforma independiente de comparación en tiempo real para transferencias.",
-        aboutP2: "Al analizar continuamente las tasas y comisiones.",
-        aboutContact: "Contáctenos en:",
-        faqHeader: "Preguntas Frecuentes",
-        faqQ1: "¿Cómo compara Xaalya?",
-        faqA1: "Calcula en tiempo real las tasas de cambio.",
-        faqQ2: "¿Qué fintechs se comparan?",
-        faqA2: "Líderes de la diáspora africana.",
-        faqQ3: "¿Xaalya cobra comisiones?",
-        faqA3: "No. Servicio 100% gratuito.",
-        faqQ4: "¿Qué monedas son compatibles?",
-        faqA4: "EUR, CAD, GBP, USD, CNY, CHF y AED.",
-        secHeader: "Política de Privacidad",
-        secP1: "Xaalya aplica privacidad estricta:",
-        secPoint1Title: "Sin datos bancarios:",
-        secPoint1Body: "Nunca pediremos credenciales.",
-        secPoint2Title: "Anónimo:",
-        secPoint2Body: "Simulaciones locales.",
-        secPoint3Title: "Redirección segura:",
-        secPoint3Body: "Enlaces HTTPS oficiales.",
-        secPoint4Title: "Analítica:",
-        secPoint4Body: "Google Analytics 4 anónimo.",
-        footerCopy: "© 2026 Xaalya. Todos los derechos reservados. Plataforma independiente de comparación.",
-        footerDisclaimer: "Las marcas mencionadas (Lemfi, Sendwave, Taptap Send, WorldRemit, Western Union...) pertenecen a sus propietarios."
-      },
-      ar: {
-        badgeTitle: "الشتات الأفريقي",
-        logoSlogan: "قارن وحول بكل سهولة",
-        navAbout: "عن المنصة",
-        navFaq: "الأسئلة الشائعة",
-        navSecurity: "الأمان",
-        heroTitle: (sym) => `ترسل ${sym}؟ كم يصل بالفعل؟`,
-        heroSub: "قارن أسعار تحويل الأموال إلى أفريقيا من أوروبا وأمريكا وآسيا والخليج في الوقت الفعلي",
-        labelAmount: "المبلغ المراد إرساله",
-        labelSource: "عملة الإرسال",
-        labelTarget: "عملة الوصول / الدولة",
-        statusConnected: "متصل بالواجهات الرسمية",
-        statusUpdated: "محدث في الوقت الفعلي",
-        resultsTitle: "مقارنة الشركات",
-        resultsRank: "مرتبة حسب أفضل مبلغ",
-        estimatedNet: "المبلغ الصافي المقدر",
-        btnTransfer: "تحويل ←",
-        feeText: "الرسوم:",
-        rateText: "سعر الصرف:",
-        noOperator: "لا يوجد مشغلون لهذا المسار",
-        bestRateBadge: "أفضل سعر",
-        aboutHeaderPrefix: "عن",
-        aboutP1: "Xaalya هي منصة مقارنة مستقلة لتحويل الأموال إلى أفريقيا.",
-        aboutP2: "من خلال التحليل المستمر للأسعار والرسوم.",
-        aboutContact: "للاستفسارات:",
-        faqHeader: "الأسئلة الشائعة",
-        faqQ1: "كيف تقارن Xaalya؟",
-        faqA1: "تقوم Xaalya بالحساب في الوقت الفعلي.",
-        faqQ2: "ما هي الشركات؟",
-        faqA2: "نغطي جميع الشركات الرائدة.",
-        faqQ3: "هل تأخذ عمولة؟",
-        faqA3: "لا، الخدمة مجانية 100٪.",
-        faqQ4: "ما هي العملات المدعومة؟",
-        faqA4: "EUR, CAD, GBP, USD, CNY, CHF, AED نحو العملات الأفريقية.",
-        secHeader: "سياسة الأمان",
-        secP1: "تطبق Xaalya مبادئ صارمة:",
-        secPoint1Title: "لا بيانات مصرفية:",
-        secPoint1Body: "لن نطلب بياناتك أبداً.",
-        secPoint2Title: "محاكاة مجهولة:",
-        secPoint2Body: "محلياً في متصفحك.",
-        secPoint3Title: "روابط آمنة:",
-        secPoint3Body: "مباشرة عبر HTTPS.",
-        secPoint4Title: "التحليلات:",
-        secPoint4Body: "Google Analytics 4.",
-        footerCopy: "© 2026 Xaalya. جميع الحقوق محفوظة. منصة مستقلة لمقارنة الخدمات المالية.",
-        footerDisclaimer: "العلامات التجارية المذكورة (Lemfi, Sendwave, Taptap Send, WorldRemit, Western Union...) مملوكة لأصحابها."
-      },
-      pt: {
-        badgeTitle: "DIASPORA PAN-AFRICANA",
-        logoSlogan: "Compare & Transfira com Facilidade",
-        navAbout: "Sobre Nós",
-        navFaq: "FAQ",
-        navSecurity: "Segurança",
-        heroTitle: (sym) => `Você envia ${sym}. Quanto realmente chega?`,
-        heroSub: "Compare taxas de envio para a África a partir da Europa, América, Ásia e Golfo em tempo real",
-        labelAmount: "Valor a enviar",
-        labelSource: "Moeda de envio",
-        labelTarget: "Moeda de destino / País",
-        statusConnected: "Conectado às APIs oficiais",
-        statusUpdated: "Atualizado em tempo real",
-        resultsTitle: "Comparação de Operadoras",
-        resultsRank: "Classificado pela melhor taxa líquida",
-        estimatedNet: "Valor líquido estimado",
-        btnTransfer: "Transferir →",
-        feeText: "Taxa:",
-        rateText: "Câmbio:",
-        noOperator: "Nenhuma operadora listada",
-        bestRateBadge: "MELHOR TAXA",
-        aboutHeaderPrefix: "Sobre a",
-        aboutP1: "A Xaalya é uma plataforma independente de comparação para envios de dinheiro.",
-        aboutP2: "Analisando continuamente as taxas.",
-        aboutContact: "Para dúvidas ou parcerias:",
-        faqHeader: "Perguntas Frequentes",
-        faqQ1: "Como a Xaalya compara?",
-        faqA1: "Calcula em tempo real.",
-        faqQ2: "Quais fintechs?",
-        faqA2: "Principais provedores da diáspora.",
-        faqQ3: "A Xaalya cobra comissão?",
-        faqA3: "Não, 100% gratuito.",
-        faqQ4: "Quais moedas?",
-        faqA4: "EUR, CAD, GBP, USD, CNY, CHF e AED.",
-        secHeader: "Política de Segurança",
-        secP1: "A Xaalya aplica princípios rigorosos:",
-        secPoint1Title: "Nenhum dado bancário:",
-        secPoint1Body: "Nunca solicitamos senhas.",
-        secPoint2Title: "Anônimo:",
-        secPoint2Body: "Simulações locais.",
-        secPoint3Title: "Seguro:",
-        secPoint3Body: "Redirecionamento HTTPS.",
-        secPoint4Title: "Cookies:",
-        secPoint4Body: "Google Analytics 4.",
-        footerCopy: "© 2026 Xaalya. Todos os direitos reservados. Plataforma independente de comparação.",
-        footerDisclaimer: "As marcas mencionadas (Lemfi, Sendwave, Taptap Send, WorldRemit, Western Union...) pertencem aos seus proprietários."
-      },
-      zh: {
-        badgeTitle: "泛非 diaspora",
-        logoSlogan: "轻松比较与汇款",
-        navAbout: "关于我们",
-        navFaq: "常见问题",
-        navSecurity: "安全保障",
-        heroTitle: (sym) => `您汇出 ${sym}。实际到账多少？`,
-        heroSub: "实时比较从欧洲、美洲、亚洲和海湾地区汇往非洲的汇率",
-        labelAmount: "汇款金额",
-        labelSource: "汇出货币",
-        labelTarget: "收款货币 / 国家",
-        statusConnected: "已连接官方金融科技API",
-        statusUpdated: "实时更新",
-        resultsTitle: "服务商比较",
-        resultsRank: "按最优净汇率排序",
-        estimatedNet: "预计到账金额",
-        btnTransfer: "去汇款 →",
-        feeText: "手续费：",
-        rateText: "汇率：",
-        noOperator: "该走廊暂无收录服务商",
-        bestRateBadge: "最优汇率",
-        aboutHeaderPrefix: "关于",
-        aboutP1: "Xaalya 是一个独立的实时汇款比较平台，专注于向非洲汇款。",
-        aboutP2: "通过持续分析主要服务商的汇率和费用。",
-        aboutContact: "如有合作或咨询，请联系：",
-        faqHeader: "常见问题 (FAQ)",
-        faqQ1: "Xaalya 如何比较汇率？",
-        faqA1: "Xaalya 实时抓取并计算汇率。",
-        faqQ2: "平台上收录了哪些机构？",
-        faqA2: "服务全球非洲侨民的领先机构。",
-        faqQ3: "Xaalya 会收取佣金吗？",
-        faqA3: "不会。100% 免费的信息服务平台。",
-        faqQ4: "支持哪些货币？",
-        faqA4: "支持 EUR、CAD、GBP、USD、CNY、CHF 和 AED。",
-        secHeader: "隐私与安全政策",
-        secP1: "Xaalya 严格保护您的隐私：",
-        secPoint1Title: "不处理银行数据：",
-        secPoint1Body: "我们绝不要求您输入银行凭证。",
-        secPoint2Title: "100% 匿名模拟：",
-        secPoint2Body: "搜索均在本地运行。",
-        secPoint3Title: "安全重定向：",
-        secPoint3Body: "加密 HTTPS 链接跳转。",
-        secPoint4Title: "数据分析：",
-        secPoint4Body: "匿名分析工具。",
-        footerCopy: "© 2026 Xaalya. 版权所有。独立的金融服务比较平台。",
-        footerDisclaimer: "提及的品牌（Lemfi、Sendwave、Taptap Send、WorldRemit、Western Union...）属于其各自的所有者。"
+        footerDisclaimer: "Mentioned brands belong to their respective owners."
       }
     };
-
-    /**
-     * MAPPAGE DES LANGUES OFFICIELLES PAR DEVISE DE DESTINATION
-     */
-    const CURRENCY_LANG_MAP = {
-      AOA: 'pt',
-      CVE: 'pt',
-      MZN: 'pt',
-      EGP: 'ar',
-      DZD: 'ar',
-      MAD: 'ar',
-      TND: 'ar',
-      NGN: 'en',
-      GHS: 'en',
-      KES: 'en',
-      GMD: 'en',
-      SLE: 'en',
-      ZMW: 'en',
-      UGX: 'en',
-      TZS: 'en',
-      ZAR: 'en',
-      XOF: 'fr',
-      XAF: 'fr',
-      GNF: 'fr',
-      CDF: 'fr',
-      RWF: 'fr',
-      ETB: 'en'
-    };
-
-    function handleTargetCurrencyChange() {
-      const targetCurrency = document.getElementById('target-currency').value;
-      const associatedLang = CURRENCY_LANG_MAP[targetCurrency];
-      if (associatedLang && TRANSLATIONS[associatedLang]) {
-        setLanguage(associatedLang);
-      } else {
-        calculateAndRender();
-      }
-    }
-
-    function updateDynamicHeroTitle() {
-      const sourceCurrency = document.getElementById('source-currency').value;
-      const symbol = CURRENCY_SYMBOLS[sourceCurrency] || "500€";
-      const heroElement = document.querySelector('[data-i18n="heroTitle"]');
-      
-      if (heroElement && TRANSLATIONS[currentLang] && typeof TRANSLATIONS[currentLang].heroTitle === 'function') {
-        heroElement.textContent = TRANSLATIONS[currentLang].heroTitle(symbol);
-      }
-    }
-
-    async function detectUserLocationAndSetCurrency() {
-      const euroZoneCountries = ["AT","BE","CY","EE","FI","FR","DE","GR","IE","IT","LV","LT","LU","MT","NL","PT","SK","SI","ES"];
-      try {
-        const response = await fetch('https://ipapi.co/json/');
-        if (response.ok) {
-          const data = await response.json();
-          const countryCode = data.country_code;
-          const selectSource = document.getElementById('source-currency');
-
-          if (countryCode === 'GB') {
-            selectSource.value = 'GBP';
-          } else if (countryCode === 'US') {
-            selectSource.value = 'USD';
-          } else if (countryCode === 'CA') {
-            selectSource.value = 'CAD';
-          } else if (countryCode === 'CN') {
-            selectSource.value = 'CNY';
-            setLanguage('zh');
-          } else if (countryCode === 'CH') {
-            selectSource.value = 'CHF';
-          } else if (countryCode === 'AE') {
-            selectSource.value = 'AED';
-          } else if (euroZoneCountries.includes(countryCode)) {
-            selectSource.value = 'EUR';
-          }
-          updateDynamicHeroTitle();
-          calculateAndRender();
-        }
-      } catch (err) {
-        console.log("Géolocalisation IP ignorée/bloquée, utilisation de la devise par défaut.");
-      }
-    }
 
     function setLanguage(lang) {
       currentLang = lang;
       localStorage.setItem('xaalya_lang', lang);
-
-      const htmlRoot = document.getElementById('html-root');
-      if (lang === 'ar') {
-        htmlRoot.setAttribute('dir', 'rtl');
-        htmlRoot.setAttribute('lang', 'ar');
-      } else {
-        htmlRoot.removeAttribute('dir');
-        htmlRoot.setAttribute('lang', lang);
-      }
-
-      const langSelect = document.getElementById('language-select');
-      if (langSelect) {
-        langSelect.value = lang;
-      }
-
       document.querySelectorAll('[data-i18n]').forEach(elem => {
         const key = elem.getAttribute('data-i18n');
-        if (key !== 'heroTitle' && TRANSLATIONS[lang] && TRANSLATIONS[lang][key]) {
+        if (TRANSLATIONS[lang] && TRANSLATIONS[lang][key]) {
           elem.textContent = TRANSLATIONS[lang][key];
         }
       });
-
-      updateDynamicHeroTitle();
-      calculateAndRender();
     }
 
     /**
-     * MATRICE ÉLARGIE DES TAUX DE BASE (7 DEVISES SOURCES VERS 20 DEVISES AFRICAINES)
+     * CHARGEMENT DU FICHIER rates.json ET INITIALISATION DES CORRIDORS
      */
-    const BASE_RATES = {
-      EUR: { XOF: 655.95, XAF: 655.95, GHS: 16.80, NGN: 1620.00, GNF: 9350.00, GMD: 73.50, SLE: 24.50, CVE: 110.20, AOA: 990.00, CDF: 3050.00, ZMW: 28.50, MZN: 69.20, ZAR: 19.40, KES: 142.50, UGX: 4050.00, TZS: 2890.00, RWF: 1450.00, ETB: 132.00, MAD: 10.82, DZD: 144.00, TND: 3.32, EGP: 52.00 },
-      USD: { XOF: 605.50, XAF: 605.00, GHS: 15.20, NGN: 1480.00, GNF: 8600.00, GMD: 67.50, SLE: 22.50, CVE: 101.50, AOA: 915.00, CDF: 2810.00, ZMW: 26.20, MZN: 63.80, ZAR: 17.80, KES: 131.00, UGX: 3720.00, TZS: 2650.00, RWF: 1330.00, ETB: 121.00, MAD: 9.95, DZD: 132.50, TND: 3.05, EGP: 48.00 },
-      CAD: { XOF: 450.20, XAF: 449.80, GHS: 11.20, NGN: 1080.00, GNF: 6350.00, GMD: 50.00, SLE: 16.80, CVE: 75.50, AOA: 675.00, CDF: 2080.00, ZMW: 19.40, MZN: 47.20, ZAR: 13.20, KES: 97.20, UGX: 2750.00, TZS: 1960.00, RWF: 985.00, ETB: 89.50, MAD: 7.38, DZD: 98.20, TND: 2.26, EGP: 35.50 },
-      GBP: { XOF: 785.20, XAF: 784.50, GHS: 19.85, NGN: 1910.00, GNF: 11150.00, GMD: 88.00, SLE: 29.20, CVE: 132.00, AOA: 1180.00, CDF: 3650.00, ZMW: 34.00, MZN: 82.50, ZAR: 23.10, KES: 168.50, UGX: 4850.00, TZS: 3450.00, RWF: 1730.00, ETB: 157.00, MAD: 12.90, DZD: 172.00, TND: 3.98, EGP: 62.20 },
-      CNY: { XOF: 83.50, XAF: 83.20, GHS: 2.10, NGN: 204.00, GNF: 1185.00, GMD: 9.30, SLE: 3.10, CVE: 14.00, AOA: 126.00, CDF: 388.00, ZMW: 3.60, MZN: 8.80, ZAR: 2.45, KES: 18.00, UGX: 512.00, TZS: 365.00, RWF: 183.00, ETB: 16.50, MAD: 1.37, DZD: 18.20, TND: 0.42, EGP: 6.60 },
-      CHF: { XOF: 705.00, XAF: 704.50, GHS: 18.10, NGN: 1740.00, GNF: 10100.00, GMD: 79.00, SLE: 26.40, CVE: 119.00, AOA: 1070.00, CDF: 3280.00, ZMW: 30.60, MZN: 74.50, ZAR: 20.80, KES: 153.00, UGX: 4350.00, TZS: 3100.00, RWF: 1555.00, ETB: 141.00, MAD: 11.62, DZD: 154.50, TND: 3.56, EGP: 56.00 },
-      AED: { XOF: 164.80, XAF: 164.50, GHS: 4.14, NGN: 403.00, GNF: 2340.00, GMD: 18.40, SLE: 6.12, CVE: 27.60, AOA: 248.00, CDF: 765.00, ZMW: 7.12, MZN: 17.36, ZAR: 4.84, KES: 35.60, UGX: 1012.00, TZS: 721.00, RWF: 362.00, ETB: 32.90, MAD: 2.71, DZD: 36.00, TND: 0.83, EGP: 13.06 }
-    };
+    async function chargerDonneesRates() {
+      try {
+        const response = await fetch('rates.json?v=' + new Date().getTime());
+        if (!response.ok) throw new Error("Impossible de charger rates.json");
+        catalogueCorridors = await response.json();
+        
+        if (catalogueCorridors.length > 0) {
+          initialiserSelects();
+          attacherEcouteursEvenements();
+          afficherComparaison();
+        }
+      } catch (error) {
+        console.error("Erreur de chargement des taux :", error);
+        document.getElementById('operatorsList').innerHTML = 
+          `<tr><td colspan="7" class="py-4 text-center text-red-400">⚠️ Erreur de chargement des taux de change. Veuillez vérifier le fichier rates.json.</td></tr>`;
+      }
+    }
 
-    const OPERATORS_CONFIG = [
-      { id: "lemfi", name: "Lemfi", margin: 1.002, fee: 0.00, global: false, targets: ["XOF","XAF","GHS","NGN","KES","UGX","RWF"] },
-      { id: "sendwave", name: "Sendwave", margin: 1.000, fee: 0.00, global: false, targets: ["XOF","XAF","GHS","NGN","GNF","GMD","SLE","MAD"] },
-      { id: "taptapsend", name: "Taptap Send", margin: 1.001, fee: 0.00, global: false, targets: ["XOF","XAF","GHS","NGN","GNF","MAD","ETB","CVE"] },
-      { id: "nala", name: "NALA", margin: 1.003, fee: 0.00, global: false, targets: ["XOF","KES","TZS","UGX","RWF","GHS","NGN"] },
-      { id: "chipper", name: "Chipper Cash", margin: 0.998, fee: 0.00, global: false, targets: ["XOF","NGN","GHS","KES","UGX","ZAR"] },
-      
-      { id: "wise", name: "Wise", margin: 1.000, fee: 2.50, global: true },
-      { id: "paysend", name: "Paysend", margin: 0.995, fee: 1.50, global: true },
-      { id: "remitly", name: "Remitly", margin: 0.992, fee: 1.99, global: true },
-      { id: "worldremit", name: "WorldRemit", margin: 0.988, fee: 2.99, global: true },
-      { id: "westernunion", name: "Western Union", margin: 0.982, fee: 4.90, global: true }
-    ];
+    function initialiserSelects() {
+      const selectSource = document.getElementById('sourceCurrency');
+      const selectTarget = document.getElementById('targetCurrency');
 
-    const OPERATORS_DATA = OPERATORS_CONFIG.map(op => {
-      const rates = {};
-      const sources = ["EUR", "USD", "CAD", "GBP", "CNY", "CHF", "AED"];
+      const sourcesUniques = [...new Set(catalogueCorridors.map(c => c.devisesDepart))];
+      const ciblesUniques = [...new Set(catalogueCorridors.map(c => c.deviseArrivee))];
 
-      sources.forEach(src => {
-        Object.keys(BASE_RATES[src]).forEach(tgt => {
-          if (op.global || (op.targets && op.targets.includes(tgt))) {
-            const key = `${src}-${tgt}`;
-            rates[key] = {
-              rate: parseFloat((BASE_RATES[src][tgt] * op.margin).toFixed(2)),
-              fee: op.fee
-            };
-          }
-        });
-      });
+      selectSource.innerHTML = sourcesUniques.map(src => 
+        `<option value="${src}" ${src === 'EUR' ? 'selected' : ''}>${src}</option>`
+      ).join('');
 
-      return {
-        id: op.id,
-        name: op.name,
-        baseUrl: `https://${op.id}.com`,
-        affiliateUrl: `https://${op.id}.com/?ref=XAALYA_OFFICIAL`,
-        rates: rates
-      };
-    });
+      selectTarget.innerHTML = ciblesUniques.map(tgt => 
+        `<option value="${tgt}" ${tgt === 'XOF' ? 'selected' : ''}>${tgt}</option>`
+      ).join('');
+    }
 
-    function calculateAndRender() {
-      const amountInput = parseFloat(document.getElementById('send-amount').value) || 0;
-      const sourceCurrency = document.getElementById('source-currency').value;
-      const targetCurrency = document.getElementById('target-currency').value;
-      const corridorKey = `${sourceCurrency}-${targetCurrency}`;
-      const container = document.getElementById('operators-container');
+    function attacherEcouteursEvenements() {
+      document.getElementById('sourceCurrency').addEventListener('change', afficherComparaison);
+      document.getElementById('targetCurrency').addEventListener('change', afficherComparaison);
+      document.getElementById('sendAmount').addEventListener('input', afficherComparaison);
+    }
+
+    function afficherComparaison() {
+      const source = document.getElementById('sourceCurrency').value;
+      const target = document.getElementById('targetCurrency').value;
+      const amount = parseFloat(document.getElementById('sendAmount').value) || 0;
+
+      const tbody = document.getElementById('operatorsList');
+      const infoBlock = document.getElementById('lastUpdatedInfo');
       const t = TRANSLATIONS[currentLang] || TRANSLATIONS['fr'];
 
-      container.innerHTML = '';
+      const corridorActif = catalogueCorridors.find(c => c.devisesDepart === source && c.deviseArrivee === target);
 
-      const results = [];
-
-      OPERATORS_DATA.forEach(op => {
-        if (op.rates && op.rates[corridorKey]) {
-          const corridorData = op.rates[corridorKey];
-          const netAmount = Math.max(0, amountInput - corridorData.fee);
-          const totalReceived = netAmount * corridorData.rate;
-
-          results.push({
-            name: op.name,
-            url: op.affiliateUrl || op.baseUrl,
-            fee: corridorData.fee,
-            rate: corridorData.rate,
-            totalReceived: totalReceived
-          });
-        }
-      });
-
-      if (results.length === 0) {
-        container.innerHTML = `
-          <div class="p-6 bg-slate-900/40 rounded-xl border border-slate-800 text-center text-slate-400">
-            ${t.noOperator} <strong>${corridorKey}</strong>.
-          </div>
-        `;
+      if (!corridorActif || !corridorActif.offres || corridorActif.offres.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="7" class="py-6 text-center text-slate-400">${t.noOperator} <strong>${source} ➔ ${target}</strong>.</td></tr>`;
+        infoBlock.textContent = '';
         return;
       }
 
-      results.sort((a, b) => b.totalReceived - a.totalReceived);
+      const dateMaj = new Date(corridorActif.misAJour).toLocaleString('fr-FR', {
+        day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit'
+      });
+      infoBlock.innerHTML = `Dernière actualisation : <strong>${dateMaj}</strong>`;
 
-      results.forEach((item, index) => {
-        const isBestRate = index === 0;
+      const offresCalculees = corridorActif.offres.map(offre => {
+        const montantNet = Math.max(0, amount - offre.frais);
+        const montantRecu = (montantNet * offre.taux).toFixed(2);
+        return {
+          ...offre,
+          montantRecu: parseFloat(montantRecu)
+        };
+      });
 
-        const card = document.createElement('div');
-        card.className = `p-5 rounded-2xl border transition-all ${
-          isBestRate 
-            ? 'border-brand-500/80 shadow-lg ring-1 ring-brand-500/30' 
-            : 'border-slate-800 hover:border-slate-700'
-        }`;
-        card.style.backgroundColor = 'var(--card-bg)';
+      offresCalculees.sort((a, b) => b.montantRecu - a.montantRecu);
 
-        card.innerHTML = `
-          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-            <div class="flex items-center gap-3">
-              <div class="w-12 h-12 rounded-xl bg-slate-800 border border-slate-700 flex items-center justify-center font-black text-xl text-white">
-                ${item.name.charAt(0)}
-              </div>
-              <div>
-                <div class="flex items-center gap-2">
-                  <h4 class="font-bold text-lg" style="color: var(--text-main);">${item.name}</h4>
-                  ${isBestRate ? `<span class="bg-brand-500/20 text-brand-400 border border-brand-500/30 text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full">${t.bestRateBadge}</span>` : ''}
-                </div>
-                <p class="text-xs text-slate-400">${t.feeText} ${item.fee.toFixed(2)} ${sourceCurrency} | ${t.rateText} 1 ${sourceCurrency} = ${item.rate} ${targetCurrency}</p>
-              </div>
-            </div>
-
-            <div class="flex items-center justify-between sm:justify-end gap-6 pt-3 sm:pt-0 border-t sm:border-t-0 border-slate-800">
-              <div class="text-left sm:text-right">
-                <div class="text-2xl font-black text-brand-400">${item.totalReceived.toLocaleString('fr-FR', { maximumFractionDigits: 2 })} ${targetCurrency}</div>
-                <p class="text-[11px] text-slate-500">${t.estimatedNet}</p>
-              </div>
-
-              <a href="${item.url}" target="_blank" rel="noopener" 
-                 onclick="trackOutboundClick('${item.name}', '${corridorKey}')" 
-                 class="bg-brand-500 hover:bg-brand-400 text-slate-950 font-bold px-5 py-2.5 rounded-xl text-sm transition transform active:scale-95 shadow-md shadow-brand-950/50">
+      tbody.innerHTML = offresCalculees.map((offre, idx) => {
+        const estLeMeilleur = idx === 0;
+        return `
+          <tr class="border-b border-slate-800/60 hover:bg-slate-900/40 transition ${estLeMeilleur ? 'bg-emerald-950/10' : ''}">
+            <td class="py-4 px-4 font-bold text-slate-400">#${idx + 1}</td>
+            <td class="py-4 px-4 font-bold text-white flex items-center gap-2">
+              ${offre.operateur}
+              ${estLeMeilleur ? `<span class="bg-emerald-500/20 text-emerald-400 text-[10px] px-2 py-0.5 rounded-full font-extrabold uppercase">${t.bestRateBadge}</span>` : ''}
+            </td>
+            <td class="py-4 px-4 text-slate-300">1 ${source} = <strong class="text-white">${offre.taux}</strong> ${target}</td>
+            <td class="py-4 px-4 text-slate-300">${offre.frais > 0 ? `${offre.frais} ${source}` : '<span class="text-emerald-400 font-semibold">Gratuit</span>'}</td>
+            <td class="py-4 px-4 text-lg font-black text-emerald-400">${offre.montantRecu.toLocaleString('fr-FR')} ${target}</td>
+            <td class="py-4 px-4 text-xs text-slate-400">${offre.delai || 'Instantané'}</td>
+            <td class="py-4 px-4">
+              <a href="${offre.url}" target="_blank" rel="noopener noreferrer" class="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold px-4 py-2 rounded-xl text-xs transition shadow-md">
                 ${t.btnTransfer}
               </a>
-            </div>
-          </div>
+            </td>
+          </tr>
         `;
-
-        container.appendChild(card);
-      });
+      }).join('');
     }
 
-    function trackOutboundClick(operatorName, corridor) {
-      if (typeof gtag === 'function') {
-        gtag('event', 'click_transfer', {
-          'operator_name': operatorName,
-          'corridor': corridor,
-          'language': currentLang,
-          'event_category': 'Affiliation_Outbound'
-        });
-      }
-    }
-
-    // GESTION DU MODE SOMBRE / CLAIR MANUEL
+    // GESTION DU MODE SOMBRE / CLAIR
     const themeToggleBtn = document.getElementById('theme-toggle');
     const themeIcon = document.getElementById('theme-icon');
 
@@ -1015,19 +599,144 @@
       }
     });
 
-    // ÉCOUTEURS D'ÉVÉNEMENTS
-    document.getElementById('send-amount').addEventListener('input', calculateAndRender);
-    document.getElementById('source-currency').addEventListener('change', () => {
-      updateDynamicHeroTitle();
-      calculateAndRender();
-    });
-    document.getElementById('target-currency').addEventListener('change', handleTargetCurrencyChange);
-
     window.addEventListener('DOMContentLoaded', () => {
       const savedLang = localStorage.getItem('xaalya_lang') || 'fr';
       setLanguage(savedLang);
-      detectUserLocationAndSetCurrency();
+      chargerDonneesRates();
     });
   </script>
+// Variable globale pour stocker les 294 corridors en mémoire locale
+let catalogueCorridors = [];
+
+// Devise sélectionnée par défaut
+const DEFAUTS = {
+  source: 'EUR',
+  target: 'XOF',
+  amount: 100
+};
+
+/**
+ * Initialisation au chargement de la page
+ */
+document.addEventListener('DOMContentLoaded', async () => {
+  await chargerDonneesRates();
+  
+  if (catalogueCorridors.length > 0) {
+    initialiserSelects();
+    attacherEcouteursEvenements();
+    afficherComparaison();
+  }
+});
+
+/**
+ * 1. Charge le fichier rates.json généré par le scraper
+ */
+async function chargerDonneesRates() {
+  try {
+    const response = await fetch('rates.json?v=' + new Date().getTime()); // Évite le cache navigateur agressif
+    if (!response.ok) throw new Error("Impossible de charger le fichier des taux.");
+    catalogueCorridors = await response.json();
+  } catch (error) {
+    console.error("Erreur d'initialisation Xaalya :", error);
+    document.getElementById('operatorsList').innerHTML = 
+      `<tr><td colspan="7" class="error-msg">⚠️ Impossible de charger les données comparatives en direct. Veuillez réessayer.</td></tr>`;
+  }
+}
+
+/**
+ * 2. Rempli dynamiquement les sélecteurs déroulants (Dropdowns)
+ */
+function initialiserSelects() {
+  const selectSource = document.getElementById('sourceCurrency');
+  const selectTarget = document.getElementById('targetCurrency');
+
+  // Extraction unique des devises de départ et d'arrivée
+  const sourcesUniques = [...new Set(catalogueCorridors.map(c => c.devisesDepart))];
+  const ciblesUniques = [...new Set(catalogueCorridors.map(c => c.deviseArrivee))];
+
+  // Remplissage du select Source
+  selectSource.innerHTML = sourcesUniques.map(src => 
+    `<option value="${src}" ${src === DEFAUTS.source ? 'selected' : ''}>${src}</option>`
+  ).join('');
+
+  // Remplissage du select Cible
+  selectTarget.innerHTML = ciblesUniques.map(tgt => 
+    `<option value="${tgt}" ${tgt === DEFAUTS.target ? 'selected' : ''}>${tgt}</option>`
+  ).join('');
+}
+
+/**
+ * 3. Écouteurs d'événements sur les contrôles utilisateur
+ */
+function attacherEcouteursEvenements() {
+  document.getElementById('sourceCurrency').addEventListener('change', afficherComparaison);
+  document.getElementById('targetCurrency').addEventListener('change', afficherComparaison);
+  document.getElementById('sendAmount').addEventListener('input', afficherComparaison);
+}
+
+/**
+ * 4. Recherche du corridor et affichage dynamique des 10 opérateurs
+ */
+function afficherComparaison() {
+  const source = document.getElementById('sourceCurrency').value;
+  const target = document.getElementById('targetCurrency').value;
+  const amount = parseFloat(document.getElementById('sendAmount').value) || 0;
+
+  const tbody = document.getElementById('operatorsList');
+  const infoBlock = document.getElementById('lastUpdatedInfo');
+
+  // Recherche du corridor correspondant aux paires choisies
+  const corridorActif = catalogueCorridors.find(c => c.devisesDepart === source && c.deviseArrivee === target);
+
+  if (!corridorActif || !corridorActif.offres || corridorActif.offres.length === 0) {
+    tbody.innerHTML = `<tr><td colspan="7" class="no-data">Aucun résultat disponible pour le couloir ${source} ➔ ${target}.</td></tr>`;
+    infoBlock.textContent = '';
+    return;
+  }
+
+  // Affichage de l'horodatage de la dernière mise à jour
+  const dateMaj = new Date(corridorActif.misAJour).toLocaleString('fr-FR', {
+    day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit'
+  });
+  infoBlock.innerHTML = `<small>Taux actualisés le : <strong>${dateMaj}</strong></small>`;
+
+  // Traitement et calcul pour chaque opérateur
+  const offresCalculees = corridorActif.offres.map(offre => {
+    // Calcul du montant réel reçu par le destinataire
+    const montantRecu = (amount * offre.taux).toFixed(2);
+    return {
+      ...offre,
+      montantRecu: parseFloat(montantRecu)
+    };
+  });
+
+  // Tri de l'offre la plus avantageuse à la moins avantageuse (basé sur le montant reçu)
+  offresCalculees.sort((a, b) => b.montantRecu - a.montantRecu);
+
+  // Construction du tableau HTML
+  tbody.innerHTML = offresCalculees.map((offre, idx) => {
+    const estLeMeilleur = idx === 0;
+    return `
+      <tr class="${estLeMeilleur ? 'best-offer' : ''}">
+        <td><span class="badge-rank">${idx + 1}</span></td>
+        <td>
+          <strong>${offre.operateur}</strong>
+          ${estLeMeilleur ? '<span class="badge-top">Le Moins Cher</span>' : ''}
+        </td>
+        <td>1 ${source} = <strong>${offre.taux}</strong> ${target}</td>
+        <td>${offre.frais > 0 ? `${offre.frais} ${source}` : '<span class="free-fee">Gratuit</span>'}</td>
+        <td class="received-amount">
+          <strong>${offre.montantRecu.toLocaleString('fr-FR')}</strong> ${target}
+        </td>
+        <td>${offre.delai || 'Instantané'}</td>
+        <td>
+          <a href="${offre.url}" target="_blank" rel="noopener noreferrer" class="btn-send">
+            Envoyer ➔
+          </a>
+        </td>
+      </tr>
+    `;
+  }).join('');
+}
 </body>
-</html> 
+</html>
