@@ -175,11 +175,11 @@
   <main class="max-w-4xl mx-auto px-4 py-10 space-y-10 w-full flex-grow">
 
     <section class="text-center space-y-3">
-      <!-- 1) TITRE PRINCIPAL DYNAMIQUE -->
+      <!-- TITRE PRINCIPAL DYNAMIQUE ET MULTILINGUE -->
       <h2 id="dynamic-hero-title" class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
         Vous envoyez 300€ vers l'Afrique. Combien arrive réellement?
       </h2>
-      <!-- 2) SOUS-TITRE EN VERT FLUOR -->
+      <!-- SOUS-TITRE EN VERT FLUOR -->
       <p data-i18n="heroSub" class="text-brand-400 font-semibold max-w-2xl mx-auto text-sm sm:text-base">
         294 corridors financiers actualisés en temps réel. Comparateur 100% gratuit et neutre.
       </p>
@@ -313,7 +313,6 @@
     let catalogueCorridors = [];
     let currentLang = 'fr';
 
-    // 3) TABLEAU OFFICIEL DES DEVISES DE DESTINATION ISSU DE LA PIÈCE JOINTE
     const REGION_LABELS = {
       EUR: "Zone Euro / Europe (€)",
       USD: "États-Unis / Dollar ($)",
@@ -366,7 +365,6 @@
       ZWG: "Zimbabwe Gold (ZiG)"
     };
 
-    // DICTIONNAIRE MULTILINGUE
     const TRANSLATIONS = {
       fr: {
         badgeTitle: "COMPARATEUR GRATUIT & INDÉPENDANT",
@@ -1014,7 +1012,7 @@
       }
     }
 
-    // 1) MISE À JOUR DYNAMIQUE DU TITRE PRINCIPAL AVEC MONTANT ET DEVISE
+    // TRADUCTION AUTOMATIQUE DU TITRE PRINCIPAL DANS LA LANGUE CHOISIE AVEC MONTANT ET DEVISE
     function mettreAJourTitreHero() {
       const amountInput = document.getElementById('sendAmount').value || '300';
       const sourceSelect = document.getElementById('sourceCurrency');
@@ -1045,6 +1043,17 @@
           titreHero.textContent = `Você envia ${amountInput}${deviseSymbole} para a África. Quanto realmente chega?`;
         } else if (currentLang === 'it') {
           titreHero.textContent = `Invii ${amountInput}${deviseSymbole} in Africa. Quanto arriva realmente?`;
+        } else if (currentLang === 'sw') {
+          titreHero.textContent = `Unatuma ${amountInput}${deviseSymbole} kwenda Afrika. Kiasi gani kinafika kweli?`;
+        } else if (currentLang === 'am') {
+          titreHero.textContent = `ወደ አፍሪካ ${amountInput}${deviseSymbole} እየላኩ ነው። በእርግጥ ስንት ይደርሳል?`;
+        } else if (currentLang === 'yo') {
+          tsire = `O n firanse ${amountInput}${deviseSymbole} si Africa. Elo lo de gangan?`;
+          titreHero.textContent = tsire;
+        } else if (currentLang === 'ha') {
+          titreHero.textContent = `Kana aika ${amountInput}${deviseSymbole} zuwa Afrika. Nawa ne yake isa gaskiya?`;
+        } else if (currentLang === 'wo') {
+          titreHero.textContent = `D Nga yónnee ${amountInput}${deviseSymbole} ci Afrik. Ñata mooy dëgg dëgg di jot?`;
         } else {
           titreHero.textContent = `Vous envoyez ${amountInput}${deviseSymbole} vers l'Afrique. Combien arrive réellement?`;
         }
@@ -1070,7 +1079,6 @@
       }
     }
 
-    // INITIALISATION DES SÉLECTEURS AVEC LE TABLEAU OFFICIEL DE LA PIÈCE JOINTE
     function initialiserSelects() {
       const selectSource = document.getElementById('sourceCurrency');
       const selectTarget = document.getElementById('targetCurrency');
