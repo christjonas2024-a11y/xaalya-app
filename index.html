@@ -4,26 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- ========================================== -->
-  <!-- 1. OPTIMISATION SEO AVANCÉE & INDEXATION GOOGLE -->
-  <!-- ========================================== -->
   <title>Xaalya™ | Comparateur Officiel de Transfert d'Argent vers l'Afrique</title>
-  <meta name="description" content="Plateforme panafricaine de référence. Comparez en temps réel les taux de change et frais cachés des transferts d'argent vers l'Afrique (Lemfi, Sendwave, Taptap Send, NALA, WorldRemit, Western Union, Wise).">
-  <meta name="keywords" content="Xaalya, transfert d'argent afrique, comparateur taux de change, Lemfi, Sendwave, Taptap Send, NALA, WorldRemit, Remitly, Western Union, Wise, Paysend, CAD, EUR, GBP, USD, CNY, CHF, AED, FCFA, XOF, XAF, Cedi, GHS, Naira, NGN, KES, MAD, DZD, diaspora africaine">
-  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
-  <meta name="author" content="Xaalya Technologies">
+  <meta name="description" content="Comparez en temps réel les taux de change et frais des transferts d'argent vers l'Afrique.">
   <link rel="canonical" href="https://xaalya.com/">
-
-  <!-- Open Graph / Réseaux Sociaux & Autorité de Marque -->
-  <meta property="og:site_name" content="Xaalya">
-  <meta property="og:type" content="finance.service">
-  <meta property="og:url" content="https://xaalya.com/">
-  <meta property="og:title" content="Xaalya™ - Comparateur de Transfert d'Argent vers l'Afrique">
-  <meta property="og:description" content="Envoyez plus, payez moins. Comparez instantanément les meilleurs taux du marché vers 20 devises africaines depuis l'Europe, l'Amérique, l'Asie et le Golfe.">
-  <meta property="og:image" content="https://xaalya.com/assets/og-image.png">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Xaalya™ - Comparateur de Transfert d'Argent vers l'Afrique">
-  <meta name="twitter:description" content="La référence de la diaspora panafricaine pour comparer les frais de transfert en temps réel.">
 
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -44,9 +27,6 @@
     }
   </script>
 
-  <!-- ========================================== -->
-  <!-- 2. STYLES PERSONNALISÉS THÈMES SOMBRE/CLAIR -->
-  <!-- ========================================== -->
   <style>
     :root {
       --bg-color: #0b0f19;
@@ -62,35 +42,10 @@
       --card-border: #e2e8f0;
       --text-main: #0f172a;
       --text-muted: #64748b;
-    }
-
-    body.light-mode {
       background-color: var(--bg-color) !important;
       color: var(--text-main) !important;
     }
 
-    body.light-mode header {
-      background-color: rgba(248, 250, 252, 0.9) !important;
-      border-color: var(--card-border) !important;
-    }
-
-    body.light-mode section, body.light-mode article {
-      background-color: var(--card-bg) !important;
-      border-color: var(--card-border) !important;
-      color: var(--text-main) !important;
-    }
-
-    body.light-mode input, body.light-mode select {
-      background-color: #f1f5f9 !important;
-      color: #0f172a !important;
-      border-color: var(--card-border) !important;
-    }
-
-    body.light-mode h1, body.light-mode h2, body.light-mode h3, body.light-mode h4 {
-      color: var(--text-main) !important;
-    }
-
-    /* Style du bouton de bascule */
     .theme-toggle-btn {
       background: rgba(31, 41, 55, 0.5);
       border: 1px solid #374151;
@@ -99,185 +54,83 @@
       border-radius: 8px;
       cursor: pointer;
       font-size: 14px;
-      transition: all 0.2s ease;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .theme-toggle-btn:hover {
-      border-color: #10b981;
-    }
-
-    body.light-mode .theme-toggle-btn {
-      background: #f1f5f9;
-      border-color: #cbd5e1;
-      color: #0f172a;
-    }
-
-    /* --- Adaptation dynamique du fond du logo en Mode Clair --- */
-    body.light-mode .logo-badge {
-      background-color: #ffffff !important;
-      border-color: #cbd5e1 !important;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-    }
-    
-    body.light-mode .logo-badge span.text-white {
-      color: #0f172a !important;
     }
   </style>
-
-  <!-- ========================================== -->
-  <!-- 3. SUIVI GOOGLE ANALYTICS 4 (GA4)          -->
-  <!-- ========================================== -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-W5M59BZS6N"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-W5M59BZS6N');
-  </script>
-
-  <!-- ========================================== -->
-  <!-- 4. DONNÉES STRUCTURÉES JSON-LD (GOOGLE SEO)  -->
-  <!-- ========================================== -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FinancialService",
-    "name": "Xaalya",
-    "alternateName": "Xaalya FinTech",
-    "url": "https://xaalya.com",
-    "logo": "https://xaalya.com/assets/logo.png",
-    "description": "Plateforme panafricaine indépendante de comparaison en temps réel dédiée aux transferts d'argent internationaux.",
-    "areaServed": ["FR", "CA", "GB", "US", "CN", "CH", "AE", "Africa"],
-    "knowsAbout": ["Money Transfer", "Exchange Rates", "Remittances", "African Diaspora FinTech"],
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "EUR",
-      "description": "Service de comparaison 100% gratuit pour les utilisateurs"
-    }
-  }
-  </script>
 </head>
 
-<body class="bg-slate-950 text-slate-100 min-h-screen font-sans antialiased selection:bg-brand-500 selection:text-slate-950 flex flex-col justify-between">
+<body class="bg-slate-950 text-slate-100 min-h-screen font-sans antialiased flex flex-col justify-between">
 
-  <!-- ENTÊTE / NAVIGATION ET ONGLETS DE LANGUES ET SECTIONS -->
+  <!-- ENTÊTE / NAVIGATION -->
   <header class="border-b border-slate-800/80 bg-slate-950/80 backdrop-blur sticky top-0 z-50">
     <div class="max-w-5xl mx-auto px-4 py-3 flex flex-wrap items-center justify-between gap-3">
-      
-      <!-- LOGO OFFICIEL CORRIGÉ AVEC NOUVELLES DEVISES -->
-      <div class="flex items-center gap-3 cursor-pointer" onclick="closeAllModalSections()">
-        <a href="https://xaalya.com/" class="flex items-center gap-3 group">
-          <div class="flex items-center gap-2 bg-slate-900/80 border border-slate-800 px-3 py-1.5 rounded-xl logo-badge">
-            <div class="w-9 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 font-black text-xs tracking-tighter">
-              €$¥ƒ
-            </div>
-            <div class="flex flex-col">
-              <div class="flex items-center gap-1.5">
-                <span class="text-lg font-black tracking-tight text-white">XAALYA</span>
-                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-              </div>
-              <span data-i18n="logoSlogan" class="text-[10px] text-emerald-400 font-medium tracking-tight">
-                Comparez & Transférez en toute simplicité
-              </span>
-            </div>
+      <a href="https://xaalya.com/" class="flex items-center gap-3">
+        <div class="flex items-center gap-2 bg-slate-900/80 border border-slate-800 px-3 py-1.5 rounded-xl">
+          <div class="w-9 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 font-black text-xs">
+            €$¥ƒ
           </div>
-          <span data-i18n="badgeTitle" class="text-[9px] font-bold bg-slate-800 text-slate-300 px-2.5 py-1 rounded-full uppercase tracking-wider hidden md:inline-block">
-            DIASPORA PANAFRICAINE
-          </span>
-        </a>
-      </div>
-      
-      <!-- ONGLETS DE NAVIGATION DANS L'EN-TÊTE -->
-      <div class="flex items-center gap-3 text-xs font-medium text-slate-400">
-        <button onclick="toggleSection('a-propos')" data-i18n="navAbout" class="hover:text-white transition hidden sm:inline-block">À Propos</button>
-        <button onclick="toggleSection('faq')" data-i18n="navFaq" class="hover:text-white transition hidden sm:inline-block">FAQ</button>
-        <button onclick="toggleSection('confidentialite')" data-i18n="navSecurity" class="hover:text-white transition hidden sm:inline-block">Sécurité</button>
-        
-        <!-- SÉLECTEUR DE LANGUE EN BANDE DÉROULANTE (DROPDOWN) -->
-        <div class="relative">
-          <select id="language-select" onchange="setLanguage(this.value)" class="bg-slate-900 border border-slate-800 text-white text-xs font-bold rounded-lg px-3 py-2 focus:outline-none focus:border-brand-500 transition cursor-pointer">
-            <option value="fr">🇫🇷 Français (FR)</option>
-            <option value="en">🇬🇧 English (EN)</option>
-            <option value="es">🇪🇸 Español (ES)</option>
-            <option value="ar">🇸🇦 العربية (AR)</option>
-            <option value="pt">🇵🇹 Português (PT)</option>
-            <option value="zh">🇨🇳 中文 (ZH)</option>
-          </select>
+          <div class="flex flex-col">
+            <span class="text-lg font-black tracking-tight text-white">XAALYA</span>
+            <span class="text-[10px] text-emerald-400 font-medium">Comparez & Transférez en toute simplicité</span>
+          </div>
         </div>
+      </a>
 
-        <!-- BOUTON BASCULE MODE SOMBRE / CLAIR -->
+      <div class="flex items-center gap-3 text-xs font-medium text-slate-400">
         <button id="theme-toggle" class="theme-toggle-btn" title="Changer le mode d'affichage">
           <span id="theme-icon">🌙</span>
         </button>
       </div>
-
     </div>
   </header>
 
-  <!-- RECHERCHE & CALCULATEUR PRINCIPAL -->
+  <!-- CALCULATEUR PRINCIPAL -->
   <main class="max-w-4xl mx-auto px-4 py-10 space-y-10 w-full flex-grow">
 
-    <!-- INTRO PRODUCT AVEC TITRE DYNAMIQUE INTERACTIF -->
     <section class="text-center space-y-3">
-      <h1 class="sr-only">Xaalya - Comparateur de transfert d'argent vers l'Afrique</h1>
-      <h2 data-i18n="heroTitle" class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
-        Vous envoyez 500€. Combien arrive vraiment?
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+        Comparez les taux de transfert vers toute l'Afrique
       </h2>
-      <p data-i18n="heroSub" class="text-slate-400 max-w-2xl mx-auto text-sm sm:text-base">
-        Comparez en temps réel les taux de transfert d'argent vers l'Afrique
+      <p class="text-slate-400 max-w-2xl mx-auto text-sm sm:text-base">
+        294 corridors financiers actualisés en temps réel
       </p>
     </section>
 
-    <!-- FORMULAIRE DE SELECTION DU CORRIDOR (294 CORRIDORS DYNAMIQUES) -->
+    <!-- FORMULAIRE -->
     <section class="bg-slate-900/90 border border-slate-800 p-6 rounded-2xl shadow-xl space-y-6">
       <div class="comparator-form grid grid-cols-1 md:grid-cols-3 gap-4">
         
-        <!-- Devise Source -->
         <div class="field">
-          <label for="sourceCurrency" data-i18n="labelSource" class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Devise d'envoi :</label>
-          <select id="sourceCurrency" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white font-semibold focus:outline-none focus:border-brand-500 transition">
-            <!-- Rempli dynamiquement par JS -->
-          </select>
+          <label for="sourceCurrency" class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Devise d'envoi :</label>
+          <select id="sourceCurrency" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white font-semibold focus:outline-none focus:border-brand-500 transition"></select>
         </div>
 
-        <!-- Devise Destination -->
         <div class="field">
-          <label for="targetCurrency" data-i18n="labelTarget" class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Devise de réception (Afrique) :</label>
-          <select id="targetCurrency" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white font-semibold focus:outline-none focus:border-brand-500 transition">
-            <!-- Rempli dynamiquement par JS -->
-          </select>
+          <label for="targetCurrency" class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Devise de réception (Afrique) :</label>
+          <select id="targetCurrency" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white font-semibold focus:outline-none focus:border-brand-500 transition"></select>
         </div>
 
-        <!-- Montant -->
         <div class="field">
-          <label for="sendAmount" data-i18n="labelAmount" class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Montant envoyé :</label>
+          <label for="sendAmount" class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Montant envoyé :</label>
           <input type="number" id="sendAmount" value="100" min="1" step="10" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white font-bold focus:outline-none focus:border-brand-500 transition">
         </div>
 
       </div>
 
-      <!-- Statut de synchronisation -->
       <div class="flex items-center justify-between pt-2 border-t border-slate-800/60 text-xs text-slate-400">
         <div class="flex items-center gap-2">
           <span class="w-2 h-2 rounded-full bg-brand-500 animate-pulse"></span>
-          <span data-i18n="statusConnected">Connecté aux API officielles des fintechs</span>
+          <span>Converti aux taux mondiaux</span>
         </div>
-        <span id="last-update-time" data-i18n="statusUpdated">Actualisé en temps réel</span>
+        <span id="lastUpdatedInfo">Actualisé en temps réel</span>
       </div>
     </section>
 
-    <!-- RÉSULTATS COMPARATIFS DYNAMIQUES -->
+    <!-- TABLEAU DE RÉSULTATS -->
     <section id="resultsContainer" class="space-y-4">
       <h3 class="text-xl font-bold text-white flex items-center justify-between">
-        <span data-i18n="resultsTitle">Comparatif des opérateurs</span>
-        <span data-i18n="resultsRank" class="text-xs font-normal text-slate-400">Classé par meilleur taux net</span>
+        <span>Comparatif des opérateurs</span>
+        <span class="text-xs font-normal text-slate-400">Classé par meilleur taux net</span>
       </h3>
-
-      <div id="lastUpdatedInfo" class="text-xs text-slate-400 mb-2"></div>
 
       <div class="overflow-x-auto">
         <table id="comparisonTable" class="w-full text-left border-collapse">
@@ -293,208 +146,41 @@
             </tr>
           </thead>
           <tbody id="operatorsList" class="divide-y divide-slate-800/60">
-            <!-- Les lignes seront injectées dynamiquement par le script -->
+            <!-- Injecté par JavaScript -->
           </tbody>
         </table>
       </div>
     </section>
 
-    <!-- CONTENUS D'INFORMATION -->
-    <div id="info-sections-container" class="hidden pt-6 border-t border-slate-800/80">
-      
-      <!-- SECTION : À PROPOS -->
-      <article id="a-propos" class="hidden space-y-4 bg-slate-900/90 p-6 rounded-2xl border border-slate-800 relative">
-        <button onclick="closeAllModalSections()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-sm font-bold">✕ FERMER</button>
-        <h2 class="text-2xl font-bold text-white flex items-center gap-2">
-          <span class="text-brand-400" data-i18n="aboutHeaderPrefix">À propos de</span> Xaalya
-        </h2>
-        <p data-i18n="aboutP1" class="leading-relaxed text-slate-300 text-sm sm:text-base"></p>
-        <p data-i18n="aboutP2" class="leading-relaxed text-slate-300 text-sm sm:text-base"></p>
-        <div class="pt-2 text-sm text-slate-400">
-          <span data-i18n="aboutContact">Pour toute question, suggestion de partenariat ou intégration d'un nouvel opérateur, contactez notre équipe à :</span> <a href="mailto:info@xaalya.com" class="text-brand-400 font-semibold underline hover:text-brand-300 transition">info@xaalya.com</a>
-        </div>
-      </article>
-
-      <!-- SECTION : FAQ -->
-      <article id="faq" class="hidden space-y-6 bg-slate-900/90 p-6 rounded-2xl border border-slate-800 relative">
-        <button onclick="closeAllModalSections()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-sm font-bold">✕ FERMER</button>
-        <h2 data-i18n="faqHeader" class="text-2xl font-bold text-white flex items-center gap-2">
-          Foire Aux Questions (FAQ)
-        </h2>
-
-        <div class="space-y-4">
-          <div class="bg-slate-950 p-5 rounded-xl border border-slate-800 space-y-2">
-            <h3 data-i18n="faqQ1" class="text-lg font-semibold text-white"></h3>
-            <p data-i18n="faqA1" class="text-sm text-slate-400 leading-relaxed"></p>
-          </div>
-
-          <div class="bg-slate-950 p-5 rounded-xl border border-slate-800 space-y-2">
-            <h3 data-i18n="faqQ2" class="text-lg font-semibold text-white"></h3>
-            <p data-i18n="faqA2" class="text-sm text-slate-400 leading-relaxed"></p>
-          </div>
-
-          <div class="bg-slate-950 p-5 rounded-xl border border-slate-800 space-y-2">
-            <h3 data-i18n="faqQ3" class="text-lg font-semibold text-white"></h3>
-            <p data-i18n="faqA3" class="text-sm text-slate-400 leading-relaxed"></p>
-          </div>
-
-          <div class="bg-slate-950 p-5 rounded-xl border border-slate-800 space-y-2">
-            <h3 data-i18n="faqQ4" class="text-lg font-semibold text-white"></h3>
-            <p data-i18n="faqA4" class="text-sm text-slate-400 leading-relaxed"></p>
-          </div>
-        </div>
-      </article>
-
-      <!-- SECTION : POLITIQUE DE CONFIDENTIALITÉ & SÉCURITÉ -->
-      <article id="confidentialite" class="hidden space-y-4 bg-slate-900/90 p-6 rounded-2xl border border-slate-800 relative">
-        <button onclick="closeAllModalSections()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-sm font-bold">✕ FERMER</button>
-        <h2 data-i18n="secHeader" class="text-2xl font-bold text-white flex items-center gap-2">
-          Politique de Confidentialité & Sécurité
-        </h2>
-        <p data-i18n="secP1" class="text-sm text-slate-300 leading-relaxed"></p>
-        <ul class="list-disc list-inside text-sm text-slate-400 space-y-3 pl-2">
-          <li>
-            <strong data-i18n="secPoint1Title" class="text-white"></strong> 
-            <span data-i18n="secPoint1Body"></span>
-          </li>
-          <li>
-            <strong data-i18n="secPoint2Title" class="text-white"></strong> 
-            <span data-i18n="secPoint2Body"></span>
-          </li>
-          <li>
-            <strong data-i18n="secPoint3Title" class="text-white"></strong> 
-            <span data-i18n="secPoint3Body"></span>
-          </li>
-          <li>
-            <strong data-i18n="secPoint4Title" class="text-white"></strong> 
-            <span data-i18n="secPoint4Body"></span>
-          </li>
-        </ul>
-      </article>
-
-    </div>
-
   </main>
 
-  <!-- PIED DE PAGE DYNAMIQUE MULTILINGUE -->
   <footer class="border-t border-slate-800/80 bg-slate-950 py-8 text-center text-xs text-slate-500">
-    <div class="max-w-4xl mx-auto px-4 space-y-2">
-      <p data-i18n="footerCopy">© 2026 Xaalya. Tous droits réservés. Plateforme indépendante de comparaison de services financiers.</p>
-      <p data-i18n="footerDisclaimer">Les marques citées (Lemfi, Sendwave, Taptap Send, WorldRemit, Western Union...) appartiennent à leurs propriétaires respectifs.</p>
-    </div>
+    <p>© 2026 Xaalya. Tous droits réservés. Plateforme indépendante de comparaison de services financiers.</p>
   </footer>
 
-  <!-- ========================================== -->
-  <!-- 5. ENGINE JS POUR LES 294 CORRIDORS        -->
-  <!-- ========================================== -->
+  <!-- SCRIPT JAVASCRIPT BLINDÉ ET PROTÉGÉ -->
   <script>
-    let currentLang = 'fr';
     let catalogueCorridors = [];
 
-    function toggleSection(sectionId) {
-      const container = document.getElementById('info-sections-container');
-      const target = document.getElementById(sectionId);
-      
-      const sections = ['a-propos', 'faq', 'confidentialite'];
-      sections.forEach(id => {
-        document.getElementById(id).classList.add('hidden');
-      });
+    document.addEventListener('DOMContentLoaded', async () => {
+      await chargerDonneesRates();
+    });
 
-      if (target) {
-        container.classList.remove('hidden');
-        target.classList.remove('hidden');
-        target.scrollIntoView({ behavior: 'smooth' });
-      }
-    }
-
-    function closeAllModalSections() {
-      document.getElementById('info-sections-container').classList.add('hidden');
-      const sections = ['a-propos', 'faq', 'confidentialite'];
-      sections.forEach(id => {
-        document.getElementById(id).classList.add('hidden');
-      });
-    }
-
-    const TRANSLATIONS = {
-      fr: {
-        badgeTitle: "DIASPORA PANAFRICAINE",
-        logoSlogan: "Comparez & Transférez en toute simplicité",
-        navAbout: "À Propos",
-        navFaq: "FAQ",
-        navSecurity: "Sécurité",
-        heroTitle: "Comparez les taux de transfert vers toute l'Afrique",
-        heroSub: "294 corridors financiers actualisés en temps réel",
-        labelSource: "Devise d'envoi",
-        labelTarget: "Devise de réception (Afrique)",
-        labelAmount: "Montant envoyé",
-        statusConnected: "Connecté aux taux mondiaux",
-        statusUpdated: "Actualisé en temps réel",
-        resultsTitle: "Comparatif des opérateurs",
-        resultsRank: "Classé par meilleur taux net",
-        estimatedNet: "Montant reçu",
-        btnTransfer: "Envoyer →",
-        feeText: "Frais :",
-        rateText: "Taux :",
-        noOperator: "Aucun opérateur répertorié pour le corridor",
-        bestRateBadge: "MOINS CHER",
-        footerCopy: "© 2026 Xaalya. Tous droits réservés. Plateforme indépendante de comparaison de services financiers.",
-        footerDisclaimer: "Les marques citées appartiennent à leurs propriétaires respectifs."
-      },
-      en: {
-        badgeTitle: "PAN-AFRICAN DIASPORA",
-        logoSlogan: "Compare & Transfer with Ease",
-        navAbout: "About Us",
-        navFaq: "FAQ",
-        navSecurity: "Security",
-        heroTitle: "Compare money transfer rates to all of Africa",
-        heroSub: "294 financial corridors updated in real-time",
-        labelSource: "Sending Currency",
-        labelTarget: "Destination Currency (Africa)",
-        labelAmount: "Amount to send",
-        statusConnected: "Connected to global rates",
-        statusUpdated: "Updated in real-time",
-        resultsTitle: "Operator Comparison",
-        resultsRank: "Ranked by best net rate",
-        estimatedNet: "Amount received",
-        btnTransfer: "Send →",
-        feeText: "Fee:",
-        rateText: "Rate:",
-        noOperator: "No listed operators for corridor",
-        bestRateBadge: "BEST RATE",
-        footerCopy: "© 2026 Xaalya. All rights reserved. Independent financial services comparison platform.",
-        footerDisclaimer: "Mentioned brands belong to their respective owners."
-      }
-    };
-
-    function setLanguage(lang) {
-      currentLang = lang;
-      localStorage.setItem('xaalya_lang', lang);
-      document.querySelectorAll('[data-i18n]').forEach(elem => {
-        const key = elem.getAttribute('data-i18n');
-        if (TRANSLATIONS[lang] && TRANSLATIONS[lang][key]) {
-          elem.textContent = TRANSLATIONS[lang][key];
-        }
-      });
-    }
-
-    /**
-     * CHARGEMENT DU FICHIER rates.json ET INITIALISATION DES CORRIDORS
-     */
     async function chargerDonneesRates() {
       try {
         const response = await fetch('rates.json?v=' + new Date().getTime());
-        if (!response.ok) throw new Error("Impossible de charger rates.json");
+        if (!response.ok) throw new Error("Erreur de chargement des données.");
         catalogueCorridors = await response.json();
         
-        if (catalogueCorridors.length > 0) {
+        if (Array.isArray(catalogueCorridors) && catalogueCorridors.length > 0) {
           initialiserSelects();
           attacherEcouteursEvenements();
           afficherComparaison();
         }
       } catch (error) {
-        console.error("Erreur de chargement des taux :", error);
+        console.error("Erreur Xaalya :", error);
         document.getElementById('operatorsList').innerHTML = 
-          `<tr><td colspan="7" class="py-4 text-center text-red-400">⚠️ Erreur de chargement des taux de change. Veuillez vérifier le fichier rates.json.</td></tr>`;
+          `<tr><td colspan="7" class="py-6 text-center text-red-400 font-semibold">⚠️ Impossible de charger les données comparatives en direct. Veuillez vérifier que rates.json est bien généré.</td></tr>`;
       }
     }
 
@@ -502,8 +188,19 @@
       const selectSource = document.getElementById('sourceCurrency');
       const selectTarget = document.getElementById('targetCurrency');
 
-      const sourcesUniques = [...new Set(catalogueCorridors.map(c => c.devisesDepart))];
-      const ciblesUniques = [...new Set(catalogueCorridors.map(c => c.deviseArrivee))];
+      // Extraction robuste des devises gérant toutes les variantes de clés
+      const sourcesSet = new Set();
+      const ciblesSet = new Set();
+
+      catalogueCorridors.forEach(c => {
+        const src = c.devisesDepart || c.sourceCurrency || c.source;
+        const tgt = c.deviseArrivee || c.targetCurrency || c.target;
+        if (src) sourcesSet.add(src);
+        if (tgt) ciblesSet.add(tgt);
+      });
+
+      const sourcesUniques = Array.from(sourcesSet);
+      const ciblesUniques = Array.from(ciblesSet);
 
       selectSource.innerHTML = sourcesUniques.map(src => 
         `<option value="${src}" ${src === 'EUR' ? 'selected' : ''}>${src}</option>`
@@ -527,27 +224,45 @@
 
       const tbody = document.getElementById('operatorsList');
       const infoBlock = document.getElementById('lastUpdatedInfo');
-      const t = TRANSLATIONS[currentLang] || TRANSLATIONS['fr'];
 
-      const corridorActif = catalogueCorridors.find(c => c.devisesDepart === source && c.deviseArrivee === target);
+      // Recherche flexible du corridor
+      const corridorActif = catalogueCorridors.find(c => {
+        const src = c.devisesDepart || c.sourceCurrency || c.source;
+        const tgt = c.deviseArrivee || c.targetCurrency || c.target;
+        return src === source && tgt === target;
+      });
 
-      if (!corridorActif || !corridorActif.offres || corridorActif.offres.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="7" class="py-6 text-center text-slate-400">${t.noOperator} <strong>${source} ➔ ${target}</strong>.</td></tr>`;
-        infoBlock.textContent = '';
+      const offresList = corridorActif ? (corridorActif.offres || corridorActif.operators) : null;
+
+      if (!corridorActif || !offresList || offresList.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="7" class="py-6 text-center text-slate-400">Aucun opérateur répertorié pour le corridor <strong>${source} ➔ ${target}</strong>.</td></tr>`;
         return;
       }
 
-      const dateMaj = new Date(corridorActif.misAJour).toLocaleString('fr-FR', {
-        day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit'
-      });
-      infoBlock.innerHTML = `Dernière actualisation : <strong>${dateMaj}</strong>`;
+      if (corridorActif.misAJour || corridorActif.updatedAt) {
+        const dateMaj = new Date(corridorActif.misAJour || corridorActif.updatedAt).toLocaleString('fr-FR', {
+          day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit'
+        });
+        infoBlock.innerHTML = `Actualisé le : <strong>${dateMaj}</strong>`;
+      }
 
-      const offresCalculees = corridorActif.offres.map(offre => {
-        const montantNet = Math.max(0, amount - offre.frais);
-        const montantRecu = (montantNet * offre.taux).toFixed(2);
+      const offresCalculees = offresList.map(offre => {
+        const nomOp = offre.operateur || offre.name || offre.operator;
+        const tauxOp = parseFloat(offre.taux || offre.rate || 0);
+        const fraisOp = parseFloat(offre.frais || offre.fee || 0);
+        const urlOp = offre.url || offre.link || '#';
+        const delaiOp = offre.delai || offre.deliveryTime || 'Instantané';
+
+        const montantNet = Math.max(0, amount - fraisOp);
+        const montantRecu = parseFloat((montantNet * tauxOp).toFixed(2));
+
         return {
-          ...offre,
-          montantRecu: parseFloat(montantRecu)
+          operateur: nomOp,
+          taux: tauxOp,
+          frais: fraisOp,
+          url: urlOp,
+          delai: delaiOp,
+          montantRecu: montantRecu
         };
       });
 
@@ -560,15 +275,15 @@
             <td class="py-4 px-4 font-bold text-slate-400">#${idx + 1}</td>
             <td class="py-4 px-4 font-bold text-white flex items-center gap-2">
               ${offre.operateur}
-              ${estLeMeilleur ? `<span class="bg-emerald-500/20 text-emerald-400 text-[10px] px-2 py-0.5 rounded-full font-extrabold uppercase">${t.bestRateBadge}</span>` : ''}
+              ${estLeMeilleur ? `<span class="bg-emerald-500/20 text-emerald-400 text-[10px] px-2 py-0.5 rounded-full font-extrabold uppercase">Le Moins Cher</span>` : ''}
             </td>
             <td class="py-4 px-4 text-slate-300">1 ${source} = <strong class="text-white">${offre.taux}</strong> ${target}</td>
             <td class="py-4 px-4 text-slate-300">${offre.frais > 0 ? `${offre.frais} ${source}` : '<span class="text-emerald-400 font-semibold">Gratuit</span>'}</td>
             <td class="py-4 px-4 text-lg font-black text-emerald-400">${offre.montantRecu.toLocaleString('fr-FR')} ${target}</td>
-            <td class="py-4 px-4 text-xs text-slate-400">${offre.delai || 'Instantané'}</td>
+            <td class="py-4 px-4 text-xs text-slate-400">${offre.delai}</td>
             <td class="py-4 px-4">
               <a href="${offre.url}" target="_blank" rel="noopener noreferrer" class="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold px-4 py-2 rounded-xl text-xs transition shadow-md">
-                ${t.btnTransfer}
+                Envoyer ➔
               </a>
             </td>
           </tr>
@@ -576,167 +291,14 @@
       }).join('');
     }
 
-    // GESTION DU MODE SOMBRE / CLAIR
+    // Gestion du thème Sombre/Clair
     const themeToggleBtn = document.getElementById('theme-toggle');
     const themeIcon = document.getElementById('theme-icon');
 
-    const savedTheme = localStorage.getItem('xaalya-theme');
-    if (savedTheme === 'light') {
-      document.body.classList.add('light-mode');
-      themeIcon.textContent = '☀️';
-    } else {
-      themeIcon.textContent = '🌙';
-    }
-
     themeToggleBtn.addEventListener('click', () => {
       document.body.classList.toggle('light-mode');
-      if (document.body.classList.contains('light-mode')) {
-        themeIcon.textContent = '☀️';
-        localStorage.setItem('xaalya-theme', 'light');
-      } else {
-        themeIcon.textContent = '🌙';
-        localStorage.setItem('xaalya-theme', 'dark');
-      }
-    });
-
-    window.addEventListener('DOMContentLoaded', () => {
-      const savedLang = localStorage.getItem('xaalya_lang') || 'fr';
-      setLanguage(savedLang);
-      chargerDonneesRates();
+      themeIcon.textContent = document.body.classList.contains('light-mode') ? '☀️' : '🌙';
     });
   </script>
-// Variable globale pour stocker les 294 corridors en mémoire locale
-let catalogueCorridors = [];
-
-// Devise sélectionnée par défaut
-const DEFAUTS = {
-  source: 'EUR',
-  target: 'XOF',
-  amount: 100
-};
-
-/**
- * Initialisation au chargement de la page
- */
-document.addEventListener('DOMContentLoaded', async () => {
-  await chargerDonneesRates();
-  
-  if (catalogueCorridors.length > 0) {
-    initialiserSelects();
-    attacherEcouteursEvenements();
-    afficherComparaison();
-  }
-});
-
-/**
- * 1. Charge le fichier rates.json généré par le scraper
- */
-async function chargerDonneesRates() {
-  try {
-    const response = await fetch('rates.json?v=' + new Date().getTime()); // Évite le cache navigateur agressif
-    if (!response.ok) throw new Error("Impossible de charger le fichier des taux.");
-    catalogueCorridors = await response.json();
-  } catch (error) {
-    console.error("Erreur d'initialisation Xaalya :", error);
-    document.getElementById('operatorsList').innerHTML = 
-      `<tr><td colspan="7" class="error-msg">⚠️ Impossible de charger les données comparatives en direct. Veuillez réessayer.</td></tr>`;
-  }
-}
-
-/**
- * 2. Rempli dynamiquement les sélecteurs déroulants (Dropdowns)
- */
-function initialiserSelects() {
-  const selectSource = document.getElementById('sourceCurrency');
-  const selectTarget = document.getElementById('targetCurrency');
-
-  // Extraction unique des devises de départ et d'arrivée
-  const sourcesUniques = [...new Set(catalogueCorridors.map(c => c.devisesDepart))];
-  const ciblesUniques = [...new Set(catalogueCorridors.map(c => c.deviseArrivee))];
-
-  // Remplissage du select Source
-  selectSource.innerHTML = sourcesUniques.map(src => 
-    `<option value="${src}" ${src === DEFAUTS.source ? 'selected' : ''}>${src}</option>`
-  ).join('');
-
-  // Remplissage du select Cible
-  selectTarget.innerHTML = ciblesUniques.map(tgt => 
-    `<option value="${tgt}" ${tgt === DEFAUTS.target ? 'selected' : ''}>${tgt}</option>`
-  ).join('');
-}
-
-/**
- * 3. Écouteurs d'événements sur les contrôles utilisateur
- */
-function attacherEcouteursEvenements() {
-  document.getElementById('sourceCurrency').addEventListener('change', afficherComparaison);
-  document.getElementById('targetCurrency').addEventListener('change', afficherComparaison);
-  document.getElementById('sendAmount').addEventListener('input', afficherComparaison);
-}
-
-/**
- * 4. Recherche du corridor et affichage dynamique des 10 opérateurs
- */
-function afficherComparaison() {
-  const source = document.getElementById('sourceCurrency').value;
-  const target = document.getElementById('targetCurrency').value;
-  const amount = parseFloat(document.getElementById('sendAmount').value) || 0;
-
-  const tbody = document.getElementById('operatorsList');
-  const infoBlock = document.getElementById('lastUpdatedInfo');
-
-  // Recherche du corridor correspondant aux paires choisies
-  const corridorActif = catalogueCorridors.find(c => c.devisesDepart === source && c.deviseArrivee === target);
-
-  if (!corridorActif || !corridorActif.offres || corridorActif.offres.length === 0) {
-    tbody.innerHTML = `<tr><td colspan="7" class="no-data">Aucun résultat disponible pour le couloir ${source} ➔ ${target}.</td></tr>`;
-    infoBlock.textContent = '';
-    return;
-  }
-
-  // Affichage de l'horodatage de la dernière mise à jour
-  const dateMaj = new Date(corridorActif.misAJour).toLocaleString('fr-FR', {
-    day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit'
-  });
-  infoBlock.innerHTML = `<small>Taux actualisés le : <strong>${dateMaj}</strong></small>`;
-
-  // Traitement et calcul pour chaque opérateur
-  const offresCalculees = corridorActif.offres.map(offre => {
-    // Calcul du montant réel reçu par le destinataire
-    const montantRecu = (amount * offre.taux).toFixed(2);
-    return {
-      ...offre,
-      montantRecu: parseFloat(montantRecu)
-    };
-  });
-
-  // Tri de l'offre la plus avantageuse à la moins avantageuse (basé sur le montant reçu)
-  offresCalculees.sort((a, b) => b.montantRecu - a.montantRecu);
-
-  // Construction du tableau HTML
-  tbody.innerHTML = offresCalculees.map((offre, idx) => {
-    const estLeMeilleur = idx === 0;
-    return `
-      <tr class="${estLeMeilleur ? 'best-offer' : ''}">
-        <td><span class="badge-rank">${idx + 1}</span></td>
-        <td>
-          <strong>${offre.operateur}</strong>
-          ${estLeMeilleur ? '<span class="badge-top">Le Moins Cher</span>' : ''}
-        </td>
-        <td>1 ${source} = <strong>${offre.taux}</strong> ${target}</td>
-        <td>${offre.frais > 0 ? `${offre.frais} ${source}` : '<span class="free-fee">Gratuit</span>'}</td>
-        <td class="received-amount">
-          <strong>${offre.montantRecu.toLocaleString('fr-FR')}</strong> ${target}
-        </td>
-        <td>${offre.delai || 'Instantané'}</td>
-        <td>
-          <a href="${offre.url}" target="_blank" rel="noopener noreferrer" class="btn-send">
-            Envoyer ➔
-          </a>
-        </td>
-      </tr>
-    `;
-  }).join('');
-}
 </body>
 </html>
