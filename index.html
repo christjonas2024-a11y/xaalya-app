@@ -175,10 +175,12 @@
   <main class="max-w-4xl mx-auto px-4 py-10 space-y-10 w-full flex-grow">
 
     <section class="text-center space-y-3">
-      <h2 data-i18n="heroTitle" class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
-        Comparez les taux de transfert vers toute l'Afrique
+      <!-- 1) TITRE PRINCIPAL DYNAMIQUE -->
+      <h2 id="dynamic-hero-title" class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+        Vous envoyez 300€ vers l'Afrique. Combien arrive réellement?
       </h2>
-      <p data-i18n="heroSub" class="text-slate-400 max-w-2xl mx-auto text-sm sm:text-base">
+      <!-- 2) SOUS-TITRE EN VERT FLUOR -->
+      <p data-i18n="heroSub" class="text-brand-400 font-semibold max-w-2xl mx-auto text-sm sm:text-base">
         294 corridors financiers actualisés en temps réel. Comparateur 100% gratuit et neutre.
       </p>
     </section>
@@ -199,7 +201,7 @@
 
         <div class="field">
           <label for="sendAmount" data-i18n="labelAmount" class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Montant envoyé :</label>
-          <input type="number" id="sendAmount" value="100" min="1" step="10" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white font-bold focus:outline-none focus:border-brand-500 transition">
+          <input type="number" id="sendAmount" value="300" min="1" step="10" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white font-bold focus:outline-none focus:border-brand-500 transition">
         </div>
 
       </div>
@@ -272,7 +274,7 @@
             <p data-i18n="faqA2" class="text-sm text-slate-400 leading-relaxed"></p>
           </div>
 
-          <!-- NOUVELLE SECTION FAQ 4) CALCUL DU MONTANT NET -->
+          <!-- QUESTION FAQ CALCUL MONTANT NET -->
           <div class="bg-slate-950 p-5 rounded-xl border border-slate-800 space-y-2">
             <h3 data-i18n="faqQNet" class="text-lg font-semibold text-white">Comment se calcule le montant net ?</h3>
             <p data-i18n="faqANet" class="text-sm text-slate-400 leading-relaxed"></p>
@@ -311,7 +313,7 @@
     let catalogueCorridors = [];
     let currentLang = 'fr';
 
-    // 5) CARTOGRAPHIE DES DEVISES AVEC PAYS ET RÉGIONS MONÉTAIRES
+    // 3) TABLEAU OFFICIEL DES DEVISES DE DESTINATION ISSU DE LA PIÈCE JOINTE
     const REGION_LABELS = {
       EUR: "Zone Euro / Europe (€)",
       USD: "États-Unis / Dollar ($)",
@@ -320,31 +322,51 @@
       CNY: "Chine / Yuan (¥)",
       CHF: "Suisse / Franc (CHF)",
       AED: "Émirats Arabes Unis / Dirham (د.إ)",
-      XOF: "Afrique de l'Ouest / UEMOA (FCFA)",
-      XAF: "Afrique Centrale / CEMAC (FCFA)",
-      NGN: "Nigéria (Naira - ₦)",
-      GHS: "Ghana (Cedi - ₵)",
-      KES: "Kenya (Shilling - KSh)",
-      MAD: "Maroc (Dirham - DH)",
-      DZD: "Algérie (Dinar - DA)",
-      TND: "Tunisie (Dinar - DT)",
-      EGP: "Égypte (Livre - E£)",
-      ZAR: "Afrique du Sud (Rand - R)",
-      GNF: "Guinée (Franc - FG)",
-      GMD: "Gambie (Dalasi - D)",
-      SLE: "Sierra Leone (Leone - Le)",
-      CVE: "Cap-Vert (Escudo - $)",
-      AOA: "Angola (Kwanza - Kz)",
-      CDF: "RDC (Franc Congolais - FC)",
-      ZMW: "Zambie (Kwacha - ZMW)",
-      MZN: "Mozambique (Metical - MT)",
-      UGX: "Ougande (Shilling - USh)",
-      TZS: "Tanzanie (Shilling - TSh)",
-      RWF: "Rwanda (Franc - FRw)",
-      ETB: "Éthiopie (Birr - Br)"
+      AOA: "Kwanza angolais",
+      BIF: "Franc burundais",
+      BWP: "Pula botswanais",
+      CDF: "Franc congolais (RDC)",
+      CVE: "Escudo cap-verdien",
+      DJF: "Franc djiboutien",
+      DZD: "Dinar algérien",
+      EGP: "Livre égyptienne",
+      ERN: "Nakfa érythréen",
+      ETB: "Birr éthiopien",
+      GMD: "Dalasi gambien",
+      GHS: "Cedi ghanéen",
+      GNF: "Franc guinéen",
+      KES: "Shilling kényan",
+      KMF: "Franc comorien",
+      LRD: "Dollar libérien",
+      LSL: "Loti lesothan",
+      LYD: "Dinar libyen",
+      MAD: "Dirham marocain",
+      MGA: "Ariary malgache",
+      MWK: "Kwacha malawien",
+      MRU: "Ouguiya mauritanien",
+      MUR: "Roupie mauricienne",
+      MZN: "Metical mozambicain",
+      NAD: "Dollar namibien",
+      NGN: "Naira nigérian",
+      RWF: "Franc rwandais",
+      SCR: "Roupie seychelloise",
+      SDG: "Livre soudanaise",
+      SLE: "Leone sierra-léonais",
+      SOS: "Shilling somalien",
+      SSP: "Livre sud-soudanaise",
+      STN: "Dobra santoméen",
+      SZL: "Lilangeni eswatinien",
+      TND: "Dinar tunisien",
+      TZS: "Shilling tanzanien",
+      UGX: "Shilling ougandais",
+      XAF: "Franc CFA d’Afrique centrale",
+      XOF: "Franc CFA d’Afrique de l’Ouest",
+      ZAR: "Rand sud-africain",
+      ZMW: "Kwacha zambien",
+      ZWG: "Zimbabwe Gold (ZiG)"
     };
 
-    // DICTIONNAIRE MULTILINGUE COMPLET (TABLEAU, SEO, FAQ, HORODATAGE)
+    // DICTIONNAIRE MULTILINGUE
     const TRANSLATIONS = {
       fr: {
         badgeTitle: "COMPARATEUR GRATUIT & INDÉPENDANT",
@@ -352,7 +374,6 @@
         navAbout: "À Propos",
         navFaq: "FAQ",
         navSecurity: "Sécurité",
-        heroTitle: "Comparez les taux de transfert vers toute l'Afrique",
         heroSub: "294 corridors financiers actualisés en temps réel. Comparateur 100% gratuit et neutre.",
         labelSource: "Devise d'envoi :",
         labelTarget: "Devise de réception (Afrique) :",
@@ -399,7 +420,6 @@
         navAbout: "About",
         navFaq: "FAQ",
         navSecurity: "Security",
-        heroTitle: "Compare transfer rates to all of Africa",
         heroSub: "294 real-time financial corridors. 100% free and neutral comparison.",
         labelSource: "Send currency:",
         labelTarget: "Receive currency (Africa):",
@@ -446,7 +466,6 @@
         navAbout: "عن المنصة",
         navFaq: "الأسئلة الشائعة",
         navSecurity: "الأمان",
-        heroTitle: "قارن أسعار التحويل إلى جميع أنحاء أفريقيا",
         heroSub: "294 ممرًا ماليًا محدثًا في الوقت الفعلي. مقارنة مجانية ومحايدة 100٪.",
         labelSource: "عملة الإرسال:",
         labelTarget: "عملة الاستلام (أفريقيا):",
@@ -493,7 +512,6 @@
         navAbout: "Sobre",
         navFaq: "FAQ",
         navSecurity: "Segurança",
-        heroTitle: "Compare taxas de transferência para toda a África",
         heroSub: "294 corredores financeiros em tempo real. Comparador 100% gratuito e neutro.",
         labelSource: "Moeda de envio:",
         labelTarget: "Moeda de recebimento (África):",
@@ -535,12 +553,11 @@
         footerCopy: "© 2026 Xaalya. Todos os direitos reservados."
       },
       es: {
-        badgeTitle: "COMPARADOR GRATUITO E INDEPENDIENTE",
+        badgeTitle: "COMPARADOR GRATUITO E INDEPENDENTE",
         logoSlogan: "Compare y transfiera con facilidad",
         navAbout: "Acerca de",
         navFaq: "FAQ",
         navSecurity: "Seguridad",
-        heroTitle: "Compare tasas de transferencia a toda África",
         heroSub: "294 corredores financieros en tiempo real. Comparador 100% gratuito y neutro.",
         labelSource: "Moneda de envío:",
         labelTarget: "Moneda de recepción (África):",
@@ -587,7 +604,6 @@
         navAbout: "关于我们",
         navFaq: "常见问题",
         navSecurity: "安全保障",
-        heroTitle: "实时比较汇往全非洲的汇率",
         heroSub: "294条金融走廊实时更新。100%免费中立比较。",
         labelSource: "汇出货币：",
         labelTarget: "收款货币（非洲）：",
@@ -634,7 +650,6 @@
         navAbout: "Chi siamo",
         navFaq: "FAQ",
         navSecurity: "Sicurezza",
-        heroTitle: "Confronta i tassi di trasferimento verso tutta l'Africa",
         heroSub: "294 corridoi finanziari aggiornati in tempo reale. Comparatore gratuito al 100%.",
         labelSource: "Valuta di invio:",
         labelTarget: "Valuta di ricezione (Africa):",
@@ -681,7 +696,6 @@
         navAbout: "Kuhusu",
         navFaq: "Maswali",
         navSecurity: "Usalama",
-        heroTitle: "Linganisha viwango vya kutuma pesa Afrika nzima",
         heroSub: "Njia 294 za kifedha kwa wakati halisi. Huduma ya bure 100%.",
         labelSource: "Mata ya kutuma:",
         labelTarget: "Mata ya kupokea (Afrika):",
@@ -728,7 +742,6 @@
         navAbout: "ስለ እኛ",
         navFaq: "ተደጋጋሚ ጥያቄዎች",
         navSecurity: "ደህንነት",
-        heroTitle: "ወደ ሙሉ አፍሪካ የገንዘብ ማስተላለፊያ ተመኖችን ያወዳድሩ",
         heroSub: "294 የገንዘብ መስመሮች በቀጥታ። 100% ነፃ አወዳዳሪ።",
         labelSource: "የመላኪያ ገንዘብ ዓይነት:",
         labelTarget: "የመቀበያ ገንዘብ ዓይነት (አፍሪካ):",
@@ -775,7 +788,6 @@
         navAbout: "Nipa wa",
         navFaq: "FAQ",
         navSecurity: "Aabo",
-        heroTitle: "Fiwe awọn oṣuwọn gbigbe si gbogbo Africa",
         heroSub: "Awọn ọna inawo 294 ni akoko gidi. Ọfẹ 100%.",
         labelSource: "Owo ti o firanse:",
         labelTarget: "Owo ti o gba (Africa):",
@@ -822,7 +834,6 @@
         navAbout: "Game da mu",
         navFaq: "FAQ",
         navSecurity: "Tsaro",
-        heroTitle: "Kwatanta farashin aikawa zuwa duk Africa",
         heroSub: "Hanyoyi 294 na kuɗi na lokaci-lokaci. Kyauta 100%.",
         labelSource: "Kudin aikawa:",
         labelTarget: "Kudin karɓa (Africa):",
@@ -869,7 +880,6 @@
         navAbout: "Luy Xaalya",
         navFaq: "Lajji",
         navSecurity: "Kaarange",
-        heroTitle: "Nattal njégat yónnee xalis ci Afrik bépp",
         heroSub: "294 yooni xalis ci jamono jile. Nattukaay bu amul fey 100%.",
         labelSource: "Xalis bu yónnee:",
         labelTarget: "Xalis bu jot (Afrik):",
@@ -997,8 +1007,47 @@
         }
       });
 
+      mettreAJourTitreHero();
+
       if (catalogueCorridors.length > 0) {
         afficherComparaison();
+      }
+    }
+
+    // 1) MISE À JOUR DYNAMIQUE DU TITRE PRINCIPAL AVEC MONTANT ET DEVISE
+    function mettreAJourTitreHero() {
+      const amountInput = document.getElementById('sendAmount').value || '300';
+      const sourceSelect = document.getElementById('sourceCurrency');
+      let deviseSymbole = '€';
+      
+      if (sourceSelect && sourceSelect.value) {
+        const val = sourceSelect.value;
+        if (val === 'USD' || val === 'CAD') deviseSymbole = '$';
+        else if (val === 'GBP') deviseSymbole = '£';
+        else if (val === 'CNY') deviseSymbole = '¥';
+        else if (val === 'CHF') deviseSymbole = ' CHF';
+        else if (val === 'AED') deviseSymbole = ' AED';
+        else if (val === 'EUR') deviseSymbole = '€';
+        else deviseSymbole = ' ' + val;
+      }
+
+      const titreHero = document.getElementById('dynamic-hero-title');
+      if (titreHero) {
+        if (currentLang === 'en') {
+          titreHero.textContent = `You send ${amountInput}${deviseSymbole} to Africa. How much actually arrives?`;
+        } else if (currentLang === 'ar') {
+          titreHero.textContent = `أنت ترسل ${amountInput}${deviseSymbole} إلى أفريقيا. كم يصل بالفعل؟`;
+        } else if (currentLang === 'zh') {
+          titreHero.textContent = `您向非洲汇出 ${amountInput}${deviseSymbole}。实际到账多少？`;
+        } else if (currentLang === 'es') {
+          titreHero.textContent = `Envías ${amountInput}${deviseSymbole} a África. ¿Cuánto llega realmente?`;
+        } else if (currentLang === 'pt') {
+          titreHero.textContent = `Você envia ${amountInput}${deviseSymbole} para a África. Quanto realmente chega?`;
+        } else if (currentLang === 'it') {
+          titreHero.textContent = `Invii ${amountInput}${deviseSymbole} in Africa. Quanto arriva realmente?`;
+        } else {
+          titreHero.textContent = `Vous envoyez ${amountInput}${deviseSymbole} vers l'Afrique. Combien arrive réellement?`;
+        }
       }
     }
 
@@ -1011,6 +1060,7 @@
         if (Array.isArray(catalogueCorridors) && catalogueCorridors.length > 0) {
           initialiserSelects();
           attacherEcouteursEvenements();
+          mettreAJourTitreHero();
           afficherComparaison();
         }
       } catch (error) {
@@ -1020,7 +1070,7 @@
       }
     }
 
-    // 5) INITIALISATION DES SÉLECTEURS AVEC REGIONS MONÉTAIRES
+    // INITIALISATION DES SÉLECTEURS AVEC LE TABLEAU OFFICIEL DE LA PIÈCE JOINTE
     function initialiserSelects() {
       const selectSource = document.getElementById('sourceCurrency');
       const selectTarget = document.getElementById('targetCurrency');
@@ -1047,9 +1097,15 @@
     }
 
     function attacherEcouteursEvenements() {
-      document.getElementById('sourceCurrency').addEventListener('change', () => { afficherComparaison(true); });
+      document.getElementById('sourceCurrency').addEventListener('change', () => { 
+        mettreAJourTitreHero();
+        afficherComparaison(true); 
+      });
       document.getElementById('targetCurrency').addEventListener('change', () => { afficherComparaison(true); });
-      document.getElementById('sendAmount').addEventListener('input', () => { afficherComparaison(false); });
+      document.getElementById('sendAmount').addEventListener('input', () => { 
+        mettreAJourTitreHero();
+        afficherComparaison(false); 
+      });
     }
 
     /**
@@ -1076,7 +1132,6 @@
       }
     }
 
-    // 1) & 2) CALCUL ET AFFICHAGE TABLEAU & HORODATAGE LOCAL
     function afficherComparaison(declencherAudio = false) {
       const source = document.getElementById('sourceCurrency').value;
       const target = document.getElementById('targetCurrency').value;
@@ -1100,7 +1155,6 @@
         return;
       }
 
-      // 2) HORODATAGE EN HEURE LOCALE ET DANS LA LANGUE DE L'UTILISATEUR
       const dateMajRaw = corridorActif.misAJour || corridorActif.updatedAt || new Date().toISOString();
       const dateLocalObj = new Date(dateMajRaw);
       const dateFormatted = dateLocalObj.toLocaleString(currentLang, {
@@ -1134,7 +1188,6 @@
         annoncerMeilleurOpérateurAudio(offresCalculees[0].operateur);
       }
 
-      // 1) RENDU TABLEAU TRADUIT
       tbody.innerHTML = offresCalculees.map((offre, idx) => {
         const estLeMeilleur = idx === 0;
         const libelleFrais = offre.frais > 0 ? `${offre.frais} ${source}` : `<span class="text-emerald-400 font-semibold">${t.freeFee}</span>`;
