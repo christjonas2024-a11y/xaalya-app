@@ -4,9 +4,23 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Xaalya™ | Comparateur Officiel de Transfert d'Argent vers l'Afrique</title>
-  <meta name="description" content="Comparez en temps réel les taux de change et frais des transferts d'argent vers l'Afrique.">
+  <!-- ========================================== -->
+  <!-- 1. OPTIMISATION SEO AVANCÉE & INDEXATION GOOGLE -->
+  <!-- ========================================== -->
+  <title>Xaalya™ | Comparateur Indépendant & Gratuit de Transfert d'Argent vers l'Afrique</title>
+  <meta name="description" content="Xaalya est un comparateur 100% gratuit et totalement indépendant des fintechs et opérateurs financiers. Comparez en temps réel les taux de change et frais des transferts d'argent vers l'Afrique (Lemfi, Sendwave, Taptap Send, NALA, WorldRemit, Western Union, Wise).">
+  <meta name="keywords" content="Xaalya, comparateur gratuit, transfert d'argent afrique, independant, taux de change, Lemfi, Sendwave, Taptap Send, NALA, WorldRemit, Remitly, Western Union, Wise, Paysend, FCFA, XOF, XAF, GHS, NGN, KES, MAD, DZD, diaspora africaine">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <meta name="author" content="Xaalya Technologies">
   <link rel="canonical" href="https://xaalya.com/">
+
+  <!-- Open Graph / Réseaux Sociaux -->
+  <meta property="og:site_name" content="Xaalya">
+  <meta property="og:type" content="finance.service">
+  <meta property="og:url" content="https://xaalya.com/">
+  <meta property="og:title" content="Xaalya™ - Comparateur Gratuit & Indépendant">
+  <meta property="og:description" content="Comparez instantanément les meilleurs taux vers 42 devises africaines. Service 100% gratuit et neutre.">
+  <meta property="og:image" content="https://xaalya.com/assets/og-image.png">
 
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -27,6 +41,7 @@
     }
   </script>
 
+  <!-- STYLES PERSONNALISÉS THÈMES SOMBRE/CLAIR -->
   <style>
     :root {
       --bg-color: #0b0f19;
@@ -46,6 +61,23 @@
       color: var(--text-main) !important;
     }
 
+    body.light-mode header {
+      background-color: rgba(248, 250, 252, 0.9) !important;
+      border-color: var(--card-border) !important;
+    }
+
+    body.light-mode section, body.light-mode article {
+      background-color: var(--card-bg) !important;
+      border-color: var(--card-border) !important;
+      color: var(--text-main) !important;
+    }
+
+    body.light-mode input, body.light-mode select {
+      background-color: #f1f5f9 !important;
+      color: #0f172a !important;
+      border-color: var(--card-border) !important;
+    }
+
     .theme-toggle-btn {
       background: rgba(31, 41, 55, 0.5);
       border: 1px solid #374151;
@@ -54,8 +86,34 @@
       border-radius: 8px;
       cursor: pointer;
       font-size: 14px;
+      transition: all 0.2s ease;
     }
   </style>
+
+  <!-- SUIVI GA4 & SCHEMA.ORG -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-W5M59BZS6N"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-W5M59BZS6N');
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FinancialService",
+    "name": "Xaalya",
+    "url": "https://xaalya.com",
+    "description": "Comparateur panafricain 100% gratuit et indépendant de transfert d'argent.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "EUR",
+      "description": "Service de comparaison neutre et gratuit"
+    }
+  }
+  </script>
 </head>
 
 <body class="bg-slate-950 text-slate-100 min-h-screen font-sans antialiased flex flex-col justify-between">
@@ -63,35 +121,65 @@
   <!-- ENTÊTE / NAVIGATION -->
   <header class="border-b border-slate-800/80 bg-slate-950/80 backdrop-blur sticky top-0 z-50">
     <div class="max-w-5xl mx-auto px-4 py-3 flex flex-wrap items-center justify-between gap-3">
-      <a href="https://xaalya.com/" class="flex items-center gap-3">
-        <div class="flex items-center gap-2 bg-slate-900/80 border border-slate-800 px-3 py-1.5 rounded-xl">
-          <div class="w-9 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 font-black text-xs">
-            €$¥ƒ
+      
+      <div class="flex items-center gap-3 cursor-pointer" onclick="closeAllModalSections()">
+        <a href="https://xaalya.com/" class="flex items-center gap-3">
+          <div class="flex items-center gap-2 bg-slate-900/80 border border-slate-800 px-3 py-1.5 rounded-xl">
+            <div class="w-9 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 font-black text-xs">
+              €$¥ƒ
+            </div>
+            <div class="flex flex-col">
+              <span class="text-lg font-black tracking-tight text-white">XAALYA</span>
+              <span data-i18n="logoSlogan" class="text-[10px] text-emerald-400 font-medium">Comparez & Transférez en toute simplicité</span>
+            </div>
           </div>
-          <div class="flex flex-col">
-            <span class="text-lg font-black tracking-tight text-white">XAALYA</span>
-            <span class="text-[10px] text-emerald-400 font-medium">Comparez & Transférez en toute simplicité</span>
-          </div>
-        </div>
-      </a>
-
+          <span data-i18n="badgeTitle" class="text-[9px] font-bold bg-slate-800 text-slate-300 px-2.5 py-1 rounded-full uppercase tracking-wider hidden md:inline-block">
+            COMPARATEUR GRATUIT & INDÉPENDANT
+          </span>
+        </a>
+      </div>
+      
+      <!-- NAVIGATION & SELECTION DES LANGUES -->
       <div class="flex items-center gap-3 text-xs font-medium text-slate-400">
+        <button onclick="toggleSection('a-propos')" data-i18n="navAbout" class="hover:text-white transition hidden sm:inline-block">À Propos</button>
+        <button onclick="toggleSection('faq')" data-i18n="navFaq" class="hover:text-white transition hidden sm:inline-block">FAQ</button>
+        <button onclick="toggleSection('confidentialite')" data-i18n="navSecurity" class="hover:text-white transition hidden sm:inline-block">Sécurité</button>
+        
+        <!-- SÉLECTEUR MANUEL DE LANGUE -->
+        <div class="relative">
+          <select id="language-select" onchange="setLanguage(this.value, true)" class="bg-slate-900 border border-slate-800 text-white text-xs font-bold rounded-lg px-3 py-2 focus:outline-none focus:border-brand-500 transition cursor-pointer">
+            <option value="fr">🇫🇷 Français</option>
+            <option value="en">🇬🇧 English</option>
+            <option value="ar">🇸🇦 العربية</option>
+            <option value="pt">🇵🇹 Português</option>
+            <option value="es">🇪🇸 Español</option>
+            <option value="zh">🇨🇳 中文 (Mandarin)</option>
+            <option value="it">🇮🇹 Italiano</option>
+            <option value="sw">🇰🇪 Kiswahili</option>
+            <option value="am">🇪🇹 አማርኛ (Amharique)</option>
+            <option value="yo">🇳🇬 Èdè Yorùbá</option>
+            <option value="ha">🇳🇬 Hausa (Boko)</option>
+            <option value="wo">🇸🇳 Wolof</option>
+          </select>
+        </div>
+
         <button id="theme-toggle" class="theme-toggle-btn" title="Changer le mode d'affichage">
           <span id="theme-icon">🌙</span>
         </button>
       </div>
+
     </div>
   </header>
 
-  <!-- CALCULATEUR PRINCIPAL -->
+  <!-- CALCULATEUR ET CORRIDORS -->
   <main class="max-w-4xl mx-auto px-4 py-10 space-y-10 w-full flex-grow">
 
     <section class="text-center space-y-3">
-      <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+      <h2 data-i18n="heroTitle" class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
         Comparez les taux de transfert vers toute l'Afrique
       </h2>
-      <p class="text-slate-400 max-w-2xl mx-auto text-sm sm:text-base">
-        294 corridors financiers actualisés en temps réel
+      <p data-i18n="heroSub" class="text-slate-400 max-w-2xl mx-auto text-sm sm:text-base">
+        294 corridors financiers actualisés en temps réel. Comparateur 100% gratuit et neutre.
       </p>
     </section>
 
@@ -100,17 +188,17 @@
       <div class="comparator-form grid grid-cols-1 md:grid-cols-3 gap-4">
         
         <div class="field">
-          <label for="sourceCurrency" class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Devise d'envoi :</label>
+          <label for="sourceCurrency" data-i18n="labelSource" class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Devise d'envoi :</label>
           <select id="sourceCurrency" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white font-semibold focus:outline-none focus:border-brand-500 transition"></select>
         </div>
 
         <div class="field">
-          <label for="targetCurrency" class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Devise de réception (Afrique) :</label>
+          <label for="targetCurrency" data-i18n="labelTarget" class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Devise de réception (Afrique) :</label>
           <select id="targetCurrency" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white font-semibold focus:outline-none focus:border-brand-500 transition"></select>
         </div>
 
         <div class="field">
-          <label for="sendAmount" class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Montant envoyé :</label>
+          <label for="sendAmount" data-i18n="labelAmount" class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Montant envoyé :</label>
           <input type="number" id="sendAmount" value="100" min="1" step="10" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white font-bold focus:outline-none focus:border-brand-500 transition">
         </div>
 
@@ -119,17 +207,17 @@
       <div class="flex items-center justify-between pt-2 border-t border-slate-800/60 text-xs text-slate-400">
         <div class="flex items-center gap-2">
           <span class="w-2 h-2 rounded-full bg-brand-500 animate-pulse"></span>
-          <span>Converti aux taux mondiaux</span>
+          <span data-i18n="statusConnected">Converti aux taux mondiaux</span>
         </div>
         <span id="lastUpdatedInfo">Actualisé en temps réel</span>
       </div>
     </section>
 
-    <!-- TABLEAU DE RÉSULTATS -->
+    <!-- RESULTATS ET AFFICHAGE TABLEAU -->
     <section id="resultsContainer" class="space-y-4">
       <h3 class="text-xl font-bold text-white flex items-center justify-between">
-        <span>Comparatif des opérateurs</span>
-        <span class="text-xs font-normal text-slate-400">Classé par meilleur taux net</span>
+        <span data-i18n="resultsTitle">Comparatif des opérateurs</span>
+        <span data-i18n="resultsRank" class="text-xs font-normal text-slate-400">Classé par meilleur taux net</span>
       </h3>
 
       <div class="overflow-x-auto">
@@ -146,25 +234,395 @@
             </tr>
           </thead>
           <tbody id="operatorsList" class="divide-y divide-slate-800/60">
-            <!-- Injecté par JavaScript -->
+            <!-- Rempli dynamiquement -->
           </tbody>
         </table>
       </div>
     </section>
 
+    <!-- ARTICLES SEO (À PROPOS, FAQ, SÉCURITÉ) -->
+    <div id="info-sections-container" class="hidden pt-6 border-t border-slate-800/80">
+      
+      <!-- À PROPOS -->
+      <article id="a-propos" class="hidden space-y-4 bg-slate-900/90 p-6 rounded-2xl border border-slate-800 relative">
+        <button onclick="closeAllModalSections()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-sm font-bold">✕ FERMER</button>
+        <h2 class="text-2xl font-bold text-white flex items-center gap-2">
+          À propos de Xaalya
+        </h2>
+        <p data-i18n="aboutP1" class="leading-relaxed text-slate-300 text-sm sm:text-base">
+          <strong>Xaalya est un comparateur de transfert d'argent 100% gratuit et totalement indépendant des fintechs et opérateurs financiers.</strong> Notre mission est d'offrir une transparence absolue à la diaspora africaine et aux résidents du continent.
+        </p>
+        <p data-i18n="aboutP2" class="leading-relaxed text-slate-300 text-sm sm:text-base">
+          Nous n'appartenons à aucun groupe financier. Notre classement est strictement neutre et se base uniquement sur le montant net réel qui arrive sur le compte ou le Mobile Money de votre destinataire.
+        </p>
+        <div class="pt-2 text-sm text-slate-400">
+          Contact : <a href="mailto:info@xaalya.com" class="text-brand-400 font-semibold underline">info@xaalya.com</a>
+        </div>
+      </article>
+
+      <!-- FAQ -->
+      <article id="faq" class="hidden space-y-6 bg-slate-900/90 p-6 rounded-2xl border border-slate-800 relative">
+        <button onclick="closeAllModalSections()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-sm font-bold">✕ FERMER</button>
+        <h2 class="text-2xl font-bold text-white">Foire Aux Questions (FAQ)</h2>
+
+        <div class="space-y-4">
+          <div class="bg-slate-950 p-5 rounded-xl border border-slate-800 space-y-2">
+            <h3 data-i18n="faqQ1" class="text-lg font-semibold text-white">Xaalya est-il vraiment gratuit ?</h3>
+            <p data-i18n="faqA1" class="text-sm text-slate-400 leading-relaxed">Oui, Xaalya est un service 100% gratuit pour tous les utilisateurs. Nous ne prélevons aucune commission sur vos envois d'argent.</p>
+          </div>
+
+          <div class="bg-slate-950 p-5 rounded-xl border border-slate-800 space-y-2">
+            <h3 data-i18n="faqQ2" class="text-lg font-semibold text-white">Xaalya est-il indépendant des opérateurs ?</h3>
+            <p data-i18n="faqA2" class="text-sm text-slate-400 leading-relaxed">Absolument. Nous sommes une plateforme neutre. Aucun opérateur (Lemfi, Sendwave, WorldRemit, Western Union...) ne peut payer pour modifier son classement.</p>
+          </div>
+
+          <div class="bg-slate-950 p-5 rounded-xl border border-slate-800 space-y-2">
+            <h3 data-i18n="faqQ3" class="text-lg font-semibold text-white">Comment fonctionne l'annonce audio ?</h3>
+            <p data-i18n="faqA3" class="text-sm text-slate-400 leading-relaxed">Dès que vous choisissez un corridor, Xaalya calcule le meilleur taux et annonce vocalement dans la langue choisie l'opérateur le moins cher du moment.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- SÉCURITÉ -->
+      <article id="confidentialite" class="hidden space-y-4 bg-slate-900/90 p-6 rounded-2xl border border-slate-800 relative">
+        <button onclick="closeAllModalSections()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-sm font-bold">✕ FERMER</button>
+        <h2 class="text-2xl font-bold text-white">Sécurité & Confidentialité</h2>
+        <p class="text-sm text-slate-300 leading-relaxed">
+          Xaalya respecte scrupuleusement la vie privée de ses utilisateurs :
+        </p>
+        <ul class="list-disc list-inside text-sm text-slate-400 space-y-2 pl-2">
+          <li><strong>Aucune collecte de données bancaires :</strong> Vos transactions sont réalisées directement sur les applications officielles des opérateurs.</li>
+          <li><strong>Anonymat garanti :</strong> Toutes les recherches et comparaisons s'exécutent localement dans votre navigateur.</li>
+        </ul>
+      </article>
+
+    </div>
+
   </main>
 
   <footer class="border-t border-slate-800/80 bg-slate-950 py-8 text-center text-xs text-slate-500">
-    <p>© 2026 Xaalya. Tous droits réservés. Plateforme indépendante de comparaison de services financiers.</p>
+    <p data-i18n="footerCopy">© 2026 Xaalya. Tous droits réservés. Comparateur indépendant et 100% gratuit.</p>
   </footer>
 
-  <!-- SCRIPT JAVASCRIPT BLINDÉ ET PROTÉGÉ -->
+  <!-- ========================================== -->
+  <!-- SCRIPT JAVASCRIPT GEOLOC, MULTILINGUE & AUDIO -->
+  <!-- ========================================== -->
   <script>
     let catalogueCorridors = [];
+    let currentLang = 'fr';
+
+    // DICTIONNAIRE MULTILINGUE
+    const TRANSLATIONS = {
+      fr: {
+        badgeTitle: "COMPARATEUR GRATUIT & INDÉPENDANT",
+        logoSlogan: "Comparez & Transférez en toute simplicité",
+        navAbout: "À Propos",
+        navFaq: "FAQ",
+        navSecurity: "Sécurité",
+        heroTitle: "Comparez les taux de transfert vers toute l'Afrique",
+        heroSub: "294 corridors financiers actualisés en temps réel. Comparateur 100% gratuit et neutre.",
+        labelSource: "Devise d'envoi :",
+        labelTarget: "Devise de réception (Afrique) :",
+        labelAmount: "Montant envoyé :",
+        statusConnected: "Converti aux taux mondiaux",
+        resultsTitle: "Comparatif des opérateurs",
+        resultsRank: "Classé par meilleur taux net",
+        bestRateBadge: "Le Moins Cher",
+        audioSuffix: "le moins cher",
+        footerCopy: "© 2026 Xaalya. Tous droits réservés. Comparateur indépendant et 100% gratuit."
+      },
+      en: {
+        badgeTitle: "FREE & INDEPENDENT COMPARATOR",
+        logoSlogan: "Compare & Transfer with ease",
+        navAbout: "About",
+        navFaq: "FAQ",
+        navSecurity: "Security",
+        heroTitle: "Compare transfer rates to all of Africa",
+        heroSub: "294 real-time financial corridors. 100% free and neutral comparison.",
+        labelSource: "Send currency:",
+        labelTarget: "Receive currency (Africa):",
+        labelAmount: "Send amount:",
+        statusConnected: "Converted at global rates",
+        resultsTitle: "Operators comparison",
+        resultsRank: "Ranked by best net rate",
+        bestRateBadge: "Cheapest",
+        audioSuffix: "the cheapest",
+        footerCopy: "© 2026 Xaalya. All rights reserved. Free independent comparator."
+      },
+      ar: {
+        badgeTitle: "مقارن مجاني ومستقل",
+        logoSlogan: "قارن وحول بكل سهولة",
+        navAbout: "عن المنصة",
+        navFaq: "الأسئلة الشائعة",
+        navSecurity: "الأمان",
+        heroTitle: "قارن أسعار التحويل إلى جميع أنحاء أفريقيا",
+        heroSub: "294 ممرًا ماليًا محدثًا في الوقت الفعلي. مقارنة مجانية ومحايدة 100٪.",
+        labelSource: "عملة الإرسال:",
+        labelTarget: "عملة الاستلام (أفريقيا):",
+        labelAmount: "المبلغ المراد إرساله:",
+        statusConnected: "محولة بالأسعار العالمية",
+        resultsTitle: "مقارنة المشغلين",
+        resultsRank: "مرتبة حسب أفضل مبلغ صافي",
+        bestRateBadge: "الأرخص",
+        audioSuffix: "الأرخص",
+        footerCopy: "© 2026 Xaalya. جميع الحقوق محفوظة."
+      },
+      pt: {
+        badgeTitle: "COMPARADOR GRATUITO E INDEPENDENTE",
+        logoSlogan: "Compare e transfira com facilidade",
+        navAbout: "Sobre",
+        navFaq: "FAQ",
+        navSecurity: "Segurança",
+        heroTitle: "Compare taxas de transferência para toda a África",
+        heroSub: "294 corredores financeiros em tempo real. Comparador 100% gratuito e neutro.",
+        labelSource: "Moeda de envio:",
+        labelTarget: "Moeda de recebimento (África):",
+        labelAmount: "Valor enviado:",
+        statusConnected: "Convertido às taxas mundiais",
+        resultsTitle: "Comparação de operadoras",
+        resultsRank: "Classificado pela melhor taxa líquida",
+        bestRateBadge: "Mais Barato",
+        audioSuffix: "o mais barato",
+        footerCopy: "© 2026 Xaalya. Todos os direitos reservados."
+      },
+      es: {
+        badgeTitle: "COMPARADOR GRATUITO E INDEPENDIENTE",
+        logoSlogan: "Compare y transfiera con facilidad",
+        navAbout: "Acerca de",
+        navFaq: "FAQ",
+        navSecurity: "Seguridad",
+        heroTitle: "Compare tasas de transferencia a toda África",
+        heroSub: "294 corredores financieros en tiempo real. Comparador 100% gratuito y neutro.",
+        labelSource: "Moneda de envío:",
+        labelTarget: "Moneda de recepción (África):",
+        labelAmount: "Monto enviado:",
+        statusConnected: "Convertido a tasas mundiales",
+        resultsTitle: "Comparativa de operadores",
+        resultsRank: "Clasificado por mejor tasa neta",
+        bestRateBadge: "El Más Barato",
+        audioSuffix: "el más barato",
+        footerCopy: "© 2026 Xaalya. Todos los derechos reservados."
+      },
+      zh: {
+        badgeTitle: "免费独立汇率比较平台",
+        logoSlogan: "轻松比较与汇款",
+        navAbout: "关于我们",
+        navFaq: "常见问题",
+        navSecurity: "安全保障",
+        heroTitle: "实时比较汇往全非洲的汇率",
+        heroSub: "294条金融走廊实时更新。100%免费中立比较。",
+        labelSource: "汇出货币：",
+        labelTarget: "收款货币（非洲）：",
+        labelAmount: "汇款金额：",
+        statusConnected: "按全球实时汇率转换",
+        resultsTitle: "服务商比较",
+        resultsRank: "按最优净到账金额排序",
+        bestRateBadge: "最划算",
+        audioSuffix: "是最划算的",
+        footerCopy: "© 2026 Xaalya. 版权所有。"
+      },
+      it: {
+        badgeTitle: "COMPARATORE GRATUITO E INDIPENDENTE",
+        logoSlogan: "Confronta e trasferisci in semplicità",
+        navAbout: "Chi siamo",
+        navFaq: "FAQ",
+        navSecurity: "Sicurezza",
+        heroTitle: "Confronta i tassi di trasferimento verso tutta l'Africa",
+        heroSub: "294 corridoi finanziari aggiornati in tempo reale. Comparatore gratuito al 100%.",
+        labelSource: "Valuta di invio:",
+        labelTarget: "Valuta di ricezione (Africa):",
+        labelAmount: "Importo inviato:",
+        statusConnected: "Convertito ai tassi globali",
+        resultsTitle: "Confronto operatori",
+        resultsRank: "Classificato per miglior importo netto",
+        bestRateBadge: "Il Più Economico",
+        audioSuffix: "è il più economico",
+        footerCopy: "© 2026 Xaalya. Tutti i diritti riservati."
+      },
+      sw: {
+        badgeTitle: "MILINGANISHO HURU NA BUKURE",
+        logoSlogan: "Linganisha na utume kwa urahisi",
+        navAbout: "Kuhusu",
+        navFaq: "Maswali",
+        navSecurity: "Usalama",
+        heroTitle: "Linganisha viwango vya kutuma pesa Afrika nzima",
+        heroSub: "Njia 294 za kifedha kwa wakati halisi. Huduma ya bure 100%.",
+        labelSource: "Mata ya kutuma:",
+        labelTarget: "Mata ya kupokea (Afrika):",
+        labelAmount: "Kiasi cha kutuma:",
+        statusConnected: "Imebadilishwa kwa viwango vya dunia",
+        resultsTitle: "Mlinganisho wa makampuni",
+        resultsRank: "Panga kwa kiwango bora",
+        bestRateBadge: "Raha Zaidi",
+        audioSuffix: "ndiyo nafuu zaidi",
+        footerCopy: "© 2026 Xaalya. Haki zote zimehifadhiwa."
+      },
+      am: {
+        badgeTitle: "ነፃ እና ಸ್ವበይነኛ አወዳዳሪ",
+        logoSlogan: "በቀላሉ ያወዳድሩ እና ያስተላልፉ",
+        navAbout: "ስለ እኛ",
+        navFaq: "ተደጋጋሚ ጥያቄዎች",
+        navSecurity: "ደህንነት",
+        heroTitle: "ወደ ሙሉ አፍሪካ የገንዘብ ማስተላለፊያ ተመኖችን ያወዳድሩ",
+        heroSub: "294 የገንዘብ መስመሮች በቀጥታ። 100% ነፃ አወዳዳሪ።",
+        labelSource: "የመላኪያ ገንዘብ ዓይነት:",
+        labelTarget: "የመቀበያ ገንዘብ ዓይነት (አፍሪካ):",
+        labelAmount: "የሚላከው መጠን:",
+        statusConnected: "በአለም አቀፍ ተመን የተለወጠ",
+        resultsTitle: "የአገልግሎት ሰጪዎች ማወዳደሪያ",
+        resultsRank: "በተሻለ የተጣራ ተመን የተደረደረ",
+        bestRateBadge: "ርካሹ",
+        audioSuffix: "በጣም ርካሹ ነው",
+        footerCopy: "© 2026 Xaalya. መብቱ በህግ የተጠበቀ ነው."
+      },
+      yo: {
+        badgeTitle: "OBAWANDI OLOFE & TI O DA duro",
+        logoSlogan: "Fiwe ati firanse pẹlu irọrun",
+        navAbout: "Nipa wa",
+        navFaq: "FAQ",
+        navSecurity: "Aabo",
+        heroTitle: "Fiwe awọn oṣuwọn gbigbe si gbogbo Africa",
+        heroSub: "Awọn ọna inawo 294 ni akoko gidi. Ọfẹ 100%.",
+        labelSource: "Owo ti o firanse:",
+        labelTarget: "Owo ti o gba (Africa):",
+        labelAmount: "Iye ti o firanse:",
+        statusConnected: "Yipada ni awọn oṣuwọn agbaye",
+        resultsTitle: "Afiwe ti awọn oniṣẹ",
+        resultsRank: "Ti wa ni ipo nipasẹ oṣuwọn to dara julọ",
+        bestRateBadge: "O pọju Rọrun",
+        audioSuffix: "ni o din owo julọ",
+        footerCopy: "© 2026 Xaalya. Gbogbo ẹtọ wa ni ipamọ."
+      },
+      ha: {
+        badgeTitle: "MAI KANTA DA KYAUTA",
+        logoSlogan: "Kwatanta kuma aika cikin sauƙi",
+        navAbout: "Game da mu",
+        navFaq: "FAQ",
+        navSecurity: "Tsaro",
+        heroTitle: "Kwatanta farashin aikawa zuwa duk Africa",
+        heroSub: "Hanyoyi 294 na kuɗi na lokaci-lokaci. Kyauta 100%.",
+        labelSource: "Kudin aikawa:",
+        labelTarget: "Kudin karɓa (Africa):",
+        labelAmount: "Adadin aikawa:",
+        statusConnected: "Canza ta farashin duniya",
+        resultsTitle: "Kwatanta kamfanoni",
+        resultsRank: "Mafi kyawun kudin shiga",
+        bestRateBadge: "Mafi Sauki",
+        audioSuffix: "shi ne mafi sauki",
+        footerCopy: "© 2026 Xaalya. Duk Haƙƙoƙi Haƙƙi."
+      },
+      wo: {
+        badgeTitle: "NATTUKAAY BU AMUL FEY-YON NGENE",
+        logoSlogan: "Nattal té yónnee ci jamm",
+        navAbout: "Luy Xaalya",
+        navFaq: "Lajji",
+        navSecurity: "Kaarange",
+        heroTitle: "Nattal njégat yónnee xalis ci Afrik bépp",
+        heroSub: "294 yooni xalis ci jamono jile. Nattukaay bu amul fey 100%.",
+        labelSource: "Xalis bu yónnee:",
+        labelTarget: "Xalis bu jot (Afrik):",
+        labelAmount: "Lùn yónnee:",
+        statusConnected: "Nattal ci njégat aduna",
+        resultsTitle: "Nattukaay liggéeykat yi",
+        resultsRank: "Kañ ci ki gën a yomb",
+        bestRateBadge: "Ki gën a yomb",
+        audioSuffix: "móo gën a yomb",
+        footerCopy: "© 2026 Xaalya. Sañ-sañ fépp moom nañu ko."
+      }
+    };
+
+    /**
+     * DÉTECTION AUTOMATIQUE DE LA LANGUE PAR DÉFAUT SELON LE PAYS / RÉGION DE L'UTILISATEUR
+     */
+    async function detecterLangueParDefautPuisGeolocaliser() {
+      // 1. Si l'utilisateur a déjà choisi manuellement une langue auparavant, on la conserve
+      const langueEnregistree = localStorage.getItem('xaalya_lang_manual');
+      if (langueEnregistree && TRANSLATIONS[langueEnregistree]) {
+        setLanguage(langueEnregistree, false);
+        return;
+      }
+
+      // 2. Détection via les paramètres de langue du navigateur (ex: 'fr-QC' -> Québec, 'zh-CN' -> Chine, 'it-IT' -> Italie)
+      const navLangs = navigator.languages || [navigator.language || navigator.userLanguage || 'fr'];
+      let langueDetectee = 'fr';
+
+      for (let l of navLangs) {
+        const codeL = l.toLowerCase();
+        if (codeL.startsWith('zh')) { langueDetectee = 'zh'; break; }
+        if (codeL.startsWith('it')) { langueDetectee = 'it'; break; }
+        if (codeL.startsWith('es')) { langueDetectee = 'es'; break; }
+        if (codeL.startsWith('pt')) { langueDetectee = 'pt'; break; }
+        if (codeL.startsWith('ar')) { langueDetectee = 'ar'; break; }
+        if (codeL.startsWith('en')) { langueDetectee = 'en'; break; }
+        if (codeL.startsWith('sw')) { langueDetectee = 'sw'; break; }
+        if (codeL.startsWith('am')) { langueDetectee = 'am'; break; }
+        if (codeL.startsWith('yo')) { langueDetectee = 'yo'; break; }
+        if (codeL.startsWith('ha')) { langueDetectee = 'ha'; break; }
+        if (codeL.startsWith('wo')) { langueDetectee = 'wo'; break; }
+        if (codeL.startsWith('fr')) { langueDetectee = 'fr'; break; }
+      }
+
+      // 3. Affinement par géolocalisation IP pour détecter le pays exact (ex: Chine -> zh, Québec/France -> fr, Italie -> it)
+      try {
+        const res = await fetch('https://ipapi.co/json/');
+        if (res.ok) {
+          const data = await res.json();
+          const country = data.country_code; // Ex: CN, IT, CA, FR, ES, BR, GB, US, SA, etc.
+          const region = data.region_code;   // Ex: QC pour le Québec
+
+          if (country === 'CN') langueDetectee = 'zh';
+          else if (country === 'IT') langueDetectee = 'it';
+          else if (country === 'ES' || country === 'MX' || country === 'AR' || country === 'CO') langueDetectee = 'es';
+          else if (country === 'BR' || country === 'PT' || country === 'AO' || country === 'MZ') langueDetectee = 'pt';
+          else if (country === 'SA' || country === 'AE' || country === 'EG' || country === 'MA' || country === 'DZ') langueDetectee = 'ar';
+          else if (country === 'CA' && region === 'QC') langueDetectee = 'fr';
+          else if (country === 'CA' && region !== 'QC') langueDetectee = 'en';
+          else if (country === 'GB' || country === 'US' || country === 'NG' || country === 'GH' || country === 'KE') langueDetectee = 'en';
+          else if (country === 'FR' || country === 'BE' || country === 'CI' || country === 'SN' || country === 'CM') langueDetectee = 'fr';
+        }
+      } catch (e) {
+        console.log("Géolocalisation IP indisponible, langue du navigateur conservée.");
+      }
+
+      setLanguage(langueDetectee, false);
+    }
 
     document.addEventListener('DOMContentLoaded', async () => {
+      await detecterLangueParDefautPuisGeolocaliser();
       await chargerDonneesRates();
     });
+
+    function setLanguage(lang, parActionUtilisateur = false) {
+      if (!TRANSLATIONS[lang]) lang = 'fr';
+      currentLang = lang;
+
+      if (parActionUtilisateur) {
+        localStorage.setItem('xaalya_lang_manual', lang);
+      }
+
+      const htmlRoot = document.getElementById('html-root');
+      if (lang === 'ar') {
+        htmlRoot.setAttribute('dir', 'rtl');
+        htmlRoot.setAttribute('lang', 'ar');
+      } else {
+        htmlRoot.removeAttribute('dir');
+        htmlRoot.setAttribute('lang', lang);
+      }
+
+      const selectLang = document.getElementById('language-select');
+      if (selectLang) selectLang.value = lang;
+
+      document.querySelectorAll('[data-i18n]').forEach(elem => {
+        const key = elem.getAttribute('data-i18n');
+        if (TRANSLATIONS[lang] && TRANSLATIONS[lang][key]) {
+          elem.textContent = TRANSLATIONS[lang][key];
+        }
+      });
+
+      if (catalogueCorridors.length > 0) {
+        afficherComparaison();
+      }
+    }
 
     async function chargerDonneesRates() {
       try {
@@ -180,7 +638,7 @@
       } catch (error) {
         console.error("Erreur Xaalya :", error);
         document.getElementById('operatorsList').innerHTML = 
-          `<tr><td colspan="7" class="py-6 text-center text-red-400 font-semibold">⚠️ Impossible de charger les données comparatives en direct. Veuillez vérifier que rates.json est bien généré.</td></tr>`;
+          `<tr><td colspan="7" class="py-6 text-center text-red-400 font-semibold">⚠️ Erreur de chargement des taux de change.</td></tr>`;
       }
     }
 
@@ -188,7 +646,6 @@
       const selectSource = document.getElementById('sourceCurrency');
       const selectTarget = document.getElementById('targetCurrency');
 
-      // Extraction robuste des devises gérant toutes les variantes de clés
       const sourcesSet = new Set();
       const ciblesSet = new Set();
 
@@ -199,33 +656,53 @@
         if (tgt) ciblesSet.add(tgt);
       });
 
-      const sourcesUniques = Array.from(sourcesSet);
-      const ciblesUniques = Array.from(ciblesSet);
-
-      selectSource.innerHTML = sourcesUniques.map(src => 
+      selectSource.innerHTML = Array.from(sourcesSet).map(src => 
         `<option value="${src}" ${src === 'EUR' ? 'selected' : ''}>${src}</option>`
       ).join('');
 
-      selectTarget.innerHTML = ciblesUniques.map(tgt => 
+      selectTarget.innerHTML = Array.from(ciblesSet).map(tgt => 
         `<option value="${tgt}" ${tgt === 'XOF' ? 'selected' : ''}>${tgt}</option>`
       ).join('');
     }
 
     function attacherEcouteursEvenements() {
-      document.getElementById('sourceCurrency').addEventListener('change', afficherComparaison);
-      document.getElementById('targetCurrency').addEventListener('change', afficherComparaison);
-      document.getElementById('sendAmount').addEventListener('input', afficherComparaison);
+      document.getElementById('sourceCurrency').addEventListener('change', () => { afficherComparaison(true); });
+      document.getElementById('targetCurrency').addEventListener('change', () => { afficherComparaison(true); });
+      document.getElementById('sendAmount').addEventListener('input', () => { afficherComparaison(false); });
     }
 
-    function afficherComparaison() {
+    /**
+     * ANNONCE AUDIO VOCALE DANS LA LANGUE CHOISIE
+     */
+    function annoncerMeilleurOpérateurAudio(nomOpérateur) {
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+
+        const suffixe = (TRANSLATIONS[currentLang] && TRANSLATIONS[currentLang].audioSuffix) || "le moins cher";
+        const textToSpeak = `${nomOpérateur}, ${suffixe}`;
+
+        const utterance = new SpeechSynthesisUtterance(textToSpeak);
+        
+        const langCodeMap = {
+          fr: 'fr-FR', en: 'en-US', ar: 'ar-SA', pt: 'pt-PT', es: 'es-ES',
+          zh: 'zh-CN', it: 'it-IT', sw: 'sw-KE', am: 'am-ET', yo: 'yo-NG', ha: 'ha-NG', wo: 'fr-FR'
+        };
+
+        utterance.lang = langCodeMap[currentLang] || 'fr-FR';
+        utterance.rate = 0.95;
+
+        window.speechSynthesis.speak(utterance);
+      }
+    }
+
+    function afficherComparaison(declencherAudio = false) {
       const source = document.getElementById('sourceCurrency').value;
       const target = document.getElementById('targetCurrency').value;
       const amount = parseFloat(document.getElementById('sendAmount').value) || 0;
 
       const tbody = document.getElementById('operatorsList');
-      const infoBlock = document.getElementById('lastUpdatedInfo');
+      const t = TRANSLATIONS[currentLang] || TRANSLATIONS['fr'];
 
-      // Recherche flexible du corridor
       const corridorActif = catalogueCorridors.find(c => {
         const src = c.devisesDepart || c.sourceCurrency || c.source;
         const tgt = c.deviseArrivee || c.targetCurrency || c.target;
@@ -235,15 +712,8 @@
       const offresList = corridorActif ? (corridorActif.offres || corridorActif.operators) : null;
 
       if (!corridorActif || !offresList || offresList.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="7" class="py-6 text-center text-slate-400">Aucun opérateur répertorié pour le corridor <strong>${source} ➔ ${target}</strong>.</td></tr>`;
+        tbody.innerHTML = `<tr><td colspan="7" class="py-6 text-center text-slate-400">Aucun opérateur répertorié pour <strong>${source} ➔ ${target}</strong>.</td></tr>`;
         return;
-      }
-
-      if (corridorActif.misAJour || corridorActif.updatedAt) {
-        const dateMaj = new Date(corridorActif.misAJour || corridorActif.updatedAt).toLocaleString('fr-FR', {
-          day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit'
-        });
-        infoBlock.innerHTML = `Actualisé le : <strong>${dateMaj}</strong>`;
       }
 
       const offresCalculees = offresList.map(offre => {
@@ -268,6 +738,10 @@
 
       offresCalculees.sort((a, b) => b.montantRecu - a.montantRecu);
 
+      if (declencherAudio && offresCalculees.length > 0) {
+        annoncerMeilleurOpérateurAudio(offresCalculees[0].operateur);
+      }
+
       tbody.innerHTML = offresCalculees.map((offre, idx) => {
         const estLeMeilleur = idx === 0;
         return `
@@ -275,7 +749,7 @@
             <td class="py-4 px-4 font-bold text-slate-400">#${idx + 1}</td>
             <td class="py-4 px-4 font-bold text-white flex items-center gap-2">
               ${offre.operateur}
-              ${estLeMeilleur ? `<span class="bg-emerald-500/20 text-emerald-400 text-[10px] px-2 py-0.5 rounded-full font-extrabold uppercase">Le Moins Cher</span>` : ''}
+              ${estLeMeilleur ? `<span class="bg-emerald-500/20 text-emerald-400 text-[10px] px-2 py-0.5 rounded-full font-extrabold uppercase">${t.bestRateBadge}</span>` : ''}
             </td>
             <td class="py-4 px-4 text-slate-300">1 ${source} = <strong class="text-white">${offre.taux}</strong> ${target}</td>
             <td class="py-4 px-4 text-slate-300">${offre.frais > 0 ? `${offre.frais} ${source}` : '<span class="text-emerald-400 font-semibold">Gratuit</span>'}</td>
@@ -291,7 +765,26 @@
       }).join('');
     }
 
-    // Gestion du thème Sombre/Clair
+    function toggleSection(sectionId) {
+      const container = document.getElementById('info-sections-container');
+      const target = document.getElementById(sectionId);
+      
+      ['a-propos', 'faq', 'confidentialite'].forEach(id => {
+        document.getElementById(id).classList.add('hidden');
+      });
+
+      if (target) {
+        container.classList.remove('hidden');
+        target.classList.remove('hidden');
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+
+    function closeAllModalSections() {
+      document.getElementById('info-sections-container').classList.add('hidden');
+    }
+
+    // Gestion du thème Sombre / Clair
     const themeToggleBtn = document.getElementById('theme-toggle');
     const themeIcon = document.getElementById('theme-icon');
 
