@@ -14,13 +14,17 @@
   <meta name="author" content="Xaalya Technologies">
   <link rel="canonical" href="https://xaalya.com/">
 
+  <!-- Favicon & Icone pour le rond du navigateur / recherche -->
+  <link rel="icon" type="image/png" href="logo.png">
+  <link rel="apple-touch-icon" href="logo.png">
+
   <!-- Open Graph / Réseaux Sociaux -->
   <meta property="og:site_name" content="Xaalya">
   <meta property="og:type" content="finance.service">
   <meta property="og:url" content="https://xaalya.com/">
   <meta property="og:title" content="Xaalya™ - Comparateur Gratuit & Indépendant">
   <meta property="og:description" content="Comparez instantanément les meilleurs taux vers 42 devises africaines. Service 100% gratuit et neutre.">
-  <meta property="og:image" content="https://xaalya.com/assets/og-image.png">
+  <meta property="og:image" content="https://xaalya.com/logo.png">
 
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -125,9 +129,13 @@
       <div class="flex items-center gap-3 cursor-pointer" onclick="closeAllModalSections()">
         <a href="https://xaalya.com/" class="flex items-center gap-3">
           <div class="flex items-center gap-2 bg-slate-900/80 border border-slate-800 px-3 py-1.5 rounded-xl">
-            <div class="w-9 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 font-black text-xs">
-              €$¥ƒ
+            
+            <!-- IMAGE DU LOGO RONDE -->
+            <div class="w-9 h-9 rounded-full overflow-hidden border border-emerald-500/40 flex items-center justify-center bg-slate-900 shadow-sm">
+              <img src="logo.png" alt="Xaalya Logo" class="w-full h-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+              <div class="w-full h-full hidden items-center justify-center text-emerald-400 font-black text-xs">€$</div>
             </div>
+
             <div class="flex flex-col">
               <span class="text-lg font-black tracking-tight text-white">XAALYA</span>
               <span data-i18n="logoSlogan" class="text-[10px] text-emerald-400 font-medium">Comparez & Transférez en toute simplicité</span>
@@ -139,7 +147,7 @@
         </a>
       </div>
       
-      <!-- NAVIGATION & SELECTION DES LANGUES -->
+      <!-- NAVIGATION & SELECTION DES LANGUES (INCLUANT ZOULOU) -->
       <div class="flex items-center gap-3 text-xs font-medium text-slate-400">
         <button onclick="toggleSection('a-propos')" data-i18n="navAbout" class="hover:text-white transition hidden sm:inline-block">À Propos</button>
         <button onclick="toggleSection('faq')" data-i18n="navFaq" class="hover:text-white transition hidden sm:inline-block">FAQ</button>
@@ -149,6 +157,10 @@
         <div class="relative">
           <select id="language-select" onchange="setLanguage(this.value, true)" class="bg-slate-900 border border-slate-800 text-white text-xs font-bold rounded-lg px-3 py-2 focus:outline-none focus:border-brand-500 transition cursor-pointer">
             <option value="fr">🇫🇷 Français</option>
+            <option value="zu">🇿🇦 isiZulu (Afrique du Sud)</option>
+            <option value="ln">🇨🇩 Lingala (RDC)</option>
+            <option value="sn">🇿🇼 Shona (Zimbabwe)</option>
+            <option value="de">🇩🇪 Deutsch</option>
             <option value="en">🇬🇧 English</option>
             <option value="ar">🇸🇦 العربية</option>
             <option value="pt">🇵🇹 Português</option>
@@ -412,6 +424,190 @@
         secP2Text: "Toutes les recherches s'exécutent localement dans votre navigateur.",
         footerCopy: "© 2026 Xaalya. Tous droits réservés. Comparateur indépendant et 100% gratuit."
       },
+      zu: {
+        badgeTitle: "INKAMPANI YAMAHHALA NEYEZIRO NEZIMELE",
+        logoSlogan: "Qhathanisa & Thumela kalula",
+        navAbout: "Mayelana na Xaalya",
+        navFaq: "Imibuzo",
+        navSecurity: "Ukuphepha",
+        heroSub: "Imihubhe yezimali engu-294 ivuselelwa ngesikhathi sangempela. Mahhala 100%.",
+        labelSource: "Imali ethunyelwayo:",
+        labelTarget: "Imali eyemukelwayo (Afrika):",
+        labelAmount: "Inani elithunyelwayo:",
+        statusConnected: "Kuguqulwe ngamanani omhlaba",
+        resultsTitle: "Ukuqhathaniswa kwezinkampani",
+        resultsRank: "Kuhlelwe ngezinga eliphakeme lezimali",
+        thRank: "Isikhundla",
+        thOperator: "Inkampani",
+        thRate: "Izinga le-Exchange",
+        thFee: "Imali Yokuthumela",
+        thReceived: "Inani Eliyemukelwe",
+        thDelivery: "Isikhathi Esilinganiselwe",
+        thAction: "Isenzo",
+        btnSend: "Thumela ➔",
+        freeFee: "Mahhala",
+        instantDelay: "Ngokushesha",
+        updatedAtPrefix: "Kuvuselelwe nga:",
+        bestRateBadge: "Eshibhe Kakhulu",
+        audioSuffix: "iyona eshibhe kakhulu",
+        aboutTitle: "Mayelana ne-Xaalya",
+        aboutP1: "I-Xaalya iyisikhulumi sokuqhathanisa ukuthunyelwa kwemali yamahhala engu-100% ezimele ngokugcwele.",
+        aboutP2: "Ukuhlelwa kwethu kusekelwe ngokuphelele enanini langempela elingena kowemukelayo.",
+        faqTitle: "Imibuzo Evame Ukubuzwa (FAQ)",
+        faqQ1: "Ingabe i-Xaalya imahhala ngempela?",
+        faqA1: "Yebo, i-Xaalya imahhala ngo-100% kubo bonke abasebenzisi.",
+        faqQ2: "Ingabe i-Xaalya izimele?",
+        faqA2: "Impela, ayikho inkampani engakhokhela ukushintsha isikhundla sayo.",
+        faqQNet: "Isabalazwa kanjani inani langempela?",
+        faqANet: "Inani: (Inani Elithunyelwe - Imali Yokuthumela) × Izinga le-Exchange.",
+        faqQ3: "Isebenza kanjani i-Audio?",
+        faqA3: "Imemezela ngomsindo inkampani eshibhe kakhulu.",
+        secTitle: "Ukuphepha neZimfihlo",
+        secIntro: "I-Xaalya ihlonipha imfihlo yomsebenzisi:",
+        secP1Title: "Ayikho imininingwane yebhange esetshenzwayo:",
+        secP1Text: "Ukuthengiselana kwenzeka ngqo ezinhlelweni zokusebenza zezinkampani.",
+        secP2Title: "Ukwaziwa okungaziwa:",
+        secP2Text: "Zonke izibalo zenziwa ku-browser yakho.",
+        footerCopy: "© 2026 Xaalya. Wonke amalungelo agodliwe."
+      },
+      ln: {
+        badgeTitle: "MOPESIPASO YA SOLO & YA NTANGO NYONSO",
+        logoSlogan: "Kokokanisa & Kotinda na bosepeli",
+        navAbout: "Makambo ya Xaalya",
+        navFaq: "Mituna",
+        navSecurity: "Bokengi",
+        heroSub: "Nzelá 294 ya mbongo ya sikoyo. Mopesi ya ntalo te 100%.",
+        labelSource: "Mbongo ya kotinda:",
+        labelTarget: "Mbongo ya koyamba (Afrika):",
+        labelAmount: "Motuya ya kotinda:",
+        statusConnected: "Ekitisami na motuya ya mokili mobimba",
+        resultsTitle: "Kokokanisa ba kompani",
+        resultsRank: "Ebongisami na motuya ya malamu koleka",
+        thRank: "Esika",
+        thOperator: "Kompani",
+        thRate: "Motuya ya Kokeba",
+        thFee: "Fɔti ya Kotinda",
+        thReceived: "Motuya Oyo Eyaki",
+        thDelivery: "Ntango",
+        thAction: "Kosala",
+        btnSend: "Tinda ➔",
+        freeFee: "Efuti te",
+        instantDelay: "Na mbala moko",
+        updatedAtPrefix: "Esili kobongisama na:",
+        bestRateBadge: "Ere y'ntalo moke",
+        audioSuffix: "ezali ya ntalo moke koleka",
+        aboutTitle: "Makambo ya Xaalya",
+        aboutP1: "Xaalya ezali esika ya kokokanisa mbongo ya motuya te 100% mpe ya solo.",
+        aboutP2: "Boningisi na biso ezali ya pete mpe etali kaka motuya oyo ekómi mpenza.",
+        faqTitle: "Mituna mpe Biyano (FAQ)",
+        faqQ1: "Xaalya ezali ya motuya te mpenza?",
+        faqA1: "Eee, Xaalya ezali ya motuya te 100%.",
+        faqQ2: "Xaalya ezali ya kideko?",
+        faqA2: "Ya solo, moto moko te akoki kofuta mpo na kobongola esika na ye.",
+        faqQNet: "Ndenge nini motuya ya solo ezwamaka?",
+        faqANet: "Ndakisa: (Motuya ekitisami - Fɔti ya kotinda) × Motuya ya mbongo.",
+        faqQ3: "Ndenge nini sango ya mongongo ezalaka?",
+        faqA3: "Elobaka na mongongo kompani ya ntalo moke.",
+        secTitle: "Bokengi & Sutuani",
+        secIntro: "Tuzangisi bokengi ya moto na moto:",
+        secP1Title: "Makambo ya banki te:",
+        secP1Text: "Misala esalemaka na bisika ya bonkoko ya kompani.",
+        secP2Title: "Bozangi kombo:",
+        secP2Text: "Makambo nyonso esalemaka na sɔmɛ́ ya kompyuta na yo.",
+        footerCopy: "© 2026 Xaalya. Makoki nyonso mabatelami."
+      },
+      sn: {
+        badgeTitle: "MUCHANANIDZI WEMARI 100% YEMAHARA",
+        logoSlogan: "Enzanisai uye mutumire norugare",
+        navAbout: "Nezve Xaalya",
+        navFaq: "Mibvuniko",
+        navSecurity: "Chengetedzo",
+        heroSub: "Nzira dzehupfumi 294 dzinovandudzwa nenguva chaiyo. Mahara 100%.",
+        labelSource: "Mari yekutumira:",
+        labelTarget: "Mari inogamuchirwa (Africa):",
+        labelAmount: "Mari inotumirwa:",
+        statusConnected: "Yakashandurwa pamitengo yepasi rose",
+        resultsTitle: "Kufananidza makambani",
+        resultsRank: "Yakarongwa zvakanakisisa",
+        thRank: "Chinzvimbo",
+        thOperator: "Kambani",
+        thRate: "Mutengo weChinjano",
+        thFee: "Mutero weKutumira",
+        thReceived: "Mari Yakagamuchirwa",
+        thDelivery: "Nguva Yacho",
+        thAction: "Chiito",
+        btnSend: "Tumira ➔",
+        freeFee: "Mahara",
+        instantDelay: "Pakarepo",
+        updatedAtPrefix: "Yakagadziriswa musi wa:",
+        bestRateBadge: "Yakachipa Kudarika",
+        audioSuffix: "ndiyo yakachipa zvikuru",
+        aboutTitle: "Nezve Xaalya",
+        aboutP1: "Xaalya chikuva chemahara chekutumira mari chakazvimirira zvachose.",
+        aboutP2: "Zvinzvimbo zvedu zvakaringana zvichibva pamari chaiyo inosvika kune wauri kutumira.",
+        faqTitle: "Mibvunzo Inowanzo Bvunzwa (FAQ)",
+        faqQ1: "Ko Xaalya ndeye mahara here?",
+        faqA1: "Ehe, ndeye mahara 100% kune vashandisi vese.",
+        faqQ2: "Ko Xaalya yakazvimirira here?",
+        faqA2: "Zvachose, hapana kambani ingabhadhare kuti ichinje chinzvimbo chayo.",
+        faqQNet: "Mari chaiyo inoverengwa sei?",
+        faqANet: "Nzira: (Mari Yatumirwa - Mutero weKutumira) × Mutengo weChinjano.",
+        faqQ3: "Inoshanda sei Audio?",
+        faqA3: "Inozivisa nemanzwi kambani yakachipa zvikuru kana wasarudza nzira.",
+        secTitle: "Chengetedzo & Kuvanzika",
+        secIntro: "Xaalya inoremekedza zvakanyanya kuvanzika kwevashandisi:",
+        secP1Title: "Hapana data rebhengi rinoshandiswa:",
+        secP1Text: "Kutumira kwako kunoitwa zvakananga pamaapplication emakambani.",
+        secP2Title: "Kuzivikanwa kusingazivikanwe:",
+        secP2Text: "Kuverenga kwese kunoitwa mukati mebrowser yako.",
+        footerCopy: "© 2026 Xaalya. Kodzero dzose dzakachengetedzwa."
+      },
+      de: {
+        badgeTitle: "KOSTENLOSER & UNABHÄNGIGER VERGLEICH",
+        logoSlogan: "Einfach vergleichen & überweisen",
+        navAbout: "Über uns",
+        navFaq: "FAQ",
+        navSecurity: "Sicherheit",
+        heroSub: "294 Finanzkorridore in Echtzeit aktualisiert. 100% kostenloser und neutraler Vergleich.",
+        labelSource: "Sende-Währung:",
+        labelTarget: "Empfangs-Währung (Afrika):",
+        labelAmount: "Gesendeter Betrag:",
+        statusConnected: "Zu weltweiten Kursen umgerechnet",
+        resultsTitle: "Anbietervergleich",
+        resultsRank: "Sortiert nach bestem Nettobetrag",
+        thRank: "Rang",
+        thOperator: "Anbieter",
+        thRate: "Wechselkurs",
+        thFee: "Überweisungsgebühr",
+        thReceived: "Empfangener Betrag",
+        thDelivery: "Geschätzte Zeit",
+        thAction: "Aktion",
+        btnSend: "Senden ➔",
+        freeFee: "Kostenlos",
+        instantDelay: "Sofort",
+        updatedAtPrefix: "Aktualisiert am:",
+        bestRateBadge: "Am günstigsten",
+        audioSuffix: "am günstigsten",
+        aboutTitle: "Über Xaalya",
+        aboutP1: "Xaalya ist ein 100% kostenloser und völlig unabhängiger Geldtransfer-Vergleichsdienst.",
+        aboutP2: "Unser Ranking ist strikt neutral und basiert nur auf dem tatsächlichen Nettobetrag, der beim Empfänger ankommt.",
+        faqTitle: "Häufig gestellte Fragen (FAQ)",
+        faqQ1: "Ist Xaalya wirklich kostenlos?",
+        faqA1: "Ja, Xaalya ist zu 100% kostenlos für alle Nutzer.",
+        faqQ2: "Ist Xaalya unabhängig?",
+        faqA2: "Absolut neutral und unabhängig.",
+        faqQNet: "Wie wird der Nettobetrag berechnet?",
+        faqANet: "Formel: (Gesendeter Betrag - Gebühren) × Wechselkurs.",
+        faqQ3: "Wie funktioniert die Sprachausgabe?",
+        faqA3: "Liest den günstigsten Anbieter laut vor.",
+        secTitle: "Sicherheit & Datenschutz",
+        secIntro: "Wir respektieren Ihre Privatsphäre:",
+        secP1Title: "Keine Bankdaten verarbeitet:",
+        secP1Text: "Transaktionen finden direkt auf den offiziellen Seiten statt.",
+        secP2Title: "Vollkommen anonym:",
+        secP2Text: "Berechnungen erfolgen lokal in Ihrem Browser.",
+        footerCopy: "© 2026 Xaalya. Alle Rechte vorbehalten."
+      },
       en: {
         badgeTitle: "FREE & INDEPENDENT COMPARATOR",
         logoSlogan: "Compare & Transfer with ease",
@@ -578,7 +774,7 @@
         audioSuffix: "el más barato",
         aboutTitle: "Acerca de Xaalya",
         aboutP1: "Xaalya es un comparador 100% gratuito e independiente de transferencias de dinero.",
-        aboutP2: "Clasificación estrictamente neutral basada en el monto neto final.",
+        aboutP2: "Clasificación strictly neutral basada en el monto neto final.",
         faqTitle: "Preguntas Frecuentes (FAQ)",
         faqQ1: "¿Es gratis?",
         faqA1: "Sí, 100% gratuito sin comisiones.",
@@ -678,7 +874,7 @@
         faqA2: "Assolutamente indipendente.",
         faqQNet: "Come si calcola l'importo netto?",
         faqANet: "Formula: (Importo Inviato - Commissione) × Tasso di Cambio.",
-        faqQ3: "Come funziona l'audio?",
+        faqQ3: "Come funciona l'audio?",
         faqA3: "Annuncia a voce l'operatore più conveniente.",
         secTitle: "Sicurezza & Privacy",
         secIntro: "Rispetto della privacy:",
@@ -735,7 +931,7 @@
         footerCopy: "© 2026 Xaalya. Haki zote zimehifadhiwa."
       },
       am: {
-        badgeTitle: "ነፃ እና ಸ್ವበይነኛ አወዳዳሪ",
+        badgeTitle: "ነፃ እና స్వበይነኛ አወዳዳሪ",
         logoSlogan: "በቀላሉ ያወዳድሩ እና ያስተላልፉ",
         navAbout: "ስለ እኛ",
         navFaq: "ተደጋጋሚ ጥያቄዎች",
@@ -935,6 +1131,10 @@
 
       for (let l of navLangs) {
         const codeL = l.toLowerCase();
+        if (codeL.startsWith('zu')) { langueDetectee = 'zu'; break; }
+        if (codeL.startsWith('ln')) { langueDetectee = 'ln'; break; }
+        if (codeL.startsWith('sn')) { langueDetectee = 'sn'; break; }
+        if (codeL.startsWith('de')) { langueDetectee = 'de'; break; }
         if (codeL.startsWith('zh')) { langueDetectee = 'zh'; break; }
         if (codeL.startsWith('it')) { langueDetectee = 'it'; break; }
         if (codeL.startsWith('es')) { langueDetectee = 'es'; break; }
@@ -956,7 +1156,11 @@
           const country = data.country_code;
           const region = data.region_code;
 
-          if (country === 'CN') langueDetectee = 'zh';
+          if (country === 'ZA') langueDetectee = 'zu';
+          else if (country === 'CD') langueDetectee = 'ln';
+          else if (country === 'ZW') langueDetectee = 'sn';
+          else if (['DE','AT','CH'].includes(country)) langueDetectee = 'de';
+          else if (country === 'CN') langueDetectee = 'zh';
           else if (country === 'IT') langueDetectee = 'it';
           else if (['ES','MX','AR','CO'].includes(country)) langueDetectee = 'es';
           else if (['BR','PT','AO','MZ'].includes(country)) langueDetectee = 'pt';
@@ -1012,7 +1216,7 @@
       }
     }
 
-    // TRADUCTION AUTOMATIQUE DU TITRE PRINCIPAL DANS LA LANGUE CHOISIE AVEC MONTANT ET DEVISE
+    // TRADUCTION DU TITRE PRINCIPAL DYNAMIQUE SELON LA LANGUE CHOISIE
     function mettreAJourTitreHero() {
       const amountInput = document.getElementById('sendAmount').value || '300';
       const sourceSelect = document.getElementById('sourceCurrency');
@@ -1031,7 +1235,15 @@
 
       const titreHero = document.getElementById('dynamic-hero-title');
       if (titreHero) {
-        if (currentLang === 'en') {
+        if (currentLang === 'zu') {
+          titreHero.textContent = `Uthumela i-${amountInput}${deviseSymbole} e-Afrika. Kukangakhi okufika ngempela?`;
+        } else if (currentLang === 'ln') {
+          titreHero.textContent = `Ozali kotinda ${amountInput}${deviseSymbole} na Afrika. Ndenge nini ekómaka mpenza?`;
+        } else if (currentLang === 'sn') {
+          titreHero.textContent = `Uri kutuma ${amountInput}${deviseSymbole} kuAfrica. Zvii chaizvo zvinosvika?`;
+        } else if (currentLang === 'de') {
+          titreHero.textContent = `Sie senden ${amountInput}${deviseSymbole} nach Afrika. Wie viel kommt wirklich an?`;
+        } else if (currentLang === 'en') {
           titreHero.textContent = `You send ${amountInput}${deviseSymbole} to Africa. How much actually arrives?`;
         } else if (currentLang === 'ar') {
           titreHero.textContent = `أنت ترسل ${amountInput}${deviseSymbole} إلى أفريقيا. كم يصل بالفعل؟`;
@@ -1048,12 +1260,11 @@
         } else if (currentLang === 'am') {
           titreHero.textContent = `ወደ አፍሪካ ${amountInput}${deviseSymbole} እየላኩ ነው። በእርግጥ ስንት ይደርሳል?`;
         } else if (currentLang === 'yo') {
-          tsire = `O n firanse ${amountInput}${deviseSymbole} si Africa. Elo lo de gangan?`;
-          titreHero.textContent = tsire;
+          titreHero.textContent = `O n firanse ${amountInput}${deviseSymbole} si Africa. Elo lo de gangan?`;
         } else if (currentLang === 'ha') {
           titreHero.textContent = `Kana aika ${amountInput}${deviseSymbole} zuwa Afrika. Nawa ne yake isa gaskiya?`;
         } else if (currentLang === 'wo') {
-          titreHero.textContent = `D Nga yónnee ${amountInput}${deviseSymbole} ci Afrik. Ñata mooy dëgg dëgg di jot?`;
+          titreHero.textContent = `Dga yónnee ${amountInput}${deviseSymbole} ci Afrik. Ñata mooy dëgg dëgg di jot?`;
         } else {
           titreHero.textContent = `Vous envoyez ${amountInput}${deviseSymbole} vers l'Afrique. Combien arrive réellement?`;
         }
@@ -1129,7 +1340,7 @@
         const utterance = new SpeechSynthesisUtterance(textToSpeak);
         
         const langCodeMap = {
-          fr: 'fr-FR', en: 'en-US', ar: 'ar-SA', pt: 'pt-PT', es: 'es-ES',
+          fr: 'fr-FR', zu: 'zu-ZA', ln: 'ln-CD', sn: 'sn-ZW', de: 'de-DE', en: 'en-US', ar: 'ar-SA', pt: 'pt-PT', es: 'es-ES',
           zh: 'zh-CN', it: 'it-IT', sw: 'sw-KE', am: 'am-ET', yo: 'yo-NG', ha: 'ha-NG', wo: 'fr-FR'
         };
 
