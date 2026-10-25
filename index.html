@@ -130,14 +130,14 @@
         <a href="https://xaalya.com/" class="flex items-center gap-3">
           <div class="flex items-center gap-2 bg-slate-900/80 border border-slate-800 px-3 py-1.5 rounded-xl">
             
-            <!-- IMAGE DU LOGO RONDE -->
-            <div class="w-9 h-9 rounded-full overflow-hidden border border-emerald-500/40 flex items-center justify-center bg-slate-900 shadow-sm">
+            <!-- IMAGE DU LOGO RONDE CORRIGÉE -->
+            <div class="w-9 h-9 min-w-[2.25rem] min-h-[2.25rem] rounded-full overflow-hidden border border-emerald-500/40 flex items-center justify-center bg-slate-900 shadow-sm shrink-0">
               <img src="logo.png" alt="Xaalya Logo" class="w-full h-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
               <div class="w-full h-full hidden items-center justify-center text-emerald-400 font-black text-xs">€$</div>
             </div>
 
             <div class="flex flex-col">
-              <span class="text-lg font-black tracking-tight text-white">XAALYA</span>
+              <span class="text-lg font-black tracking-tight text-white leading-tight">XAALYA</span>
               <span data-i18n="logoSlogan" class="text-[10px] text-emerald-400 font-medium">Comparez & Transférez en toute simplicité</span>
             </div>
           </div>
@@ -147,7 +147,7 @@
         </a>
       </div>
       
-      <!-- NAVIGATION & SELECTION DES LANGUES (INCLUANT ZOULOU) -->
+      <!-- NAVIGATION & SELECTION DES LANGUES -->
       <div class="flex items-center gap-3 text-xs font-medium text-slate-400">
         <button onclick="openModal('modal-about')" data-i18n="navAbout" class="hover:text-white transition hidden sm:inline-block">À Propos</button>
         <button onclick="openModal('modal-faq')" data-i18n="navFaq" class="hover:text-white transition hidden sm:inline-block">FAQ</button>
@@ -257,7 +257,7 @@
   </main>
 
   <!-- ========================================== -->
-  <!-- MODALES INTÉGRÉES DE CODE NVO (À PROPOS, FAQ, SÉCURITÉ) -->
+  <!-- MODALES AVEC TITRES EN VERT FLUOR ET SANS [cite] -->
   <!-- ========================================== -->
 
   <!-- MODALE : À PROPOS DE XAALYA -->
@@ -271,64 +271,64 @@
 
       <h2 class="text-2xl font-bold mb-4 text-emerald-400 border-b border-slate-800 pb-2">À Propos de Xaalya</h2>
 
-      <h3 class="text-lg font-semibold text-white mt-4 mb-2">Notre Mission : La Transparence Totale pour vos Transferts d'Argent vers l'Afrique</h3>
+      <h3 class="text-lg font-semibold text-emerald-400 mt-4 mb-2">Notre Mission : La Transparence Totale pour vos Transferts d'Argent vers l'Afrique</h3>
       <p class="text-slate-300 text-sm leading-relaxed mb-3">
-        <strong>Xaalya</strong> est un comparateur de transfert d'argent en ligne <strong>100 % gratuit</strong> et <strong>totalement indépendant</strong> des fintechs, des banques et des opérateurs financiers[cite: 3].
+        <strong>Xaalya</strong> est un comparateur de transfert d'argent en ligne <strong>100 % gratuit</strong> et <strong>totalement indépendant</strong> des fintechs, des banques et des opérateurs financiers.
       </p>
       <p class="text-slate-300 text-sm leading-relaxed mb-4">
-        Dans un marché où les frais cachés et les marges sur les taux de change réduisent la valeur de chaque envoi d'argent vers l'Afrique ou l'international, Xaalya a été créé avec un objectif simple : redonner le pouvoir aux utilisateurs et sécuriser chaque centime envoyé à leurs proches[cite: 3].
+        Dans un marché où les frais cachés et les marges sur les taux de change réduisent la valeur de chaque envoi d'argent vers l'Afrique ou l'international, Xaalya a été créé avec un objectif simple : redonner le pouvoir aux utilisateurs et sécuriser chaque centime envoyé à leurs proches.
       </p>
 
       <hr class="border-slate-800 my-4" />
 
-      <h3 class="text-lg font-semibold text-white mb-3">Pourquoi Faire Confiance à Xaalya ?</h3>
+      <h3 class="text-lg font-semibold text-emerald-400 mb-3">Pourquoi Faire Confiance à Xaalya ?</h3>
       <ul class="space-y-3 text-sm text-slate-300 mb-4 list-disc pl-5">
         <li>
-          <strong>Indépendance & Neutralité Absolue :</strong> We n'appartenons à aucun groupe financier ni à aucun opérateur de transfert d'argent. Aucun acteur ne peut payer pour modifier son classement ou être mis en avant. Notre algorithme est neutre, transparent et impartial[cite: 3].
+          <strong class="text-emerald-400">Indépendance & Neutralité Absolue :</strong> Nous n'appartenons à aucun groupe financier ni à aucun opérateur de transfert d'argent. Aucun acteur ne peut payer pour modifier son classement ou être mis en avant. Notre algorithme est neutre, transparent et impartial.
         </li>
         <li>
-          <strong>Le Montant Net Réel au Cœur du Calcul :</strong> Contrairement aux comparateurs classiques qui se limitent aux frais d'envoi, Xaalya prend en compte le taux de change réel en temps réel et l'ensemble des frais de structure. Notre classement repose uniquement sur le montant net exact qui arrive sur le compte de votre destinataire[cite: 3].
+          <strong class="text-emerald-400">Le Montant Net Réel au Cœur du Calcul :</strong> Contrairement aux comparateurs classiques qui se limitent aux frais d'envoi, Xaalya prend en compte le taux de change réel en temps réel et l'ensemble des frais de structure. Notre classement repose uniquement sur le montant net exact qui arrive sur le compte de votre destinataire.
         </li>
         <li>
-          <strong>Recommandation Claire & Guidage Vocal Intelligente :</strong> Dès la sélection de votre corridor d'envoi, Xaalya analyse l'ensemble des offres et vous <strong>recommande instantanément l'opérateur le plus avantageux</strong> via un <strong>message textuel explicite</strong> à l'écran couplé à une <strong>annonce audio en temps réel</strong>. Vous êtes ensuite directement redirigé vers la plateforme officielle de cet opérateur (ou l'application de votre choix) pour finaliser votre transaction au meilleur tarif[cite: 3].
+          <strong class="text-emerald-400">Recommandation Claire & Guidage Vocal Intelligent :</strong> Dès la sélection de votre corridor d'envoi, Xaalya analyse l'ensemble des offres et vous <strong>recommande instantanément l'opérateur le plus avantageux</strong> via un <strong>message textuel explicite</strong> à l'écran couplé à une <strong>annonce audio en temps réel</strong>. Vous êtes ensuite directement redirigé vers la plateforme officielle de cet opérateur (ou l'application de votre choix) pour finaliser votre transaction au meilleur tarif.
         </li>
         <li>
-          <strong>Inclusivité & Diversité Linguistique (16 Langues) :</strong> Parce que la finance doit être accessible à tous, Xaalya est traduit en 16 langues. Nous mettons un point d'honneur à intégrer des langues africaines majeures (telles que le Lingala, le Shona, le Haoussa, et bien d'autres) aux côtés du français, de l'anglais et de l'allemand pour offrir une expérience fluide dans la langue de votre choix[cite: 3].
+          <strong class="text-emerald-400">Inclusivité & Diversité Linguistique (16 Langues) :</strong> Parce que la finance doit être accessible à tous, Xaalya est traduit en 16 langues. Nous mettons un point d'honneur à intégrer des langues africaines majeures (telles que le Lingala, le Shona, le Haoussa, et bien d'autres) aux côtés du français, de l'anglais et de l'allemand pour offrir une expérience fluide dans la langue de votre choix.
         </li>
         <li>
-          <strong>Accessibilité Vocale Innovante :</strong> Grâce à notre système d'annonce audio en temps réel, Xaalya énonce à haute voix l'opérateur le moins cher et le meilleur taux. Une solution pensée pour garantir une accessibilité universelle, y compris pour les personnes malvoyantes[cite: 3].
+          <strong class="text-emerald-400">Accessibilité Vocale Innovante :</strong> Grâce à notre système d'annonce audio en temps réel, Xaalya énonce à haute voix l'opérateur le moins cher et le meilleur taux. Une solution pensée pour garantir une accessibilité universelle, y compris pour les personnes malvoyantes.
         </li>
         <li>
-          <strong>Spécialiste de l'Afrique : Couverture Exhaustive des 42 Monnaies Africaines :</strong> Xaalya est spécifiquement orienté pour couvrir l'ensemble du continent africain en prenant en charge <strong>les 42 monnaies africaines</strong> (Franc CFA XOF/XAF, Cedi ghanéen, Naira nigérian, Shilling kényan, Dirham marocain, Birr éthiopien, Rand sud-africain, Dinar algérien, etc.). Que vous envoyiez de l'argent depuis la zone Euro ou l'Amérique du Nord vers n'importe quel pays d'Afrique (Côte d'Ivoire, Sénégal, Égypte, RDC, Zimbabwe, Afrique du Sud, etc.), Xaalya compare l'ensemble des solutions[cite: 3] :
+          <strong class="text-emerald-400">Spécialiste de l'Afrique : Couverture Exhaustive des 42 Monnaies Africaines :</strong> Xaalya est spécifiquement orienté pour couvrir l'ensemble du continent africain en prenant en charge <strong>les 42 monnaies africaines</strong> (Franc CFA XOF/XAF, Cedi ghanéen, Naira nigérian, Shilling kényan, Dirham marocain, Birr éthiopien, Rand sud-africain, Dinar algérien, etc.). Que vous envoyiez de l'argent depuis la zone Euro ou l'Amérique du Nord vers n'importe quel pays d'Afrique (Côte d'Ivoire, Sénégal, Égypte, RDC, Zimbabwe, Afrique du Sud, etc.), Xaalya compare l'ensemble des solutions :
           <ul class="mt-2 space-y-1 list-disc pl-5 text-slate-400">
-            <li><strong>Opérateurs internationaux & Fintechs :</strong> Western Union, Lemfi, WorldRemit, Remitly, Wise, TapTapSend, NALA, Chipper Cash, SendWave, PaySend[cite: 3].</li>
-            <li><strong>Services Mobile Money & Locaux :</strong> Wave, Orange Money, MTN Mobile Money, Moov Money, Airtel Money, M-Pesa[cite: 3].</li>
-            <li><strong>Virements bancaires & Retraits en agence[cite: 3].</strong></li>
+            <li><strong class="text-emerald-400">Opérateurs internationaux & Fintechs :</strong> Western Union, Lemfi, WorldRemit, Remitly, Wise, TapTapSend, NALA, Chipper Cash, SendWave, PaySend.</li>
+            <li><strong class="text-emerald-400">Services Mobile Money & Locaux :</strong> Wave, Orange Money, MTN Mobile Money, Moov Money, Airtel Money, M-Pesa.</li>
+            <li><strong class="text-emerald-400">Virements bancaires & Retraits en agence.</strong></li>
           </ul>
         </li>
       </ul>
 
       <hr class="border-slate-800 my-4" />
 
-      <h3 class="text-lg font-semibold text-white mb-2">Une Technologie Hybride et Précise</h3>
+      <h3 class="text-lg font-semibold text-emerald-400 mb-2">Une Technologie Hybride et Précise</h3>
       <p class="text-slate-300 text-sm leading-relaxed mb-2">
-        Pour vous délivrer des informations fiables à la minute près, Xaalya s'appuie sur un moteur de calcul hybride[cite: 3] :
+        Pour vous délivrer des informations fiables à la minute près, Xaalya s'appuie sur un moteur de calcul hybride :
       </p>
       <ol class="list-decimal pl-5 space-y-1 text-sm text-slate-300 mb-4">
-        <li>Connexion directe et sécurisée aux API des opérateurs partenaires[cite: 3].</li>
-        <li>Système de secours basé sur le cours officiel du marché des changes (Forex) croisé avec la base de données des tarifs officiels des opérateurs[cite: 3].</li>
-        <li>Horodatage systématique des résultats pour une traçabilité irréprochable[cite: 3].</li>
+        <li>Connexion directe et sécurisée aux API des opérateurs partenaires.</li>
+        <li>Système de secours basé sur le cours officiel du marché des changes (Forex) croisé avec la base de données des tarifs officiels des opérateurs.</li>
+        <li>Horodatage systématique des résultats pour une traçabilité irréprochable.</li>
       </ol>
 
       <hr class="border-slate-800 my-4" />
 
-      <h3 class="text-lg font-semibold text-white mb-2">Contactez-nous</h3>
+      <h3 class="text-lg font-semibold text-emerald-400 mb-2">Contactez-nous</h3>
       <p class="text-slate-300 text-sm mb-1">
-        Une question, une suggestion ou un partenariat ? Notre équipe est à votre écoute pour continuer d'améliorer la transparence des transferts d'argent internationaux[cite: 3].
+        Une question, une suggestion ou un partenariat ? Notre équipe est à votre écoute pour continuer d'améliorer la transparence des transferts d'argent internationaux.
       </p>
       <ul class="text-sm text-slate-300 space-y-1">
-        <li><strong>Email :</strong> <a href="mailto:info@xaalya.com" class="text-emerald-400 hover:underline">info@xaalya.com</a>[cite: 3]</li>
-        <li><strong>Site officiel :</strong> <a href="https://xaalya.com" target="_blank" class="text-emerald-400 hover:underline">https://xaalya.com</a>[cite: 3]</li>
+        <li><strong class="text-emerald-400">Email :</strong> <a href="mailto:info@xaalya.com" class="text-emerald-400 hover:underline">info@xaalya.com</a></li>
+        <li><strong class="text-emerald-400">Site officiel :</strong> <a href="https://xaalya.com" target="_blank" class="text-emerald-400 hover:underline">https://xaalya.com</a></li>
       </ul>
 
     </div>
@@ -348,52 +348,52 @@
 
       <div class="space-y-5 text-sm text-slate-300">
         <div>
-          <h3 class="font-semibold text-white text-base mb-1">1. Xaalya est-il vraiment gratuit ?</h3>
-          <p>Oui, Xaalya est un service 100% gratuit pour tous les utilisateurs. Nous ne prélevons aucune commission sur vos envois d'argent[cite: 3].</p>
+          <h3 class="font-semibold text-emerald-400 text-base mb-1">1. Xaalya est-il vraiment gratuit ?</h3>
+          <p>Oui, Xaalya est un service 100% gratuit pour tous les utilisateurs. Nous ne prélevons aucune commission sur vos envois d'argent.</p>
         </div>
 
         <div>
-          <h3 class="font-semibold text-white text-base mb-1">2. Xaalya est-il indépendant des opérateurs ?</h3>
-          <p>Absolument. Aucun opérateur ne peut payer pour modifier son classement sur Xaalya. Notre comparateur est totalement neutre et impartial[cite: 3].</p>
+          <h3 class="font-semibold text-emerald-400 text-base mb-1">2. Xaalya est-il indépendant des opérateurs ?</h3>
+          <p>Absolument. Aucun opérateur ne peut payer pour modifier son classement sur Xaalya. Notre comparateur est totalement neutre et impartial.</p>
         </div>
 
         <div>
-          <h3 class="font-semibold text-white text-base mb-1">3. Comment se calcule le montant net ?</h3>
-          <p>Le montant net reçu par votre destinataire se calcule selon la formule stricte : <em>(Montant envoyé - Frais de transfert) × Taux de change appliqué par l'opérateur</em>[cite: 3].</p>
+          <h3 class="font-semibold text-emerald-400 text-base mb-1">3. Comment se calcule le montant net ?</h3>
+          <p>Le montant net reçu par votre destinataire se calcule selon la formule stricte : <em>(Montant envoyé - Frais de transfert) × Taux de change appliqué par l'opérateur</em>.</p>
         </div>
 
         <div>
-          <h3 class="font-semibold text-white text-base mb-1">4. Comment fonctionne l'annonce audio et la lecture vocale ?</h3>
-          <p>Dès que vous choisissez un corridor, Xaalya calcule le meilleur taux et annonce vocalement l'opérateur le moins cher. Cette fonctionnalité est conçue pour garantir une accessibilité universelle, y compris pour les personnes malvoyantes ou celles qui préfèrent une assistance audio dans leur langue[cite: 3].</p>
+          <h3 class="font-semibold text-emerald-400 text-base mb-1">4. Comment fonctionne l'annonce audio et la lecture vocale ?</h3>
+          <p>Dès que vous choisissez un corridor, Xaalya calcule le meilleur taux et annonce vocalement l'opérateur le moins cher. Cette fonctionnalité est conçue pour garantir une accessibilité universelle, y compris pour les personnes malvoyantes ou celles qui préfèrent une assistance audio dans leur langue.</p>
         </div>
 
         <div>
-          <h3 class="font-semibold text-white text-base mb-1">5. Comment les taux de change et les frais sont-ils calculés en temps réel avec horodatage ?</h3>
-          <p class="mb-2">Pour vous garantir une précision et une fiabilité maximales, Xaalya s'appuie sur un moteur de calcul intelligent et hybride actualisé en continu[cite: 3] :</p>
+          <h3 class="font-semibold text-emerald-400 text-base mb-1">5. Comment les taux de change et les frais sont-ils calculés en temps réel avec horodatage ?</h3>
+          <p class="mb-2">Pour vous garantir une précision et une fiabilité maximales, Xaalya s'appuie sur un moteur de calcul intelligent et hybride actualisé en continu :</p>
           <ul class="list-disc pl-5 space-y-1 text-slate-400">
-            <li><strong>Connexion directe aux opérateurs (API Live) :</strong> Pour les principaux acteurs du marché, notre système interroge directement et de manière sécurisée les flux de données officiels[cite: 3].</li>
-            <li><strong>Système de secours intelligent (Fallback Forex & Grille tarifaire) :</strong> En cas d'interruption temporaire, Xaalya bascule automatiquement sur un modèle combinant les cours officiels du marché des changes (Forex) et notre matrice rigoureuse des frais tarifaires des opérateurs[cite: 3].</li>
-            <li><strong>Traçabilité et horodatage :</strong> Chaque comparatif affiche un horodatage précis pour vous assurer de prendre votre décision de transfert en toute transparence[cite: 3].</li>
+            <li><strong class="text-emerald-400">Connexion directe aux opérateurs (API Live) :</strong> Pour les principaux acteurs du marché, notre système interroge directement et de manière sécurisée les flux de données officiels.</li>
+            <li><strong class="text-emerald-400">Système de secours intelligent (Fallback Forex & Grille tarifaire) :</strong> En cas d'interruption temporaire, Xaalya bascule automatiquement sur un modèle combinant les cours officiels du marché des changes (Forex) et notre matrice rigoureuse des frais tarifaires des opérateurs.</li>
+            <li><strong class="text-emerald-400">Traçabilité et horodatage :</strong> Chaque comparatif affiche un horodatage précis pour vous assurer de prendre votre décision de transfert en toute transparence.</li>
           </ul>
         </div>
 
         <div>
-          <h3 class="font-semibold text-white text-base mb-1">6. Quelles sont les langues africaines et internationales disponibles sur Xaalya ?</h3>
-          <p>Xaalya intègre <strong>16 langues</strong> pour permettre à chacun de comparer et envoyer de l'argent en toute sérénité dans sa langue maternelle. En plus du français, de l'anglais et de l'allemand, Xaalya prend en charge 8 langues africaines majeures et transfrontalières : <strong>Lingala</strong>, <strong>Shona</strong>, <strong>Zoulou</strong>, <strong>Wolof</strong>, <strong>Haoussa</strong>, <strong>Yorouba</strong>, <strong>Amharique</strong>, <strong>Swahili</strong>[cite: 3].</p>
+          <h3 class="font-semibold text-emerald-400 text-base mb-1">6. Quelles sont les langues africaines et internationales disponibles sur Xaalya ?</h3>
+          <p>Xaalya intègre <strong class="text-emerald-400">16 langues</strong> pour permettre à chacun de comparer et envoyer de l'argent en toute sérénité dans sa langue maternelle. En plus du français, de l'anglais et de l'allemand, Xaalya prend en charge 8 langues africaines majeures et transfrontalières : <strong>Lingala</strong>, <strong>Shona</strong>, <strong>Zoulou</strong>, <strong>Wolof</strong>, <strong>Haoussa</strong>, <strong>Yorouba</strong>, <strong>Amharique</strong>, <strong>Swahili</strong>.</p>
         </div>
 
         <div>
-          <h3 class="font-semibold text-white text-base mb-1">7. Quels sont les pays et corridors de transfert d'argent pris en charge ?</h3>
-          <p>Xaalya couvre un large réseau d'envoi et de réception incluant la zone euro, l'Amérique du Nord ainsi que de nombreux pays africains (Côte d'Ivoire, Sénégal, Cameroun, RDC, Afrique du Sud, Zimbabwe, etc.). Notre comparateur analyse en temps réel les solutions de Mobile Money, les transferts bancaires et les agences physiques[cite: 3].</p>
+          <h3 class="font-semibold text-emerald-400 text-base mb-1">7. Quels sont les pays et corridors de transfert d'argent pris en charge ?</h3>
+          <p>Xaalya couvre un large réseau d'envoi et de réception incluant la zone euro, l'Amérique du Nord ainsi que de nombreux pays africains (Côte d'Ivoire, Sénégal, Cameroun, RDC, Afrique du Sud, Zimbabwe, etc.). Notre comparateur analyse en temps réel les solutions de Mobile Money, les transferts bancaires et les agences physiques.</p>
         </div>
 
         <div>
-          <h3 class="font-semibold text-white text-base mb-1">8. Quels sont les opérateurs de transfert d'argent pris en charge ?</h3>
-          <p>Xaalya mesure les taux réels de transfert d'argent vers l'Afrique de 10 Opérateurs internationaux & Fintechs les plus utilisés : <strong>Western Union, Lemfi, WorldRemit, Remitly, Wise, TapTapSend, NALA, Chipper Cash, SendWave, PaySend.</strong>[cite: 3]</p>
+          <h3 class="font-semibold text-emerald-400 text-base mb-1">8. Quels sont les opérateurs de transfert d'argent pris en charge ?</h3>
+          <p>Xaalya mesure les taux réels de transfert d'argent vers l'Afrique de 10 Opérateurs internationaux & Fintechs les plus utilisés : <strong class="text-emerald-400">Western Union, Lemfi, WorldRemit, Remitly, Wise, TapTapSend, NALA, Chipper Cash, SendWave, PaySend.</strong></p>
         </div>
 
         <div class="pt-2 border-t border-slate-800">
-          <p>Pour toute autre question : <a href="mailto:info@xaalya.com" class="text-emerald-400 hover:underline">info@xaalya.com</a>[cite: 3].</p>
+          <p>Pour toute autre question : <a href="mailto:info@xaalya.com" class="text-emerald-400 hover:underline">info@xaalya.com</a>.</p>
         </div>
       </div>
 
@@ -413,56 +413,56 @@
       <h2 class="text-2xl font-bold mb-4 text-emerald-400 border-b border-slate-800 pb-2">Sécurité & Confidentialité</h2>
 
       <p class="text-slate-300 text-sm leading-relaxed mb-3">
-        Chez <strong>Xaalya</strong>, la protection de votre vie privée et la sécurité de vos données et démarches financières ne sont pas seulement des priorités : elles sont au cœur même de la conception de notre plateforme[cite: 3].
+        Chez <strong>Xaalya</strong>, la protection de votre vie privée et la sécurité de vos données et démarches financières ne sont pas seulement des priorités : elles sont au cœur même de la conception de notre plateforme.
       </p>
       <p class="text-slate-300 text-sm leading-relaxed mb-4">
-        En tant que comparateur indépendant de transferts d'argent, nous appliquons un principe fondamental : <strong>vous offrir une transparence tarifaire maximale sans jamais collecter vos données personnelles ou financières.</strong>[cite: 3]
+        En tant que comparateur indépendant de transferts d'argent, nous appliquons un principe fondamental : <strong class="text-emerald-400">vous offrir une transparence tarifaire maximale sans jamais collecter vos données personnelles ou financières.</strong>
       </p>
 
       <hr class="border-slate-800 my-4" />
 
-      <h3 class="text-lg font-semibold text-white mb-3">Nos Engagements pour votre Sécurité</h3>
+      <h3 class="text-lg font-semibold text-emerald-400 mb-3">Nos Engagements pour votre Sécurité</h3>
 
       <div class="space-y-4 text-sm text-slate-300">
         <div>
-          <h4 class="font-semibold text-emerald-300 text-base mb-1">1. Aucune Donnée Bancaire ni Transactionnelle Traitée</h4>
-          <p class="mb-2">Xaalya est un outil de comparaison pur et neutre. <strong>Nous ne sommes ni une banque, ni un établissement de paiement, ni un intermédiaire financier.</strong>[cite: 3]</p>
+          <h4 class="font-semibold text-emerald-400 text-base mb-1">1. Aucune Donnée Bancaire ni Transactionnelle Traitée</h4>
+          <p class="mb-2">Xaalya est un outil de comparaison pur et neutre. <strong class="text-emerald-400">Nous ne sommes ni une banque, ni un établissement de paiement, ni un intermédiaire financier.</strong></p>
           <ul class="list-disc pl-5 space-y-1 text-slate-400">
-            <li><strong>Redirection sécurisée :</strong> Lorsque vous choisissez le meilleur tarif, vous êtes redirigé directement vers le site ou l'application officielle de l'opérateur sélectionné (Mobile Money, virement bancaire, agence en ligne)[cite: 3].</li>
-            <li><strong>Zéro collecte :</strong> Vos numéros de carte bancaire, détails de compte, identifiants ou informations de destinataires ne passent <strong>jamais</strong> par nos serveurs. Vos transactions s'effectuent exclusivement dans l'environnement sécurisé (chiffré en HTTPS) des opérateurs officiels[cite: 3].</li>
+            <li><strong class="text-emerald-400">Redirection sécurisée :</strong> Lorsque vous choisissez le meilleur tarif, vous êtes redirigé directement vers le site ou l'application officielle de l'opérateur sélectionné (Mobile Money, virement bancaire, agence en ligne).</li>
+            <li><strong class="text-emerald-400">Zéro collecte :</strong> Vos numéros de carte bancaire, détails de compte, identifiants ou informations de destinataires ne passent <strong>jamais</strong> par nos serveurs. Vos transactions s'effectuent exclusivement dans l'environnement sécurisé (chiffré en HTTPS) des opérateurs officiels.</li>
           </ul>
         </div>
 
         <div>
-          <h4 class="font-semibold text-emerald-300 text-base mb-1">2. Anonymat Total et Traitement Local (<em>Privacy by Design</em>)</h4>
-          <p class="mb-2">Nous pensons que comparer des taux de change et des frais de transfert ne devrait pas nécessiter de créer un compte ni de partager sa vie privée[cite: 3].</p>
+          <h4 class="font-semibold text-emerald-400 text-base mb-1">2. Anonymat Total et Traitement Local (<em>Privacy by Design</em>)</h4>
+          <p class="mb-2">Nous pensons que comparer des taux de change et des frais de transfert ne devrait pas nécessiter de créer un compte ni de partager sa vie privée.</p>
           <ul class="list-disc pl-5 space-y-1 text-slate-400">
-            <li><strong>Exécution locale :</strong> L'ensemble de vos calculs, choix de corridors et paramètres de langue s'exécutent <strong>directement dans votre navigateur web</strong>[cite: 3].</li>
-            <li><strong>Pas de traçage abusif :</strong> Vos recherches d'envoi d'argent restent strictly confidentielles. Nous ne vendons, ne louons et ne partageons aucune donnée de navigation à des tiers ou des régies publicitaires[cite: 3].</li>
+            <li><strong class="text-emerald-400">Exécution locale :</strong> L'ensemble de vos calculs, choix de corridors et paramètres de langue s'exécutent <strong>directement dans votre navigateur web</strong>.</li>
+            <li><strong class="text-emerald-400">Pas de traçage abusif :</strong> Vos recherches d'envoi d'argent restent strictement confidentielles. Nous ne vendons, ne louons et ne partageons aucune donnée de navigation à des tiers ou des régies publicitaires.</li>
           </ul>
         </div>
 
         <div>
-          <h4 class="font-semibold text-emerald-300 text-base mb-1">3. Protection du Flux de Données et Transparence</h4>
-          <p class="mb-2">Afin de vous fournir des taux de change réels et horodatés en toute sécurité[cite: 3] :</p>
+          <h4 class="font-semibold text-emerald-400 text-base mb-1">3. Protection du Flux de Données et Transparence</h4>
+          <p class="mb-2">Afin de vous fournir des taux de change réels et horodatés en toute sécurité :</p>
           <ul class="list-disc pl-5 space-y-1 text-slate-400">
-            <li><strong>Flux d'API sécurisés :</strong> Nos requêtes de mise à jour des taux interrogent les API des opérateurs ou du marché Forex via des liaisons chiffrées de bout en bout[cite: 3].</li>
-            <li><strong>Conformité aux standards internationaux :</strong> Notre plateforme respecte les principes fondamentaux de protection des données (inspirés du RGPD et des meilleures pratiques internationales en matière de vie privée en ligne)[cite: 3].</li>
+            <li><strong class="text-emerald-400">Flux d'API sécurisés :</strong> Nos requêtes de mise à jour des taux interrogent les API des opérateurs ou du marché Forex via des liaisons chiffrées de bout en bout.</li>
+            <li><strong class="text-emerald-400">Conformité aux standards internationaux :</strong> Notre plateforme respecte les principes fondamentaux de protection des données (inspirés du RGPD et des meilleures pratiques internationales en matière de vie privée en ligne).</li>
           </ul>
         </div>
       </div>
 
       <hr class="border-slate-800 my-4" />
 
-      <h3 class="text-lg font-semibold text-white mb-2">4. Pourquoi naviguer sur Xaalya en toute sérénité ?</h3>
+      <h3 class="text-lg font-semibold text-emerald-400 mb-2">4. Pourquoi naviguer sur Xaalya en toute sérénité ?</h3>
       <ul class="list-disc pl-5 space-y-1 text-sm text-slate-300 mb-4">
-        <li><strong>0 % de données sensibles stockées :</strong> Ni mot de passe, ni pièce d'identité, ni coordonnées bancaires[cite: 3].</li>
-        <li><strong>100 % anonyme :</strong> Aucune obligation de création de compte ou d'inscription par e-mail pour utiliser le comparateur[cite: 3].</li>
-        <li><strong>Connexions chiffrées :</strong> Navigation protégée par les protocoles de sécurité web les plus récents (SSL/TLS)[cite: 3].</li>
+        <li><strong class="text-emerald-400">0 % de données sensibles stockées :</strong> Ni mot de passe, ni pièce d'identité, ni coordonnées bancaires.</li>
+        <li><strong class="text-emerald-400">100 % anonyme :</strong> Aucune obligation de création de compte ou d'inscription par e-mail pour utiliser le comparateur.</li>
+        <li><strong class="text-emerald-400">Connexions chiffrées :</strong> Navigation protégée par les protocoles de sécurité web les plus récents (SSL/TLS).</li>
       </ul>
 
       <p class="text-sm text-slate-300">
-        Pour toute question concernant notre politique de confidentialité ou le fonctionnement technique de la plateforme, vous pouvez nous contacter directement à : <a href="mailto:info@xaalya.com" class="text-emerald-400 hover:underline">info@xaalya.com</a>[cite: 3].
+        Pour toute question concernant notre politique de confidentialité ou le fonctionnement technique de la plateforme, vous pouvez nous contacter directement à : <a href="mailto:info@xaalya.com" class="text-emerald-400 hover:underline">info@xaalya.com</a>.
       </p>
 
     </div>
@@ -763,7 +763,7 @@
         navAbout: "Acerca de",
         navFaq: "FAQ",
         navSecurity: "Seguridad",
-        heroSub: "294 corredores financieros en tiempo real. Comparador 100% gratuito y neutro.",
+        heroSub: "294 corredores financeiros en tiempo real. Comparador 100% gratuito y neutro.",
         labelSource: "Moneda de envío:",
         labelTarget: "Moneda de recepción (África):",
         labelAmount: "Monto enviado:",
@@ -870,7 +870,7 @@
         footerCopy: "© 2026 Xaalya. Haki zote zimehifadhiwa."
       },
       am: {
-        badgeTitle: "ነፃ እና స్వበይነኛ አወዳዳሪ",
+        badgeTitle: "ነፃ እና ስብዕና አወዳዳሪ",
         logoSlogan: "በቀላሉ ያወዳድሩ እና ያስተላልፉ",
         navAbout: "ስለ እኛ",
         navFaq: "ተደጋጋሚ ጥያቄዎች",
@@ -1083,7 +1083,6 @@
       }
     }
 
-    // TRADUCTION DU TITRE PRINCIPAL DYNAMIQUE SELON LA LANGUE CHOISIE
     function mettreAJourTitreHero() {
       const amountInput = document.getElementById('sendAmount').value || '300';
       const sourceSelect = document.getElementById('sourceCurrency');
@@ -1194,9 +1193,6 @@
       });
     }
 
-    /**
-     * ANNONCE AUDIO VOCALE DANS LA LANGUE CHOISIE
-     */
     function annoncerMeilleurOpérateurAudio(nomOpérateur) {
       if ('speechSynthesis' in window) {
         window.speechSynthesis.cancel();
