@@ -94,28 +94,15 @@
     }
   </style>
 
-  <!-- SUIVI GA4 & SCHEMA.ORG -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-W5M59BZS6N"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-W5M59BZS6N');
-  </script>
+  <!-- SUIVI : aucun outil de tracking (respect de la vie privée) -->
 
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "FinancialService",
+    "@type": "WebSite",
     "name": "Xaalya",
     "url": "https://xaalya.com",
-    "description": "Comparateur panafricain 100% gratuit et indépendant de transfert d'argent.",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "EUR",
-      "description": "Service de comparaison neutre et gratuit"
-    }
+    "description": "Comparateur panafricain 100% gratuit et indépendant de transfert d'argent vers l'Afrique."
   }
   </script>
 </head>
@@ -1352,30 +1339,9 @@
         if (codeL.startsWith('fr')) { langueDetectee = 'fr'; break; }
       }
 
-      try {
-        const res = await fetch('https://ipapi.co/json/');
-        if (res.ok) {
-          const data = await res.json();
-          const country = data.country_code;
-          const region = data.region_code;
-
-          if (country === 'ZA') langueDetectee = 'zu';
-          else if (country === 'CD') langueDetectee = 'ln';
-          else if (country === 'ZW') langueDetectee = 'sn';
-          else if (['DE','AT','CH'].includes(country)) langueDetectee = 'de';
-          else if (country === 'CN') langueDetectee = 'zh';
-          else if (country === 'IT') langueDetectee = 'it';
-          else if (['ES','MX','AR','CO'].includes(country)) langueDetectee = 'es';
-          else if (['BR','PT','AO','MZ'].includes(country)) langueDetectee = 'pt';
-          else if (['SA','AE','EG','MA','DZ'].includes(country)) langueDetectee = 'ar';
-          else if (country === 'CA' && region === 'QC') langueDetectee = 'fr';
-          else if (country === 'CA' && region !== 'QC') langueDetectee = 'en';
-          else if (['GB','US','NG','GH','KE'].includes(country)) langueDetectee = 'en';
-          else if (['FR','BE','CI','SN','CM'].includes(country)) langueDetectee = 'fr';
-        }
-      } catch (e) {
-        console.log("Géolocalisation IP indisponible, langue du navigateur conservée.");
-      }
+      // La langue du navigateur (navigator.languages) suffit pour détecter
+      // la langue de l'utilisateur. Aucune géolocalisation IP n'est effectuée :
+      // aucun visiteur n'est tracé, aucune adresse IP n'est envoyée à un tiers.
 
       setLanguage(langueDetectee, false);
     }
