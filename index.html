@@ -199,6 +199,16 @@
 
     <!-- RESULTATS ET AFFICHAGE DES CARTES D'OPÉRATEURS -->
     <section id="resultsContainer" class="space-y-4">
+    <!-- RESULTATS ET AFFICHAGE DES CARTES D'OPÉRATEURS -->
+    <section id="resultsContainer" class="space-y-4">
+      <h3 class="text-xl font-bold text-white flex items-center justify-between">
+        <span data-i18n="resultsTitle">Comparatif des opérateurs</span>
+        <span data-i18n="resultsRank" class="text-xs font-normal text-slate-400">Classé par meilleur taux net</span>
+      </h3>
+
+      <!-- Le conteneur qui recevra les cartes -->
+      <div id="operatorsList" class="space-y-3"></div>
+    </section>
       <h3 class="text-xl font-bold text-white flex items-center justify-between">
         <span data-i18n="resultsTitle">Comparatif des opérateurs</span>
         <span data-i18n="resultsRank" class="text-xs font-normal text-slate-400">Classé par meilleur taux net</span>
@@ -497,7 +507,106 @@
       }
     }
 
-    function afficherComparaison(declencherAudio = false) {
+        function afficherComparaison(declencherAudio = false) {
+      const source = document.getElementById('sourceCurrency').value;
+      const target = document.getElementById('targetCurrency').value;
+      const amount = parseFloat(document.getElementById('sendAmount').value) || 0;
+
+      const container = document.getElementById('operatorsList');
+      const infoBlock = document.getElementById('lastUpdatedInfo');
+      const t = TRANSLATIONS[currentLang] || TRANSLATIONS['fr'];
+
+      const corridorActif = catalogueCorridors.find(c => {
+        const src = c.devisesDepart || c.sourceCurrency || c.source;
+        const tgt = c.deviseArrivee || c.targetCurrency || c.target;
+        return src === source && tgt === target;
+      });
+
+      const offresList = corridorActif ? (corridorActif.offres || corridorActif.operators) : null;
+
+      if (!corridorActif || !offresList || offresList.length === 0) {
+        container.innerHTML = `<div class="py-6 text-center text-slate-400">Aucun opérateur répertorié pour <strong>${source} ➔ ${target}</strong>.</div>`;
+        infoBlock.textContent = '';
+        return;
+      }
+
+      const dateMajRaw = corridorActif.misAJour || corridorActif.updatedAt || new Date().toISOString();
+      const dateLocalObj = new Date(dateMajRaw);
+      const dateFormatted = dateLocalObj.toLocaleString(currentLang, {
+        day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit'
+      });
+      infoBlock.innerHTML = `${t.updatedAtPrefix || 'Actualisé le :'} <strong>${dateFormatted}</strong>`;
+
+      const offresCalculees = offresList.map(offre => {
+        const nomOp = offre.operateur || offre.name || offre.operator;
+        const tauxOp = parseFloat(offre.taux || offre.rate || 0);
+        const fraisOp = parseFloat(offre.frais || offre.fee || 0);
+        const urlOp = offre.url || offre.link || '#';
+        const delaiOp = offre.delai || offre.deliveryTime || t.instantDelay;
+
+        const montantNet = Math.max(0, amount - fraisOp);
+        const montantRecu = parseFloat((montantNet * tauxOp).toFixed(2));
+
+        return {
+          operateur: nomOp,
+          taux: tauxOp,
+          frais: fraisOp,
+          url: urlOp,
+          delai: delaiOp,
+          montantRecu: montantRecu
+        };
+      });
+
+      offresCalculees.sort((a, b) => b.montantRecu - a.montantRecu);
+
+      if (declencherAudio && offresCalculees.length > 0) {
+        annoncerMeilleurOpérateurAudio(offresCalculees[0].operateur);
+      }
+
+      // GÉNÉRATION DU DESIGN EN CARTES
+      container.innerHTML = offresCalculees.map((offre, idx) => {
+        const estLeMeilleur = idx === 0;
+        
+        const bgClass = estLeMeilleur ? 'bg-[#0a1512] border-emerald-500/50' : 'bg-slate-900/90 border-slate-800';
+        const initiale = offre.operateur.charAt(0).toUpperCase();
+        const badge = estLeMeilleur ? `<span class="ml-2 text-[10px] bg-emerald-500 text-slate-950 px-2 py-0.5 rounded-full font-black uppercase tracking-wider">${t.bestRateBadge}</span>` : '';
+        const fraisAffiches = offre.frais > 0 ? `${offre.frais} ${source}` : `<span class="text-emerald-400 font-semibold">${t.freeFee}</span>`;
+
+        return `
+          <div class="flex flex-col md:flex-row md:items-center justify-between p-4 rounded-xl border ${bgClass} transition hover:border-emerald-500/30 gap-4">
+            
+            <!-- Colonne gauche : Logo + Infos -->
+            <div class="flex items-center gap-4 flex-grow">
+              <div class="w-12 h-12 rounded-lg bg-slate-800 flex items-center justify-center text-xl font-black text-slate-300 shadow-inner shrink-0">
+                ${initiale}
+              </div>
+              <div class="flex flex-col">
+                <div class="flex items-center font-bold text-white text-base md:text-lg">
+                  ${offre.operateur}
+                  ${badge}
+                </div>
+                <div class="text-[11px] md:text-xs text-slate-400 mt-1 flex flex-wrap gap-x-4 gap-y-1">
+                  <span>${t.thFee || 'Frais'} : <strong class="text-slate-200">${fraisAffiches}</strong></span>
+                  <span>${t.thRate || 'Taux'} : <strong class="text-slate-200">1 ${source} = ${offre.taux} ${target}</strong></span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Colonne droite : Net reçu + Bouton -->
+            <div class="flex items-center justify-between md:justify-end gap-6 md:w-1/3 shrink-0">
+              <div class="text-right">
+                <div class="text-lg md:text-xl font-black text-emerald-400">${offre.montantRecu.toLocaleString(currentLang)} ${target}</div>
+                <div class="text-[9px] text-slate-500 uppercase tracking-wide">Net reçu</div>
+              </div>
+              <a href="${offre.url}" target="_blank" rel="noopener noreferrer" class="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold px-4 py-2 rounded-xl text-xs md:text-sm transition shadow-lg shrink-0">
+                ${t.btnSend || 'Envoyer ➔'}
+              </a>
+            </div>
+
+          </div>
+        `;
+      }).join('');
+    }
       const source = document.getElementById('sourceCurrency').value;
       const target = document.getElementById('targetCurrency').value;
       const amount = parseFloat(document.getElementById('sendAmount').value) || 0;
