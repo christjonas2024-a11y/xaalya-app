@@ -1,24 +1,20 @@
 <!DOCTYPE html>
-<html lang="fr" class="dark" id="html-root">
+<html lang="en" class="dark" id="html-root">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Notre modèle et notre indépendance — Xaalya</title>
-  <meta name="description" content="Xaalya est financé par la publicité d'annonceurs financiers, jamais par les opérateurs de transfert. Voici nos engagements, notre méthode et comment les vérifier.">
+  <title>Our model and our independence — Xaalya</title>
+  <meta name="description" content="Xaalya is funded by the advertising of financial advertisers, never by money transfer operators.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://xaalya.com/notre-modele">
-
   <link rel="icon" type="image/png" href="assets/logo.png">
   <link rel="apple-touch-icon" href="assets/logo.png">
-
   <meta property="og:site_name" content="Xaalya">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://xaalya.com/notre-modele">
-  <meta property="og:title" content="Notre modèle et notre indépendance — Xaalya">
-  <meta property="og:description" content="Xaalya est financé par la publicité d'annonceurs financiers, jamais par les opérateurs de transfert.">
+  <meta property="og:title" content="Our model and our independence — Xaalya">
+  <meta property="og:description" content="Xaalya is funded by the advertising of financial advertisers, never by money transfer operators.">
   <meta property="og:image" content="https://xaalya.com/logo.png">
-
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -26,27 +22,15 @@
       theme: { extend: { colors: { brand: { 400: '#34d399', 500: '#10b981', 600: '#059669' } } } }
     }
   </script>
-
   <style>
     :root { --bg-color: #0b0f19; --card-bg: #111827; --card-border: #1f2937; --text-main: #ffffff; --text-muted: #9ca3af; }
-    body.light-mode {
-      --bg-color: #f8fafc; --card-bg: #ffffff; --card-border: #e2e8f0; --text-main: #0f172a; --text-muted: #64748b;
-      background-color: var(--bg-color) !important; color: var(--text-main) !important;
-    }
+    body.light-mode { --bg-color: #f8fafc; --card-bg: #ffffff; --card-border: #e2e8f0; --text-main: #0f172a; --text-muted: #64748b; background-color: var(--bg-color) !important; color: var(--text-main) !important; }
     body.light-mode header { background-color: rgba(248,250,252,0.9) !important; border-color: var(--card-border) !important; }
-    body.light-mode section, body.light-mode article { background-color: var(--card-bg) !important; border-color: var(--card-border) !important; color: var(--text-main) !important; }
+    body.light-mode section { background-color: var(--card-bg) !important; border-color: var(--card-border) !important; color: var(--text-main) !important; }
     body.light-mode a { color: #059669 !important; }
   </style>
-
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebPage",
-    "name": "Notre modèle et notre indépendance",
-    "url": "https://xaalya.com/notre-modele",
-    "description": "Xaalya est financé par la publicité d'annonceurs financiers, jamais par les opérateurs de transfert.",
-    "isPartOf": { "@type": "WebSite", "name": "Xaalya", "url": "https://xaalya.com" }
-  }
+  {"@context":"https://schema.org","@type":"WebPage","name":"Our model and our independence","url":"https://xaalya.com/notre-modele","description":"Xaalya is funded by financial advertisers, never by money transfer operators.","isPartOf":{"@type":"WebSite","name":"Xaalya","url":"https://xaalya.com"}}
   </script>
 </head>
 
@@ -61,175 +45,158 @@
           </div>
           <div class="flex flex-col">
             <span class="text-base font-black tracking-tight text-white leading-tight">XAALYA</span>
-            <span class="text-[9px] text-emerald-400 font-medium">Comparateur indépendant</span>
+            <span data-i18n="nm_headerSlogan" class="text-[9px] text-emerald-400 font-medium">Independent comparator</span>
           </div>
         </div>
       </a>
-      <a href="/" class="text-xs font-semibold text-slate-400 hover:text-white transition">← Retour au comparateur</a>
+      <div class="flex items-center gap-2">
+        <select id="language-select" onchange="setLanguage(this.value, true)" class="bg-slate-900 border border-slate-800 text-white text-xs font-bold rounded-lg px-2 py-1.5 focus:outline-none transition cursor-pointer">
+          <option value="fr">🇫🇷 FR</option><option value="zu">🇿🇦 ZU</option><option value="ln">🇨🇩 LN</option><option value="sn">🇿🇼 SN</option><option value="de">🇩🇪 DE</option><option value="en">🇬🇧 EN</option><option value="ar">🇸🇦 AR</option><option value="pt">🇵🇹 PT</option><option value="es">🇪🇸 ES</option><option value="zh">🇨🇳 ZH</option><option value="it">🇮🇹 IT</option><option value="sw">🇰🇪 SW</option><option value="am">🇪🇹 AM</option><option value="yo">🇳🇬 YO</option><option value="ha">🇳🇬 HA</option><option value="wo">🇸🇳 WO</option>
+        </select>
+        <a href="/" data-i18n="nm_backLink" class="text-xs font-semibold text-slate-400 hover:text-white transition">← Back to comparator</a>
+      </div>
     </div>
   </header>
 
   <main class="max-w-3xl mx-auto px-4 py-10 space-y-8 w-full">
 
     <section class="space-y-4">
-      <h1 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">Notre modèle et notre indépendance</h1>
+      <h1 data-i18n="nm_h1" class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">Our model and our independence</h1>
       <p class="text-slate-300 text-base leading-relaxed">
-        Xaalya compare les opérateurs de transfert d'argent sur le seul critère qui compte pour le bénéficiaire :
-        <strong class="text-emerald-400">le montant net qu'il reçoit</strong>, frais et taux de change inclus.
-        Pour que ce classement ait une valeur, il faut qu'il soit neutre.
+        <span data-i18n="nm_intro1">Xaalya compares money transfer operators on the only criterion that matters to the recipient:</span><strong data-i18n="nm_intro1Strong" class="text-emerald-400"> the net amount they receive</strong><span data-i18n="nm_intro1End">, fees and exchange rate included. For that ranking to have value, it must be neutral.</span>
       </p>
-      <p class="text-slate-300 text-sm leading-relaxed">
-        Cette page explique comment nous nous en assurons, ce que nous refusons, et comment vous pouvez le vérifier.
-      </p>
-      <p class="text-slate-500 text-xs italic">Dernière mise à jour : 30 octobre 2026.</p>
+      <p data-i18n="nm_intro2" class="text-slate-300 text-sm leading-relaxed">This page explains how we ensure it, what we refuse, and how you can verify it.</p>
+      <p data-i18n="nm_lastUpdate" class="text-slate-500 text-xs italic">Last updated: 30 October 2026.</p>
     </section>
 
     <section class="bg-slate-900/90 border border-slate-800 p-6 rounded-2xl space-y-3">
-      <h2 class="text-xl font-bold text-emerald-400">1. Notre modèle, en une phrase</h2>
-      <p class="text-slate-300 text-sm leading-relaxed">
-        Xaalya est financé par la <strong class="text-white">publicité d'annonceurs financiers</strong> — banques, assurances, fintechs d'épargne, acteurs de l'immobilier — et
-        <strong class="text-emerald-400">jamais par les opérateurs de transfert d'argent</strong>.
-      </p>
-      <p class="text-slate-300 text-sm leading-relaxed">
-        Ces encarts publicitaires sont clairement identifiés « Partenaire », dans la newsletter comme sur le site.
-        Ils ne financent pas le classement : ils financent le temps de recherche, la collecte des taux et la rédaction des comparatifs.
-      </p>
+      <h2 data-i18n="nm_s1_title" class="text-xl font-bold text-emerald-400">1. Our model, in one sentence</h2>
+      <p class="text-slate-300 text-sm leading-relaxed"><span data-i18n="nm_s1_p1a">Xaalya is funded by</span><strong data-i18n="nm_s1_p1Strong" class="text-white"> the advertising of financial advertisers</strong><span data-i18n="nm_s1_p1Mid"> — banks, insurers, savings fintechs, real estate players — and</span><strong data-i18n="nm_s1_p1Strong2" class="text-emerald-400"> never by money transfer operators</strong><span data-i18n="nm_s1_p1End">.</span></p>
+      <p data-i18n="nm_s1_p2" class="text-slate-300 text-sm leading-relaxed">These ads are clearly labelled 'Partner', in the newsletter and on the site. They do not fund the ranking: they fund research time, rate collection and the writing of comparisons.</p>
     </section>
 
     <section class="bg-slate-900/90 border border-slate-800 p-6 rounded-2xl space-y-4">
-      <h2 class="text-xl font-bold text-emerald-400">2. Ce que nous ne faisons pas</h2>
-      <p class="text-slate-400 text-xs">Cette section est la plus importante. Elle énumère les pratiques que nous nous interdisons, et qui sont courantes dans le secteur des comparateurs.</p>
-
+      <h2 data-i18n="nm_s2_title" class="text-xl font-bold text-emerald-400">2. What we do not do</h2>
+      <p data-i18n="nm_s2_intro" class="text-slate-400 text-xs">This section is the most important. It lists the practices we forbid ourselves, and which are common in the comparison industry.</p>
       <div class="space-y-3">
-        <div class="border-l-2 border-emerald-500 pl-4">
-          <p class="text-white font-semibold text-sm">Nous ne percevons aucune commission d'affiliation des opérateurs.</p>
-          <p class="text-slate-300 text-sm mt-1">Aucun clic sortant, aucune ouverture de compte, aucune transaction ne nous rapporte un centime de la part d'un opérateur de transfert.</p>
-        </div>
-        <div class="border-l-2 border-emerald-500 pl-4">
-          <p class="text-white font-semibold text-sm">Nous n'acceptons aucune publicité d'un opérateur de transfert.</p>
-          <p class="text-slate-300 text-sm mt-1">Ni encart, ni sponsoring, ni mention — quel que soit le montant proposé. Si un opérateur pouvait acheter de la visibilité chez nous, notre classement deviendrait invérifiable.</p>
-        </div>
-        <div class="border-l-2 border-emerald-500 pl-4">
-          <p class="text-white font-semibold text-sm">Nous ne vendons aucune position dans un classement.</p>
-          <p class="text-slate-300 text-sm mt-1">Le classement par défaut est généré par ordre décroissant de montant net reçu. Aucun accord commercial ne peut le modifier.</p>
-        </div>
-        <div class="border-l-2 border-emerald-500 pl-4">
-          <p class="text-white font-semibold text-sm">Nous ne monétisons pas les données personnelles de nos lecteurs.</p>
-          <p class="text-slate-300 text-sm mt-1">Aucune adresse email n'est demandée pour utiliser le comparateur. Aucun outil de tracking (Google Analytics, pixel publicitaire, géolocalisation IP) n'est installé sur ce site.</p>
-        </div>
-        <div class="border-l-2 border-emerald-500 pl-4">
-          <p class="text-white font-semibold text-sm">Nous ne masquons pas les marges de change derrière des « 0 frais ».</p>
-          <p class="text-slate-300 text-sm mt-1">Notre méthode intègre la marge de change dans le coût total, et nous l'expliquons. Un opérateur qui affiche « 0 € de frais » n'apparaît jamais comme gratuit dans nos tableaux si sa marge de change est élevée.</p>
-        </div>
+        <div class="border-l-2 border-emerald-500 pl-4"><p data-i18n="nm_s2_1_t" class="text-white font-semibold text-sm">We receive no affiliate commission from operators.</p><p data-i18n="nm_s2_1_d" class="text-slate-300 text-sm mt-1">No outbound click, no account opening, no transaction earns us a single cent from a money transfer operator.</p></div>
+        <div class="border-l-2 border-emerald-500 pl-4"><p data-i18n="nm_s2_2_t" class="text-white font-semibold text-sm">We accept no advertising from a money transfer operator.</p><p data-i18n="nm_s2_2_d" class="text-slate-300 text-sm mt-1">No banner, no sponsorship, no mention — whatever the amount offered.</p></div>
+        <div class="border-l-2 border-emerald-500 pl-4"><p data-i18n="nm_s2_3_t" class="text-white font-semibold text-sm">We sell no position in any ranking.</p><p data-i18n="nm_s2_3_d" class="text-slate-300 text-sm mt-1">The default ranking is generated by descending order of net amount received. No commercial agreement can change it.</p></div>
+        <div class="border-l-2 border-emerald-500 pl-4"><p data-i18n="nm_s2_4_t" class="text-white font-semibold text-sm">We do not monetise our readers' personal data.</p><p data-i18n="nm_s2_4_d" class="text-slate-300 text-sm mt-1">No email address is required to use the comparator. No tracking tool is installed on this site.</p></div>
+        <div class="border-l-2 border-emerald-500 pl-4"><p data-i18n="nm_s2_5_t" class="text-white font-semibold text-sm">We do not hide exchange rate margins behind '0 fees'.</p><p data-i18n="nm_s2_5_d" class="text-slate-300 text-sm mt-1">Our method includes the exchange rate margin in the total cost, and we explain it.</p></div>
       </div>
     </section>
 
-    <section class="bg-slate-900/90 border border-slate-800 p-6 rounded-2xl space-y-3">
-      <h2 class="text-xl font-bold text-emerald-400">3. Comment le classement est calculé</h2>
+        <section class="bg-slate-900/90 border border-slate-800 p-6 rounded-2xl space-y-3">
+      <h2 data-i18n="nm_s3_title" class="text-xl font-bold text-emerald-400">3. How the ranking is calculated</h2>
       <p class="text-slate-300 text-sm leading-relaxed">
-        Le classement par défaut de chaque corridor repose sur une seule donnée : <strong class="text-white">le montant net reçu par le bénéficiaire</strong>,
-        pour un montant envoyé donné.
+        <span data-i18n="nm_s3_p1a">The default ranking of each corridor is based on a single figure:</span>
+        <strong data-i18n="nm_s3_p1Strong" class="text-white"> the net amount received by the recipient</strong>
+        <span data-i18n="nm_s3_p1End">, for a given amount sent.</span>
       </p>
-
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-3">
         <div class="bg-slate-950 border border-slate-800 p-4 rounded-xl">
-          <p class="text-emerald-400 font-semibold text-xs uppercase tracking-wider mb-2">Ce qui entre dans le calcul</p>
+          <p data-i18n="nm_s3_in_title" class="text-emerald-400 font-semibold text-xs uppercase tracking-wider mb-2">What is included</p>
           <ul class="text-slate-300 text-sm space-y-1 list-disc pl-4">
-            <li>Frais affichés par l'opérateur</li>
-            <li>Marge de change (écart avec le taux interbancaire)</li>
-            <li>Frais de réception, le cas échéant</li>
+            <li data-i18n="nm_s3_in_1">Fees displayed by the operator</li>
+            <li data-i18n="nm_s3_in_2">Exchange rate margin (difference from the interbank rate)</li>
+            <li data-i18n="nm_s3_in_3">Receiving fees, where applicable</li>
           </ul>
         </div>
         <div class="bg-slate-950 border border-slate-800 p-4 rounded-xl">
-          <p class="text-red-400 font-semibold text-xs uppercase tracking-wider mb-2">Ce qui n'entre pas</p>
+          <p data-i18n="nm_s3_out_title" class="text-red-400 font-semibold text-xs uppercase tracking-wider mb-2">What is not included</p>
           <ul class="text-slate-300 text-sm space-y-1 list-disc pl-4">
-            <li>Un accord commercial (il n'y en a aucun)</li>
-            <li>La notoriété de l'opérateur</li>
-            <li>Le volume de trafic généré</li>
-            <li>Le montant de sa dépense publicitaire</li>
+            <li data-i18n="nm_s3_out_1">A commercial agreement (there are none)</li>
+            <li data-i18n="nm_s3_out_2">The operator's reputation</li>
+            <li data-i18n="nm_s3_out_3">The volume of traffic generated</li>
+            <li data-i18n="nm_s3_out_4">The amount of their advertising spend</li>
           </ul>
         </div>
       </div>
-
       <p class="text-slate-300 text-sm leading-relaxed mt-2">
-        <strong class="text-white">Fréquence de mise à jour.</strong> Les taux sont relevés quotidiennement et les tableaux actualisés.
-        La date du dernier relevé est affichée sous le formulaire de comparaison.
+        <strong data-i18n="nm_s3_freqStrong" class="text-white">Update frequency.</strong>
+        <span data-i18n="nm_s3_freqText"> Rates are collected daily and tables are updated. The date of the latest collection is displayed under the comparison form.</span>
       </p>
     </section>
 
     <section class="bg-slate-900/90 border border-slate-800 p-6 rounded-2xl space-y-3">
-      <h2 class="text-xl font-bold text-emerald-400">4. La séparation entre l'éditorial et le commercial</h2>
-      <p class="text-slate-300 text-sm leading-relaxed">
-        La rédaction des comparatifs, des fiches opérateur, des guides et des études est indépendante de la fonction commerciale.
-      </p>
+      <h2 data-i18n="nm_s4_title" class="text-xl font-bold text-emerald-400">4. Separation between editorial and commercial</h2>
+      <p data-i18n="nm_s4_p1" class="text-slate-300 text-sm leading-relaxed">The writing of comparisons, operator profiles, guides and studies is independent of the commercial function.</p>
       <div class="bg-slate-950 border border-slate-800 p-4 rounded-xl space-y-2 text-sm">
-        <p class="text-slate-300"><strong class="text-emerald-400">Ce que l'annonceur valide :</strong> son encart, son visuel, son texte, son lien. C'est tout.</p>
-        <p class="text-slate-300"><strong class="text-red-400">Ce qu'il ne valide pas :</strong> le classement, la note d'un opérateur, le contenu d'une étude.</p>
+        <p class="text-slate-300"><strong data-i18n="nm_s4_okStrong" class="text-emerald-400">What the advertiser approves:</strong><span data-i18n="nm_s4_okText"> their banner, visual, text, link. That is all.</span></p>
+        <p class="text-slate-300"><strong data-i18n="nm_s4_noStrong" class="text-red-400">What they do not approve:</strong><span data-i18n="nm_s4_noText"> the ranking, an operator's rating, the content of a study.</span></p>
       </div>
-      <p class="text-slate-300 text-sm leading-relaxed">
-        Les emplacements publicitaires ne figurent jamais à l'intérieur d'un tableau de comparaison, ni au-dessus du classement, ni dans un bloc de données chiffrées.
-      </p>
+      <p data-i18n="nm_s4_p2" class="text-slate-300 text-sm leading-relaxed">Advertising placements never appear inside a comparison table, above the ranking, or in a block of figures.</p>
     </section>
 
     <section class="bg-slate-900/90 border border-slate-800 p-6 rounded-2xl space-y-3">
-      <h2 class="text-xl font-bold text-emerald-400">5. Les erreurs et les corrections</h2>
-      <p class="text-slate-300 text-sm leading-relaxed">
-        Un comparateur qui prétend ne jamais se tromper n'est pas crédible. Les taux changent, les plafonds évoluent, les opérateurs modifient leurs grilles.
-      </p>
+      <h2 data-i18n="nm_s5_title" class="text-xl font-bold text-emerald-400">5. Errors and corrections</h2>
+      <p data-i18n="nm_s5_p1" class="text-slate-300 text-sm leading-relaxed">A comparator claiming never to be wrong is not credible. Rates change, limits evolve, operators modify their pricing.</p>
       <ul class="text-slate-300 text-sm space-y-1 list-disc pl-5">
-        <li>Toute erreur signalée est vérifiée sous 5 jours ouvrés.</li>
-        <li>Lorsqu'elle est confirmée, elle est corrigée et la correction est datée et visible.</li>
-        <li>Les corrections substantielles sont mentionnées dans nos publications.</li>
+        <li data-i18n="nm_s5_li1">Any reported error is verified within 5 business days.</li>
+        <li data-i18n="nm_s5_li2">When confirmed, it is corrected and the correction is dated and visible.</li>
+        <li data-i18n="nm_s5_li3">Substantial corrections are mentioned in our publications.</li>
       </ul>
-      <p class="text-slate-400 text-xs mt-2">Pour signaler une erreur : <a href="mailto:contact@xaalya.com" class="text-emerald-400 hover:underline">contact@xaalya.com</a></p>
+      <p class="text-slate-400 text-xs mt-2">
+        <span data-i18n="nm_s5_report">To report an error:</span>
+        <a href="mailto:contact@xaalya.com" class="text-emerald-400 hover:underline">contact@xaalya.com</a>
+      </p>
     </section>
 
     <section class="bg-slate-900/90 border border-slate-800 p-6 rounded-2xl space-y-3">
-      <h2 class="text-xl font-bold text-emerald-400">6. Comment vérifier ce que nous affirmons</h2>
-      <p class="text-slate-300 text-sm leading-relaxed">Nous ne demandons pas d'être crus sur parole. Chacun des engagements ci-dessus est vérifiable :</p>
+      <h2 data-i18n="nm_s6_title" class="text-xl font-bold text-emerald-400">6. How to verify what we claim</h2>
+      <p data-i18n="nm_s6_intro" class="text-slate-300 text-sm leading-relaxed">We do not ask to be taken at our word. Each of the commitments above is verifiable:</p>
       <ul class="text-slate-300 text-sm space-y-2 list-disc pl-5">
-        <li><strong class="text-white">Aucun outil de tracking</strong> : ouvrez la console de votre navigateur (F12), onglet « Réseau ». Les seules requêtes externes sont le CDN Tailwind et votre fichier de taux. Aucun appel vers Google Analytics, aucun appel de géolocalisation IP.</li>
-        <li><strong class="text-white">Aucun formulaire de capture d'email</strong> : le comparateur fonctionne sans inscription, sans adresse email, sans compte.</li>
-        <li><strong class="text-white">Aucun lien d'affiliation</strong> : les liens sortants vers les opérateurs ne contiennent aucun paramètre de tracking affilié.</li>
-        <li><strong class="text-white">Aucune publicité d'opérateur</strong> : si un encart apparaît un jour sur le site, il sera identifié « Partenaire » et ne concernera jamais un opérateur de transfert.</li>
+        <li><strong data-i18n="nm_s6_li1Strong" class="text-white">No tracking tools</strong><span data-i18n="nm_s6_li1">: open your browser console (F12), 'Network' tab. The only external requests are the Tailwind CDN and your rate file. No calls to Google Analytics, no IP geolocation calls.</span></li>
+        <li><strong data-i18n="nm_s6_li2Strong" class="text-white">No email capture form</strong><span data-i18n="nm_s6_li2">: the comparator works without registration, without email address, without an account.</span></li>
+        <li><strong data-i18n="nm_s6_li3Strong" class="text-white">No affiliate links</strong><span data-i18n="nm_s6_li3">: outbound links to operators contain no affiliate tracking parameters.</span></li>
+        <li><strong data-i18n="nm_s6_li4Strong" class="text-white">No operator advertising</strong><span data-i18n="nm_s6_li4">: if a banner ever appears on the site, it will be labelled 'Partner' and will never concern a money transfer operator.</span></li>
       </ul>
     </section>
 
     <section class="bg-slate-900/90 border border-slate-800 p-6 rounded-2xl space-y-4">
-      <h2 class="text-xl font-bold text-emerald-400">7. Questions fréquentes</h2>
-
+      <h2 data-i18n="nm_s7_title" class="text-xl font-bold text-emerald-400">7. Frequently asked questions</h2>
       <div class="space-y-4 text-sm">
         <div>
-          <p class="text-white font-semibold">Pourquoi ne pas accepter la publicité des opérateurs, si elle est identifiée ?</p>
-          <p class="text-slate-300 mt-1">Parce que l'identification ne suffit pas. Un opérateur qui paie pour être présent chez nous, même dans un encart identifié, crée une relation commerciale qui rend le classement suspect. Notre valeur pour les lecteurs — et pour les annonceurs qui nous font confiance — repose précisément sur l'absence de cette relation.</p>
+          <p data-i18n="nm_s7_q1" class="text-white font-semibold">Why not accept operator advertising, if it is identified?</p>
+          <p data-i18n="nm_s7_a1" class="text-slate-300 mt-1">Because identification is not enough. An operator paying to be present on our site, even in an identified banner, creates a commercial relationship that makes the ranking suspect.</p>
         </div>
         <div>
-          <p class="text-white font-semibold">Comment vivez-vous si les opérateurs ne paient pas ?</p>
-          <p class="text-slate-300 mt-1">Par la publicité d'annonceurs financiers qui ne sont pas des opérateurs de transfert : banques, assurances, fintechs d'épargne, acteurs de l'immobilier. Ces acteurs ont intérêt à ce que l'audience de Xaalya existe et fasse confiance au média — pas à ce qu'un opérateur y soit favorisé.</p>
+          <p data-i18n="nm_s7_q2" class="text-white font-semibold">How do you make a living if operators do not pay?</p>
+          <p data-i18n="nm_s7_a2" class="text-slate-300 mt-1">Through advertising from financial advertisers who are not money transfer operators: banks, insurers, savings fintechs, real estate players.</p>
         </div>
         <div>
-          <p class="text-white font-semibold">Que se passe-t-il si un opérateur propose une somme importante ?</p>
-          <p class="text-slate-300 mt-1">Nous refusons, et nous le disons. Cette page existe précisément pour rendre ce refus public et vérifiable.</p>
+          <p data-i18n="nm_s7_q3" class="text-white font-semibold">What happens if an operator offers a large sum?</p>
+          <p data-i18n="nm_s7_a3" class="text-slate-300 mt-1">We refuse, and we say so. This page exists precisely to make that refusal public and verifiable.</p>
         </div>
         <div>
-          <p class="text-white font-semibold">Collectez-vous des données personnelles ?</p>
-          <p class="text-slate-300 mt-1">Aucune. Pas d'adresse email, pas d'IP, pas de cookie de tracking, pas d'outil d'analytics. Le comparateur calcule le montant net directement dans votre navigateur. Seule la préférence de langue et de thème (clair/sombre) est mémorisée, et uniquement dans votre navigateur (localStorage) — jamais transmise à nos serveurs.</p>
+          <p data-i18n="nm_s7_q4" class="text-white font-semibold">Do you collect personal data?</p>
+          <p data-i18n="nm_s7_a4" class="text-slate-300 mt-1">None. No email address, no IP, no tracking cookie, no analytics tool. Only language and theme preferences are stored, in your browser only.</p>
         </div>
       </div>
     </section>
 
     <section class="border-t border-slate-800 pt-6">
       <p class="text-slate-500 text-xs text-center leading-relaxed">
-        Cette page a été mise à jour le 30 octobre 2026. Elle est révisée à chaque changement de modèle économique, et au minimum une fois par an.<br>
-        Contact : <a href="mailto:contact@xaalya.com" class="text-emerald-400 hover:underline">contact@xaalya.com</a>
+        <span data-i18n="nm_footer">This page was updated on 30 October 2026. It is revised with every change in business model, and at least once a year.</span><br>
+        <span data-i18n="nm_footerContact">Contact:</span>
+        <a href="mailto:contact@xaalya.com" class="text-emerald-400 hover:underline">contact@xaalya.com</a>
       </p>
     </section>
 
   </main>
 
   <footer class="border-t border-slate-800/80 bg-slate-950 py-8 text-center text-xs text-slate-500">
-    <p>© 2026 Xaalya. Comparateur indépendant et 100% gratuit. <a href="/" class="text-emerald-400 hover:underline">Retour au comparateur</a></p>
+    <p>© 2026 Xaalya. <a href="/" class="text-emerald-400 hover:underline">Xaalya.com</a></p>
   </footer>
+
+  <!-- Charge le fichier i18n.js partagé, puis applique la langue -->
+  <script src="/i18n.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', async function() {
+      await detecterLangueParDefaut();
+    });
+  </script>
 
 </body>
 </html>
