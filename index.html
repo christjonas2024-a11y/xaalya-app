@@ -157,8 +157,9 @@ body.light-mode input, body.light-mode select {
     <h2 id="dynamic-hero-title" class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
       You send 300€ to Africa. How much actually arrives?
     </h2>
-    <p data-i18n="heroSub" class="text-brand-400 font-semibold max-w-2xl mx-auto text-sm sm:text-base">
+        <p data-i18n="heroSub" class="text-brand-400 font-semibold max-w-2xl mx-auto text-sm sm:text-base">
       294 real-time financial corridors. 100% free and neutral comparison.
+    </p>
     </p>
   </section>
 
@@ -264,27 +265,20 @@ let tauxDeChange = {};
 let currentLang = 'en';
 
 const REGION_LABELS = {
-  // Devises d'envoi (pays d'origine)
   EUR: "Euro Zone (€)", USD: "United States ($)", CAD: "Canada ($)", GBP: "United Kingdom (£)",
   CNY: "China (¥)", CHF: "Switzerland (CHF)", AED: "UAE (د.إ)",
-  
-  // Devises de réception (Afrique) — 42 devises
-  // Afrique de l'Ouest (UEMOA)
-  XOF: "West African CFA",
-  // Afrique Centrale (CEMAC)
-  XAF: "Central African CFA",
-  // Afrique du Nord
-  DZD: "Algerian Dinar", MAD: "Moroccan Dirham", TND: "Tunisian Dinar", LYD: "Libyan Dinar", EGP: "Egyptian Pound",
-  // Afrique de l'Est
-  KES: "Kenyan Shilling", TZS: "Tanzanian Shilling", UGX: "Ugandan Shilling", RWF: "Rwandan Franc", BIF: "Burundian Franc",
-  ETB: "Ethiopian Birr", SOS: "Somali Shilling", DJF: "Djiboutian Franc", ERN: "Eritrean Nakfa", SSP: "South Sudanese Pound", SDG: "Sudanese Pound",
-  // Afrique australe
-  ZAR: "South African Rand", NAD: "Namibian Dollar", BWP: "Botswana Pula", ZMW: "Zambian Kwacha", MWK: "Malawian Kwacha",
-  MZN: "Mozambican Metical", ZWG: "Zimbabwe Gold", LSL: "Lesotho Loti", SZL: "Swazi Lilangeni", AOA: "Angolan Kwanza",
-  // Afrique de l'Ouest (non-UEMOA)
-  NGN: "Nigerian Naira", GHS: "Ghanaian Cedi", GMD: "Gambian Dalasi", GNF: "Guinean Franc", LRD: "Liberian Dollar",
+  XOF: "West African CFA", XAF: "Central African CFA", NGN: "Nigerian Naira",
+  GHS: "Ghanaian Cedi", KES: "Kenyan Shilling", MAD: "Moroccan Dirham",
+  DZD: "Algerian Dinar", TND: "Tunisian Dinar", ZAR: "South African Rand",
+  LYD: "Libyan Dinar", EGP: "Egyptian Pound", TZS: "Tanzanian Shilling", 
+  UGX: "Ugandan Shilling", RWF: "Rwandan Franc", BIF: "Burundian Franc",
+  ETB: "Ethiopian Birr", SOS: "Somali Shilling", DJF: "Djiboutian Franc", 
+  ERN: "Eritrean Nakfa", SSP: "South Sudanese Pound", SDG: "Sudanese Pound",
+  NAD: "Namibian Dollar", BWP: "Botswana Pula", ZMW: "Zambian Kwacha", 
+  MWK: "Malawian Kwacha", MZN: "Mozambican Metical", ZWG: "Zimbabwe Gold", 
+  LSL: "Lesotho Loti", SZL: "Swazi Lilangeni", AOA: "Angolan Kwanza",
+  GMD: "Gambian Dalasi", GNF: "Guinean Franc", LRD: "Liberian Dollar",
   SLE: "Sierra Leonean Leone", CVE: "Cape Verdean Escudo", MRU: "Mauritanian Ouguiya",
-  // Océan Indien
   MGA: "Malagasy Ariary", MUR: "Mauritian Rupee", SCR: "Seychellois Rupee", KMF: "Comorian Franc"
 };
 
@@ -307,7 +301,56 @@ const TRANSLATIONS = {
   ln: { badgeTitle: "MOPESIPASO YA SOLO", logoSlogan: "Kokokanisa & Kotinda", navAbout: "Makambo", navFaq: "Mituna", navSecurity: "Bokengi", heroSub: "Nzelá 294 ya mbongo.", labelSource: "Mbongo ya kotinda:", labelTarget: "Mbongo ya koyamba:", labelAmount: "Motuya:", statusConnected: "Ekitisami na motuya ya mokili", resultsTitle: "Kokokanisa ba kompani", resultsRank: "Ebongisami na motuya malamu", thRank: "Esika", thOperator: "Kompani", thRate: "Motuya ya Kokeba", thFee: "Fɔti", thReceived: "Motuya Eyaki", thDelivery: "Ntango", thAction: "Kosala", btnSend: "Tinda ➔", freeFee: "Efuti te", instantDelay: "Na mbala moko", updatedAtPrefix: "Esili kobongisama:", bestRateBadge: "Ere y'ntalo moke", footerCopy: "© 2026 Xaalya.", closeBtn: "✕ KANGISA", aboutTitle: "Makambo ya Xaalya", aboutH3_1: "Makanisi na Biso", aboutP_1: "Xaalya ezali mopesipaso ya ofele.", aboutP_2: "Tozongisa nguya na basaleli.", aboutH3_2: "Mpo na nini?", aboutLi1_strong: "Bonsomi:", aboutLi1_txt: "Tozali te na etuluku ya mbongo.", aboutLi2_strong: "Motuya ya Solo:", aboutLi2_txt: "Classement na motuya ya solo.", aboutLi4_strong: "Minoko:", aboutLi4_txt: "Minoko 16.", faqTitle: "Mituna", faqQ1: "1. Ya ofele?", faqA1: "Ee, 100%.", faqQ2: "2. Bonsomi?", faqA2: "Mpenza.", secTitle: "Bokengi", secP1: "Bombumbu na yo ezali na motema.", secH4_1: "1. Ba Données te", secP2: "Ebombaka ba carte te.", secH4_2: "2. Bonsomi", secP3: "Esengami te compte." },
   sn: { badgeTitle: "MUCHANANIDZI WEMAHARA", logoSlogan: "Enzanisai uye mutumire", navAbout: "Nezve", navFaq: "Mibvuniko", navSecurity: "Chengetedzo", heroSub: "Nzira 294 dzinovandudzwa.", labelSource: "Mari yekutumira:", labelTarget: "Mari inogamuchirwa:", labelAmount: "Mari inotumirwa:", statusConnected: "Yakashandurwa", resultsTitle: "Kufananidza makambani", resultsRank: "Yakarongwa zvakanakisisa", thRank: "Chinzvimbo", thOperator: "Kambani", thRate: "Mutengo", thFee: "Mutero", thReceived: "Mari Yakagamuchirwa", thDelivery: "Nguva", thAction: "Chiito", btnSend: "Tumira ➔", freeFee: "Mahara", instantDelay: "Pakarepo", updatedAtPrefix: "Yakagadziriswa:", bestRateBadge: "Yakachipa", footerCopy: "© 2026 Xaalya.", closeBtn: "✕ VHARAI", aboutTitle: "Nezve Xaalya", aboutH3_1: "Chinangwa Chedu", aboutP_1: "Xaalya inharidzirwa yemahara.", aboutP_2: "Tinopa simba vashandisi.", aboutH3_2: "Nei Muchivimba?", aboutLi1_strong: "Kuzvimirira:", aboutLi1_txt: "Hatifaniri neboka remari.", aboutLi2_strong: "Mari Chaiyo:", aboutLi2_txt: "Rondedzero pamari chaiyo.", aboutLi4_strong: "Mitauro:", aboutLi4_txt: "Mitauro 16.", faqTitle: "Mibvunzo", faqQ1: "1. Yemahara?", faqA1: "Ehe, 100%.", faqQ2: "2. Yakazvimirira?", faqA2: "Zvechokwadi.", secTitle: "Chengetedzo", secP1: "Kuvanzika kwako kwakakosha.", secH4_1: "1. Hapana Data", secP2: "Haichengete makadhi.", secH4_2: "2. Kuzivikanwa", secP3: "Hapana account." },
   de: { badgeTitle: "KOSTENLOSER VERGLEICH", logoSlogan: "Einfach vergleichen", navAbout: "Über uns", navFaq: "FAQ", navSecurity: "Sicherheit", heroSub: "294 Korridore in Echtzeit.", labelSource: "Sende-Währung:", labelTarget: "Empfangs-Währung:", labelAmount: "Betrag:", statusConnected: "Zu weltweiten Kursen", resultsTitle: "Anbietervergleich", resultsRank: "Nach bestem Nettobetrag", thRank: "Rang", thOperator: "Anbieter", thRate: "Wechselkurs", thFee: "Gebühr", thReceived: "Empfangener Betrag", thDelivery: "Zeit", thAction: "Aktion", btnSend: "Senden ➔", freeFee: "Kostenlos", instantDelay: "Sofort", updatedAtPrefix: "Aktualisiert:", bestRateBadge: "Am günstigsten", footerCopy: "© 2026 Xaalya.", closeBtn: "✕ SCHLIESSEN", aboutTitle: "Über Xaalya", aboutH3_1: "Unsere Mission", aboutP_1: "Xaalya ist ein kostenloser Vergleichsrechner.", aboutP_2: "Wir geben den Nutzern die Kontrolle zurück.", aboutH3_2: "Warum vertrauen?", aboutLi1_strong: "Unabhängigkeit:", aboutLi1_txt: "Keine Finanzgruppe.", aboutLi2_strong: "Echter Nettobetrag:", aboutLi2_txt: "Basierend auf dem Nettobetrag.", aboutLi4_strong: "Sprachen:", aboutLi4_txt: "16 Sprachen.", faqTitle: "FAQ", faqQ1: "1. Kostenlos?", faqA1: "Ja, 100%.", faqQ2: "2. Unabhängig?", faqA2: "Absolut.", secTitle: "Sicherheit", secP1: "Ihre Privatsphäre ist geschützt.", secH4_1: "1. Keine Bankdaten", secP2: "Keine Speicherung von Karten.", secH4_2: "2. Anonymität", secP3: "Kein Konto erforderlich." },
-    en: { badgeTitle: "FREE & INDEPENDENT COMPARATOR", logoSlogan: "Compare & Transfer with ease", navAbout: "About", navFaq: "FAQ", navSecurity: "Security", heroSub: "294 real-time financial corridors. 100% free and neutral comparison.", labelSource: "Send currency:", labelTarget: "Receive currency (Africa):", labelAmount: "Send amount:", statusConnected: "Converted at global rates", resultsTitle: "Operators comparison", resultsRank: "Ranked by best net rate", thRank: "Rank", thOperator: "Operator", thRate: "Exchange Rate", thFee: "Transfer Fee", thReceived: "Amount Received", thDelivery: "Est. Time", thAction: "Action", btnSend: "Send ➔", freeFee: "Free", instantDelay: "Instant", updatedAtPrefix: "Updated on:", bestRateBadge: "Cheapest", footerCopy: "© 2026 Xaalya. All rights reserved. Free independent comparator.", closeBtn: "✕ CLOSE", aboutTitle: "About Xaalya", aboutH3_1: "Our Mission", aboutP_1: "Xaalya is a 100% free comparator.", aboutP_2: "We empower users and secure every cent.", aboutH3_2: "Why Trust Xaalya?", aboutLi1_strong: "Independence:", aboutLi1_txt: "We do not belong to any financial group.", aboutLi2_strong: "Real Net Amount:", aboutLi2_txt: "Based solely on the exact net amount.", aboutLi4_strong: "Inclusivity:", aboutLi4_txt: "Available in 16 languages.", faqTitle: "FAQ", faqQ1: "1. Really free?", faqA1: "Yes, 100% free.", faqQ2: "2. Independent?", faqA2: "Absolutely.", secTitle: "Security", secP1: "Protecting your privacy is at our core.", secH4_1: "1. No Banking Data", secP2: "We never store your cards.", secH4_2: "2. Total Anonymity", secP3: "No account creation required." },
+      en: { 
+    badgeTitle: "FREE & INDEPENDENT COMPARATOR", 
+    logoSlogan: "Compare & Transfer with ease", 
+    navAbout: "About", 
+    navFaq: "FAQ", 
+    navSecurity: "Security", 
+    heroSub: "294 real-time financial corridors. 100% free and neutral comparison.", 
+    labelSource: "Send currency:", 
+    labelTarget: "Receive currency (Africa):", 
+    labelAmount: "Send amount:", 
+    statusConnected: "Converted at global rates", 
+    resultsTitle: "Operators comparison", 
+    resultsRank: "Ranked by best net rate", 
+    thRank: "Rank", 
+    thOperator: "Operator", 
+    thRate: "Exchange Rate", 
+    thFee: "Transfer Fee", 
+    thReceived: "Amount Received", 
+    thDelivery: "Est. Time", 
+    thAction: "Action", 
+    btnSend: "Send ➔", 
+    freeFee: "Free", 
+    instantDelay: "Instant", 
+    updatedAtPrefix: "Updated on:", 
+    bestRateBadge: "Cheapest", 
+    footerCopy: "© 2026 Xaalya. All rights reserved. Free independent comparator.", 
+    closeBtn: "✕ CLOSE", 
+    aboutTitle: "About Xaalya", 
+    aboutH3_1: "Our Mission", 
+    aboutP_1: "Xaalya is a 100% free comparator.", 
+    aboutP_2: "We empower users and secure every cent.", 
+    aboutH3_2: "Why Trust Xaalya?", 
+    aboutLi1_strong: "Independence:", 
+    aboutLi1_txt: "We do not belong to any financial group.", 
+    aboutLi2_strong: "Real Net Amount:", 
+    aboutLi2_txt: "Based solely on the exact net amount.", 
+    aboutLi4_strong: "Inclusivity:", 
+    aboutLi4_txt: "Available in 16 languages.", 
+    faqTitle: "FAQ", 
+    faqQ1: "1. Really free?", 
+    faqA1: "Yes, 100% free.", 
+    faqQ2: "2. Independent?", 
+    faqA2: "Absolutely.", 
+    secTitle: "Security", 
+    secP1: "Protecting your privacy is at our core.", 
+    secH4_1: "1. No Banking Data", 
+    secP2: "We never store your cards.", 
+    secH4_2: "2. Total Anonymity", 
+    secP3: "No account creation required." 
+  },
   ar: { badgeTitle: "مقارن مجاني ومستقل", logoSlogan: "قارن وحول بكل سهولة", navAbout: "عن المنصة", navFaq: "الأسئلة الشائعة", navSecurity: "الأمان", heroSub: "294 ممرًا ماليًا محدثًا.", labelSource: "عملة الإرسال:", labelTarget: "عملة الاستلام:", labelAmount: "المبلغ المراد إرساله:", statusConnected: "محولة بالأسعار العالمية", resultsTitle: "مقارنة المشغلين", resultsRank: "مرتبة حسب أفضل مبلغ صافي", thRank: "الترتيب", thOperator: "الشركة", thRate: "سعر الصرف", thFee: "رسوم التحويل", thReceived: "المبلغ المستلم", thDelivery: "الوقت المقدر", thAction: "الإجراء", btnSend: "إرسال ➔", freeFee: "مجاناً", instantDelay: "فوري", updatedAtPrefix: "تم التحديث بتاريخ:", bestRateBadge: "الأرخص", footerCopy: "© 2026 Xaalya.", closeBtn: "✕ إغلاق", aboutTitle: "عن Xaalya", aboutH3_1: "مهمتنا", aboutP_1: "Xaalya هو موقع مقارنة مجاني 100% ومستقل تماماً.", aboutP_2: "نعيد السلطة للمستخدمين.", aboutH3_2: "لماذا تثق في Xaalya؟", aboutLi1_strong: "استقلال تام:", aboutLi1_txt: "لا ننتمي إلى أي مجموعة مالية.", aboutLi2_strong: "صافي المبلغ الحقيقي:", aboutLi2_txt: "تعتمد على صافي المبلغ الدقيق.", aboutLi4_strong: "16 لغة:", aboutLi4_txt: "متاح بالفرنسية والإنجليزية.", faqTitle: "الأسئلة الشائعة", faqQ1: "1. هل هو مجاني؟", faqA1: "نعم، 100%.", faqQ2: "2. هل هو مستقل؟", faqA2: "بالتأكيد.", secTitle: "الأمان", secP1: "حماية خصوصيتك هي جوهر تصميمنا.", secH4_1: "1. لا توجد بيانات مصرفية", secP2: "لا نخزن بطاقاتك.", secH4_2: "2. عدم الكشف عن الهوية", secP3: "لا يلزم إنشاء حساب." },
   pt: { badgeTitle: "COMPARADOR GRATUITO", logoSlogan: "Compare e transfira", navAbout: "Sobre", navFaq: "FAQ", navSecurity: "Segurança", heroSub: "294 corredores financeiros.", labelSource: "Moeda de envio:", labelTarget: "Moeda de recebimento:", labelAmount: "Valor enviado:", statusConnected: "Convertido às taxas mundiais", resultsTitle: "Comparação de operadoras", resultsRank: "Classificado pela melhor taxa", thRank: "Posição", thOperator: "Operadora", thRate: "Taxa de Câmbio", thFee: "Taxa de Envio", thReceived: "Valor Recebido", thDelivery: "Tempo Estimado", thAction: "Ação", btnSend: "Enviar ➔", freeFee: "Gratuito", instantDelay: "Instantâneo", updatedAtPrefix: "Atualizado em:", bestRateBadge: "Mais Barato", footerCopy: "© 2026 Xaalya.", closeBtn: "✕ FECHAR", aboutTitle: "Sobre o Xaalya", aboutH3_1: "Nossa Missão", aboutP_1: "O Xaalya é um comparador 100% gratuito.", aboutP_2: "Devolvemos o poder aos usuários.", aboutH3_2: "Por que Confiar?", aboutLi1_strong: "Independência:", aboutLi1_txt: "Não pertencemos a nenhum grupo.", aboutLi2_strong: "Valor Líquido Real:", aboutLi2_txt: "Baseado no valor líquido exato.", aboutLi4_strong: "16 Idiomas:", aboutLi4_txt: "Disponível em francês e inglês.", faqTitle: "FAQ", faqQ1: "1. É realmente gratuito?", faqA1: "Sim, 100%.", faqQ2: "2. É independente?", faqA2: "Com certeza.", secTitle: "Segurança", secP1: "A proteção da sua privacidade é central.", secH4_1: "1. Nenhum Dado Bancário", secP2: "Nunca armazenamos seus cartões.", secH4_2: "2. Anonimato Total", secP3: "Nenhuma conta obrigatória." },
   es: { badgeTitle: "COMPARADOR GRATUITO", logoSlogan: "Compare y transfiera", navAbout: "Acerca de", navFaq: "FAQ", navSecurity: "Seguridad", heroSub: "294 corredores financieros en tiempo real.", labelSource: "Moneda de envío:", labelTarget: "Moneda de recepción:", labelAmount: "Monto enviado:", statusConnected: "Convertido a tasas mundiales", resultsTitle: "Comparativa de operadores", resultsRank: "Clasificado por mejor tasa neta", thRank: "Puesto", thOperator: "Operador", thRate: "Tipo de Cambio", thFee: "Comisión", thReceived: "Monto Recibido", thDelivery: "Tiempo Est.", thAction: "Acción", btnSend: "Enviar ➔", freeFee: "Gratis", instantDelay: "Instantáneo", updatedAtPrefix: "Actualizado el:", bestRateBadge: "El Más Barato", footerCopy: "© 2026 Xaalya.", closeBtn: "✕ CERRAR", aboutTitle: "Acerca de Xaalya", aboutH3_1: "Nuestra Misión", aboutP_1: "Xaalya es un comparador 100% gratuito.", aboutP_2: "Devolvemos el poder a los usuarios.", aboutH3_2: "¿Por qué confiar?", aboutLi1_strong: "Independencia:", aboutLi1_txt: "No pertenecemos a ningún grupo financiero.", aboutLi2_strong: "Monto Neto Real:", aboutLi2_txt: "Basado en el monto neto exacto.", aboutLi4_strong: "16 Idiomas:", aboutLi4_txt: "Disponible en francés e inglés.", faqTitle: "FAQ", faqQ1: "1. ¿Es realmente gratuito?", faqA1: "Sí, 100%.", faqQ2: "2. ¿Es independiente?", faqA2: "Absoluto.", secTitle: "Seguridad", secP1: "La protección de su privacidad es fundamental.", secH4_1: "1. Sin Datos Bancarios", secP2: "Nunca almacenamos sus tarjetas.", secH4_2: "2. Anonimato Total", secP3: "Sin creación de cuenta obligatoria." },
@@ -352,19 +395,55 @@ function setLanguage(lang, save) {
   else { document.body.setAttribute('dir', 'ltr'); }
   if (save) { try { localStorage.setItem('xaalya-lang', lang); } catch(e) {} }
   renderResults();
-}
+  // Mettre à jour le message de date dans la nouvelle langue
+  const info = document.getElementById('lastUpdatedInfo');
+  if (info) {
+    const messagesMaj = {
+      fr: 'Actualisé le : ', en: 'Updated on: ', zu: 'Kuvuselelwe: ',
+      ln: 'Esili kobongisama: ', sn: 'Yakagadziriswa: ', de: 'Aktualisiert am: ',
+      ar: 'تم التحديث بتاريخ: ', pt: 'Atualizado em: ', es: 'Actualizado el: ',
+      zh: '更新时间：', it: 'Aggiornato il: ', sw: 'Imeboreshwa: ',
+      am: 'የተሻሻለው: ', yo: 'Ti imudojuiwọn: ', ha: 'An sabunta: ',
+      wo: 'Yessal nañu ko ci: '
+    };
+    const prefix = messagesMaj[lang] || messagesMaj['en'];
+    info.textContent = prefix + new Date().toLocaleDateString('en-GB');
+  }
 
 async function chargerTaux() {
+  // Messages traduits dans les 16 langues
+  const messagesMaj = {
+    fr: 'Actualisé le : ', en: 'Updated on: ', zu: 'Kuvuselelwe: ',
+    ln: 'Esili kobongisama: ', sn: 'Yakagadziriswa: ', de: 'Aktualisiert am: ',
+    ar: 'تم التحديث بتاريخ: ', pt: 'Atualizado em: ', es: 'Actualizado el: ',
+    zh: '更新时间：', it: 'Aggiornato il: ', sw: 'Imeboreshwa: ',
+    am: 'የተሻሻለው: ', yo: 'Ti imudojuiwọn: ', ha: 'An sabunta: ',
+    wo: 'Yessal nañu ko ci: '
+  };
+  const messagesErreur = {
+    fr: 'Taux indisponibles', en: 'Rates unavailable', zu: 'Amanani awekho',
+    ln: 'Motuya ezali te', sn: 'Mitengo haipo', de: 'Kurse nicht verfügbar',
+    ar: 'الأسعار غير متوفرة', pt: 'Taxas indisponíveis', es: 'Tasas no disponibles',
+    zh: '汇率不可用', it: 'Tassi non disponibili', sw: 'Viwango haipatikani',
+    am: 'ተመኖች አይገኙም', yo: 'Awọn oṣuwọn ko si', ha: 'Farashin ba ya samuwa',
+    wo: 'Njëg yi amul'
+  };
+
   try {
     const response = await fetch('https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/eur.json');
     const data = await response.json();
     tauxDeChange = data.eur || {};
     const info = document.getElementById('lastUpdatedInfo');
-    if (info) info.textContent = 'Updated on: ' + new Date().toLocaleDateString('en-GB');
+    if (info) {
+      const prefix = messagesMaj[currentLang] || messagesMaj['en'];
+      info.textContent = prefix + new Date().toLocaleDateString('en-GB');
+    }
   } catch (error) {
     console.error('Loading error:', error);
     const info = document.getElementById('lastUpdatedInfo');
-    if (info) info.textContent = 'Rates unavailable';
+    if (info) {
+      info.textContent = messagesErreur[currentLang] || messagesErreur['en'];
+    }
   }
 }
 
