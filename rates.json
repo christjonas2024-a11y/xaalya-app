@@ -2,7 +2,7 @@
   {
     "devisesDepart": "EUR",
     "deviseArrivee": "AOA",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -33,11 +33,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 1028.2326,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -79,7 +79,7 @@
   {
     "devisesDepart": "EUR",
     "deviseArrivee": "BIF",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -110,11 +110,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 3330.1304,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -156,7 +156,7 @@
   {
     "devisesDepart": "EUR",
     "deviseArrivee": "BWP",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -187,11 +187,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 15.7207,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -233,7 +233,7 @@
   {
     "devisesDepart": "EUR",
     "deviseArrivee": "CDF",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -264,11 +264,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 2558.0235,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -310,7 +310,7 @@
   {
     "devisesDepart": "EUR",
     "deviseArrivee": "CVE",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -341,11 +341,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 109.3827,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -387,7 +387,7 @@
   {
     "devisesDepart": "EUR",
     "deviseArrivee": "DJF",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -418,11 +418,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 196.8601,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -464,7 +464,7 @@
   {
     "devisesDepart": "EUR",
     "deviseArrivee": "DZD",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -495,11 +495,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 149.801,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -541,7 +541,7 @@
   {
     "devisesDepart": "EUR",
     "deviseArrivee": "EGP",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -572,11 +572,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 62.0648,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -618,7 +618,7 @@
   {
     "devisesDepart": "EUR",
     "deviseArrivee": "ERN",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -649,11 +649,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 16.6154,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -695,7 +695,7 @@
   {
     "devisesDepart": "EUR",
     "deviseArrivee": "ETB",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -726,11 +726,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 179.248,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -772,7 +772,7 @@
   {
     "devisesDepart": "EUR",
     "deviseArrivee": "GMD",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -803,11 +803,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 82.6839,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -849,7 +849,7 @@
   {
     "devisesDepart": "EUR",
     "deviseArrivee": "GHS",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -880,11 +880,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 12.922,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -926,7 +926,7 @@
   {
     "devisesDepart": "EUR",
     "deviseArrivee": "GNF",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -957,11 +957,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 9791.53,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -1003,7 +1003,7 @@
   {
     "devisesDepart": "EUR",
     "deviseArrivee": "KES",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -1034,11 +1034,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 143.891,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -1080,7 +1080,7 @@
   {
     "devisesDepart": "EUR",
     "deviseArrivee": "KMF",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -1111,11 +1111,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 488.0312,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -1157,7 +1157,7 @@
   {
     "devisesDepart": "EUR",
     "deviseArrivee": "LRD",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -1188,11 +1188,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 188.4842,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -1234,7 +1234,7 @@
   {
     "devisesDepart": "EUR",
     "deviseArrivee": "LSL",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -1265,11 +1265,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 18.4675,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -1311,7 +1311,7 @@
   {
     "devisesDepart": "EUR",
     "deviseArrivee": "LYD",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -1342,11 +1342,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 7.1227,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -1388,7 +1388,7 @@
   {
     "devisesDepart": "EUR",
     "deviseArrivee": "MAD",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -1419,11 +1419,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 10.9038,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -1465,7 +1465,7 @@
   {
     "devisesDepart": "EUR",
     "deviseArrivee": "MGA",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -1496,11 +1496,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 5063.8662,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -1542,7 +1542,7 @@
   {
     "devisesDepart": "EUR",
     "deviseArrivee": "MRU",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -1573,11 +1573,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 44.6155,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -1619,7 +1619,7 @@
   {
     "devisesDepart": "EUR",
     "deviseArrivee": "MUR",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -1650,11 +1650,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 52.7301,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -1696,7 +1696,7 @@
   {
     "devisesDepart": "EUR",
     "deviseArrivee": "MWK",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -1727,11 +1727,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 1931.2741,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -1773,7 +1773,7 @@
   {
     "devisesDepart": "EUR",
     "deviseArrivee": "MZN",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -1804,11 +1804,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 70.603,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -1850,7 +1850,7 @@
   {
     "devisesDepart": "EUR",
     "deviseArrivee": "NAD",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -1881,11 +1881,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 18.4675,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -1927,7 +1927,7 @@
   {
     "devisesDepart": "EUR",
     "deviseArrivee": "NGN",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -1958,11 +1958,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 1490.3893,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -2004,7 +2004,7 @@
   {
     "devisesDepart": "EUR",
     "deviseArrivee": "RWF",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -2035,11 +2035,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 1637.9602,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -2081,7 +2081,7 @@
   {
     "devisesDepart": "EUR",
     "deviseArrivee": "SCR",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -2112,11 +2112,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 15.5987,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -2158,7 +2158,7 @@
   {
     "devisesDepart": "EUR",
     "deviseArrivee": "SDG",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -2189,11 +2189,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 563.7955,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -2235,7 +2235,7 @@
   {
     "devisesDepart": "EUR",
     "deviseArrivee": "SLE",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -2266,11 +2266,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 25.3324,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -2312,7 +2312,7 @@
   {
     "devisesDepart": "EUR",
     "deviseArrivee": "SOS",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -2343,11 +2343,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 632.9645,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -2389,7 +2389,7 @@
   {
     "devisesDepart": "EUR",
     "deviseArrivee": "SSP",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -2420,11 +2420,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 6679.2318,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -2466,7 +2466,7 @@
   {
     "devisesDepart": "EUR",
     "deviseArrivee": "STN",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -2497,11 +2497,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 24.304,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -2543,7 +2543,7 @@
   {
     "devisesDepart": "EUR",
     "deviseArrivee": "SZL",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -2574,11 +2574,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 18.4675,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -2620,7 +2620,7 @@
   {
     "devisesDepart": "EUR",
     "deviseArrivee": "TND",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -2651,11 +2651,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 3.3353,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -2697,7 +2697,7 @@
   {
     "devisesDepart": "EUR",
     "deviseArrivee": "TZS",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -2728,11 +2728,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 2920.2878,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -2774,7 +2774,7 @@
   {
     "devisesDepart": "EUR",
     "deviseArrivee": "UGX",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -2805,11 +2805,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 4745.2464,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -2851,7 +2851,7 @@
   {
     "devisesDepart": "EUR",
     "deviseArrivee": "XAF",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -2882,11 +2882,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 650.7083,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -2928,7 +2928,7 @@
   {
     "devisesDepart": "EUR",
     "deviseArrivee": "XOF",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -2959,11 +2959,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 650.7083,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -3005,7 +3005,7 @@
   {
     "devisesDepart": "EUR",
     "deviseArrivee": "ZAR",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -3036,11 +3036,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 18.4675,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -3082,7 +3082,7 @@
   {
     "devisesDepart": "EUR",
     "deviseArrivee": "ZMW",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -3113,11 +3113,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 22.4365,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -3159,7 +3159,7 @@
   {
     "devisesDepart": "EUR",
     "deviseArrivee": "ZWG",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -3190,11 +3190,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 29.4329,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -3236,7 +3236,7 @@
   {
     "devisesDepart": "USD",
     "deviseArrivee": "AOA",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -3267,11 +3267,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 920.8399,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -3313,7 +3313,7 @@
   {
     "devisesDepart": "USD",
     "deviseArrivee": "BIF",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -3344,11 +3344,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 2982.3182,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -3390,7 +3390,7 @@
   {
     "devisesDepart": "USD",
     "deviseArrivee": "BWP",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -3421,11 +3421,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 14.0787,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -3467,7 +3467,7 @@
   {
     "devisesDepart": "USD",
     "deviseArrivee": "CDF",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -3498,11 +3498,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 2290.8533,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -3544,7 +3544,7 @@
   {
     "devisesDepart": "USD",
     "deviseArrivee": "CVE",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -3575,11 +3575,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 97.9583,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -3621,7 +3621,7 @@
   {
     "devisesDepart": "USD",
     "deviseArrivee": "DJF",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -3652,11 +3652,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 176.2992,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -3698,7 +3698,7 @@
   {
     "devisesDepart": "USD",
     "deviseArrivee": "DZD",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -3729,11 +3729,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 134.1552,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -3775,7 +3775,7 @@
   {
     "devisesDepart": "USD",
     "deviseArrivee": "EGP",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -3806,11 +3806,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 55.5825,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -3852,7 +3852,7 @@
   {
     "devisesDepart": "USD",
     "deviseArrivee": "ERN",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -3883,11 +3883,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 14.88,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -3929,7 +3929,7 @@
   {
     "devisesDepart": "USD",
     "deviseArrivee": "ETB",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -3960,11 +3960,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 160.5267,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -4006,7 +4006,7 @@
   {
     "devisesDepart": "USD",
     "deviseArrivee": "GMD",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -4037,11 +4037,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 74.048,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -4083,7 +4083,7 @@
   {
     "devisesDepart": "USD",
     "deviseArrivee": "GHS",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -4114,11 +4114,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 11.5723,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -4160,7 +4160,7 @@
   {
     "devisesDepart": "USD",
     "deviseArrivee": "GNF",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -4191,11 +4191,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 8768.8635,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -4237,7 +4237,7 @@
   {
     "devisesDepart": "USD",
     "deviseArrivee": "KES",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -4268,11 +4268,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 128.8624,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -4314,7 +4314,7 @@
   {
     "devisesDepart": "USD",
     "deviseArrivee": "KMF",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -4345,11 +4345,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 437.0593,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -4391,7 +4391,7 @@
   {
     "devisesDepart": "USD",
     "deviseArrivee": "LRD",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -4422,11 +4422,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 168.7982,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -4468,7 +4468,7 @@
   {
     "devisesDepart": "USD",
     "deviseArrivee": "LSL",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -4499,11 +4499,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 16.5386,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -4545,7 +4545,7 @@
   {
     "devisesDepart": "USD",
     "deviseArrivee": "LYD",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -4576,11 +4576,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 6.3787,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -4622,7 +4622,7 @@
   {
     "devisesDepart": "USD",
     "deviseArrivee": "MAD",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -4653,11 +4653,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 9.765,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -4699,7 +4699,7 @@
   {
     "devisesDepart": "USD",
     "deviseArrivee": "MGA",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -4730,11 +4730,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 4534.9757,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -4776,7 +4776,7 @@
   {
     "devisesDepart": "USD",
     "deviseArrivee": "MRU",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -4807,11 +4807,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 39.9557,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -4853,7 +4853,7 @@
   {
     "devisesDepart": "USD",
     "deviseArrivee": "MUR",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -4884,11 +4884,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 47.2228,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -4930,7 +4930,7 @@
   {
     "devisesDepart": "USD",
     "deviseArrivee": "MWK",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -4961,11 +4961,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 1729.5641,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -5007,7 +5007,7 @@
   {
     "devisesDepart": "USD",
     "deviseArrivee": "MZN",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -5038,11 +5038,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 63.2289,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -5084,7 +5084,7 @@
   {
     "devisesDepart": "USD",
     "deviseArrivee": "NAD",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -5115,11 +5115,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 16.5386,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -5161,7 +5161,7 @@
   {
     "devisesDepart": "USD",
     "deviseArrivee": "NGN",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -5192,11 +5192,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 1334.7271,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -5238,7 +5238,7 @@
   {
     "devisesDepart": "USD",
     "deviseArrivee": "RWF",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -5269,11 +5269,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 1466.8851,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -5315,7 +5315,7 @@
   {
     "devisesDepart": "USD",
     "deviseArrivee": "SCR",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -5346,11 +5346,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 13.9695,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -5392,7 +5392,7 @@
   {
     "devisesDepart": "USD",
     "deviseArrivee": "SDG",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -5423,11 +5423,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 504.9104,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -5469,7 +5469,7 @@
   {
     "devisesDepart": "USD",
     "deviseArrivee": "SLE",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -5500,11 +5500,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 22.6866,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -5546,7 +5546,7 @@
   {
     "devisesDepart": "USD",
     "deviseArrivee": "SOS",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -5577,11 +5577,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 566.8552,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -5623,7 +5623,7 @@
   {
     "devisesDepart": "USD",
     "deviseArrivee": "SSP",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -5654,11 +5654,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 5981.6261,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -5700,7 +5700,7 @@
   {
     "devisesDepart": "USD",
     "deviseArrivee": "STN",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -5731,11 +5731,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 21.7656,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -5777,7 +5777,7 @@
   {
     "devisesDepart": "USD",
     "deviseArrivee": "SZL",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -5808,11 +5808,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 16.5386,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -5854,7 +5854,7 @@
   {
     "devisesDepart": "USD",
     "deviseArrivee": "TND",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -5885,11 +5885,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 2.9869,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -5931,7 +5931,7 @@
   {
     "devisesDepart": "USD",
     "deviseArrivee": "TZS",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -5962,11 +5962,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 2615.2813,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -6008,7 +6008,7 @@
   {
     "devisesDepart": "USD",
     "deviseArrivee": "UGX",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -6039,11 +6039,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 4249.6339,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -6085,7 +6085,7 @@
   {
     "devisesDepart": "USD",
     "deviseArrivee": "XAF",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -6116,11 +6116,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 582.7457,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -6162,7 +6162,7 @@
   {
     "devisesDepart": "USD",
     "deviseArrivee": "XOF",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -6193,11 +6193,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 582.7457,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -6239,7 +6239,7 @@
   {
     "devisesDepart": "USD",
     "deviseArrivee": "ZAR",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -6270,11 +6270,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 16.5387,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -6316,7 +6316,7 @@
   {
     "devisesDepart": "USD",
     "deviseArrivee": "ZMW",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -6347,11 +6347,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 20.0931,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -6393,7 +6393,7 @@
   {
     "devisesDepart": "USD",
     "deviseArrivee": "ZWG",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -6424,11 +6424,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 26.3588,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -6470,7 +6470,7 @@
   {
     "devisesDepart": "GBP",
     "deviseArrivee": "AOA",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -6501,11 +6501,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 1232.8032,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -6547,7 +6547,7 @@
   {
     "devisesDepart": "GBP",
     "deviseArrivee": "BIF",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -6578,11 +6578,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 3992.6718,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -6624,7 +6624,7 @@
   {
     "devisesDepart": "GBP",
     "deviseArrivee": "BWP",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -6655,11 +6655,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 18.8484,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -6701,7 +6701,7 @@
   {
     "devisesDepart": "GBP",
     "deviseArrivee": "CDF",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -6732,11 +6732,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 3066.9515,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -6778,7 +6778,7 @@
   {
     "devisesDepart": "GBP",
     "deviseArrivee": "CVE",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -6809,11 +6809,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 131.1448,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -6855,7 +6855,7 @@
   {
     "devisesDepart": "GBP",
     "deviseArrivee": "DJF",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -6886,11 +6886,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 236.0261,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -6932,7 +6932,7 @@
   {
     "devisesDepart": "GBP",
     "deviseArrivee": "DZD",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -6963,11 +6963,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 179.6045,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -7009,7 +7009,7 @@
   {
     "devisesDepart": "GBP",
     "deviseArrivee": "EGP",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -7040,11 +7040,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 74.4128,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -7086,7 +7086,7 @@
   {
     "devisesDepart": "GBP",
     "deviseArrivee": "ERN",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -7117,11 +7117,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 19.9211,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -7163,7 +7163,7 @@
   {
     "devisesDepart": "GBP",
     "deviseArrivee": "ETB",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -7194,11 +7194,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 214.9101,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -7240,7 +7240,7 @@
   {
     "devisesDepart": "GBP",
     "deviseArrivee": "GMD",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -7271,11 +7271,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 99.1341,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -7317,7 +7317,7 @@
   {
     "devisesDepart": "GBP",
     "deviseArrivee": "GHS",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -7348,11 +7348,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 15.4928,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -7394,7 +7394,7 @@
   {
     "devisesDepart": "GBP",
     "deviseArrivee": "GNF",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -7425,11 +7425,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 11739.5903,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -7471,7 +7471,7 @@
   {
     "devisesDepart": "GBP",
     "deviseArrivee": "KES",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -7502,11 +7502,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 172.5186,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -7548,7 +7548,7 @@
   {
     "devisesDepart": "GBP",
     "deviseArrivee": "KMF",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -7579,11 +7579,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 585.1268,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -7625,7 +7625,7 @@
   {
     "devisesDepart": "GBP",
     "deviseArrivee": "LRD",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -7656,11 +7656,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 225.9838,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -7702,7 +7702,7 @@
   {
     "devisesDepart": "GBP",
     "deviseArrivee": "LSL",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -7733,11 +7733,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 22.1416,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -7779,7 +7779,7 @@
   {
     "devisesDepart": "GBP",
     "deviseArrivee": "LYD",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -7810,11 +7810,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 8.5397,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -7856,7 +7856,7 @@
   {
     "devisesDepart": "GBP",
     "deviseArrivee": "MAD",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -7887,11 +7887,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 13.0731,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -7933,7 +7933,7 @@
   {
     "devisesDepart": "GBP",
     "deviseArrivee": "MGA",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -7964,11 +7964,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 6071.3406,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -8010,7 +8010,7 @@
   {
     "devisesDepart": "GBP",
     "deviseArrivee": "MRU",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -8041,11 +8041,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 53.492,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -8087,7 +8087,7 @@
   {
     "devisesDepart": "GBP",
     "deviseArrivee": "MUR",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -8118,11 +8118,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 63.221,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -8164,7 +8164,7 @@
   {
     "devisesDepart": "GBP",
     "deviseArrivee": "MWK",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -8195,11 +8195,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 2315.5081,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -8241,7 +8241,7 @@
   {
     "devisesDepart": "GBP",
     "deviseArrivee": "MZN",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -8272,11 +8272,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 84.6497,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -8318,7 +8318,7 @@
   {
     "devisesDepart": "GBP",
     "deviseArrivee": "NAD",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -8349,11 +8349,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 22.1416,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -8395,7 +8395,7 @@
   {
     "devisesDepart": "GBP",
     "deviseArrivee": "NGN",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -8426,11 +8426,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 1786.9076,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -8472,7 +8472,7 @@
   {
     "devisesDepart": "GBP",
     "deviseArrivee": "RWF",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -8503,11 +8503,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 1963.8383,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -8549,7 +8549,7 @@
   {
     "devisesDepart": "GBP",
     "deviseArrivee": "SCR",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -8580,11 +8580,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 18.7022,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -8626,7 +8626,7 @@
   {
     "devisesDepart": "GBP",
     "deviseArrivee": "SDG",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -8657,11 +8657,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 675.9647,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -8703,7 +8703,7 @@
   {
     "devisesDepart": "GBP",
     "deviseArrivee": "SLE",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -8734,11 +8734,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 30.3724,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -8780,7 +8780,7 @@
   {
     "devisesDepart": "GBP",
     "deviseArrivee": "SOS",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -8811,11 +8811,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 758.8951,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -8857,7 +8857,7 @@
   {
     "devisesDepart": "GBP",
     "deviseArrivee": "SSP",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -8888,11 +8888,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 8008.0891,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -8934,7 +8934,7 @@
   {
     "devisesDepart": "GBP",
     "deviseArrivee": "STN",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -8965,11 +8965,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 29.1393,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -9011,7 +9011,7 @@
   {
     "devisesDepart": "GBP",
     "deviseArrivee": "SZL",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -9042,11 +9042,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 22.1416,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -9088,7 +9088,7 @@
   {
     "devisesDepart": "GBP",
     "deviseArrivee": "TND",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -9119,11 +9119,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 3.9988,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -9165,7 +9165,7 @@
   {
     "devisesDepart": "GBP",
     "deviseArrivee": "TZS",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -9196,11 +9196,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 3501.2896,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -9242,7 +9242,7 @@
   {
     "devisesDepart": "GBP",
     "deviseArrivee": "UGX",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -9273,11 +9273,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 5689.3304,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -9319,7 +9319,7 @@
   {
     "devisesDepart": "GBP",
     "deviseArrivee": "XAF",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -9350,11 +9350,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 780.1691,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -9396,7 +9396,7 @@
   {
     "devisesDepart": "GBP",
     "deviseArrivee": "XOF",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -9427,11 +9427,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 780.1691,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -9473,7 +9473,7 @@
   {
     "devisesDepart": "GBP",
     "deviseArrivee": "ZAR",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -9504,11 +9504,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 22.1417,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -9550,7 +9550,7 @@
   {
     "devisesDepart": "GBP",
     "deviseArrivee": "ZMW",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -9581,11 +9581,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 26.9003,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -9627,7 +9627,7 @@
   {
     "devisesDepart": "GBP",
     "deviseArrivee": "ZWG",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -9658,11 +9658,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 35.2887,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -9704,7 +9704,7 @@
   {
     "devisesDepart": "CHF",
     "deviseArrivee": "AOA",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -9735,11 +9735,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 1116.7719,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -9781,7 +9781,7 @@
   {
     "devisesDepart": "CHF",
     "deviseArrivee": "BIF",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -9812,11 +9812,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 3616.8821,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -9858,7 +9858,7 @@
   {
     "devisesDepart": "CHF",
     "deviseArrivee": "BWP",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -9889,11 +9889,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 17.0744,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -9935,7 +9935,7 @@
   {
     "devisesDepart": "CHF",
     "deviseArrivee": "CDF",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -9966,11 +9966,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 2778.2905,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -10012,7 +10012,7 @@
   {
     "devisesDepart": "CHF",
     "deviseArrivee": "CVE",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -10043,11 +10043,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 118.8015,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -10089,7 +10089,7 @@
   {
     "devisesDepart": "CHF",
     "deviseArrivee": "DJF",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -10120,11 +10120,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 213.8114,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -10166,7 +10166,7 @@
   {
     "devisesDepart": "CHF",
     "deviseArrivee": "DZD",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -10197,11 +10197,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 162.7001,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -10243,7 +10243,7 @@
   {
     "devisesDepart": "CHF",
     "deviseArrivee": "EGP",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -10274,11 +10274,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 67.4091,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -10320,7 +10320,7 @@
   {
     "devisesDepart": "CHF",
     "deviseArrivee": "ERN",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -10351,11 +10351,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 18.0461,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -10397,7 +10397,7 @@
   {
     "devisesDepart": "CHF",
     "deviseArrivee": "ETB",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -10428,11 +10428,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 194.6828,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -10474,7 +10474,7 @@
   {
     "devisesDepart": "CHF",
     "deviseArrivee": "GMD",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -10505,11 +10505,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 89.8036,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -10551,7 +10551,7 @@
   {
     "devisesDepart": "CHF",
     "deviseArrivee": "GHS",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -10582,11 +10582,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 14.0347,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -10628,7 +10628,7 @@
   {
     "devisesDepart": "CHF",
     "deviseArrivee": "GNF",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -10659,11 +10659,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 10634.6617,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -10705,7 +10705,7 @@
   {
     "devisesDepart": "CHF",
     "deviseArrivee": "KES",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -10736,11 +10736,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 156.2812,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -10782,7 +10782,7 @@
   {
     "devisesDepart": "CHF",
     "deviseArrivee": "KMF",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -10813,11 +10813,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 530.0548,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -10859,7 +10859,7 @@
   {
     "devisesDepart": "CHF",
     "deviseArrivee": "LRD",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -10890,11 +10890,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 204.7143,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -10936,7 +10936,7 @@
   {
     "devisesDepart": "CHF",
     "deviseArrivee": "LSL",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -10967,11 +10967,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 20.0577,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -11013,7 +11013,7 @@
   {
     "devisesDepart": "CHF",
     "deviseArrivee": "LYD",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -11044,11 +11044,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 7.736,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -11090,7 +11090,7 @@
   {
     "devisesDepart": "CHF",
     "deviseArrivee": "MAD",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -11121,11 +11121,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 11.8427,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -11167,7 +11167,7 @@
   {
     "devisesDepart": "CHF",
     "deviseArrivee": "MGA",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -11198,11 +11198,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 5499.9069,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -11244,7 +11244,7 @@
   {
     "devisesDepart": "CHF",
     "deviseArrivee": "MRU",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -11275,11 +11275,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 48.4573,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -11321,7 +11321,7 @@
   {
     "devisesDepart": "CHF",
     "deviseArrivee": "MUR",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -11352,11 +11352,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 57.2706,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -11398,7 +11398,7 @@
   {
     "devisesDepart": "CHF",
     "deviseArrivee": "MWK",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -11429,11 +11429,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 2097.5728,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -11475,7 +11475,7 @@
   {
     "devisesDepart": "CHF",
     "deviseArrivee": "MZN",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -11506,11 +11506,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 76.6825,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -11552,7 +11552,7 @@
   {
     "devisesDepart": "CHF",
     "deviseArrivee": "NAD",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -11583,11 +11583,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 20.0577,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -11629,7 +11629,7 @@
   {
     "devisesDepart": "CHF",
     "deviseArrivee": "NGN",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -11660,11 +11660,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 1618.7241,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -11706,7 +11706,7 @@
   {
     "devisesDepart": "CHF",
     "deviseArrivee": "RWF",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -11737,11 +11737,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 1779.0021,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -11783,7 +11783,7 @@
   {
     "devisesDepart": "CHF",
     "deviseArrivee": "SCR",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -11814,11 +11814,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 16.9419,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -11860,7 +11860,7 @@
   {
     "devisesDepart": "CHF",
     "deviseArrivee": "SDG",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -11891,11 +11891,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 612.343,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -11937,7 +11937,7 @@
   {
     "devisesDepart": "CHF",
     "deviseArrivee": "SLE",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -11968,11 +11968,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 27.5137,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -12014,7 +12014,7 @@
   {
     "devisesDepart": "CHF",
     "deviseArrivee": "SOS",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -12045,11 +12045,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 687.468,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -12091,7 +12091,7 @@
   {
     "devisesDepart": "CHF",
     "deviseArrivee": "SSP",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -12122,11 +12122,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 7254.3689,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -12168,7 +12168,7 @@
   {
     "devisesDepart": "CHF",
     "deviseArrivee": "STN",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -12199,11 +12199,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 26.3967,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -12245,7 +12245,7 @@
   {
     "devisesDepart": "CHF",
     "deviseArrivee": "SZL",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -12276,11 +12276,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 20.0577,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -12322,7 +12322,7 @@
   {
     "devisesDepart": "CHF",
     "deviseArrivee": "TND",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -12353,11 +12353,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 3.6225,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -12399,7 +12399,7 @@
   {
     "devisesDepart": "CHF",
     "deviseArrivee": "TZS",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -12430,11 +12430,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 3171.7487,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -12476,7 +12476,7 @@
   {
     "devisesDepart": "CHF",
     "deviseArrivee": "UGX",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -12507,11 +12507,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 5153.8514,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -12553,7 +12553,7 @@
   {
     "devisesDepart": "CHF",
     "deviseArrivee": "XAF",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -12584,11 +12584,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 706.7397,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -12630,7 +12630,7 @@
   {
     "devisesDepart": "CHF",
     "deviseArrivee": "XOF",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -12661,11 +12661,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 706.7397,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -12707,7 +12707,7 @@
   {
     "devisesDepart": "CHF",
     "deviseArrivee": "ZAR",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -12738,11 +12738,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 20.0578,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -12784,7 +12784,7 @@
   {
     "devisesDepart": "CHF",
     "deviseArrivee": "ZMW",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -12815,11 +12815,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 24.3684,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -12861,7 +12861,7 @@
   {
     "devisesDepart": "CHF",
     "deviseArrivee": "ZWG",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -12892,11 +12892,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 31.9673,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -12938,7 +12938,7 @@
   {
     "devisesDepart": "AED",
     "deviseArrivee": "AOA",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -12969,11 +12969,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 250.7392,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -13015,7 +13015,7 @@
   {
     "devisesDepart": "AED",
     "deviseArrivee": "BIF",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -13046,11 +13046,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 812.0676,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -13092,7 +13092,7 @@
   {
     "devisesDepart": "AED",
     "deviseArrivee": "BWP",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -13123,11 +13123,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 3.8336,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -13169,7 +13169,7 @@
   {
     "devisesDepart": "AED",
     "deviseArrivee": "CDF",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -13200,11 +13200,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 623.7858,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -13246,7 +13246,7 @@
   {
     "devisesDepart": "AED",
     "deviseArrivee": "CVE",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -13277,11 +13277,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 26.6735,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -13323,7 +13323,7 @@
   {
     "devisesDepart": "AED",
     "deviseArrivee": "DJF",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -13354,11 +13354,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 48.0052,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -13400,7 +13400,7 @@
   {
     "devisesDepart": "AED",
     "deviseArrivee": "DZD",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -13431,11 +13431,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 36.5297,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -13477,7 +13477,7 @@
   {
     "devisesDepart": "AED",
     "deviseArrivee": "EGP",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -13508,11 +13508,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 15.1348,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -13554,7 +13554,7 @@
   {
     "devisesDepart": "AED",
     "deviseArrivee": "ERN",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -13585,11 +13585,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 4.0517,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -13631,7 +13631,7 @@
   {
     "devisesDepart": "AED",
     "deviseArrivee": "ETB",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -13662,11 +13662,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 43.7105,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -13708,7 +13708,7 @@
   {
     "devisesDepart": "AED",
     "deviseArrivee": "GMD",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -13739,11 +13739,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 20.1628,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -13785,7 +13785,7 @@
   {
     "devisesDepart": "AED",
     "deviseArrivee": "GHS",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -13816,11 +13816,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 3.1511,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -13862,7 +13862,7 @@
   {
     "devisesDepart": "AED",
     "deviseArrivee": "GNF",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -13893,11 +13893,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 2387.7096,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -13939,7 +13939,7 @@
   {
     "devisesDepart": "AED",
     "deviseArrivee": "KES",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -13970,11 +13970,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 35.0885,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -14016,7 +14016,7 @@
   {
     "devisesDepart": "AED",
     "deviseArrivee": "KMF",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -14047,11 +14047,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 119.0087,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -14093,7 +14093,7 @@
   {
     "devisesDepart": "AED",
     "deviseArrivee": "LRD",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -14124,11 +14124,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 45.9627,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -14170,7 +14170,7 @@
   {
     "devisesDepart": "AED",
     "deviseArrivee": "LSL",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -14201,11 +14201,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 4.5034,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -14247,7 +14247,7 @@
   {
     "devisesDepart": "AED",
     "deviseArrivee": "LYD",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -14278,11 +14278,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 1.7369,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -14324,7 +14324,7 @@
   {
     "devisesDepart": "AED",
     "deviseArrivee": "MAD",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -14355,11 +14355,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 2.6589,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -14401,7 +14401,7 @@
   {
     "devisesDepart": "AED",
     "deviseArrivee": "MGA",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -14432,11 +14432,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 1234.847,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -14478,7 +14478,7 @@
   {
     "devisesDepart": "AED",
     "deviseArrivee": "MRU",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -14509,11 +14509,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 10.8797,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -14555,7 +14555,7 @@
   {
     "devisesDepart": "AED",
     "deviseArrivee": "MUR",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -14586,11 +14586,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 12.8585,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -14632,7 +14632,7 @@
   {
     "devisesDepart": "AED",
     "deviseArrivee": "MWK",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -14663,11 +14663,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 470.9501,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -14709,7 +14709,7 @@
   {
     "devisesDepart": "AED",
     "deviseArrivee": "MZN",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -14740,11 +14740,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 17.2169,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -14786,7 +14786,7 @@
   {
     "devisesDepart": "AED",
     "deviseArrivee": "NAD",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -14817,11 +14817,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 4.5034,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -14863,7 +14863,7 @@
   {
     "devisesDepart": "AED",
     "deviseArrivee": "NGN",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -14894,11 +14894,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 363.4383,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -14940,7 +14940,7 @@
   {
     "devisesDepart": "AED",
     "deviseArrivee": "RWF",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -14971,11 +14971,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 399.4241,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -15017,7 +15017,7 @@
   {
     "devisesDepart": "AED",
     "deviseArrivee": "SCR",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -15048,11 +15048,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 3.8038,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -15094,7 +15094,7 @@
   {
     "devisesDepart": "AED",
     "deviseArrivee": "SDG",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -15125,11 +15125,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 137.4841,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -15171,7 +15171,7 @@
   {
     "devisesDepart": "AED",
     "deviseArrivee": "SLE",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -15202,11 +15202,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 6.1774,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -15248,7 +15248,7 @@
   {
     "devisesDepart": "AED",
     "deviseArrivee": "SOS",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -15279,11 +15279,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 154.3513,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -15325,7 +15325,7 @@
   {
     "devisesDepart": "AED",
     "deviseArrivee": "SSP",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -15356,11 +15356,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 1628.7614,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -15402,7 +15402,7 @@
   {
     "devisesDepart": "AED",
     "deviseArrivee": "STN",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -15433,11 +15433,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 5.9266,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -15479,7 +15479,7 @@
   {
     "devisesDepart": "AED",
     "deviseArrivee": "SZL",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -15510,11 +15510,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 4.5034,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -15556,7 +15556,7 @@
   {
     "devisesDepart": "AED",
     "deviseArrivee": "TND",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -15587,11 +15587,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 0.8133,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -15633,7 +15633,7 @@
   {
     "devisesDepart": "AED",
     "deviseArrivee": "TZS",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -15664,11 +15664,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 712.1256,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -15710,7 +15710,7 @@
   {
     "devisesDepart": "AED",
     "deviseArrivee": "UGX",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -15741,11 +15741,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 1157.1502,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -15787,7 +15787,7 @@
   {
     "devisesDepart": "AED",
     "deviseArrivee": "XAF",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -15818,11 +15818,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 158.6782,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -15864,7 +15864,7 @@
   {
     "devisesDepart": "AED",
     "deviseArrivee": "XOF",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -15895,11 +15895,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 158.6782,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -15941,7 +15941,7 @@
   {
     "devisesDepart": "AED",
     "deviseArrivee": "ZAR",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -15972,11 +15972,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 4.5034,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -16018,7 +16018,7 @@
   {
     "devisesDepart": "AED",
     "deviseArrivee": "ZMW",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -16049,11 +16049,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 5.4712,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -16095,7 +16095,7 @@
   {
     "devisesDepart": "AED",
     "deviseArrivee": "ZWG",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -16126,11 +16126,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 7.1774,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -16172,7 +16172,7 @@
   {
     "devisesDepart": "CAD",
     "deviseArrivee": "AOA",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -16203,11 +16203,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 659.507,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -16249,7 +16249,7 @@
   {
     "devisesDepart": "CAD",
     "deviseArrivee": "BIF",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -16280,11 +16280,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 2135.9409,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -16326,7 +16326,7 @@
   {
     "devisesDepart": "CAD",
     "deviseArrivee": "BWP",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -16357,11 +16357,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 10.0832,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -16403,7 +16403,7 @@
   {
     "devisesDepart": "CAD",
     "deviseArrivee": "CDF",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -16434,11 +16434,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 1640.7127,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -16480,7 +16480,7 @@
   {
     "devisesDepart": "CAD",
     "deviseArrivee": "CVE",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -16511,11 +16511,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 70.1579,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -16557,7 +16557,7 @@
   {
     "devisesDepart": "CAD",
     "deviseArrivee": "DJF",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -16588,11 +16588,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 126.2658,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -16634,7 +16634,7 @@
   {
     "devisesDepart": "CAD",
     "deviseArrivee": "DZD",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -16665,11 +16665,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 96.0822,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -16711,7 +16711,7 @@
   {
     "devisesDepart": "CAD",
     "deviseArrivee": "EGP",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -16742,11 +16742,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 39.8083,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -16788,7 +16788,7 @@
   {
     "devisesDepart": "CAD",
     "deviseArrivee": "ERN",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -16819,11 +16819,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 10.6571,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -16865,7 +16865,7 @@
   {
     "devisesDepart": "CAD",
     "deviseArrivee": "ETB",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -16896,11 +16896,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 114.9694,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -16942,7 +16942,7 @@
   {
     "devisesDepart": "CAD",
     "deviseArrivee": "GMD",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -16973,11 +16973,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 53.0333,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -17019,7 +17019,7 @@
   {
     "devisesDepart": "CAD",
     "deviseArrivee": "GHS",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -17050,11 +17050,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 8.2881,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -17096,7 +17096,7 @@
   {
     "devisesDepart": "CAD",
     "deviseArrivee": "GNF",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -17127,11 +17127,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 6280.2736,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -17173,7 +17173,7 @@
   {
     "devisesDepart": "CAD",
     "deviseArrivee": "KES",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -17204,11 +17204,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 92.2915,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -17250,7 +17250,7 @@
   {
     "devisesDepart": "CAD",
     "deviseArrivee": "KMF",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -17281,11 +17281,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 313.0226,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -17327,7 +17327,7 @@
   {
     "devisesDepart": "CAD",
     "deviseArrivee": "LRD",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -17358,11 +17358,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 120.8935,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -17404,7 +17404,7 @@
   {
     "devisesDepart": "CAD",
     "deviseArrivee": "LSL",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -17435,11 +17435,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 11.845,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -17481,7 +17481,7 @@
   {
     "devisesDepart": "CAD",
     "deviseArrivee": "LYD",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -17512,11 +17512,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 4.5685,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -17558,7 +17558,7 @@
   {
     "devisesDepart": "CAD",
     "deviseArrivee": "MAD",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -17589,11 +17589,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 6.9937,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -17635,7 +17635,7 @@
   {
     "devisesDepart": "CAD",
     "deviseArrivee": "MGA",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -17666,11 +17666,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 3247.9567,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -17712,7 +17712,7 @@
   {
     "devisesDepart": "CAD",
     "deviseArrivee": "MRU",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -17743,11 +17743,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 28.6163,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -17789,7 +17789,7 @@
   {
     "devisesDepart": "CAD",
     "deviseArrivee": "MUR",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -17820,11 +17820,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 33.821,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -17866,7 +17866,7 @@
   {
     "devisesDepart": "CAD",
     "deviseArrivee": "MWK",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -17897,11 +17897,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 1238.7165,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -17943,7 +17943,7 @@
   {
     "devisesDepart": "CAD",
     "deviseArrivee": "MZN",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -17974,11 +17974,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 45.2847,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -18020,7 +18020,7 @@
   {
     "devisesDepart": "CAD",
     "deviseArrivee": "NAD",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -18051,11 +18051,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 11.845,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -18097,7 +18097,7 @@
   {
     "devisesDepart": "CAD",
     "deviseArrivee": "NGN",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -18128,11 +18128,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 955.9336,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -18174,7 +18174,7 @@
   {
     "devisesDepart": "CAD",
     "deviseArrivee": "RWF",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -18205,11 +18205,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 1050.5854,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -18251,7 +18251,7 @@
   {
     "devisesDepart": "CAD",
     "deviseArrivee": "SCR",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -18282,11 +18282,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 10.005,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -18328,7 +18328,7 @@
   {
     "devisesDepart": "CAD",
     "deviseArrivee": "SDG",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -18359,11 +18359,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 361.6176,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -18405,7 +18405,7 @@
   {
     "devisesDepart": "CAD",
     "deviseArrivee": "SLE",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -18436,11 +18436,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 16.2482,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -18482,7 +18482,7 @@
   {
     "devisesDepart": "CAD",
     "deviseArrivee": "SOS",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -18513,11 +18513,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 405.9826,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -18559,7 +18559,7 @@
   {
     "devisesDepart": "CAD",
     "deviseArrivee": "SSP",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -18590,11 +18590,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 4284.0499,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -18636,7 +18636,7 @@
   {
     "devisesDepart": "CAD",
     "deviseArrivee": "STN",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -18667,11 +18667,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 15.5885,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -18713,7 +18713,7 @@
   {
     "devisesDepart": "CAD",
     "deviseArrivee": "SZL",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -18744,11 +18744,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 11.845,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -18790,7 +18790,7 @@
   {
     "devisesDepart": "CAD",
     "deviseArrivee": "TND",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -18821,11 +18821,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 2.1392,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -18867,7 +18867,7 @@
   {
     "devisesDepart": "CAD",
     "deviseArrivee": "TZS",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -18898,11 +18898,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 1873.0685,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -18944,7 +18944,7 @@
   {
     "devisesDepart": "CAD",
     "deviseArrivee": "UGX",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -18975,11 +18975,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 3043.5944,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -19021,7 +19021,7 @@
   {
     "devisesDepart": "CAD",
     "deviseArrivee": "XAF",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -19052,11 +19052,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 417.3634,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -19098,7 +19098,7 @@
   {
     "devisesDepart": "CAD",
     "deviseArrivee": "XOF",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -19129,11 +19129,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 417.3634,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -19175,7 +19175,7 @@
   {
     "devisesDepart": "CAD",
     "deviseArrivee": "ZAR",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -19206,11 +19206,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 11.8451,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -19252,7 +19252,7 @@
   {
     "devisesDepart": "CAD",
     "deviseArrivee": "ZMW",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -19283,11 +19283,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 14.3907,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -19329,7 +19329,7 @@
   {
     "devisesDepart": "CAD",
     "deviseArrivee": "ZWG",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -19360,11 +19360,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 18.8782,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -19406,7 +19406,7 @@
   {
     "devisesDepart": "CNY",
     "deviseArrivee": "AOA",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -19437,11 +19437,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 138.0364,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -19483,7 +19483,7 @@
   {
     "devisesDepart": "CNY",
     "deviseArrivee": "BIF",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -19514,11 +19514,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 447.0577,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -19560,7 +19560,7 @@
   {
     "devisesDepart": "CNY",
     "deviseArrivee": "BWP",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -19591,11 +19591,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 2.1104,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -19637,7 +19637,7 @@
   {
     "devisesDepart": "CNY",
     "deviseArrivee": "CDF",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -19668,11 +19668,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 343.4052,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -19714,7 +19714,7 @@
   {
     "devisesDepart": "CNY",
     "deviseArrivee": "CVE",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -19745,11 +19745,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 14.6842,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -19791,7 +19791,7 @@
   {
     "devisesDepart": "CNY",
     "deviseArrivee": "DJF",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -19822,11 +19822,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 26.4277,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -19868,7 +19868,7 @@
   {
     "devisesDepart": "CNY",
     "deviseArrivee": "DZD",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -19899,11 +19899,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 20.1102,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -19945,7 +19945,7 @@
   {
     "devisesDepart": "CNY",
     "deviseArrivee": "EGP",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -19976,11 +19976,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 8.332,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -20022,7 +20022,7 @@
   {
     "devisesDepart": "CNY",
     "deviseArrivee": "ERN",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -20053,11 +20053,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 2.2306,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -20099,7 +20099,7 @@
   {
     "devisesDepart": "CNY",
     "deviseArrivee": "ETB",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -20130,11 +20130,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 24.0634,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -20176,7 +20176,7 @@
   {
     "devisesDepart": "CNY",
     "deviseArrivee": "GMD",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -20207,11 +20207,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 11.1,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -20253,7 +20253,7 @@
   {
     "devisesDepart": "CNY",
     "deviseArrivee": "GHS",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -20284,11 +20284,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 1.7347,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -20330,7 +20330,7 @@
   {
     "devisesDepart": "CNY",
     "deviseArrivee": "GNF",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -20361,11 +20361,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 1314.4767,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -20407,7 +20407,7 @@
   {
     "devisesDepart": "CNY",
     "deviseArrivee": "KES",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -20438,11 +20438,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 19.3168,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -20484,7 +20484,7 @@
   {
     "devisesDepart": "CNY",
     "deviseArrivee": "KMF",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -20515,11 +20515,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 65.5164,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -20561,7 +20561,7 @@
   {
     "devisesDepart": "CNY",
     "deviseArrivee": "LRD",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -20592,11 +20592,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 25.3033,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -20638,7 +20638,7 @@
   {
     "devisesDepart": "CNY",
     "deviseArrivee": "LSL",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -20669,11 +20669,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 2.4792,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -20715,7 +20715,7 @@
   {
     "devisesDepart": "CNY",
     "deviseArrivee": "LYD",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -20746,11 +20746,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 0.9562,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -20792,7 +20792,7 @@
   {
     "devisesDepart": "CNY",
     "deviseArrivee": "MAD",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -20823,11 +20823,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 1.4638,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -20869,7 +20869,7 @@
   {
     "devisesDepart": "CNY",
     "deviseArrivee": "MGA",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -20900,11 +20900,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 679.8053,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -20946,7 +20946,7 @@
   {
     "devisesDepart": "CNY",
     "deviseArrivee": "MRU",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -20977,11 +20977,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 5.9895,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -21023,7 +21023,7 @@
   {
     "devisesDepart": "CNY",
     "deviseArrivee": "MUR",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -21054,11 +21054,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 7.0788,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -21100,7 +21100,7 @@
   {
     "devisesDepart": "CNY",
     "deviseArrivee": "MWK",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -21131,11 +21131,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 259.2664,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -21177,7 +21177,7 @@
   {
     "devisesDepart": "CNY",
     "deviseArrivee": "MZN",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -21208,11 +21208,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 9.4782,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -21254,7 +21254,7 @@
   {
     "devisesDepart": "CNY",
     "deviseArrivee": "NAD",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -21285,11 +21285,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 2.4792,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -21331,7 +21331,7 @@
   {
     "devisesDepart": "CNY",
     "deviseArrivee": "NGN",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -21362,11 +21362,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 200.0792,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -21408,7 +21408,7 @@
   {
     "devisesDepart": "CNY",
     "deviseArrivee": "RWF",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -21439,11 +21439,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 219.8901,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -21485,7 +21485,7 @@
   {
     "devisesDepart": "CNY",
     "deviseArrivee": "SCR",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -21516,11 +21516,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 2.0941,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -21562,7 +21562,7 @@
   {
     "devisesDepart": "CNY",
     "deviseArrivee": "SDG",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -21593,11 +21593,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 75.6875,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -21639,7 +21639,7 @@
   {
     "devisesDepart": "CNY",
     "deviseArrivee": "SLE",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -21670,11 +21670,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 3.4008,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -21716,7 +21716,7 @@
   {
     "devisesDepart": "CNY",
     "deviseArrivee": "SOS",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -21747,11 +21747,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 84.9731,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -21793,7 +21793,7 @@
   {
     "devisesDepart": "CNY",
     "deviseArrivee": "SSP",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -21824,11 +21824,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 896.6622,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -21870,7 +21870,7 @@
   {
     "devisesDepart": "CNY",
     "deviseArrivee": "STN",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -21901,11 +21901,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 3.2627,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -21947,7 +21947,7 @@
   {
     "devisesDepart": "CNY",
     "deviseArrivee": "SZL",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -21978,11 +21978,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 2.4792,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -22024,7 +22024,7 @@
   {
     "devisesDepart": "CNY",
     "deviseArrivee": "TND",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -22055,11 +22055,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 0.4477,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -22101,7 +22101,7 @@
   {
     "devisesDepart": "CNY",
     "deviseArrivee": "TZS",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -22132,11 +22132,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 392.0378,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -22178,7 +22178,7 @@
   {
     "devisesDepart": "CNY",
     "deviseArrivee": "UGX",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -22209,11 +22209,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 637.0318,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -22255,7 +22255,7 @@
   {
     "devisesDepart": "CNY",
     "deviseArrivee": "XAF",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -22286,11 +22286,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 87.3552,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -22332,7 +22332,7 @@
   {
     "devisesDepart": "CNY",
     "deviseArrivee": "XOF",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -22363,11 +22363,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 87.3552,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -22409,7 +22409,7 @@
   {
     "devisesDepart": "CNY",
     "deviseArrivee": "ZAR",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -22440,11 +22440,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 2.4792,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -22486,7 +22486,7 @@
   {
     "devisesDepart": "CNY",
     "deviseArrivee": "ZMW",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -22517,11 +22517,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 3.012,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
@@ -22563,7 +22563,7 @@
   {
     "devisesDepart": "CNY",
     "deviseArrivee": "ZWG",
-    "misAJour": "2026-11-01T16:25:35.584Z",
+    "misAJour": "2026-11-01T20:22:52.065Z",
     "offres": [
       {
         "operateur": "NALA",
@@ -22594,11 +22594,11 @@
         "url": "https://www.sendwave.com"
       },
       {
-        "operateur": "MoneyGram",
+        "operateur": "Chipper Cash",
         "frais": 0,
         "taux": 3.9513,
         "delai": "Instantané",
-        "url": "https://www.moneygram.com"
+        "url": "https://chippercash.com"
       },
       {
         "operateur": "Wise",
