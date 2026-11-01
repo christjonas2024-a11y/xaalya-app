@@ -515,7 +515,6 @@ function renderResults() {
   }).join('');
 };
   resultats.sort(function(a, b) { return b.recu - a.recu; });
-  const trad = TRANSLATIONS[currentLang] || TRANSLATIONS['en'] || TRANSLATIONS['fr'];
   tbody.innerHTML = resultats.map(function(r, index) {
     const rang = index + 1;
     const badge = index === 0 ? '<span class="ml-2 text-[10px] bg-emerald-500 text-white px-2 py-0.5 rounded-full font-bold">' + (trad.bestRateBadge || 'Cheapest') + '</span>' : '';
