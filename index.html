@@ -264,11 +264,28 @@ let tauxDeChange = {};
 let currentLang = 'en';
 
 const REGION_LABELS = {
+  // Devises d'envoi (pays d'origine)
   EUR: "Euro Zone (€)", USD: "United States ($)", CAD: "Canada ($)", GBP: "United Kingdom (£)",
   CNY: "China (¥)", CHF: "Switzerland (CHF)", AED: "UAE (د.إ)",
-  XOF: "West African CFA", XAF: "Central African CFA", NGN: "Nigerian Naira",
-  GHS: "Ghanaian Cedi", KES: "Kenyan Shilling", MAD: "Moroccan Dirham",
-  DZD: "Algerian Dinar", TND: "Tunisian Dinar", ZAR: "South African Rand"
+  
+  // Devises de réception (Afrique) — 42 devises
+  // Afrique de l'Ouest (UEMOA)
+  XOF: "West African CFA",
+  // Afrique Centrale (CEMAC)
+  XAF: "Central African CFA",
+  // Afrique du Nord
+  DZD: "Algerian Dinar", MAD: "Moroccan Dirham", TND: "Tunisian Dinar", LYD: "Libyan Dinar", EGP: "Egyptian Pound",
+  // Afrique de l'Est
+  KES: "Kenyan Shilling", TZS: "Tanzanian Shilling", UGX: "Ugandan Shilling", RWF: "Rwandan Franc", BIF: "Burundian Franc",
+  ETB: "Ethiopian Birr", SOS: "Somali Shilling", DJF: "Djiboutian Franc", ERN: "Eritrean Nakfa", SSP: "South Sudanese Pound", SDG: "Sudanese Pound",
+  // Afrique australe
+  ZAR: "South African Rand", NAD: "Namibian Dollar", BWP: "Botswana Pula", ZMW: "Zambian Kwacha", MWK: "Malawian Kwacha",
+  MZN: "Mozambican Metical", ZWG: "Zimbabwe Gold", LSL: "Lesotho Loti", SZL: "Swazi Lilangeni", AOA: "Angolan Kwanza",
+  // Afrique de l'Ouest (non-UEMOA)
+  NGN: "Nigerian Naira", GHS: "Ghanaian Cedi", GMD: "Gambian Dalasi", GNF: "Guinean Franc", LRD: "Liberian Dollar",
+  SLE: "Sierra Leonean Leone", CVE: "Cape Verdean Escudo", MRU: "Mauritanian Ouguiya",
+  // Océan Indien
+  MGA: "Malagasy Ariary", MUR: "Mauritian Rupee", SCR: "Seychellois Rupee", KMF: "Comorian Franc"
 };
 
 const OPERATEURS = [
@@ -356,7 +373,13 @@ function remplirDevises() {
   const targetSelect = document.getElementById('targetCurrency');
   if (!sourceSelect || !targetSelect) return;
   const devisesSource = ['EUR', 'USD', 'GBP', 'CAD', 'CHF', 'CNY', 'AED'];
-  const devisesCible = ['XOF', 'XAF', 'NGN', 'GHS', 'KES', 'MAD', 'DZD', 'TND', 'ZAR'];
+    const devisesCible = [
+    'XOF', 'XAF', 'NGN', 'GHS', 'KES', 'MAD', 'DZD', 'TND', 'ZAR',
+    'LYD', 'EGP', 'TZS', 'UGX', 'RWF', 'BIF', 'ETB', 'SOS', 'DJF',
+    'ERN', 'SSP', 'SDG', 'NAD', 'BWP', 'ZMW', 'MWK', 'MZN', 'ZWG',
+    'LSL', 'SZL', 'AOA', 'GMD', 'GNF', 'LRD', 'SLE', 'CVE', 'MRU',
+    'MGA', 'MUR', 'SCR', 'KMF'
+  ];
   sourceSelect.innerHTML = devisesSource.map(function(d) { return '<option value="' + d + '">' + (REGION_LABELS[d] || d) + '</option>'; }).join('');
   targetSelect.innerHTML = devisesCible.map(function(d) { return '<option value="' + d + '">' + (REGION_LABELS[d] || d) + '</option>'; }).join('');
   sourceSelect.value = 'EUR';
