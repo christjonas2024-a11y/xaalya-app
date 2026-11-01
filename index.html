@@ -154,7 +154,7 @@ body.light-mode input, body.light-mode select {
 <main class="max-w-4xl mx-auto px-4 py-10 space-y-10 w-full flex-grow">
 
   <section class="text-center space-y-3">
-    <h2 id="dynamic-hero-title" data-i18n="heroTitle" ...>You send 300€ to Africa...</h2>
+    <h2 id="dynamic-hero-title" data-i18n="heroTitle" ...>
       You send 300€ to Africa. How much actually arrives?
     </h2>
         <p data-i18n="heroSub" class="text-brand-400 font-semibold max-w-2xl mx-auto text-sm sm:text-base">
@@ -581,7 +581,9 @@ function renderResults() {
     return { nom: op.nom, frais: frais, taux: tauxApplique, recu: montantRecu, delai: op.delai };
   });
   
-  resultats.sort(function(a, b) { return b.recu - a.recu; });
+  resultats.sort(function(a, b) { return b.recu - a.recu; });  if (resultats.length > 0) {
+    annoncerMeilleurOpérateurAudio(resultats[0].nom);
+  }
   // Déclencher la voix-off si c'est un changement de devise (optionnel, on peut le gérer via l'événement)
   tbody.innerHTML = resultats.map(function(r, index) {
     const rang = index + 1;
@@ -601,8 +603,36 @@ function renderResults() {
   }).join('');
 }
 
-function recommander(nomOperateur) {
-  alert('Xaalya recommends: ' + nomOperateur + '\n\nYou will be redirected to their official site.');
+function recommander(nomOperateur) {function recommander(nomOperateur) {
+  const source = document.getElementById('sourceCurrency').value;
+  const target = document.getElementById('targetCurrency').value;
+  const amount = parseFloat(document.getElementById('sendAmount').value) || 0;
+  
+  let tauxSource = 1;
+  if (source !== 'EUR') tauxSource = tauxDeChange[source.toLowerCase()] || 1;
+  const tauxCible = tauxDeChange[target.toLowerCase()] || 1;
+  const tauxInterbancaire = tauxCible / tauxSource;
+  
+  const offres = OPERATEURS.map(function(op) {
+    const frais = op.fraisFixes;
+    const montantApresFrais = Math.max(0, amount - frais);
+    const tauxApplique = tauxInterbancaire * (1 - op.margeChange);
+    const montantRecu = montantApresFrais * tauxApplique;
+    return { nom: op.nom, url: op.url, recu: montantRecu };
+  });
+  
+  offres.sort(function(a, b) { return b.recu - a.recu; });
+  const offre = offres.find(function(o) { return o.nom === nomOperateur; });
+  
+  if (offre && offre.url) {
+    const message = currentLang === 'fr' ? 'Vous allez être redirigé vers le site officiel de ' + nomOperateur : 'You will be redirected to the official site of ' + nomOperateur;
+    if (confirm(message)) {
+      window.location.href = offre.url; // <-- Redirection
+    }
+  } else {
+    alert('URL non trouvée pour ' + nomOperateur);
+  }
+}
 }
 
 document.addEventListener('DOMContentLoaded', async function() {
