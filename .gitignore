@@ -3,3 +3,7 @@ coverage/
 .env
 .env.*
 !.env.example
+traduire.py
+traduire_api.py
+textes_fr.json
+traductions_africaines.json
