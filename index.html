@@ -481,8 +481,79 @@ function remplirDevises() {
   sourceSelect.addEventListener('change', renderResults);
   targetSelect.addEventListener('change', renderResults);
   document.getElementById('sendAmount').addEventListener('input', renderResults);
+function attacherEcouteursEvenements() {
+  const sourceSelect = document.getElementById('sourceCurrency');
+  const targetSelect = document.getElementById('targetCurrency');
+  const amountInput = document.getElementById('sendAmount');
+
+  // Changement de devise d'envoi
+  sourceSelect.addEventListener('change', function() {
+    mettreAJourTitreHero();
+    renderResults(); // Met à jour le tableau
+    declencherVoixOff(); // Déclenche la voix
+  });
+
+  // Changement de devise de réception
+  targetSelect.addEventListener('change', function() {
+    renderResults();
+    declencherVoixOff();
+  });
+
+  // Changement de montant (pas de voix-off pour ne pas être pénible)
+  amountInput.addEventListener('input', function() {
+    mettreAJourTitreHero();
+    renderResults();
+  });
 }
 
+// Nouvelle fonction qui trouve le meilleur opérateur actuel et l'annonce
+function declencherVoixOff() {
+  const source = document.getElementById('sourceCurrency').value;
+  const target = document.getElementById('targetCurrency').value;
+  const amount = parseFloat(document.getElementById('sendAmount').value) || 0;
+  
+  let tauxSource = 1;
+  if (source !== 'EUR') tauxSource = tauxDeChange[source.toLowerCase()] || 1;
+  const tauxCible = tauxDeChange[target.toLowerCase()] || 1;
+  const tauxInterbancaire = tauxCible / tauxSource;
+  
+  const offres = OPERATEURS.map(function(op) {
+    const montantApresFrais = Math.max(0, amount - op.fraisFixes);
+    const tauxApplique = tauxInterbancaire * (1 - op.margeChange);
+    const montantRecu = montantApresFrais * tauxApplique;
+    return { nom: op.nom, recu: montantRecu };
+  });
+  
+  offres.sort(function(a, b) { return b.recu - a.recu; });
+  
+  if (offres.length > 0) {
+    annoncerMeilleurOpérateurAudio(offres[0].nom);
+  }
+}}
+function annoncerMeilleurOpérateurAudio(nomOperateur) {
+  if ('speechSynthesis' in window) {
+    window.speechSynthesis.cancel();
+    
+    // Récupérer le suffixe ("le moins cher" ou son équivalent)
+    const trad = TRANSLATIONS[currentLang] || TRANSLATIONS['en'];
+    const suffixe = trad.audioSuffix || "the cheapest";
+    const textToSpeak = `${nomOperateur}, ${suffixe}`;
+    
+    const utterance = new SpeechSynthesisUtterance(textToSpeak);
+    
+    // Associer la bonne voix selon la langue
+    const langCodeMap = {
+      fr: 'fr-FR', zu: 'zu-ZA', ln: 'ln-CD', sn: 'sn-ZW', de: 'de-DE', en: 'en-US', 
+      ar: 'ar-SA', pt: 'pt-PT', es: 'es-ES', zh: 'zh-CN', it: 'it-IT', sw: 'sw-KE', 
+      am: 'am-ET', yo: 'yo-NG', ha: 'ha-NG', wo: 'fr-FR'
+    };
+    
+    utterance.lang = langCodeMap[currentLang] || 'en-US';
+    utterance.rate = 0.95;
+    
+    window.speechSynthesis.speak(utterance);
+  }
+}
 function renderResults() {
   const sourceSelect = document.getElementById('sourceCurrency');
   const targetSelect = document.getElementById('targetCurrency');
@@ -511,7 +582,7 @@ function renderResults() {
   });
   
   resultats.sort(function(a, b) { return b.recu - a.recu; });
-  
+  // Déclencher la voix-off si c'est un changement de devise (optionnel, on peut le gérer via l'événement)
   tbody.innerHTML = resultats.map(function(r, index) {
     const rang = index + 1;
     const badge = index === 0 ? '<span class="ml-2 text-[10px] bg-emerald-500 text-white px-2 py-0.5 rounded-full font-bold">' + (trad.bestRateBadge || 'Cheapest') + '</span>' : '';
