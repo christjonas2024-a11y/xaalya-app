@@ -155,7 +155,7 @@ body.light-mode input, body.light-mode select { background-color: #f1f5f9 !impor
 
 <!-- MODAL: OUR MODEL & INDEPENDENCE -->
 <div id="modal-model" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-  <div class="bg-slate-900 border border-slate-700 text-slate-100 rounded-xl p-6 w-full max-w-2xl max-h-[85vh] overflow-y-auto shadow-2xl relative">
+  <div class="bg-slate-900 border border-slate-700 text-slate-100 rounded-xl p-6 w-full max-w-3xl max-h-[85vh] overflow-y-auto shadow-2xl relative">
     <button onclick="closeModal('modal-model')" data-i18n="closeBtn" class="absolute top-4 right-4 text-slate-400 hover:text-white text-sm font-semibold flex items-center gap-1 bg-slate-800 px-3 py-1.5 rounded-lg border border-slate-700 transition">✕ CLOSE</button>
     <h2 data-i18n="modelTitle" class="text-2xl font-bold mb-4 text-emerald-400 border-b border-slate-800 pb-2">Our model and our independence</h2>
     <div class="space-y-4 text-sm text-slate-300 leading-relaxed">
@@ -248,23 +248,23 @@ const TRANSLATIONS = {
     footerCopy: "© 2026 Xaalya. Tous droits réservés.", footerLink: "Notre modèle et notre indépendance", closeBtn: "✕ FERMER",
     aboutTitle: "À Propos de Xaalya",
     aboutP1: "Xaalya est né d'un constat simple : la diaspora africaine mérite un accès totalement transparent, neutre et gratuit aux meilleures solutions de transfert d'argent. Contrairement aux comparateurs traditionnels, Xaalya ne dépend d'aucun opérateur financier.",
-    aboutH_mission: "Notre mission :", aboutP_mission: "Vous permettre de comparez en temps réel les taux de change et les frais cachés vers 42 devises africaines, sans aucun biais.",
+    aboutH_mission: "Notre mission :", aboutP_mission: "Vous permettre de comparer en temps réel les taux de change et les frais cachés vers 42 devises africaines, sans aucun biais.",
     aboutH_commitment: "Notre engagement :", aboutP_commitment: "Garantir que chaque centime envoyé profite réellement à vos proches.",
     aboutLinkModel: "Envie de comprendre notre éthique ? Découvrez en détail notre modèle et notre indépendance ➔",
     modelTitle: "Notre modèle et notre indépendance",
-    modelLead: "Xaalya compare les opérateurs de transfert d'argent sur le seul critère qui compte pour le bénéficiaire : le montant net reçu, frais et taux de change inclus.",
-    modelS1T: "1. Notre modèle, en un phrase", modelS1D: "Xaalya est financé par la publicité d'annonceurs financiers — banques, assureurs, fintechs d'épargne, acteurs de l'immobilier — et jamais par les opérateurs de transfert d'argent.",
+    modelLead: "Xaalya compare les opérateurs de transfert d'argent selon le seul critère qui compte pour le destinataire : le montant net qu'il reçoit, frais et taux de change compris. Pour que ce classement ait de la valeur, il doit être neutre.",
+    modelS1T: "1. Notre modèle, en une phrase", modelS1D: "Xaalya est financé par la publicité d’annonceurs du secteur financier — banques, assureurs, fintechs d’épargne, acteurs de l’immobilier — et jamais par les opérateurs de transfert d’argent.",
     modelS2T: "2. Ce que nous ne faisons pas",
-    modelRef1: "Nous ne percevons aucune commission d'affiliation des opérateurs.",
-    modelRef2: "Nous n'acceptons aucune publicité d'un opérateur de transfert d'argent.",
-    modelRef3: "Nous ne vendons aucune position dans les classements.",
+    modelRef1: "Nous ne percevons aucune commission d’affiliation de la part des opérateurs.",
+    modelRef2: "Nous n’acceptons aucune publicité de la part d’un opérateur de transfert d’argent.",
+    modelRef3: "Nous ne vendons aucune place dans aucun classement.",
     modelRef4: "Nous ne monétisons pas les données personnelles de nos lecteurs.",
-    modelRef5: "Nous ne cachons pas les marges de taux de change derrière des « 0 frais ».",
-    modelS3T: "3. Comment le classement est calculé", modelS3D: "Le classement par défaut repose sur un chiffre unique : le montant net reçu par le bénéficiaire.",
+    modelRef5: "Nous ne dissimulons pas les marges de change derrière des « frais 0 ».",
+    modelS3T: "3. Comment le classement est-il calculé ?", modelS3D: "Le classement par défaut de chaque corridor repose sur un seul chiffre : le montant net reçu par le bénéficiaire, frais et marge de change inclus.",
     faqTitle: "Foire aux Questions",
     faqQ1: "1. Xaalya est-il vraiment 100% gratuit ?", faqA1: "Oui, notre comparateur est entièrement gratuit et sans majoration de taux.",
-    faqQ2: "2. Comment Xaalya se finance-t-il s'il est gratuit ?", faqA2: "Xaalya est financé exclusivement par la publicité d'annonceurs non-financiers et d'acteurs institutionnels extérieurs au transfert.",
-    faqQ3: "3. Les taux affichés sont-ils mis à jour en temps réel ?", faqA3: "Oui, les grilles tarifaires sont actualisées quotidiennement.",
+    faqQ2: "2. Comment Xaalya se finance-t-il s'il est gratuit ?", faqA2: "Xaalya est financé exclusivement par la publicité d'annonceurs institutionnels non-financiers (banques, assurances, fintechs d'épargne).",
+    faqQ3: "3. Les taux affichés sont-ils mis à jour en temps réel ?", faqA3: "Oui, les grilles tarifaires et les taux de change du marché sont actualisés quotidiennement.",
     faqQ4: "4. Dois-je créer un compte pour utiliser le comparateur ?", faqA4: "Non, Xaalya fonctionne de manière totalement anonyme sans inscription.",
     faqQ5: "5. Comment Xaalya détermine-t-il ses taux au quotidien ?", faqA5: "Collecte directe auprès des sources officielles pour évaluer le coût total réel.",
     faqQ6: "6. Comment Xaalya gagne-t-il sa vie sans affiliation ?", faqA6: "Par le biais d'annonceurs institutionnels rigoureusement sélectionnés dans la banque et l'immobilier.",
@@ -291,7 +291,7 @@ const TRANSLATIONS = {
     aboutH_commitment: "Our commitment:", aboutP_commitment: "To ensure that every cent sent actually benefits your loved ones.",
     aboutLinkModel: "Want to understand our ethics? Find out more about our model and our independence ➔",
     modelTitle: "Our model and our independence",
-    modelLead: "Xaalya compares money transfer operators on the only criterion that matters to the recipient: the net amount received, fees and exchange rate included.",
+    modelLead: "Xaalya compares money transfer operators on the only criterion that matters to the recipient: the net amount received, fees and exchange rate included. For that ranking to have value, it must be neutral.",
     modelS1T: "1. Our model, in one sentence", modelS1D: "Xaalya is funded by the advertising of financial advertisers — banks, insurers, savings fintechs, real estate players — and never by money transfer operators.",
     modelS2T: "2. What we do not do",
     modelRef1: "We receive no affiliate commission from operators.",
@@ -299,7 +299,7 @@ const TRANSLATIONS = {
     modelRef3: "We sell no position in any ranking.",
     modelRef4: "We do not monetise our readers' personal data.",
     modelRef5: "We do not hide exchange rate margins behind '0 fees'.",
-    modelS3T: "3. How the ranking is calculated", modelS3D: "The default ranking is based on a single figure: the net amount received by the recipient.",
+    modelS3T: "3. How the ranking is calculated", modelS3D: "The default ranking is based on a single figure: the net amount received by the recipient for a given amount sent.",
     faqTitle: "Frequently Asked Questions",
     faqQ1: "1. Is Xaalya really 100% free?", faqA1: "Yes, our comparison service is completely free for users. We do not charge any fees and do not mark up any rates.",
     faqQ2: "2. How is Xaalya funded if it’s free?", faqA2: "Xaalya is funded exclusively by advertising from clearly identified non-financial institutional advertisers.",
@@ -316,7 +316,7 @@ const TRANSLATIONS = {
   }
 };
 
-// Fill languages up to 16 with fallback
+// Fill languages up to 16 with fallback to English / French depending on code
 ['zu', 'ln', 'sn', 'de', 'ar', 'pt', 'es', 'zh', 'it', 'sw', 'am', 'yo', 'ha', 'wo'].forEach(l => {
   TRANSLATIONS[l] = JSON.parse(JSON.stringify(TRANSLATIONS['en']));
 });
@@ -458,7 +458,13 @@ document.addEventListener('DOMContentLoaded', async () => {
   document.getElementById('sendAmount').addEventListener('input', () => { renderResults(); });
   document.getElementById('sendAmount').addEventListener('change', () => { declencherVoixOff(); });
 
-  const langSauvee = localStorage.getItem('xaalya-lang') || 'en';
+  let langueDetectee = 'en';
+  const navLangs = navigator.languages || [navigator.language || 'en'];
+  for (let i = 0; i < navLangs.length; i++) {
+    const c = (navLangs[i] || '').toLowerCase();
+    if (c.startsWith('fr')) { langueDetectee = 'fr'; break; }
+  }
+  const langSauvee = localStorage.getItem('xaalya-lang') || langueDetectee;
   if (TRANSLATIONS[langSauvee]) {
     document.getElementById('language-select').value = langSauvee;
     setLanguage(langSauvee, false);
