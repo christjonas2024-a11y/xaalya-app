@@ -1,18 +1,7 @@
 // ============================================================
-// XAALYA — TRADUCTIONS PARTAGÉES (16 langues)
-// Chargé par toutes les pages du site.
-// Pour ajouter une page, ajoutez ses clés (préfixe unique) ici.
+// XAALYA — TRADUCTIONS PARTAGÉES POUR /notre-modele
 // ============================================================
 
-const LANG_CODES = {
-  fr: 'fr-FR', zu: 'zu-ZA', ln: 'ln-CD', sn: 'sn-ZW', de: 'de-DE', en: 'en-US',
-  ar: 'ar-SA', pt: 'pt-PT', es: 'es-ES', zh: 'zh-CN', it: 'it-IT', sw: 'sw-KE',
-  am: 'am-ET', yo: 'yo-NG', ha: 'ha-NG', wo: 'fr-FR'
-};
-
-// ============================================================
-// TRADUCTIONS DE LA PAGE /notre-modele (préfixe nm_)
-// ============================================================
 const TRANSLATIONS_MODEL = {
   fr: {
     nm_headerSlogan: "Comparateur indépendant",
@@ -92,51 +81,6 @@ const TRANSLATIONS_MODEL = {
     nm_footer: "Cette page a été mise à jour le 30 octobre 2026. Elle est révisée à chaque changement de modèle économique, et au minimum une fois par an.",
     nm_footerContact: "Contact :"
   },
-    pub_backLink: "← Retour au comparateur",
-    pub_h1: "Annonceurs et Partenaires",
-    pub_intro: "Xaalya réunit une audience qualifiée de la diaspora africaine qui compare avant chaque envoi. Nous ne vendons pas de la visibilité aux opérateurs de transfert. Nous vendons de l'accès et de la donnée aux acteurs financiers qui veulent les comprendre.",
-    pub_rule: "Aucun opérateur de transfert ne peut acheter d'espace sur Xaalya.",
-    pub_kpi1: "Abonnés qualifiés",
-    pub_kpi2: "Taux d'ouverture moyen",
-    pub_kpi3: "Taux de clic vers les corridors",
-    pub_offer_title: "Ce que nous proposons",
-    pub_offer1_t: "Sponsoring de contenu",
-    pub_offer1_d: "Association de votre marque à nos analyses de taux ou à nos guides pratiques. Encart natif identifié « Partenaire » dans notre newsletter ou sur nos pages.",
-    pub_offer2_t: "Données agrégées B2B",
-    pub_offer2_d: "Accès à nos données de comparaison (frais réels, taux appliqués, délais observés) et à nos analyses de marché sur les corridors africains. Rapport ou abonnement.",
-    pub_form_title: "Discutons de votre projet",
-    pub_form_sub: "Remplissez ce formulaire. Nous vous répondons sous 48 heures ouvrées.",
-    pub_form_name: "Votre nom *",
-    pub_form_company: "Entreprise *",
-    pub_form_email: "Email professionnel *",
-    pub_form_interest: "Ce qui vous intéresse *",
-    pub_form_select: "Sélectionnez une option",
-    pub_form_opt1: "Sponsoring de contenu",
-    pub_form_opt2: "Achat de données / Rapport",
-    pub_form_opt3: "Autre demande",
-    pub_form_msg: "Votre message",
-    pub_form_btn: "Envoyer ma demande",
-    pub_form_rgpd: "Vos données sont utilisées uniquement pour répondre à votre demande. Aucune donnée n'est vendue. Ce formulaire est sécurisé par FormSubmit.",
-    pub_footer_model: "Notre modèle et notre indépendance",
-    cor_backLink: "← Retour au comparateur",
-    cor_h1: "Comparer les transferts d'argent de la France vers le Sénégal",
-    cor_intro: "Frais et taux de change inclus. Montant net mis à jour en temps réel.",
-    cor_table_title: "Quel opérateur offre le meilleur taux ?",
-    cor_table_sub: "Pour un envoi de 500 €, voici ce que votre bénéficiaire reçoit au Sénégal.",
-    cor_th_rank: "Rang",
-    cor_th_op: "Opérateur",
-    cor_th_fee: "Frais",
-    cor_th_rate: "Taux appliqué",
-    cor_th_recv: "Montant reçu",
-    cor_method: "Classement établi sur le montant net reçu, sans lien d'affiliation. Taux relevés le 30 octobre 2026.",
-    cor_context_title: "Ce qu'il faut savoir avant d'envoyer",
-    cor_context_p1: "Le Sénégal est l'une des corridors les plus concurrentielles depuis la France. Résultat : les frais ont fortement baissé, et certains opérateurs affichent désormais 0 € de frais.",
-    cor_context_p2: "Mais attention : le vrai critère n'est pas les frais affichés, c'est le <strong>montant net reçu</strong>. Sur un envoi de 500 €, l'écart entre le meilleur et le moins bon opérateur peut atteindre 5 000 XOF.",
-    cor_links_title: "Pour aller plus loin",
-    cor_link1: "Notre modèle et notre indépendance",
-    cor_link2: "Annonceurs & Partenaires",
-    cor_link3: "Voir tous les corridors (accueil)",
-    cor_footer_model: "Notre modèle et notre indépendance",
   en: {
     nm_headerSlogan: "Independent comparator",
     nm_backLink: "← Back to comparator",
@@ -214,153 +158,47 @@ const TRANSLATIONS_MODEL = {
     nm_s7_a4: "None. No email address, no IP, no tracking cookie, no analytics tool. The comparator calculates the net amount directly in your browser. Only language and theme preferences (light/dark) are stored, and only in your browser (localStorage) — never sent to our servers.",
     nm_footer: "This page was updated on 30 October 2026. It is revised with every change in business model, and at least once a year.",
     nm_footerContact: "Contact:"
-  }
-    pub_backLink: "← Back to comparator",
-    pub_h1: "Advertisers & Partners",
-    pub_intro: "Xaalya brings together a qualified audience of the African diaspora who compare before every transfer. We do not sell visibility to money transfer operators. We sell access and data to financial players who want to understand them.",
-    pub_rule: "No money transfer operator can buy space on Xaalya.",
-    pub_kpi1: "Qualified subscribers",
-    pub_kpi2: "Average open rate",
-    pub_kpi3: "Click-through rate to corridors",
-    pub_offer_title: "What we offer",
-    pub_offer1_t: "Content Sponsorship",
-    pub_offer1_d: "Associate your brand with our rate analyses or practical guides. Native placement labelled \"Partner\" in our newsletter or on our pages.",
-    pub_offer2_t: "B2B Aggregated Data",
-    pub_offer2_d: "Access our comparison data (real fees, applied rates, observed delays) and our market analyses on African corridors. Report or subscription.",
-    pub_form_title: "Let's discuss your project",
-    pub_form_sub: "Fill out this form. We reply within 48 business hours.",
-    pub_form_name: "Your name *",
-    pub_form_company: "Company *",
-    pub_form_email: "Business email *",
-    pub_form_interest: "What interests you *",
-    pub_form_select: "Select an option",
-    pub_form_opt1: "Content Sponsorship",
-    pub_form_opt2: "Data purchase / Report",
-    pub_form_opt3: "Other request",
-    pub_form_msg: "Your message",
-    pub_form_btn: "Send my request",
-    pub_form_rgpd: "Your data is used only to respond to your request. No data is sold. This form is secured by FormSubmit.",
-    pub_footer_model: "Our model and our independence",
-    cor_backLink: "← Back to comparator",
-    cor_h1: "Compare money transfers from France to Senegal",
-    cor_intro: "Fees and exchange rates included. Net amount updated in real time.",
-    cor_table_title: "Which operator offers the best rate?",
-    cor_table_sub: "For a €500 transfer, here is what your recipient receives in Senegal.",
-    cor_th_rank: "Rank",
-    cor_th_op: "Operator",
-    cor_th_fee: "Fee",
-    cor_th_rate: "Applied rate",
-    cor_th_recv: "Amount received",
-    cor_method: "Ranking based on the net amount received, with no affiliate links. Rates collected on 30 October 2026.",
-    cor_context_title: "What you need to know before sending",
-    cor_context_p1: "Senegal is one of the most competitive corridors from France. As a result, fees have dropped sharply, and some operators now offer €0 fees.",
-    cor_context_p2: "But be careful: the real criterion is not the displayed fees, it's the <strong>net amount received</strong>. On a €500 transfer, the gap between the best and worst operator can reach 5,000 XOF.",
-    cor_links_title: "Go further",
-    cor_link1: "Our model and our independence",
-    cor_link2: "Advertisers & Partners",
-    cor_link3: "View all corridors (home)",
-    cor_footer_model: "Our model and our independence",
+  },
+  zu: { nm_headerSlogan: "Isiqhathanisi esizimele", nm_backLink: "← Buyela kusiqhathanisi", nm_h1: "Imodeli yethu nokuzimela kwethu", nm_lastUpdate: "Kubuyekezwe: 30 Okthoba 2026." },
+  ln: { nm_headerSlogan: "Mopesipaso ya bonsomi", nm_backLink: "← Zonga na mopesipaso", nm_h1: "Model na biso mpe bonsomi na biso", nm_lastUpdate: "Ebongisami: 30 Oktobo 2026." },
+  sn: { nm_headerSlogan: "Muchanidzi wakazvimirira", nm_backLink: "← Dzokera ku mhando", nm_h1: "Mhando yedu uye kuzvimirira kwedu", nm_lastUpdate: "Yakagadziriswa: 30 Gumiguru 2026." },
+  de: { nm_headerSlogan: "Unabhängiger Vergleich", nm_backLink: "← Zurück zum Vergleich", nm_h1: "Unser Modell und unsere Unabhängigkeit", nm_lastUpdate: "Aktualisiert am: 30. Oktober 2026." },
+  ar: { nm_headerSlogan: "مقارن مستقل", nm_backLink: "← العودة إلى المقارن", nm_h1: "نموذجنا واستقلاليتنا", nm_lastUpdate: "آخر تحديث: 30 أكتوبر 2026." },
+  pt: { nm_headerSlogan: "Comparador independente", nm_backLink: "← Voltar ao comparador", nm_h1: "Nosso modelo e nossa independência", nm_lastUpdate: "Atualizado em: 30 de outubro de 2026." },
+  es: { nm_headerSlogan: "Comparador independiente", nm_backLink: "← Volver al comparador", nm_h1: "Nuestro modelo y nuestra independencia", nm_lastUpdate: "Actualizado el: 30 de octubre de 2026." },
+  zh: { nm_headerSlogan: "独立比较平台", nm_backLink: "← 返回比较", nm_h1: "我们的模式与独立性", nm_lastUpdate: "更新时间：2026年10月30日。" },
+  it: { nm_headerSlogan: "Comparatore indipendente", nm_backLink: "← Torna al comparatore", nm_h1: "Il nostro modello e la nostra indipendenza", nm_lastUpdate: "Aggiornato il: 30 ottobre 2026." },
+  sw: { nm_headerSlogan: "Kilinganishi huru", nm_backLink: "← Rudi kwa kilinganishi", nm_h1: "Mfumo wetu na uhuru wetu", nm_lastUpdate: "Imeboreshwa: 30 Oktoba 2026." },
+  am: { nm_headerSlogan: "ገለልተኛ አወዳዳሪ", nm_backLink: "← ወደ አወዳዳሪ ተመለስ", nm_h1: "የእኛ ሞዴል እና ነፃነታችን", nm_lastUpdate: "የተሻሻለው: 30 ጥቅምት 2026." },
+  yo: { nm_headerSlogan: "Afiwe ominira", nm_backLink: "← Pada si afiwe", nm_h1: "Awoṣe wa ati ominira wa", nm_lastUpdate: "Ti imudojuiwọn: 30 Oṣù Kẹ́wàá 2026." },
+  ha: { nm_headerSlogan: "Mai kwatancen mai zaman kansa", nm_backLink: "← Koma zuwa kwatancen", nm_h1: "Tsarinmu da 'yancin kanmu", nm_lastUpdate: "An sabunta: 30 Oktoba 2026." },
+  wo: { nm_headerSlogan: "Nattukaay bu amul", nm_backLink: "← Dellu ci nattukaay", nm_h1: "Sunu modele ak sunu bokk", nm_lastUpdate: "Yessal nañu ko ci: 30 Oktoobar 2026." }
 };
 
-// ============================================================
-// FONCTION setLanguage — fusionne les traductions de la page
-// courante (TRANSLATIONS) avec celles du modèle (TRANSLATIONS_MODEL)
-// ============================================================
-function setLanguage(lang, parActionUtilisateur) {
-  if (parActionUtilisateur === undefined) parActionUtilisateur = false;
-
-  const pageTrans = (typeof TRANSLATIONS !== 'undefined' && TRANSLATIONS) ? TRANSLATIONS : {};
-  const modelTrans = (typeof TRANSLATIONS_MODEL !== 'undefined' && TRANSLATIONS_MODEL) ? TRANSLATIONS_MODEL : {};
-
-  const fr = Object.assign({}, pageTrans.fr || {}, modelTrans.fr || {});
-  const en = Object.assign({}, pageTrans.en || {}, modelTrans.en || {});
-
-  const translations = { fr: fr, en: en };
-
-  Object.keys(pageTrans).forEach(function(code) {
-    if (code !== 'fr' && code !== 'en') {
-      translations[code] = Object.assign({}, fr, pageTrans[code]);
-    }
+// Fonction setLanguage
+function setLanguage(lang, save) {
+  currentLang = lang;
+  const trad = (TRANSLATIONS_MODEL[lang] || TRANSLATIONS_MODEL['en'] || TRANSLATIONS_MODEL['fr']);
+  document.querySelectorAll('[data-i18n]').forEach(function(el) {
+    const key = el.getAttribute('data-i18n');
+    if (trad[key]) el.textContent = trad[key];
   });
-  Object.keys(modelTrans).forEach(function(code) {
-    if (code !== 'fr' && code !== 'en') {
-      translations[code] = Object.assign({}, translations[code] || en, modelTrans[code]);
-    }
-  });
-
-  // Fallback : si la langue n'existe pas, prendre l'anglais
-  const trad = translations[lang] || translations['en'] || translations['fr'];
-
-  const htmlRoot = document.getElementById('html-root');
-  if (htmlRoot) {
-    if (lang === 'ar') {
-      htmlRoot.setAttribute('dir', 'rtl');
-      htmlRoot.setAttribute('lang', 'ar');
-    } else {
-      htmlRoot.removeAttribute('dir');
-      htmlRoot.setAttribute('lang', lang || 'en');
-    }
-  }
-
-  const selectLang = document.getElementById('language-select');
-  if (selectLang) selectLang.value = lang || 'en';
-
-  document.querySelectorAll('[data-i18n]').forEach(function(elem) {
-    const key = elem.getAttribute('data-i18n');
-    if (trad[key] !== undefined) {
-      elem.textContent = trad[key];
-    }
-  });
-
-  if (parActionUtilisateur) {
-    try { localStorage.setItem('xaalya_lang_manual', lang); } catch (e) {}
-  }
-
-  if (typeof mettreAJourTitreHero === 'function') {
-    try { mettreAJourTitreHero(); } catch (e) {}
-  }
-
-  if (typeof catalogueCorridors !== 'undefined' && catalogueCorridors.length > 0) {
-    if (typeof afficherComparaison === 'function') {
-      try { afficherComparaison(); } catch (e) {}
-    }
-  }
+  document.getElementById('html-root').setAttribute('lang', lang);
+  if (lang === 'ar') { document.body.setAttribute('dir', 'rtl'); } else { document.body.setAttribute('dir', 'ltr'); }
+  if (save) { try { localStorage.setItem('xaalya-lang', lang); } catch(e) {} }
 }
 
-// ============================================================
-// DÉTECTION AUTOMATIQUE — fallback anglais
-// ============================================================
-async function detecterLangueParDefaut() {
-  let langueEnregistree = null;
-  try { langueEnregistree = localStorage.getItem('xaalya_lang_manual'); } catch (e) {}
-
-  if (langueEnregistree) {
-    setLanguage(langueEnregistree, false);
-    return;
-  }
-
+// Détection automatique
+function detecterLangueParDefaut() {
+  let langueDetectee = 'en';
   const navLangs = navigator.languages || [navigator.language || 'en'];
-  let langueDetectee = 'en';  // ← fallback ANGLAIS (au lieu de français)
-
   for (let i = 0; i < navLangs.length; i++) {
     const c = (navLangs[i] || '').toLowerCase();
-    if (c.startsWith('zu')) { langueDetectee = 'zu'; break; }
-    if (c.startsWith('ln')) { langueDetectee = 'ln'; break; }
-    if (c.startsWith('sn')) { langueDetectee = 'sn'; break; }
-    if (c.startsWith('de')) { langueDetectee = 'de'; break; }
-    if (c.startsWith('zh')) { langueDetectee = 'zh'; break; }
-    if (c.startsWith('it')) { langueDetectee = 'it'; break; }
-    if (c.startsWith('es')) { langueDetectee = 'es'; break; }
-    if (c.startsWith('pt')) { langueDetectee = 'pt'; break; }
-    if (c.startsWith('ar')) { langueDetectee = 'ar'; break; }
-    if (c.startsWith('en')) { langueDetectee = 'en'; break; }
-    if (c.startsWith('sw')) { langueDetectee = 'sw'; break; }
-    if (c.startsWith('am')) { langueDetectee = 'am'; break; }
-    if (c.startsWith('yo')) { langueDetectee = 'yo'; break; }
-    if (c.startsWith('ha')) { langueDetectee = 'ha'; break; }
-    if (c.startsWith('wo')) { langueDetectee = 'wo'; break; }
     if (c.startsWith('fr')) { langueDetectee = 'fr'; break; }
   }
-
-  setLanguage(langueDetectee, false);
+  const langSauvee = localStorage.getItem('xaalya-lang') || langueDetectee;
+  if (langSauvee && TRANSLATIONS_MODEL[langSauvee]) {
+    document.getElementById('language-select').value = langSauvee;
+    setLanguage(langSauvee, false);
+  }
 }
