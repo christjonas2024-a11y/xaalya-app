@@ -83,7 +83,7 @@ body.light-mode input, body.light-mode select { background-color: #f1f5f9 !impor
 <main class="max-w-4xl mx-auto px-4 py-10 space-y-10 w-full flex-grow">
   <!-- Hero Section -->
   <section class="text-center space-y-3">
-    <h2 id="dynamic-hero-title" data-i18n="heroTitle" class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">You send 300€ to Africa. How much actually arrives?</h2>
+    <h2 id="dynamic-hero-title" class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">You send 300€ to Africa. How much actually arrives?</h2>
     <p data-i18n="heroSub" class="text-brand-400 font-semibold max-w-2xl mx-auto text-sm sm:text-base">294 real-time financial corridors. 100% free and neutral comparison.</p>
   </section>
 
@@ -269,7 +269,7 @@ body.light-mode input, body.light-mode select { background-color: #f1f5f9 !impor
   </div>
 </div>
 
-<!-- Footer (Sans le lien Notre Modèle) -->
+<!-- Footer -->
 <footer class="border-t border-slate-800/80 bg-slate-950 py-8 text-center text-xs text-slate-500">
   <p data-i18n="footerCopy">© 2026 Xaalya. All rights reserved.</p>
 </footer>
@@ -298,7 +298,7 @@ const TRANSLATIONS = {
   fr: {
     badgeTitle: "COMPARATEUR GRATUIT & INDÉPENDANT", logoSlogan: "Comparez & Transférez en toute simplicité",
     navAbout: "À Propos", navModel: "Notre Modèle", navFaq: "FAQ", navSecurity: "Sécurité",
-    heroTitle: "Vous envoyez 300€ vers l'Afrique. Combien arrive réellement?",
+    heroTitleTpl: "Vous envoyez {amount}{symbol} vers l'Afrique. Combien arrive réellement?",
     heroSub: "294 corridors financiers actualisés en temps réel. Comparateur 100% gratuit et neutre.",
     labelSource: "Devise d'envoi :", labelTarget: "Devise de réception (Afrique) :", labelAmount: "Montant envoyé :",
     statusConnected: "Converti aux taux mondiaux", resultsTitle: "Comparatif des opérateurs", resultsRank: "Classé par meilleur taux net",
@@ -380,7 +380,7 @@ const TRANSLATIONS = {
   en: {
     badgeTitle: "FREE & INDEPENDENT COMPARATOR", logoSlogan: "Compare & Transfer with ease",
     navAbout: "About", navModel: "Our Model", navFaq: "FAQ", navSecurity: "Security",
-    heroTitle: "You send 300€ to Africa. How much actually arrives?",
+    heroTitleTpl: "You send {amount}{symbol} to Africa. How much actually arrives?",
     heroSub: "294 real-time financial corridors. 100% free and neutral comparison.",
     labelSource: "Send currency:", labelTarget: "Receive currency (Africa):", labelAmount: "Send amount:",
     statusConnected: "Converted at global rates", resultsTitle: "Operators comparison", resultsRank: "Ranked by best net rate",
@@ -461,10 +461,35 @@ const TRANSLATIONS = {
   }
 };
 
-// Fill remaining languages with fallback structure to prevent missing keys
+// Fill remaining languages with custom localized templates / fallbacks
 ['zu', 'ln', 'sn', 'de', 'ar', 'pt', 'es', 'zh', 'it', 'sw', 'am', 'yo', 'ha', 'wo'].forEach(l => {
-  TRANSLATIONS[l] = JSON.parse(JSON.stringify(TRANSLATIONS['en']));
+  if (!TRANSLATIONS[l]) {
+    TRANSLATIONS[l] = JSON.parse(JSON.stringify(TRANSLATIONS['en']));
+  } else if (!TRANSLATIONS[l].heroTitleTpl) {
+    TRANSLATIONS[l].heroTitleTpl = TRANSLATIONS['en'].heroTitleTpl;
+  }
 });
+
+function getCurrencySymbol(curr) {
+  const symbols = { EUR: "€", USD: "$", GBP: "£", CAD: "$", CHF: "CHF", CNY: "¥", AED: "د.إ" };
+  return symbols[curr] || curr;
+}
+
+function updateHeroTitle() {
+  const amountInput = document.getElementById('sendAmount');
+  const sourceSelect = document.getElementById('sourceCurrency');
+  const heroHeading = document.getElementById('dynamic-hero-title');
+  if (!amountInput || !sourceSelect || !heroHeading) return;
+
+  const amount = amountInput.value || "300";
+  const curr = sourceSelect.value || "EUR";
+  const symbol = getCurrencySymbol(curr);
+
+  const trad = TRANSLATIONS[currentLang] || TRANSLATIONS['en'];
+  const tpl = trad.heroTitleTpl || TRANSLATIONS['en'].heroTitleTpl;
+
+  heroHeading.textContent = tpl.replace('{amount}', amount).replace('{symbol}', symbol);
+}
 
 function openModal(id) {
   const modal = document.getElementById(id);
@@ -496,6 +521,7 @@ function setLanguage(lang, save) {
   document.documentElement.setAttribute('lang', lang);
   if (lang === 'ar') { document.body.setAttribute('dir', 'rtl'); } else { document.body.setAttribute('dir', 'ltr'); }
   if (save) { try { localStorage.setItem('xaalya-lang', lang); } catch(e) {} }
+  updateHeroTitle();
   renderResults();
   const info = document.getElementById('lastUpdatedInfo');
   if (info) {
@@ -602,11 +628,12 @@ function renderResults() {
 document.addEventListener('DOMContentLoaded', async () => {
   remplirDevises();
   await chargerTaux();
+  updateHeroTitle();
   renderResults();
 
-  document.getElementById('sourceCurrency').addEventListener('change', () => { renderResults(); declencherVoixOff(); });
+  document.getElementById('sourceCurrency').addEventListener('change', () => { updateHeroTitle(); renderResults(); declencherVoixOff(); });
   document.getElementById('targetCurrency').addEventListener('change', () => { renderResults(); declencherVoixOff(); });
-  document.getElementById('sendAmount').addEventListener('input', () => { renderResults(); });
+  document.getElementById('sendAmount').addEventListener('input', () => { updateHeroTitle(); renderResults(); });
   document.getElementById('sendAmount').addEventListener('change', () => { declencherVoixOff(); });
 
   let langueDetectee = 'en';
