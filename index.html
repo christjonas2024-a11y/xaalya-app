@@ -99,6 +99,88 @@ body.light-mode input, body.light-mode select { background-color: #f1f5f9 !impor
       </div>
       <span id="lastUpdatedInfo"></span>
     </div>
+  
+  <section class="space-y-4 pt-4">
+    <div class="flex items-center justify-between">
+      <h3 data-i18n="topCorridorsTitle" class="text-lg font-bold text-white flex items-center gap-2">
+        🔥 <span class="text-brand-400">Top Corridors</span> — Transfers to Africa
+      </h3>
+      <span data-i18n="topCorridorsSub" class="text-xs text-slate-400 hidden sm:inline">Direct access to popular rates</span>
+    </div>
+
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+      <!-- Corridor 1: EUR -> XOF -->
+      <button onclick="selectCorridor('EUR', 'XOF')" class="bg-slate-900/80 hover:bg-slate-800 border border-slate-800 hover:border-emerald-500/50 p-3 rounded-xl text-left transition group">
+        <div class="flex items-center justify-between mb-1">
+          <span class="text-sm font-bold text-white group-hover:text-emerald-400 transition">EUR ➔ XOF</span>
+          <span class="text-xs">🇫🇷 ➔ 🇸🇳 🇨🇮</span>
+        </div>
+        <p class="text-[11px] text-slate-400 leading-tight" data-i18n="corridorEurXof">France / Europe to West Africa</p>
+      </button>
+
+      <!-- Corridor 2: EUR -> NGN -->
+      <button onclick="selectCorridor('EUR', 'NGN')" class="bg-slate-900/80 hover:bg-slate-800 border border-slate-800 hover:border-emerald-500/50 p-3 rounded-xl text-left transition group">
+        <div class="flex items-center justify-between mb-1">
+          <span class="text-sm font-bold text-white group-hover:text-emerald-400 transition">EUR ➔ NGN</span>
+          <span class="text-xs">🇪🇺 ➔ 🇳🇬</span>
+        </div>
+        <p class="text-[11px] text-slate-400 leading-tight" data-i18n="corridorEurNgn">Europe to Nigeria</p>
+      </button>
+
+      <!-- Corridor 3: GBP -> NGN -->
+      <button onclick="selectCorridor('GBP', 'NGN')" class="bg-slate-900/80 hover:bg-slate-800 border border-slate-800 hover:border-emerald-500/50 p-3 rounded-xl text-left transition group">
+        <div class="flex items-center justify-between mb-1">
+          <span class="text-sm font-bold text-white group-hover:text-emerald-400 transition">GBP ➔ NGN</span>
+          <span class="text-xs">🇬🇧 ➔ 🇳🇬</span>
+        </div>
+        <p class="text-[11px] text-slate-400 leading-tight" data-i18n="corridorGbpNgn">UK to Nigeria</p>
+      </button>
+
+      <!-- Corridor 4: EUR -> XAF -->
+      <button onclick="selectCorridor('EUR', 'XAF')" class="bg-slate-900/80 hover:bg-slate-800 border border-slate-800 hover:border-emerald-500/50 p-3 rounded-xl text-left transition group">
+        <div class="flex items-center justify-between mb-1">
+          <span class="text-sm font-bold text-white group-hover:text-emerald-400 transition">EUR ➔ XAF</span>
+          <span class="text-xs">🇫🇷 ➔ 🇨🇲 🇬🇦</span>
+        </div>
+        <p class="text-[11px] text-slate-400 leading-tight" data-i18n="corridorEurXaf">Europe to Central Africa</p>
+      </button>
+
+      <!-- Corridor 5: EUR -> MAD -->
+      <button onclick="selectCorridor('EUR', 'MAD')" class="bg-slate-900/80 hover:bg-slate-800 border border-slate-800 hover:border-emerald-500/50 p-3 rounded-xl text-left transition group">
+        <div class="flex items-center justify-between mb-1">
+          <span class="text-sm font-bold text-white group-hover:text-emerald-400 transition">EUR ➔ MAD</span>
+          <span class="text-xs">🇫🇷 🇪🇸 ➔ 🇲🇦</span>
+        </div>
+        <p class="text-[11px] text-slate-400 leading-tight" data-i18n="corridorEurMad">Europe to Morocco</p>
+      </button>
+
+      <!-- Corridor 6: USD -> GHS -->
+      <button onclick="selectCorridor('USD', 'GHS')" class="bg-slate-900/80 hover:bg-slate-800 border border-slate-800 hover:border-emerald-500/50 p-3 rounded-xl text-left transition group">
+        <div class="flex items-center justify-between mb-1">
+          <span class="text-sm font-bold text-white group-hover:text-emerald-400 transition">USD ➔ GHS</span>
+          <span class="text-xs">🇺🇸 ➔ 🇬🇭</span>
+        </div>
+        <p class="text-[11px] text-slate-400 leading-tight" data-i18n="corridorUsdGhs">USA to Ghana</p>
+      </button>
+
+      <!-- Corridor 7: EUR -> KES -->
+      <button onclick="selectCorridor('EUR', 'KES')" class="bg-slate-900/80 hover:bg-slate-800 border border-slate-800 hover:border-emerald-500/50 p-3 rounded-xl text-left transition group">
+        <div class="flex items-center justify-between mb-1">
+          <span class="text-sm font-bold text-white group-hover:text-emerald-400 transition">EUR ➔ KES</span>
+          <span class="text-xs">🇪🇺 ➔ 🇰🇪</span>
+        </div>
+        <p class="text-[11px] text-slate-400 leading-tight" data-i18n="corridorEurKes">Europe to Kenya</p>
+      </button>
+
+      <!-- Corridor 8: USD -> KES -->
+      <button onclick="selectCorridor('USD', 'KES')" class="bg-slate-900/80 hover:bg-slate-800 border border-slate-800 hover:border-emerald-500/50 p-3 rounded-xl text-left transition group">
+        <div class="flex items-center justify-between mb-1">
+          <span class="text-sm font-bold text-white group-hover:text-emerald-400 transition">USD ➔ KES</span>
+          <span class="text-xs">🇺🇸 ➔ 🇰🇪</span>
+        </div>
+        <p class="text-[11px] text-slate-400 leading-tight" data-i18n="corridorUsdKes">USA to Kenya</p>
+      </button>
+    </div>
   </section>
 
   <section id="resultsContainer" class="space-y-4">
@@ -327,6 +409,19 @@ function openModal(id) {
 function closeModal(id) {
   const modal = document.getElementById(id);
   if (modal) { modal.classList.add('hidden'); document.body.style.overflow = ''; }
+}
+function selectCorridor(source, target) {
+  const srcSelect = document.getElementById('sourceCurrency');
+  const tgtSelect = document.getElementById('targetCurrency');
+  if (srcSelect && tgtSelect) {
+    srcSelect.value = source;
+    tgtSelect.value = target;
+    updateHeroTitle();
+    renderResults();
+    declencherVoixOff();
+    // Smooth scroll vers le comparateur si nécessaire
+    srcSelect.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
 }
 
 async function chargerTaux() {
