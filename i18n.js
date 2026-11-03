@@ -110,7 +110,7 @@ const TRANSLATIONS_MODEL = {
     nm_headerSlogan: "Mopesipaso ya bonsomi", nm_backLink: "← Zonga", nm_h1: "Model mpe bonsomi"
   },
   sn: {
-    navAbout: "Nezve", navModel: "Mhando Yedu", navFaq: "Mibvuniko", navSecurity: "Chengetedzo", badgeTitle: "MUCHANANIDZI WEMAHARA", logoSlogan: "Enzanisai & Mutumire", heroTitleTpl: "Uri kutuma {amount}{symbol} kuAfrica. Zvii?", heroSub: "Nzira 294.", labelSource: "Mari:", labelTarget: "Mari inogamuchirwa:", labelAmount: "Mari:", statusConnected: "Yakashandurwa", resultsTitle: "Kufananidza", resultsRank: "Yakarongwa", thRank: "Chinzvimbo", thOperator: "Kambani", thRate: "Mutengo", thFee: "Mutero", thReceived: "Mari", thDelivery: "Nguva", thAction: "Chiito", btnSend: "Tumira", freeFee: "Mahara", instantDelay: "Pakareko"    bestRateBadge: "Yakachipa", footerCopy: "© 2026 Xaalya.", closeBtn: "VHARAI", aboutTitle: "Nezve Xaalya", aboutP1: "Xaalya yakagadzirirwa kubatsira vanhu vemuAfrica.", aboutH_mission: "Chinangwa:", aboutP_mission: "Kufananidza mitengo.", aboutH_commitment: "Vimbiso:", aboutP_commitment: "Kubatsira hama.", aboutLinkModel: "Verenga zvakawanda", modelTitle: "Mhando yedu", modelLead: "Tinotarisa mari inosvika.", modelSubLead: "Tinotsanangura kuti sei.", modelUpdate: "Yakagadziriswa: 30 Gumiguru 2026.", modelS1T: "1. Mhando", modelS1D: "Xaalya inobhadharwa nevashambadziri.", modelS1Sub: "Vashambadziri vanozivikanwa.", modelS2T: "2. Hatidi", modelS2Sub: "Zvakakosha.", modelRef1: "Hatitore komisheni.", modelRef2: "Hatitore kushambadza.", modelRef3: "Hatitengesi nzvimbo.", modelRef4: "Hatitengesi data.", modelRef5: "Hatuvanze mutero.", modelS3T: "3. Kuverenga", modelS3D: "Pamusoro pemari inosvika.", modelIncTitle: "Zviri mukati", modelInc1: "Mari yekutanga", modelInc2: "Musiyano", modelInc3: "Mari yekugamuchira", modelExcTitle: "Zvisiri mukati", modelExc1: "Chibvumirano", modelExc2: "Mukurumbira", modelExc3: "Traffic", modelExc4: "Kushambadza", modelFreq: "Zvinogadziridzwa mazuva ose.", modelS4T: "4. Kuparadzana", modelS4D: "Kunyora kwakazvimirira.", modelS4Val: "Zvinobvumwa.", modelS4NoVal: "Zvisingabvumwe.", modelS4Pos: "Kushambadza hakusi patafura.", modelS5T: "5. Kukanganisa", modelS5D: "Hakuna munhu akakwana.", modelErr1: "Mazuva mashanu.", modelErr2: "Zvinogadziriswa.", modelErr3: "Zvinotaurwa.", modelErrContact: "Contact@xaalya.com", modelS6T: "6. Tarisa", modelS6D: "Hatidi kutenda.", modelVer1: "Tracking hakuna.", modelVer2: "Email hakuna.", modelVer3: "Affiliation hakuna.", modelVer4: "Kushambadza hakuna.", modelS7T: "7. Mibvunzo", modelQ1: "Sei?", modelA1: "Nekuti hazvina kukwana.", modelQ2: "Muri kurarama sei?", modelA2: "Nekushambadza.", modelQ3: "Kana vapa mari?", modelA3: "Tinoramba.", modelQ4: "Data?", modelA4: "Hapana.", modelFooterNote: "Yakagadziriswa 30 Gumiguru 2026.", faqTitle: "Mibvunzo", faqQ1: "1. Mahara?", faqA1: "Ehe.", faqQ2: "2. Sei?", faqA2: "Kushambadza.", faqQ3: "3. Taux?", faqA3: "Ehe.", faqQ4: "4. Account?", faqA4: "Aiwa.", faqQ5: "5. Sei?", faqA5: "Tinoverenga.", faqQ6: "6. Mari?", faqA6: "Kushambadza.", secTitle: "Chengetedzo", secIntro: "Kuvanzika kwakakosha:", secH1: "1. Hapana data", secP1: "Hatisi kuchengeta kadhi.", secH2: "2. Kuzivikanwa", secP2: "Hapana account.", secH3: "3. Hapana tracking", secP3: "Hapana cookie.", audioSuffix: "yakachipa zvikuru",
+    navAbout: "Nezve", navModel: "Mhando Yedu", navFaq: "Mibvuniko", navSecurity: "Chengetedzo", badgeTitle: "MUCHANANIDZI WEMAHARA", logoSlogan: "Enzanisai & Mutumire", heroTitleTpl: "Uri kutuma {amount}{symbol} kuAfrica. Zvii?", heroSub: "Nzira 294.", labelSource: "Mari:", labelTarget: "Mari inogamuchirwa:", labelAmount: "Mari:", statusConnected: "Yakashandurwa", resultsTitle: "Kufananidza", resultsRank: "Yakarongwa", thRank: "Chinzvimbo", thOperator: "Kambani", thRate: "Mutengo", thFee: "Mutero", thReceived: "Mari", thDelivery: "Nguva", thAction: "Chiito", btnSend: "Tumira", freeFee: "Mahara", instantDelay: "Pakareko",    bestRateBadge: "Yakachipa", footerCopy: "© 2026 Xaalya.", closeBtn: "VHARAI", aboutTitle: "Nezve Xaalya", aboutP1: "Xaalya yakagadzirirwa kubatsira vanhu vemuAfrica.", aboutH_mission: "Chinangwa:", aboutP_mission: "Kufananidza mitengo.", aboutH_commitment: "Vimbiso:", aboutP_commitment: "Kubatsira hama.", aboutLinkModel: "Verenga zvakawanda", modelTitle: "Mhando yedu", modelLead: "Tinotarisa mari inosvika.", modelSubLead: "Tinotsanangura kuti sei.", modelUpdate: "Yakagadziriswa: 30 Gumiguru 2026.", modelS1T: "1. Mhando", modelS1D: "Xaalya inobhadharwa nevashambadziri.", modelS1Sub: "Vashambadziri vanozivikanwa.", modelS2T: "2. Hatidi", modelS2Sub: "Zvakakosha.", modelRef1: "Hatitore komisheni.", modelRef2: "Hatitore kushambadza.", modelRef3: "Hatitengesi nzvimbo.", modelRef4: "Hatitengesi data.", modelRef5: "Hatuvanze mutero.", modelS3T: "3. Kuverenga", modelS3D: "Pamusoro pemari inosvika.", modelIncTitle: "Zviri mukati", modelInc1: "Mari yekutanga", modelInc2: "Musiyano", modelInc3: "Mari yekugamuchira", modelExcTitle: "Zvisiri mukati", modelExc1: "Chibvumirano", modelExc2: "Mukurumbira", modelExc3: "Traffic", modelExc4: "Kushambadza", modelFreq: "Zvinogadziridzwa mazuva ose.", modelS4T: "4. Kuparadzana", modelS4D: "Kunyora kwakazvimirira.", modelS4Val: "Zvinobvumwa.", modelS4NoVal: "Zvisingabvumwe.", modelS4Pos: "Kushambadza hakusi patafura.", modelS5T: "5. Kukanganisa", modelS5D: "Hakuna munhu akakwana.", modelErr1: "Mazuva mashanu.", modelErr2: "Zvinogadziriswa.", modelErr3: "Zvinotaurwa.", modelErrContact: "Contact@xaalya.com", modelS6T: "6. Tarisa", modelS6D: "Hatidi kutenda.", modelVer1: "Tracking hakuna.", modelVer2: "Email hakuna.", modelVer3: "Affiliation hakuna.", modelVer4: "Kushambadza hakuna.", modelS7T: "7. Mibvunzo", modelQ1: "Sei?", modelA1: "Nekuti hazvina kukwana.", modelQ2: "Muri kurarama sei?", modelA2: "Nekushambadza.", modelQ3: "Kana vapa mari?", modelA3: "Tinoramba.", modelQ4: "Data?", modelA4: "Hapana.", modelFooterNote: "Yakagadziriswa 30 Gumiguru 2026.", faqTitle: "Mibvunzo", faqQ1: "1. Mahara?", faqA1: "Ehe.", faqQ2: "2. Sei?", faqA2: "Kushambadza.", faqQ3: "3. Taux?", faqA3: "Ehe.", faqQ4: "4. Account?", faqA4: "Aiwa.", faqQ5: "5. Sei?", faqA5: "Tinoverenga.", faqQ6: "6. Mari?", faqA6: "Kushambadza.", secTitle: "Chengetedzo", secIntro: "Kuvanzika kwakakosha:", secH1: "1. Hapana data", secP1: "Hatisi kuchengeta kadhi.", secH2: "2. Kuzivikanwa", secP2: "Hapana account.", secH3: "3. Hapana tracking", secP3: "Hapana cookie.", audioSuffix: "yakachipa zvikuru",
     nm_headerSlogan: "Muchanidzi wakazvimirira", nm_backLink: "← Dzokera", nm_h1: "Mhando nekuzvimirira"
   },
   de: {
@@ -162,12 +162,18 @@ const TRANSLATIONS_MODEL = {
 // Fonction pour changer la langue et traduire tous les éléments avec data-i18n
 function setLanguage(lang, save) {
   if (typeof currentLang !== 'undefined') currentLang = lang;
-  const trad = TRANSLATIONS_MODEL[lang] || TRANSLATIONS_MODEL['en'];
+  
+  // Récupérer les traductions des deux dictionnaires
+  const modelTrad = TRANSLATIONS_MODEL[lang] || TRANSLATIONS_MODEL['en'];
+  const pageTrad = (typeof TRANSLATIONS !== 'undefined' && TRANSLATIONS[lang]) ? TRANSLATIONS[lang] : {};
+  
+  // Fusionner : les traductions de la page écrasent celles du modèle si conflit
+  const trad = Object.assign({}, modelTrad, pageTrad);
 
   document.querySelectorAll('[data-i18n]').forEach(function(el) {
     const key = el.getAttribute('data-i18n');
     if (trad[key]) {
-      // Si le texte contient du HTML (comme <br> ou <strong>), utiliser innerHTML, sinon textContent
+      // Gestion du HTML (balises <strong>, <br>, etc.)
       if (trad[key].includes('<')) {
         el.innerHTML = trad[key];
       } else {
@@ -181,6 +187,7 @@ function setLanguage(lang, save) {
   if (save) { try { localStorage.setItem('xaalya-lang', lang); } catch(e) {} }
 }
 
+
 function detecterLangueParDefaut() {
   let langueDetectee = 'en';
   const navLangs = navigator.languages || [navigator.language || 'en'];
@@ -193,4 +200,5 @@ function detecterLangueParDefaut() {
     const select = document.getElementById('language-select');
     if (select) select.value = langSauvee;
     setLanguage(langSauvee, false);
- 
+   }
+}

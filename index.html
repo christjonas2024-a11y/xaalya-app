@@ -276,7 +276,8 @@ body.light-mode input, body.light-mode select { background-color: #f1f5f9 !impor
 
 <!-- JavaScript Application Engine -->
 <script>
-<script src="/i18n.js"></script>
+<script src="i18n.js"></script>
+<script>
 let tauxDeChange = {};
 let currentLang = 'en';
 
@@ -513,34 +514,6 @@ document.addEventListener('keydown', function(e) {
     document.body.style.overflow = '';
   }
 });
-
-function setLanguage(lang, save) {
-  currentLang = lang;
-  
-  // Fusionner les traductions de la page d'accueil (TRANSLATIONS) et celles du modèle (TRANSLATIONS_MODEL si chargé)
-  const pageTrans = TRANSLATIONS[lang] || TRANSLATIONS['en'];
-  const modelTrans = (typeof TRANSLATIONS_MODEL !== 'undefined' && TRANSLATIONS_MODEL[lang]) ? TRANSLATIONS_MODEL[lang] : {};
-  const trad = Object.assign({}, pageTrans, modelTrans);
-
-  document.querySelectorAll('[data-i18n]').forEach(function(el) {
-    const key = el.getAttribute('data-i18n');
-    if (trad[key]) el.textContent = trad[key];
-  });
-  
-  document.documentElement.setAttribute('lang', lang);
-  if (lang === 'ar') { document.body.setAttribute('dir', 'rtl'); } else { document.body.setAttribute('dir', 'ltr'); }
-  
-  if (save) { try { localStorage.setItem('xaalya-lang', lang); } catch(e) {} }
-  
-  updateHeroTitle();
-  renderResults();
-  
-  const info = document.getElementById('lastUpdatedInfo');
-  if (info) {
-    const messagesMaj = { fr: 'Actualisé le : ', en: 'Updated on: ' };
-    info.textContent = (messagesMaj[lang] || messagesMaj['en']) + new Date().toLocaleDateString('en-GB');
-  }
-}
 
 async function chargerTaux() {
   try {
