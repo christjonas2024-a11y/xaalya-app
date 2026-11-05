@@ -6,9 +6,9 @@
 <title>Xaalya™ | Independent & Free Money Transfer Comparator to Africa</title>
 <meta name="description" content="Xaalya is a 100% free comparator, fully independent from fintechs and money transfer operators. Compare real-time exchange rates and fees for transfers to Africa. Zero trace architecture.">
 <meta name="robots" content="index, follow">
-<link rel="icon" type="image/png" href="assets/logo.png">
-<link rel="apple-touch-icon" href="assets/logo.png">
-<script src="https://cdn.tailwindcss.com"></script>
+<link rel="icon" type="image/webp" href="assets/logo.webp">
+<link rel="apple-touch-icon" href="assets/logo-optimized.png">
+<link rel="stylesheet" href="./dist/output.css">
 <script>
 tailwind.config = { darkMode: 'class', theme: { extend: { colors: { brand: { 400: '#34d399', 500: '#10b981', 600: '#059669' } } } } }
 </script>
@@ -30,7 +30,10 @@ body.light-mode input, body.light-mode select { background-color: #f1f5f9 !impor
       <a href="https://xaalya.com/" class="flex items-center gap-3">
         <div class="flex items-center gap-2 bg-slate-900/80 border border-slate-800 px-3 py-1.5 rounded-xl">
           <div class="w-9 h-9 min-w-[2.25rem] min-h-[2.25rem] rounded-full overflow-hidden border border-emerald-500/40 flex items-center justify-center bg-slate-900 shadow-sm shrink-0">
-            <img src="assets/logo.png" alt="Xaalya Logo" class="w-full h-full object-cover">
+            <picture>
+  <source srcset="assets/logo.webp" type="image/webp">
+  <img src="assets/logo-optimized.png" alt="Xaalya Logo" class="w-full h-full object-cover">
+</picture>
           </div>
           <div class="flex flex-col">
             <span class="text-lg font-black tracking-tight text-white leading-tight">XAALYA</span>
@@ -109,78 +112,114 @@ body.light-mode input, body.light-mode select { background-color: #f1f5f9 !impor
     </div>
 
     <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
-      <!-- Corridor 1: EUR -> XOF -->
-      <button onclick="selectCorridor('EUR', 'XOF')" class="bg-slate-900/80 hover:bg-slate-800 border border-slate-800 hover:border-emerald-500/50 p-3 rounded-xl text-left transition group">
-        <div class="flex items-center justify-between mb-1">
-          <span class="text-sm font-bold text-white group-hover:text-emerald-400 transition">EUR ➔ XOF</span>
-          <span class="text-xs">🇫🇷 ➔ 🇸🇳 🇨🇮</span>
-        </div>
-        <p class="text-[11px] text-slate-400 leading-tight" data-i18n="corridorEurXof">France / Europe to West Africa</p>
-      </button>
-
-      <!-- Corridor 2: EUR -> NGN -->
-      <button onclick="selectCorridor('EUR', 'NGN')" class="bg-slate-900/80 hover:bg-slate-800 border border-slate-800 hover:border-emerald-500/50 p-3 rounded-xl text-left transition group">
-        <div class="flex items-center justify-between mb-1">
-          <span class="text-sm font-bold text-white group-hover:text-emerald-400 transition">EUR ➔ NGN</span>
-          <span class="text-xs">🇪🇺 ➔ 🇳🇬</span>
-        </div>
-        <p class="text-[11px] text-slate-400 leading-tight" data-i18n="corridorEurNgn">Europe to Nigeria</p>
-      </button>
-
-      <!-- Corridor 3: GBP -> NGN -->
-      <button onclick="selectCorridor('GBP', 'NGN')" class="bg-slate-900/80 hover:bg-slate-800 border border-slate-800 hover:border-emerald-500/50 p-3 rounded-xl text-left transition group">
-        <div class="flex items-center justify-between mb-1">
-          <span class="text-sm font-bold text-white group-hover:text-emerald-400 transition">GBP ➔ NGN</span>
-          <span class="text-xs">🇬🇧 ➔ 🇳🇬</span>
-        </div>
-        <p class="text-[11px] text-slate-400 leading-tight" data-i18n="corridorGbpNgn">UK to Nigeria</p>
-      </button>
-
-      <!-- Corridor 4: EUR -> XAF -->
-      <button onclick="selectCorridor('EUR', 'XAF')" class="bg-slate-900/80 hover:bg-slate-800 border border-slate-800 hover:border-emerald-500/50 p-3 rounded-xl text-left transition group">
-        <div class="flex items-center justify-between mb-1">
-          <span class="text-sm font-bold text-white group-hover:text-emerald-400 transition">EUR ➔ XAF</span>
-          <span class="text-xs">🇫🇷 ➔ 🇨🇲 🇬🇦</span>
-        </div>
-        <p class="text-[11px] text-slate-400 leading-tight" data-i18n="corridorEurXaf">Europe to Central Africa</p>
-      </button>
-
-      <!-- Corridor 5: EUR -> MAD -->
-      <button onclick="selectCorridor('EUR', 'MAD')" class="bg-slate-900/80 hover:bg-slate-800 border border-slate-800 hover:border-emerald-500/50 p-3 rounded-xl text-left transition group">
-        <div class="flex items-center justify-between mb-1">
-          <span class="text-sm font-bold text-white group-hover:text-emerald-400 transition">EUR ➔ MAD</span>
-          <span class="text-xs">🇫🇷 🇪🇸 ➔ 🇲🇦</span>
-        </div>
-        <p class="text-[11px] text-slate-400 leading-tight" data-i18n="corridorEurMad">Europe to Morocco</p>
-      </button>
-
-      <!-- Corridor 6: USD -> GHS -->
-      <button onclick="selectCorridor('USD', 'GHS')" class="bg-slate-900/80 hover:bg-slate-800 border border-slate-800 hover:border-emerald-500/50 p-3 rounded-xl text-left transition group">
-        <div class="flex items-center justify-between mb-1">
-          <span class="text-sm font-bold text-white group-hover:text-emerald-400 transition">USD ➔ GHS</span>
-          <span class="text-xs">🇺🇸 ➔ 🇬🇭</span>
-        </div>
-        <p class="text-[11px] text-slate-400 leading-tight" data-i18n="corridorUsdGhs">USA to Ghana</p>
-      </button>
-
-      <!-- Corridor 7: EUR -> KES -->
-      <button onclick="selectCorridor('EUR', 'KES')" class="bg-slate-900/80 hover:bg-slate-800 border border-slate-800 hover:border-emerald-500/50 p-3 rounded-xl text-left transition group">
-        <div class="flex items-center justify-between mb-1">
-          <span class="text-sm font-bold text-white group-hover:text-emerald-400 transition">EUR ➔ KES</span>
-          <span class="text-xs">🇪🇺 ➔ 🇰🇪</span>
-        </div>
-        <p class="text-[11px] text-slate-400 leading-tight" data-i18n="corridorEurKes">Europe to Kenya</p>
-      </button>
-
-      <!-- Corridor 8: USD -> KES -->
-      <button onclick="selectCorridor('USD', 'KES')" class="bg-slate-900/80 hover:bg-slate-800 border border-slate-800 hover:border-emerald-500/50 p-3 rounded-xl text-left transition group">
-        <div class="flex items-center justify-between mb-1">
-          <span class="text-sm font-bold text-white group-hover:text-emerald-400 transition">USD ➔ KES</span>
-          <span class="text-xs">🇺🇸 ➔ 🇰🇪</span>
-        </div>
-        <p class="text-[11px] text-slate-400 leading-tight" data-i18n="corridorUsdKes">USA to Kenya</p>
-      </button>
+  <!-- Corridor 1: EUR -> XOF -->
+  <button onclick="selectCorridor('EUR', 'XOF')" class="bg-slate-900/80 hover:bg-slate-800 border border-slate-800 hover:border-emerald-500/50 p-3 rounded-xl text-left transition group" title="Transfer EUR to XOF - Money transfer, real estate & banking in Senegal & Ivory Coast from France & Europe">
+    <div class="flex items-center justify-between mb-1">
+      <span class="text-sm font-bold text-white group-hover:text-emerald-400 transition">EUR ➔ XOF</span>
+      <span class="text-xs">🇫🇷 ➔ 🇸🇳 🇨🇮</span>
     </div>
+    <p class="text-[11px] text-slate-400 leading-tight" data-i18n="corridorEurXof">France / Europe to West Africa</p>
+  </button>
+
+  <!-- Corridor 2: EUR -> NGN -->
+  <button onclick="selectCorridor('EUR', 'NGN')" class="bg-slate-900/80 hover:bg-slate-800 border border-slate-800 hover:border-emerald-500/50 p-3 rounded-xl text-left transition group" title="Transfer EUR to NGN - Money transfer & property investments in Nigeria from France & Europe">
+    <div class="flex items-center justify-between mb-1">
+      <span class="text-sm font-bold text-white group-hover:text-emerald-400 transition">EUR ➔ NGN</span>
+      <span class="text-xs">🇫🇷 🇪🇺 ➔ 🇳🇬</span>
+    </div>
+    <p class="text-[11px] text-slate-400 leading-tight" data-i18n="corridorEurNgn">France / Europe to Nigeria</p>
+  </button>
+
+  <!-- Corridor 3: GBP -> NGN -->
+  <button onclick="selectCorridor('GBP', 'NGN')" class="bg-slate-900/80 hover:bg-slate-800 border border-slate-800 hover:border-emerald-500/50 p-3 rounded-xl text-left transition group" title="Transfer GBP to NGN - UK diaspora remittance & banking to Nigeria">
+    <div class="flex items-center justify-between mb-1">
+      <span class="text-sm font-bold text-white group-hover:text-emerald-400 transition">GBP ➔ NGN</span>
+      <span class="text-xs">🇬🇧 ➔ 🇳🇬</span>
+    </div>
+    <p class="text-[11px] text-slate-400 leading-tight" data-i18n="corridorGbpNgn">UK to Nigeria</p>
+  </button>
+
+  <!-- Corridor 4: EUR -> XAF -->
+  <button onclick="selectCorridor('EUR', 'XAF')" class="bg-slate-900/80 hover:bg-slate-800 border border-slate-800 hover:border-emerald-500/50 p-3 rounded-xl text-left transition group" title="Transfer EUR to XAF - Mortgages & land purchase in Cameroon & Gabon from France & Europe">
+    <div class="flex items-center justify-between mb-1">
+      <span class="text-sm font-bold text-white group-hover:text-emerald-400 transition">EUR ➔ XAF</span>
+      <span class="text-xs">🇫🇷 ➔ 🇨🇲 🇬🇦</span>
+    </div>
+    <p class="text-[11px] text-slate-400 leading-tight" data-i18n="corridorEurXaf">France / Europe to Central Africa</p>
+  </button>
+
+  <!-- Corridor 5: EUR -> MAD -->
+  <button onclick="selectCorridor('EUR', 'MAD')" class="bg-slate-900/80 hover:bg-slate-800 border border-slate-800 hover:border-emerald-500/50 p-3 rounded-xl text-left transition group" title="Transfer EUR to MAD - Cross-border banking & property investment in Morocco from France & Europe">
+    <div class="flex items-center justify-between mb-1">
+      <span class="text-sm font-bold text-white group-hover:text-emerald-400 transition">EUR ➔ MAD</span>
+      <span class="text-xs">🇫🇷 🇪🇸 ➔ 🇲🇦</span>
+    </div>
+    <p class="text-[11px] text-slate-400 leading-tight" data-i18n="corridorEurMad">France / Europe to Morocco</p>
+  </button>
+
+  <!-- Corridor 6: USD -> GHS -->
+  <button onclick="selectCorridor('USD', 'GHS')" class="bg-slate-900/80 hover:bg-slate-800 border border-slate-800 hover:border-emerald-500/50 p-3 rounded-xl text-left transition group" title="Transfer USD to GHS - USA diaspora investments in Ghana real estate & banking">
+    <div class="flex items-center justify-between mb-1">
+      <span class="text-sm font-bold text-white group-hover:text-emerald-400 transition">USD ➔ GHS</span>
+      <span class="text-xs">🇺🇸 ➔ 🇬🇭</span>
+    </div>
+    <p class="text-[11px] text-slate-400 leading-tight" data-i18n="corridorUsdGhs">USA to Ghana</p>
+  </button>
+
+  <!-- Corridor 7: EUR -> KES -->
+  <button onclick="selectCorridor('EUR', 'KES')" class="bg-slate-900/80 hover:bg-slate-800 border border-slate-800 hover:border-emerald-500/50 p-3 rounded-xl text-left transition group" title="Transfer EUR to KES - France & Europe diaspora banking & property in Kenya">
+    <div class="flex items-center justify-between mb-1">
+      <span class="text-sm font-bold text-white group-hover:text-emerald-400 transition">EUR ➔ KES</span>
+      <span class="text-xs">🇫🇷 🇪🇺 ➔ 🇰🇪</span>
+    </div>
+    <p class="text-[11px] text-slate-400 leading-tight" data-i18n="corridorEurKes">France / Europe to Kenya</p>
+  </button>
+
+  <!-- Corridor 8: USD -> KES -->
+  <button onclick="selectCorridor('USD', 'KES')" class="bg-slate-900/80 hover:bg-slate-800 border border-slate-800 hover:border-emerald-500/50 p-3 rounded-xl text-left transition group" title="Transfer USD to KES - US diaspora money transfer & investment in Kenya">
+    <div class="flex items-center justify-between mb-1">
+      <span class="text-sm font-bold text-white group-hover:text-emerald-400 transition">USD ➔ KES</span>
+      <span class="text-xs">🇺🇸 ➔ 🇰🇪</span>
+    </div>
+    <p class="text-[11px] text-slate-400 leading-tight" data-i18n="corridorUsdKes">USA to Kenya</p>
+  </button>
+
+  <!-- Corridor 9: USD -> NGN -->
+  <button onclick="selectCorridor('USD', 'NGN')" class="bg-slate-900/80 hover:bg-slate-800 border border-slate-800 hover:border-emerald-500/50 p-3 rounded-xl text-left transition group" title="Transfer USD to NGN - US diaspora high-yield real estate & banking in Lagos, Nigeria">
+    <div class="flex items-center justify-between mb-1">
+      <span class="text-sm font-bold text-white group-hover:text-emerald-400 transition">USD ➔ NGN</span>
+      <span class="text-xs">🇺🇸 ➔ 🇳🇬</span>
+    </div>
+    <p class="text-[11px] text-slate-400 leading-tight" data-i18n="corridorUsdNgn">USA to Nigeria</p>
+  </button>
+
+  <!-- Corridor 10: USD -> XOF -->
+  <button onclick="selectCorridor('USD', 'XOF')" class="bg-slate-900/80 hover:bg-slate-800 border border-slate-800 hover:border-emerald-500/50 p-3 rounded-xl text-left transition group" title="Transfer USD to XOF - US diaspora luxury property financing in Abidjan & Dakar">
+    <div class="flex items-center justify-between mb-1">
+      <span class="text-sm font-bold text-white group-hover:text-emerald-400 transition">USD ➔ XOF</span>
+      <span class="text-xs">🇺🇸 ➔ 🇸🇳 🇨🇮</span>
+    </div>
+    <p class="text-[11px] text-slate-400 leading-tight" data-i18n="corridorUsdXof">USA to West Africa</p>
+  </button>
+
+  <!-- Corridor 11: CAD -> XOF -->
+  <button onclick="selectCorridor('CAD', 'XOF')" class="bg-slate-900/80 hover:bg-slate-800 border border-slate-800 hover:border-emerald-500/50 p-3 rounded-xl text-left transition group" title="Transfer CAD to XOF - Canadian diaspora mortgages & savings in Francophone West Africa">
+    <div class="flex items-center justify-between mb-1">
+      <span class="text-sm font-bold text-white group-hover:text-emerald-400 transition">CAD ➔ XOF</span>
+      <span class="text-xs">🇨🇦 ➔ 🇸🇳 🇨🇮</span>
+    </div>
+    <p class="text-[11px] text-slate-400 leading-tight" data-i18n="corridorCadXof">Canada to West Africa</p>
+  </button>
+
+  <!-- Corridor 12: EUR -> TND -->
+  <button onclick="selectCorridor('EUR', 'TND')" class="bg-slate-900/80 hover:bg-slate-800 border border-slate-800 hover:border-emerald-500/50 p-3 rounded-xl text-left transition group" title="Transfer EUR to TND - Secondary residence & bank savings in Tunisia from France & Europe">
+    <div class="flex items-center justify-between mb-1">
+      <span class="text-sm font-bold text-white group-hover:text-emerald-400 transition">EUR ➔ TND</span>
+      <span class="text-xs">🇫🇷 🇪🇺 ➔ 🇹🇳</span>
+    </div>
+    <p class="text-[11px] text-slate-400 leading-tight" data-i18n="corridorEurTnd">France / Europe to Tunisia</p>
+  </button>
+</div>
   </section>
 
   <section id="resultsContainer" class="space-y-4">
