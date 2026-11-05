@@ -5,13 +5,22 @@
   "main": "scraper.js",
   "scripts": {
     "start": "node scraper.js",
-    "test": "jest"
+    "test": "jest",
+    "build:css": "npx @tailwindcss/cli -i ./src/input.css -o ./dist/output.css --minify",
+    "optimize:logo": "node optimize-logo.js"
   },
   "dependencies": {
     "axios": "^1.6.8",
     "cheerio": "^1.0.0-rc.12"
   },
   "devDependencies": {
-    "jest": "^30.5.2"
+    "autoprefixer": "^10.6.2",
+    "jest": "^30.5.2",
+    "postcss": "^8.5.32",
+    "tailwindcss": "^4.3.4"
   }
 }
+
+
+
+
