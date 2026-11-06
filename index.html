@@ -31,9 +31,9 @@ body.light-mode input, body.light-mode select { background-color: #f1f5f9 !impor
         <div class="flex items-center gap-2 bg-slate-900/80 border border-slate-800 px-3 py-1.5 rounded-xl">
           <div class="w-9 h-9 min-w-[2.25rem] min-h-[2.25rem] rounded-full overflow-hidden border border-emerald-500/40 flex items-center justify-center bg-slate-900 shadow-sm shrink-0">
             <picture>
-  <source srcset="assets/logo.webp" type="image/webp">
-  <img src="assets/logo-optimized.png" alt="Xaalya Logo" class="w-full h-full object-cover">
-</picture>
+              <source srcset="assets/logo.webp" type="image/webp">
+              <img src="assets/logo-optimized.png" alt="Xaalya Logo" class="w-full h-full object-cover">
+            </picture>
           </div>
           <div class="flex flex-col">
             <span class="text-lg font-black tracking-tight text-white leading-tight">XAALYA</span>
@@ -102,7 +102,8 @@ body.light-mode input, body.light-mode select { background-color: #f1f5f9 !impor
       </div>
       <span id="lastUpdatedInfo"></span>
     </div>
-  
+  </section>
+
   <section class="space-y-4 pt-4">
     <div class="flex items-center justify-between">
       <h3 data-i18n="topCorridorsTitle" class="text-lg font-bold text-white flex items-center gap-2">
@@ -112,121 +113,68 @@ body.light-mode input, body.light-mode select { background-color: #f1f5f9 !impor
     </div>
 
     <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
-  <!-- Corridor 1: EUR -> XOF -->
-  <button onclick="selectCorridor('EUR', 'XOF')" class="bg-slate-900/80 hover:bg-slate-800 border border-slate-800 hover:border-emerald-500/50 p-3 rounded-xl text-left transition group" title="Transfer EUR to XOF - Money transfer, real estate & banking in Senegal & Ivory Coast from France & Europe">
-    <div class="flex items-center justify-between mb-1">
-      <span class="text-sm font-bold text-white group-hover:text-emerald-400 transition">EUR ➔ XOF</span>
-      <span class="text-xs">🇫🇷 ➔ 🇸🇳 🇨🇮</span>
+      <button onclick="selectCorridor('EUR', 'XOF')" class="bg-slate-900/80 hover:bg-slate-800 border border-slate-800 hover:border-emerald-500/50 p-3 rounded-xl text-left transition group">
+        <div class="flex items-center justify-between mb-1"><span class="text-sm font-bold text-white group-hover:text-emerald-400 transition">EUR ➔ XOF</span><span class="text-xs">🇫🇷 ➔ 🇸🇳 🇨🇮</span></div>
+        <p class="text-[11px] text-slate-400 leading-tight">France / Europe to West Africa</p>
+      </button>
+      <button onclick="selectCorridor('EUR', 'NGN')" class="bg-slate-900/80 hover:bg-slate-800 border border-slate-800 hover:border-emerald-500/50 p-3 rounded-xl text-left transition group">
+        <div class="flex items-center justify-between mb-1"><span class="text-sm font-bold text-white group-hover:text-emerald-400 transition">EUR ➔ NGN</span><span class="text-xs">🇫🇷 🇪🇺 ➔ 🇳🇬</span></div>
+        <p class="text-[11px] text-slate-400 leading-tight">France / Europe to Nigeria</p>
+      </button>
+      <button onclick="selectCorridor('GBP', 'NGN')" class="bg-slate-900/80 hover:bg-slate-800 border border-slate-800 hover:border-emerald-500/50 p-3 rounded-xl text-left transition group">
+        <div class="flex items-center justify-between mb-1"><span class="text-sm font-bold text-white group-hover:text-emerald-400 transition">GBP ➔ NGN</span><span class="text-xs">🇬🇧 ➔ 🇳🇬</span></div>
+        <p class="text-[11px] text-slate-400 leading-tight">UK to Nigeria</p>
+      </button>
+      <button onclick="selectCorridor('EUR', 'XAF')" class="bg-slate-900/80 hover:bg-slate-800 border border-slate-800 hover:border-emerald-500/50 p-3 rounded-xl text-left transition group">
+        <div class="flex items-center justify-between mb-1"><span class="text-sm font-bold text-white group-hover:text-emerald-400 transition">EUR ➔ XAF</span><span class="text-xs">🇫🇷 ➔ 🇨🇲 🇬🇦</span></div>
+        <p class="text-[11px] text-slate-400 leading-tight">France / Europe to Central Africa</p>
+      </button>
+      <button onclick="selectCorridor('EUR', 'MAD')" class="bg-slate-900/80 hover:bg-slate-800 border border-slate-800 hover:border-emerald-500/50 p-3 rounded-xl text-left transition group">
+        <div class="flex items-center justify-between mb-1"><span class="text-sm font-bold text-white group-hover:text-emerald-400 transition">EUR ➔ MAD</span><span class="text-xs">🇫🇷 🇪🇸 ➔ 🇲🇦</span></div>
+        <p class="text-[11px] text-slate-400 leading-tight">France / Europe to Morocco</p>
+      </button>
+      <button onclick="selectCorridor('USD', 'GHS')" class="bg-slate-900/80 hover:bg-slate-800 border border-slate-800 hover:border-emerald-500/50 p-3 rounded-xl text-left transition group">
+        <div class="flex items-center justify-between mb-1"><span class="text-sm font-bold text-white group-hover:text-emerald-400 transition">USD ➔ GHS</span><span class="text-xs">🇺🇸 ➔ 🇬🇭</span></div>
+        <p class="text-[11px] text-slate-400 leading-tight">USA to Ghana</p>
+      </button>
+      <button onclick="selectCorridor('EUR', 'KES')" class="bg-slate-900/80 hover:bg-slate-800 border border-slate-800 hover:border-emerald-500/50 p-3 rounded-xl text-left transition group">
+        <div class="flex items-center justify-between mb-1"><span class="text-sm font-bold text-white group-hover:text-emerald-400 transition">EUR ➔ KES</span><span class="text-xs">🇫🇷 🇪🇺 ➔ 🇰🇪</span></div>
+        <p class="text-[11px] text-slate-400 leading-tight">France / Europe to Kenya</p>
+      </button>
+      <button onclick="selectCorridor('USD', 'KES')" class="bg-slate-900/80 hover:bg-slate-800 border border-slate-800 hover:border-emerald-500/50 p-3 rounded-xl text-left transition group">
+        <div class="flex items-center justify-between mb-1"><span class="text-sm font-bold text-white group-hover:text-emerald-400 transition">USD ➔ KES</span><span class="text-xs">🇺🇸 ➔ 🇰🇪</span></div>
+        <p class="text-[11px] text-slate-400 leading-tight">USA to Kenya</p>
+      </button>
+      <button onclick="selectCorridor('USD', 'NGN')" class="bg-slate-900/80 hover:bg-slate-800 border border-slate-800 hover:border-emerald-500/50 p-3 rounded-xl text-left transition group">
+        <div class="flex items-center justify-between mb-1"><span class="text-sm font-bold text-white group-hover:text-emerald-400 transition">USD ➔ NGN</span><span class="text-xs">🇺🇸 ➔ 🇳🇬</span></div>
+        <p class="text-[11px] text-slate-400 leading-tight">USA to Nigeria</p>
+      </button>
+      <button onclick="selectCorridor('USD', 'XOF')" class="bg-slate-900/80 hover:bg-slate-800 border border-slate-800 hover:border-emerald-500/50 p-3 rounded-xl text-left transition group">
+        <div class="flex items-center justify-between mb-1"><span class="text-sm font-bold text-white group-hover:text-emerald-400 transition">USD ➔ XOF</span><span class="text-xs">🇺🇸 ➔ 🇸🇳 🇨🇮</span></div>
+        <p class="text-[11px] text-slate-400 leading-tight">USA to West Africa</p>
+      </button>
+      <button onclick="selectCorridor('CAD', 'XOF')" class="bg-slate-900/80 hover:bg-slate-800 border border-slate-800 hover:border-emerald-500/50 p-3 rounded-xl text-left transition group">
+        <div class="flex items-center justify-between mb-1"><span class="text-sm font-bold text-white group-hover:text-emerald-400 transition">CAD ➔ XOF</span><span class="text-xs">🇨🇦 ➔ 🇸🇳 🇨🇮</span></div>
+        <p class="text-[11px] text-slate-400 leading-tight">Canada to West Africa</p>
+      </button>
+      <button onclick="selectCorridor('EUR', 'TND')" class="bg-slate-900/80 hover:bg-slate-800 border border-slate-800 hover:border-emerald-500/50 p-3 rounded-xl text-left transition group">
+        <div class="flex items-center justify-between mb-1"><span class="text-sm font-bold text-white group-hover:text-emerald-400 transition">EUR ➔ TND</span><span class="text-xs">🇫🇷 🇪🇺 ➔ 🇹🇳</span></div>
+        <p class="text-[11px] text-slate-400 leading-tight">France / Europe to Tunisia</p>
+      </button>
     </div>
-    <p class="text-[11px] text-slate-400 leading-tight" data-i18n="corridorEurXof">France / Europe to West Africa</p>
-  </button>
-
-  <!-- Corridor 2: EUR -> NGN -->
-  <button onclick="selectCorridor('EUR', 'NGN')" class="bg-slate-900/80 hover:bg-slate-800 border border-slate-800 hover:border-emerald-500/50 p-3 rounded-xl text-left transition group" title="Transfer EUR to NGN - Money transfer & property investments in Nigeria from France & Europe">
-    <div class="flex items-center justify-between mb-1">
-      <span class="text-sm font-bold text-white group-hover:text-emerald-400 transition">EUR ➔ NGN</span>
-      <span class="text-xs">🇫🇷 🇪🇺 ➔ 🇳🇬</span>
-    </div>
-    <p class="text-[11px] text-slate-400 leading-tight" data-i18n="corridorEurNgn">France / Europe to Nigeria</p>
-  </button>
-
-  <!-- Corridor 3: GBP -> NGN -->
-  <button onclick="selectCorridor('GBP', 'NGN')" class="bg-slate-900/80 hover:bg-slate-800 border border-slate-800 hover:border-emerald-500/50 p-3 rounded-xl text-left transition group" title="Transfer GBP to NGN - UK diaspora remittance & banking to Nigeria">
-    <div class="flex items-center justify-between mb-1">
-      <span class="text-sm font-bold text-white group-hover:text-emerald-400 transition">GBP ➔ NGN</span>
-      <span class="text-xs">🇬🇧 ➔ 🇳🇬</span>
-    </div>
-    <p class="text-[11px] text-slate-400 leading-tight" data-i18n="corridorGbpNgn">UK to Nigeria</p>
-  </button>
-
-  <!-- Corridor 4: EUR -> XAF -->
-  <button onclick="selectCorridor('EUR', 'XAF')" class="bg-slate-900/80 hover:bg-slate-800 border border-slate-800 hover:border-emerald-500/50 p-3 rounded-xl text-left transition group" title="Transfer EUR to XAF - Mortgages & land purchase in Cameroon & Gabon from France & Europe">
-    <div class="flex items-center justify-between mb-1">
-      <span class="text-sm font-bold text-white group-hover:text-emerald-400 transition">EUR ➔ XAF</span>
-      <span class="text-xs">🇫🇷 ➔ 🇨🇲 🇬🇦</span>
-    </div>
-    <p class="text-[11px] text-slate-400 leading-tight" data-i18n="corridorEurXaf">France / Europe to Central Africa</p>
-  </button>
-
-  <!-- Corridor 5: EUR -> MAD -->
-  <button onclick="selectCorridor('EUR', 'MAD')" class="bg-slate-900/80 hover:bg-slate-800 border border-slate-800 hover:border-emerald-500/50 p-3 rounded-xl text-left transition group" title="Transfer EUR to MAD - Cross-border banking & property investment in Morocco from France & Europe">
-    <div class="flex items-center justify-between mb-1">
-      <span class="text-sm font-bold text-white group-hover:text-emerald-400 transition">EUR ➔ MAD</span>
-      <span class="text-xs">🇫🇷 🇪🇸 ➔ 🇲🇦</span>
-    </div>
-    <p class="text-[11px] text-slate-400 leading-tight" data-i18n="corridorEurMad">France / Europe to Morocco</p>
-  </button>
-
-  <!-- Corridor 6: USD -> GHS -->
-  <button onclick="selectCorridor('USD', 'GHS')" class="bg-slate-900/80 hover:bg-slate-800 border border-slate-800 hover:border-emerald-500/50 p-3 rounded-xl text-left transition group" title="Transfer USD to GHS - USA diaspora investments in Ghana real estate & banking">
-    <div class="flex items-center justify-between mb-1">
-      <span class="text-sm font-bold text-white group-hover:text-emerald-400 transition">USD ➔ GHS</span>
-      <span class="text-xs">🇺🇸 ➔ 🇬🇭</span>
-    </div>
-    <p class="text-[11px] text-slate-400 leading-tight" data-i18n="corridorUsdGhs">USA to Ghana</p>
-  </button>
-
-  <!-- Corridor 7: EUR -> KES -->
-  <button onclick="selectCorridor('EUR', 'KES')" class="bg-slate-900/80 hover:bg-slate-800 border border-slate-800 hover:border-emerald-500/50 p-3 rounded-xl text-left transition group" title="Transfer EUR to KES - France & Europe diaspora banking & property in Kenya">
-    <div class="flex items-center justify-between mb-1">
-      <span class="text-sm font-bold text-white group-hover:text-emerald-400 transition">EUR ➔ KES</span>
-      <span class="text-xs">🇫🇷 🇪🇺 ➔ 🇰🇪</span>
-    </div>
-    <p class="text-[11px] text-slate-400 leading-tight" data-i18n="corridorEurKes">France / Europe to Kenya</p>
-  </button>
-
-  <!-- Corridor 8: USD -> KES -->
-  <button onclick="selectCorridor('USD', 'KES')" class="bg-slate-900/80 hover:bg-slate-800 border border-slate-800 hover:border-emerald-500/50 p-3 rounded-xl text-left transition group" title="Transfer USD to KES - US diaspora money transfer & investment in Kenya">
-    <div class="flex items-center justify-between mb-1">
-      <span class="text-sm font-bold text-white group-hover:text-emerald-400 transition">USD ➔ KES</span>
-      <span class="text-xs">🇺🇸 ➔ 🇰🇪</span>
-    </div>
-    <p class="text-[11px] text-slate-400 leading-tight" data-i18n="corridorUsdKes">USA to Kenya</p>
-  </button>
-
-  <!-- Corridor 9: USD -> NGN -->
-  <button onclick="selectCorridor('USD', 'NGN')" class="bg-slate-900/80 hover:bg-slate-800 border border-slate-800 hover:border-emerald-500/50 p-3 rounded-xl text-left transition group" title="Transfer USD to NGN - US diaspora high-yield real estate & banking in Lagos, Nigeria">
-    <div class="flex items-center justify-between mb-1">
-      <span class="text-sm font-bold text-white group-hover:text-emerald-400 transition">USD ➔ NGN</span>
-      <span class="text-xs">🇺🇸 ➔ 🇳🇬</span>
-    </div>
-    <p class="text-[11px] text-slate-400 leading-tight" data-i18n="corridorUsdNgn">USA to Nigeria</p>
-  </button>
-
-  <!-- Corridor 10: USD -> XOF -->
-  <button onclick="selectCorridor('USD', 'XOF')" class="bg-slate-900/80 hover:bg-slate-800 border border-slate-800 hover:border-emerald-500/50 p-3 rounded-xl text-left transition group" title="Transfer USD to XOF - US diaspora luxury property financing in Abidjan & Dakar">
-    <div class="flex items-center justify-between mb-1">
-      <span class="text-sm font-bold text-white group-hover:text-emerald-400 transition">USD ➔ XOF</span>
-      <span class="text-xs">🇺🇸 ➔ 🇸🇳 🇨🇮</span>
-    </div>
-    <p class="text-[11px] text-slate-400 leading-tight" data-i18n="corridorUsdXof">USA to West Africa</p>
-  </button>
-
-  <!-- Corridor 11: CAD -> XOF -->
-  <button onclick="selectCorridor('CAD', 'XOF')" class="bg-slate-900/80 hover:bg-slate-800 border border-slate-800 hover:border-emerald-500/50 p-3 rounded-xl text-left transition group" title="Transfer CAD to XOF - Canadian diaspora mortgages & savings in Francophone West Africa">
-    <div class="flex items-center justify-between mb-1">
-      <span class="text-sm font-bold text-white group-hover:text-emerald-400 transition">CAD ➔ XOF</span>
-      <span class="text-xs">🇨🇦 ➔ 🇸🇳 🇨🇮</span>
-    </div>
-    <p class="text-[11px] text-slate-400 leading-tight" data-i18n="corridorCadXof">Canada to West Africa</p>
-  </button>
-
-  <!-- Corridor 12: EUR -> TND -->
-  <button onclick="selectCorridor('EUR', 'TND')" class="bg-slate-900/80 hover:bg-slate-800 border border-slate-800 hover:border-emerald-500/50 p-3 rounded-xl text-left transition group" title="Transfer EUR to TND - Secondary residence & bank savings in Tunisia from France & Europe">
-    <div class="flex items-center justify-between mb-1">
-      <span class="text-sm font-bold text-white group-hover:text-emerald-400 transition">EUR ➔ TND</span>
-      <span class="text-xs">🇫🇷 🇪🇺 ➔ 🇹🇳</span>
-    </div>
-    <p class="text-[11px] text-slate-400 leading-tight" data-i18n="corridorEurTnd">France / Europe to Tunisia</p>
-  </button>
-</div>
   </section>
 
   <section id="resultsContainer" class="space-y-4">
-    <h3 class="text-xl font-bold text-white flex items-center justify-between">
-      <span data-i18n="resultsTitle">Operators comparison</span>
-      <span data-i18n="resultsRank" class="text-xs font-normal text-slate-400">Ranked by best net rate</span>
-    </h3>
+    <div class="flex flex-wrap items-center justify-between gap-3">
+      <h3 class="text-xl font-bold text-white flex items-center gap-3">
+        <span data-i18n="resultsTitle">Operators comparison</span>
+        <span data-i18n="resultsRank" class="text-xs font-normal text-slate-400">Ranked by best net rate</span>
+      </h3>
+      <!-- Bouton de filtre promo avec badge 🎁 -->
+      <button id="filterPromoBtn" onclick="togglePromoFilter()" class="px-3 py-1.5 text-xs font-semibold rounded-lg border border-slate-700 bg-slate-900 text-slate-300 hover:border-[#34d399] transition-all flex items-center gap-1.5">
+        <span>🎁 Offres spéciales</span>
+      </button>
+    </div>
     <div class="overflow-x-auto">
       <table id="comparisonTable" class="w-full text-left border-collapse">
         <thead>
@@ -257,61 +205,31 @@ body.light-mode input, body.light-mode select { background-color: #f1f5f9 !impor
       <p data-i18n="aboutP_mission">To enable you to compare exchange rates and hidden fees for transfers to 42 African currencies in real time.</p>
       <h3 data-i18n="aboutH_commitment" class="font-semibold text-emerald-400 text-base">Our commitment:</h3>
       <p data-i18n="aboutP_commitment">To ensure that every cent sent actually benefits your loved ones.</p>
-      <p class="pt-2"><a href="#" onclick="closeModal('modal-about'); openModal('modal-model'); return false;" data-i18n="aboutLinkModel" class="text-emerald-400 hover:underline font-semibold">Want to understand our ethics? Find out more about our model and our independence ➔</a></p>
     </div>
   </div>
 </div>
 
-<!-- Modal Modèle -->
 <div id="modal-model" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
   <div class="bg-slate-900 border border-slate-700 text-slate-100 rounded-xl p-6 w-full max-w-3xl max-h-[85vh] overflow-y-auto shadow-2xl relative">
     <button onclick="closeModal('modal-model')" data-i18n="closeBtn" class="absolute top-4 right-4 text-slate-400 hover:text-white text-sm font-semibold flex items-center gap-1 bg-slate-800 px-3 py-1.5 rounded-lg border border-slate-700 transition">✕ CLOSE</button>
     <h2 data-i18n="modelTitle" class="text-2xl font-bold mb-4 text-emerald-400 border-b border-slate-800 pb-2">Notre modèle et notre indépendance</h2>
     <div class="space-y-4 text-sm text-slate-300 leading-relaxed">
       <p data-i18n="modelLead"></p>
-      <p data-i18n="modelSubLead"></p>
-      <p class="text-xs text-emerald-400 font-semibold" data-i18n="modelUpdate"></p>
-      <h3 class="font-semibold text-emerald-400 text-base mt-4" data-i18n="modelS1T"></h3>
-      <p data-i18n="modelS1D"></p>
-      <p data-i18n="modelS1Sub"></p>
-      <h3 class="font-semibold text-emerald-400 text-base mt-4" data-i18n="modelS2T"></h3>
-      <p data-i18n="modelS2Sub" class="italic text-slate-400"></p>
-      <ul class="list-disc pl-5 space-y-2">
-        <li data-i18n="modelRef1"></li>
-        <li data-i18n="modelRef2"></li>
-        <li data-i18n="modelRef3"></li>
-        <li data-i18n="modelRef4"></li>
-        <li data-i18n="modelRef5"></li>
-      </ul>
     </div>
   </div>
 </div>
 
-<!-- Modal FAQ -->
 <div id="modal-faq" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
   <div class="bg-slate-900 border border-slate-700 text-slate-100 rounded-xl p-6 w-full max-w-2xl max-h-[85vh] overflow-y-auto shadow-2xl relative">
     <button onclick="closeModal('modal-faq')" data-i18n="closeBtn" class="absolute top-4 right-4 text-slate-400 hover:text-white text-sm font-semibold flex items-center gap-1 bg-slate-800 px-3 py-1.5 rounded-lg border border-slate-700 transition">✕ CLOSE</button>
     <h2 data-i18n="faqTitle" class="text-2xl font-bold mb-6 text-emerald-400 border-b border-slate-800 pb-2">Frequently Asked Questions</h2>
-    <div class="space-y-5 text-sm text-slate-300">
-      <div><h3 data-i18n="faqQ1" class="font-semibold text-emerald-400 text-base mb-1"></h3><p data-i18n="faqA1"></p></div>
-      <div><h3 data-i18n="faqQ2" class="font-semibold text-emerald-400 text-base mb-1"></h3><p data-i18n="faqA2"></p></div>
-      <div><h3 data-i18n="faqQ3" class="font-semibold text-emerald-400 text-base mb-1"></h3><p data-i18n="faqA3"></p></div>
-      <div><h3 data-i18n="faqQ4" class="font-semibold text-emerald-400 text-base mb-1"></h3><p data-i18n="faqA4"></p></div>
-    </div>
   </div>
 </div>
 
-<!-- Modal Sécurité -->
 <div id="modal-security" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
   <div class="bg-slate-900 border border-slate-700 text-slate-100 rounded-xl p-6 w-full max-w-2xl max-h-[85vh] overflow-y-auto shadow-2xl relative">
     <button onclick="closeModal('modal-security')" data-i18n="closeBtn" class="absolute top-4 right-4 text-slate-400 hover:text-white text-sm font-semibold flex items-center gap-1 bg-slate-800 px-3 py-1.5 rounded-lg border border-slate-700 transition">✕ CLOSE</button>
     <h2 data-i18n="secTitle" class="text-2xl font-bold mb-4 text-emerald-400 border-b border-slate-800 pb-2">Security</h2>
-    <div class="space-y-4 text-sm text-slate-300 leading-relaxed">
-      <p data-i18n="secIntro"></p>
-      <h3 class="font-semibold text-emerald-400 text-base" data-i18n="secH1"></h3><p data-i18n="secP1"></p>
-      <h3 class="font-semibold text-emerald-400 text-base" data-i18n="secH2"></h3><p data-i18n="secP2"></p>
-      <h3 class="font-semibold text-emerald-400 text-base" data-i18n="secH3"></h3><p data-i18n="secP3"></p>
-    </div>
   </div>
 </div>
 
@@ -325,6 +243,7 @@ body.light-mode input, body.light-mode select { background-color: #f1f5f9 !impor
 <script>
 let tauxDeChange = {};
 let currentLang = 'en';
+let promoFilterActive = false;
 
 const REGION_LABELS = { EUR: "Euro Zone (€)", USD: "United States ($)", CAD: "Canada ($)", GBP: "United Kingdom (£)", CNY: "China (¥)", CHF: "Switzerland (CHF)", AED: "UAE (د.إ)", XOF: "West African CFA", XAF: "Central African CFA", NGN: "Nigerian Naira", GHS: "Ghanaian Cedi", KES: "Kenyan Shilling", MAD: "Moroccan Dirham", DZD: "Algerian Dinar", TND: "Tunisian Dinar", ZAR: "South African Rand", LYD: "Libyan Dinar", EGP: "Egyptian Pound", TZS: "Tanzanian Shilling", UGX: "Ugandan Shilling", RWF: "Rwandan Franc", BIF: "Burundian Franc", ETB: "Ethiopian Birr", SOS: "Somali Shilling", DJF: "Djiboutian Franc", ERN: "Eritrean Nakfa", SSP: "South Sudanese Pound", SDG: "Sudanese Pound", NAD: "Namibian Dollar", BWP: "Botswana Pula", ZMW: "Zambian Kwacha", MWK: "Malawian Kwacha", MZN: "Mozambican Metical", ZWG: "Zimbabwe Gold", LSL: "Lesotho Loti", SZL: "Swazi Lilangeni", AOA: "Angolan Kwanza", GMD: "Gambian Dalasi", GNF: "Guinean Franc", LRD: "Liberian Dollar", SLE: "Sierra Leonean Leone", CVE: "Cape Verdean Escudo", MRU: "Mauritanian Ouguiya", MGA: "Malagasy Ariary", MUR: "Mauritian Rupee", SCR: "Seychellois Rupee", KMF: "Comorian Franc" };
 
@@ -341,7 +260,6 @@ const OPERATEURS = [
   { id: 'moneygram', nom: 'MoneyGram', fraisFixes: 4.50, margeChange: 0.017, delai: 'Instant', url: 'https://moneygram.com' }
 ];
 
-// Dictionnaire propre à index.html
 const TRANSLATIONS = {
   fr: {
     badgeTitle: "COMPARATEUR GRATUIT & INDÉPENDANT", logoSlogan: "Comparez & Transférez en toute simplicité",
@@ -364,35 +282,45 @@ const TRANSLATIONS = {
     thRank: "Rank", thOperator: "Operator", thRate: "Exchange Rate", thFee: "Transfer Fee", thReceived: "Amount Received", thDelivery: "Est. Time", thAction: "Action",
     btnSend: "Send ➔", freeFee: "Free", instantDelay: "Instant", bestRateBadge: "Cheapest",
     footerCopy: "© 2026 Xaalya. All rights reserved.", closeBtn: "✕ CLOSE", audioSuffix: "the cheapest"
-  },
-  zu: { badgeTitle: "INKAMPANI YAMAHHALA NEYEZIRO", logoSlogan: "Qhathanisa & Thumela kalula", navAbout: "Mayelana", navModel: "Imodeli Yethu", navFaq: "Imibuzo", navSecurity: "Ukuphepha", heroTitleTpl: "Uthumela i-{amount}{symbol} e-Afrika. Kukangakhi okufika?", heroSub: "Imihubhe engu-294 ivuselelwa ngesikhathi sangempela.", labelSource: "Imali ethunyelwayo:", labelTarget: "Imali eyemukelwayo:", labelAmount: "Inani:", statusConnected: "Kuguqulwe", resultsTitle: "Ukuqhathaniswa", resultsRank: "Kuhlelwe ngezinga", thRank: "Isikhundla", thOperator: "Inkampani", thRate: "Izinga", thFee: "Imali", thReceived: "Inani", thDelivery: "Isikhathi", thAction: "Isenzo", btnSend: "Thumela ➔", freeFee: "Mahhala", instantDelay: "Ngokushesha", bestRateBadge: "Eshibhe", footerCopy: "© 2026 Xaalya.", closeBtn: "✕ VALA", audioSuffix: "eshibhe kakhulu" },
-  ln: { badgeTitle: "MOPESIPASO YA SOLO", logoSlogan: "Kokokanisa & Kotinda", navAbout: "Makambo", navModel: "Model na Biso", navFaq: "Mituna", navSecurity: "Bokengi", heroTitleTpl: "Ozali kotinda {amount}{symbol} na Afrika. Ndenge nini?", heroSub: "Nzelá 294.", labelSource: "Mbongo:", labelTarget: "Mbongo ya koyamba:", labelAmount: "Motuya:", statusConnected: "Ekitisami", resultsTitle: "Kokokanisa", resultsRank: "Ebongisami", thRank: "Esika", thOperator: "Kompani", thRate: "Motuya", thFee: "Fɔti", thReceived: "Motuya", thDelivery: "Ntango", thAction: "Kosala", btnSend: "Tinda ➔", freeFee: "Efuti te", instantDelay: "Na mbala moko", bestRateBadge: "Ere moke", footerCopy: "© 2026 Xaalya.", closeBtn: "✕ KANGISA", audioSuffix: "ya ntalo moke" },
-  sn: { badgeTitle: "MUCHANANIDZI WEMAHARA", logoSlogan: "Enzanisai & Mutumire", navAbout: "Nezve", navModel: "Mhando Yedu", navFaq: "Mibvuniko", navSecurity: "Chengetedzo", heroTitleTpl: "Uri kutuma {amount}{symbol} kuAfrica. Zvii?", heroSub: "Nzira 294.", labelSource: "Mari:", labelTarget: "Mari inogamuchirwa:", labelAmount: "Mari:", statusConnected: "Yakashandurwa", resultsTitle: "Kufananidza", resultsRank: "Yakarongwa", thRank: "Chinzvimbo", thOperator: "Kambani", thRate: "Mutengo", thFee: "Mutero", thReceived: "Mari", thDelivery: "Nguva", thAction: "Chiito", btnSend: "Tumira ➔", freeFee: "Mahara", instantDelay: "Pakarepo", bestRateBadge: "Yakachipa", footerCopy: "© 2026 Xaalya.", closeBtn: "✕ VHARAI", audioSuffix: "yakachipa zvikuru" },
-  de: { badgeTitle: "KOSTENLOSER & UNABHÄNGIGER VERGLEICH", logoSlogan: "Einfach vergleichen", navAbout: "Über uns", navModel: "Unser Modell", navFaq: "FAQ", navSecurity: "Sicherheit", heroTitleTpl: "Sie senden {amount}{symbol} nach Afrika. Wie viel kommt an?", heroSub: "294 Korridore.", labelSource: "Sende-Währung:", labelTarget: "Empfangs-Währung:", labelAmount: "Betrag:", statusConnected: "Umgerechnet", resultsTitle: "Anbietervergleich", resultsRank: "Nach Nettobetrag", thRank: "Rang", thOperator: "Anbieter", thRate: "Wechselkurs", thFee: "Gebühr", thReceived: "Empfangener Betrag", thDelivery: "Zeit", thAction: "Aktion", btnSend: "Senden ➔", freeFee: "Kostenlos", instantDelay: "Sofort", bestRateBadge: "Am günstigsten", footerCopy: "© 2026 Xaalya.", closeBtn: "✕ SCHLIESSEN", audioSuffix: "am günstigsten" },
-  ar: { badgeTitle: "مقارن مجاني ومستقل", logoSlogan: "قارن وحول بكل سهولة", navAbout: "عن المنصة", navModel: "نموذجنا", navFaq: "الأسئلة الشائعة", navSecurity: "الأمان", heroTitleTpl: "أنت ترسل {amount}{symbol} إلى أفريقيا. كم يصل؟", heroSub: "294 ممرًا ماليًا.", labelSource: "عملة الإرسال:", labelTarget: "عملة الاستلام:", labelAmount: "المبلغ:", statusConnected: "محولة بالأسعار العالمية", resultsTitle: "مقارنة المشغلين", resultsRank: "مرتبة حسب أفضل مبلغ", thRank: "الترتيب", thOperator: "الشركة", thRate: "سعر الصرف", thFee: "رسوم التحويل", thReceived: "المبلغ المستلم", thDelivery: "الوقت المقدر", thAction: "الإجراء", btnSend: "إرسال ➔", freeFee: "مجاناً", instantDelay: "فوري", bestRateBadge: "الأرخص", footerCopy: "© 2026 Xaalya.", closeBtn: "✕ إغلاق", audioSuffix: "الأرخص" },
-  pt: { badgeTitle: "COMPARADOR GRATUITO E INDEPENDENTE", logoSlogan: "Compare e transfira", navAbout: "Sobre", navModel: "Nosso Modelo", navFaq: "FAQ", navSecurity: "Segurança", heroTitleTpl: "Você envia {amount}{symbol} para a África. Quanto chega?", heroSub: "294 corredores.", labelSource: "Moeda de envio:", labelTarget: "Moeda de recebimento:", labelAmount: "Valor enviado:", statusConnected: "Convertido às taxas mundiais", resultsTitle: "Comparação de operadoras", resultsRank: "Classificado pela melhor taxa", thRank: "Posição", thOperator: "Operadora", thRate: "Taxa de Câmbio", thFee: "Taxa de Envio", thReceived: "Valor Recebido", thDelivery: "Tempo Estimado", thAction: "Ação", btnSend: "Enviar ➔", freeFee: "Gratuito", instantDelay: "Instantâneo", bestRateBadge: "Mais Barato", footerCopy: "© 2026 Xaalya.", closeBtn: "✕ FECHAR", audioSuffix: "o mais barato" },
-  es: { badgeTitle: "COMPARADOR GRATUITO E INDEPENDIENTE", logoSlogan: "Compare y transfiera", navAbout: "Acerca de", navModel: "Nuestro Modelo", navFaq: "FAQ", navSecurity: "Seguridad", heroTitleTpl: "Envías {amount}{symbol} a África. ¿Cuánto llega?", heroSub: "294 corredores.", labelSource: "Moneda de envío:", labelTarget: "Moneda de recepción:", labelAmount: "Monto enviado:", statusConnected: "Convertido a tasas mundiales", resultsTitle: "Comparativa de operadores", resultsRank: "Clasificado por mejor tasa", thRank: "Puesto", thOperator: "Operador", thRate: "Tipo de Cambio", thFee: "Comisión", thReceived: "Monto Recibido", thDelivery: "Tiempo Est.", thAction: "Acción", btnSend: "Enviar ➔", freeFee: "Gratis", instantDelay: "Instantáneo", bestRateBadge: "El Más Barato", footerCopy: "© 2026 Xaalya.", closeBtn: "✕ CERRAR", audioSuffix: "el más barato" },
-  zh: { badgeTitle: "免费独立汇率比较平台", logoSlogan: "轻松比较与汇款", navAbout: "关于我们", navModel: "我们的模式", navFaq: "常见问题", navSecurity: "安全保障", heroTitleTpl: "您向非洲汇出 {amount}{symbol}。实际到账多少？", heroSub: "294条金融走廊实时更新。", labelSource: "汇出货币：", labelTarget: "收款货币：", labelAmount: "汇款金额：", statusConnected: "按全球实时汇率转换", resultsTitle: "服务商比较", resultsRank: "按最优净到账金额排序", thRank: "排名", thOperator: "汇款服务商", thRate: "实时汇率", thFee: "手续费", thReceived: "预计到账", thDelivery: "预计时间", thAction: "操作", btnSend: "去汇款 ➔", freeFee: "免费", instantDelay: "即时到账", bestRateBadge: "最划算", footerCopy: "© 2026 Xaalya.", closeBtn: "✕ 关闭", audioSuffix: "最划算" },
-  it: { badgeTitle: "COMPARATORE GRATUITO E INDIPENDENTE", logoSlogan: "Confronta e trasferisci", navAbout: "Chi siamo", navModel: "Il Nostro Modello", navFaq: "FAQ", navSecurity: "Sicurezza", heroTitleTpl: "Invii {amount}{symbol} in Africa. Quanto arriva?", heroSub: "294 corridoi.", labelSource: "Valuta di invio:", labelTarget: "Valuta di ricezione:", labelAmount: "Importo inviato:", statusConnected: "Convertito ai tassi globali", resultsTitle: "Confronto operatori", resultsRank: "Classificato per miglior importo netto", thRank: "Posizione", thOperator: "Operatore", thRate: "Tasso di Cambio", thFee: "Commissione", thReceived: "Importo Ricevuto", thDelivery: "Tempo Est.", thAction: "Azione", btnSend: "Invia ➔", freeFee: "Gratuito", instantDelay: "Istantaneo", bestRateBadge: "Il Più Economico", footerCopy: "© 2026 Xaalya.", closeBtn: "✕ CHIUDI", audioSuffix: "il più economico" },
-  sw: { badgeTitle: "MILINGANISHO HURU NA BUKURE", logoSlogan: "Linganisha na utume", navAbout: "Kuhusu", navModel: "Mfumo Wetu", navFaq: "Maswali", navSecurity: "Usalama", heroTitleTpl: "Unatuma {amount}{symbol} kwenda Afrika. Kiasi gani?", heroSub: "Njia 294.", labelSource: "Mata ya kutuma:", labelTarget: "Mata ya kupokea:", labelAmount: "Kiasi:", statusConnected: "Imebadilishwa", resultsTitle: "Mlinganisho", resultsRank: "Panga kwa kiwango bora", thRank: "Nafasi", thOperator: "Kampuni", thRate: "Kiwango", thFee: "Ada", thReceived: "Kiasi", thDelivery: "Muda", thAction: "Kitendo", btnSend: "Tuma ➔", freeFee: "Bure", instantDelay: "Mara Moja", bestRateBadge: "Raha Zaidi", footerCopy: "© 2026 Xaalya.", closeBtn: "✕ FUNGWA", audioSuffix: "ndiyo nafuu zaidi" },
-  am: { badgeTitle: "ነፃ እና ስብዕና አወዳዳሪ", logoSlogan: "በቀላሉ ያወዳድሩ", navAbout: "ስለ እኛ", navModel: "የእኛ ሞዴል", navFaq: "ጥያቄዎች", navSecurity: "ደህንነት", heroTitleTpl: "ወደ አፍሪካ {amount}{symbol} እየላኩ ነው። ስንት ይደርሳል?", heroSub: "294 የገንዘብ መስመሮች።", labelSource: "የመላኪያ ገንዘብ:", labelTarget: "የመቀበያ ገንዘብ:", labelAmount: "መጠን:", statusConnected: "የተለወጠ", resultsTitle: "ማወዳደሪያ", resultsRank: "በተሻለ ተመን", thRank: "ደረጃ", thOperator: "አገልግሎት ሰጪ", thRate: "ተመን", thFee: "ክፍያ", thReceived: "መጠን", thDelivery: "ጊዜ", thAction: "ተግባር", btnSend: "ላክ ➔", freeFee: "ነፃ", instantDelay: "ወዲያውኑ", bestRateBadge: "ርካሹ", footerCopy: "© 2026 Xaalya.", closeBtn: "✕ ዝጋ", audioSuffix: "በጣም ርካሹ" },
-  yo: { badgeTitle: "OBAWANDI OLOFE", logoSlogan: "Fiwe ati firanse", navAbout: "Nipa wa", navModel: "Awoṣe Wa", navFaq: "Awọn ibeere", navSecurity: "Aabo", heroTitleTpl: "O n firanse {amount}{symbol} si Africa. Elo?", heroSub: "Awọn ọna inawo 294.", labelSource: "Owo ti o firanse:", labelTarget: "Owo ti o gba:", labelAmount: "Iye:", statusConnected: "Yipada", resultsTitle: "Afiwe", resultsRank: "Ti wa ni ipo", thRank: "Ipo", thOperator: "Oniṣẹ", thRate: "Oṣuwọn", thFee: "Owo", thReceived: "Iye", thDelivery: "Akoko", thAction: "Igbese", btnSend: "Firanṣẹ ➔", freeFee: "Ọfẹ", instantDelay: "Lẹsẹkẹsẹ", bestRateBadge: "Olowo julọ", footerCopy: "© 2026 Xaalya.", closeBtn: "✕ PA", audioSuffix: "ni o din owo julọ" },
-  ha: { badgeTitle: "MAI KWATANCEN KYAUTA", logoSlogan: "Kwatanta & Aika", navAbout: "Game da mu", navModel: "Tsarinmu", navFaq: "Tambayoyi", navSecurity: "Tsaro", heroTitleTpl: "Kana aika {amount}{symbol} zuwa Afrika. Nawa ne?", heroSub: "Hanyoyin kudi 294.", labelSource: "Kudin aikawa:", labelTarget: "Kudin karba:", labelAmount: "Adadin:", statusConnected: "An canza", resultsTitle: "Kwatancen", resultsRank: "An jera", thRank: "Matsayi", thOperator: "Kamfani", thRate: "Kudin Musanya", thFee: "Kudin Aikawa", thReceived: "Adadin", thDelivery: "Lokaci", thAction: "Aiki", btnSend: "Aika ➔", freeFee: "Kyauta", instantDelay: "Nan take", bestRateBadge: "Mafi Arha", footerCopy: "© 2026 Xaalya.", closeBtn: "✕ RUFE", audioSuffix: "shi ne mafi sauki" },
-  wo: { badgeTitle: "COMPARATEUR GRATUIT & INDÉPENDANT", logoSlogan: "Comparez & Transférez", navAbout: "Ci xaalya", navModel: "Sunu Modele", navFaq: "Laaj", navSecurity: "Kaaraange", heroTitleTpl: "Dga yónnee {amount}{symbol} ci Afrik. Ñata mooy?", heroSub: "294 yooni xalis.", labelSource: "Xalis bu yónnee:", labelTarget: "Xalis bu jot:", labelAmount: "Lùn:", statusConnected: "Nattal", resultsTitle: "Nattukaay", resultsRank: "Kañ ci ki gën a yomb", thRank: "Palaas", thOperator: "Liggéeykat", thRate: "Njégat Wéccu", thFee: "Faytu Yónnee", thReceived: "Lùn Jot", thDelivery: "Waxtu", thAction: "Jëf", btnSend: "Yónnee ➔", freeFee: "Amul fay", instantDelay: "Sogal", bestRateBadge: "Ki gën a yomb", footerCopy: "© 2026 Xaalya.", closeBtn: "✕ TEJ", audioSuffix: "móo gën a yomb" }
+  }
 };
 
-// FONCTION DE TRADUCTION CORRIGÉE & FUSIONNÉE
+function evaluerPromoActive(promoText) {
+  if (!promoText) return false;
+  return true;
+}
+
+function renderOperatorNameWithGift(op) {
+  const isPromo = op.isPromoActive !== undefined ? op.isPromoActive : evaluerPromoActive(op.promoRawText);
+  if (isPromo) {
+    return `${op.nom} <span class="ml-1 inline-flex items-center text-xs text-[#34d399] animate-pulse" title="Offre spéciale">🎁</span>`;
+  }
+  return op.nom;
+}
+
+function togglePromoFilter() {
+  promoFilterActive = !promoFilterActive;
+  const btn = document.getElementById('filterPromoBtn');
+  if (btn) {
+    if (promoFilterActive) {
+      btn.style.backgroundColor = 'rgba(52, 211, 153, 0.15)';
+      btn.style.borderColor = '#34d399';
+      btn.style.color = '#34d399';
+    } else {
+      btn.style.backgroundColor = '';
+      btn.style.borderColor = '';
+      btn.style.color = '';
+    }
+  }
+  renderResults();
+}
+
 function setLanguage(lang, save) {
   currentLang = lang;
-  
-  // 1. Récupération des deux dictionnaires (i18n.js + index.html)
   const modelTrad = (typeof TRANSLATIONS_MODEL !== 'undefined' && TRANSLATIONS_MODEL[lang]) ? TRANSLATIONS_MODEL[lang] : {};
   const pageTrad = TRANSLATIONS[lang] || TRANSLATIONS['en'];
-  
-  // 2. Fusion sécurisée sans écrasement
   const trad = Object.assign({}, modelTrad, pageTrad);
 
-  // 3. Application des clés de traduction
   document.querySelectorAll('[data-i18n]').forEach(function(el) {
     const key = el.getAttribute('data-i18n');
     if (trad[key]) {
@@ -458,7 +386,6 @@ function selectCorridor(source, target) {
     updateHeroTitle();
     renderResults();
     declencherVoixOff();
-    // Smooth scroll vers le comparateur si nécessaire
     srcSelect.scrollIntoView({ behavior: 'smooth', block: 'center' });
   }
 }
@@ -512,13 +439,7 @@ function declencherVoixOff() {
     const trad = Object.assign({}, modelTrad, pageTrad);
 
     const utterance = new SpeechSynthesisUtterance(`${offres[0].nom}, ${trad.audioSuffix || 'the cheapest'}`);
-    
-    const langCodeMap = {
-      fr: 'fr-FR', zu: 'zu-ZA', ln: 'ln-CD', sn: 'sn-ZW', de: 'de-DE', en: 'en-US', 
-      ar: 'ar-SA', pt: 'pt-PT', es: 'es-ES', zh: 'zh-CN', it: 'it-IT', sw: 'sw-KE', 
-      am: 'am-ET', yo: 'yo-NG', ha: 'ha-NG', wo: 'fr-FR'
-    };
-    utterance.lang = langCodeMap[currentLang] || 'en-US';
+    utterance.lang = currentLang === 'fr' ? 'fr-FR' : 'en-US';
     window.speechSynthesis.speak(utterance);
   }
 }
@@ -527,102 +448,8 @@ function renderResults() {
   const source = document.getElementById('sourceCurrency').value;
   const target = document.getElementById('targetCurrency').value;
   const amount = parseFloat(document.getElementById('sendAmount').value) || 0;
-
-let promoFilterActive = false;
-
-function togglePromoFilter() {
-    promoFilterActive = !promoFilterActive;
-    const btn = document.getElementById('filterPromoBtn');
-
-    if (promoFilterActive) {
-        btn.style.backgroundColor = 'rgba(52, 211, 153, 0.15)';
-        btn.style.borderColor = '#34d399';
-        btn.style.color = '#34d399';
-    } else {
-        btn.style.backgroundColor = '';
-        btn.style.borderColor = '';
-        btn.style.color = '';
-    }
-// 1. Variable d'état et fonction de bascule pour le filtre promo
-let promoFilterActive = false;
-
-function togglePromoFilter() {
-    promoFilterActive = !promoFilterActive;
-    const btn = document.getElementById('filterPromoBtn');
-
-    if (promoFilterActive) {
-        btn.style.backgroundColor = 'rgba(52, 211, 153, 0.15)';
-        btn.style.borderColor = '#34d399';
-        btn.style.color = '#34d399';
-    } else {
-        btn.style.backgroundColor = '';
-        btn.style.borderColor = '';
-        btn.style.color = '';
-    }
-
-    renderResults();
-}
-
-// 2. Fonction de rendu complète du tableau comparatif à 7 colonnes
-function renderResults() {
-    const source = document.getElementById('sourceCurrency').value;
-    const target = document.getElementById('targetCurrency').value;
-    const amount = parseFloat(document.getElementById('sendAmount').value) || 0;
-    const tbody = document.getElementById('operatorsList');
-    if (!tbody) return;
-
-    let tauxSource = source !== 'EUR' ? (tauxDeChange[source.toLowerCase()] || 1) : 1;
-    const tauxCible = tauxDeChange[target.toLowerCase()] || 1;
-    const tauxInterbancaire = tauxCible / tauxSource;
-
-    const modelTrad = (typeof TRANSLATIONS_MODEL !== 'undefined' && TRANSLATIONS_MODEL[currentLang]) ? TRANSLATIONS_MODEL[currentLang] : {};
-    const pageTrad = TRANSLATIONS[currentLang] || TRANSLATIONS['en'];
-    const trad = Object.assign({}, modelTrad, pageTrad);
-
-    // Mappage et calcul des résultats avec conservation de l'objet opérateur d'origine pour les promos
-    let resultats = OPERATEURS.map(op => ({
-        opOriginal: op,
-        nom: op.nom,
-        frais: op.fraisFixes,
-        taux: tauxInterbancaire * (1 - op.margeChange),
-        recu: Math.max(0, amount - op.fraisFixes) * (tauxInterbancaire * (1 - op.margeChange)),
-        delai: op.delai,
-        url: op.url,
-        isPromoActive: typeof evaluerPromoActive === 'function' ? evaluerPromoActive(op.promoRawText) : false
-    })).sort((a, b) => b.recu - a.recu);
-
-    // Application du filtre promo si le bouton est activé
-    if (promoFilterActive) {
-        resultats = resultats.filter(r => r.isPromoActive);
-    }
-
-    // Gestion du cas où aucun opérateur ne correspond au filtre
-    if (resultats.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="7" class="text-center py-6 text-slate-400">Aucune offre promotionnelle disponible actuellement.</td></tr>`;
-        return;
-    }
-
-    // Génération des 7 colonnes du tableau avec le badge 🎁
-    tbody.innerHTML = resultats.map((r, index) => {
-        const badge = index === 0 && !promoFilterActive ? `<span class="ml-2 text-[10px] bg-emerald-500 text-white px-2 py-0.5 rounded-full font-bold">${trad.bestRateBadge || 'Cheapest'}</span>` : '';
-        const fraisAffiches = r.frais === 0 ? `<span class="text-emerald-400 font-bold">${trad.freeFee || 'Free'}</span>` : `${r.frais.toFixed(2)} ${source}`;
-        const delaiAffiche = (r.delai === 'Instantané' || r.delai === 'Instant') ? `<span class="text-emerald-400">${trad.instantDelay || 'Instant'}</span>` : r.delai;
-
-        const nomAvecCadeau = typeof renderOperatorNameWithGift === 'function' 
-            ? renderOperatorNameWithGift(r.opOriginal) 
-            : r.nom;
-
-        return `<tr class="border-b border-slate-800/60 hover:bg-slate-800/30 transition">
-            <td class="py-3 px-4 text-slate-400 font-bold">${index + 1}</td>
-            <td class="py-3 px-4 font-semibold text-white">${nomAvecCadeau}${badge}</td>
-            <td class="py-3 px-4 text-slate-300">1 ${source} = ${r.taux.toFixed(4)} ${target}</td>
-            <td class="py-3 px-4">${fraisAffiches}</td>
-            <td class="py-3 px-4 font-bold text-emerald-400">${r.recu.toLocaleString('en-GB', { maximumFractionDigits: 0 })} ${target}</td>
-            <td class="py-3 px-4 text-slate-400">${delaiAffiche}</td>
-            <td class="py-3 px-4"><button class="bg-emerald-500 hover:bg-emerald-600 text-white text-xs font-bold px-3 py-1.5 rounded-lg transition" onclick="window.location.href='${r.url}'">${trad.btnSend || 'Send ➔'}</button></td>
-        </tr>`;
-    }).join('');
-}
+  const tbody = document.getElementById('operatorsList');
+  if (!tbody) return;
   
   let tauxSource = source !== 'EUR' ? (tauxDeChange[source.toLowerCase()] || 1) : 1;
   const tauxCible = tauxDeChange[target.toLowerCase()] || 1;
@@ -632,23 +459,36 @@ function renderResults() {
   const pageTrad = TRANSLATIONS[currentLang] || TRANSLATIONS['en'];
   const trad = Object.assign({}, modelTrad, pageTrad);
   
-  const resultats = OPERATEURS.map(op => ({
+  let resultats = OPERATEURS.map(op => ({
+    opOriginal: op,
     nom: op.nom,
     frais: op.fraisFixes,
     taux: tauxInterbancaire * (1 - op.margeChange),
     recu: Math.max(0, amount - op.fraisFixes) * (tauxInterbancaire * (1 - op.margeChange)),
     delai: op.delai,
-    url: op.url
+    url: op.url,
+    isPromoActive: op.isPromoActive !== undefined ? op.isPromoActive : evaluerPromoActive(op.promoRawText)
   })).sort((a, b) => b.recu - a.recu);
+
+  if (promoFilterActive) {
+    resultats = resultats.filter(r => r.isPromoActive);
+  }
+
+  if (resultats.length === 0) {
+    tbody.innerHTML = `<tr><td colspan="7" class="text-center py-6 text-slate-400">Aucune offre promotionnelle disponible actuellement.</td></tr>`;
+    return;
+  }
   
   tbody.innerHTML = resultats.map((r, index) => {
-    const badge = index === 0 ? `<span class="ml-2 text-[10px] bg-emerald-500 text-white px-2 py-0.5 rounded-full font-bold">${trad.bestRateBadge || 'Cheapest'}</span>` : '';
+    const badge = index === 0 && !promoFilterActive ? `<span class="ml-2 text-[10px] bg-emerald-500 text-white px-2 py-0.5 rounded-full font-bold">${trad.bestRateBadge || 'Cheapest'}</span>` : '';
     const fraisAffiches = r.frais === 0 ? `<span class="text-emerald-400 font-bold">${trad.freeFee || 'Free'}</span>` : `${r.frais.toFixed(2)} ${source}`;
     const delaiAffiche = (r.delai === 'Instantané' || r.delai === 'Instant') ? `<span class="text-emerald-400">${trad.instantDelay || 'Instant'}</span>` : r.delai;
     
+    const nomAvecCadeau = renderOperatorNameWithGift(r.opOriginal);
+
     return `<tr class="border-b border-slate-800/60 hover:bg-slate-800/30 transition">
       <td class="py-3 px-4 text-slate-400 font-bold">${index + 1}</td>
-      <td class="py-3 px-4 font-semibold text-white">${r.nom}${badge}</td>
+      <td class="py-3 px-4 font-semibold text-white">${nomAvecCadeau}${badge}</td>
       <td class="py-3 px-4 text-slate-300">1 ${source} = ${r.taux.toFixed(4)} ${target}</td>
       <td class="py-3 px-4">${fraisAffiches}</td>
       <td class="py-3 px-4 font-bold text-emerald-400">${r.recu.toLocaleString('en-GB', { maximumFractionDigits: 0 })} ${target}</td>
@@ -695,102 +535,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     } catch(e) {}
   }
 });
-// --- MODULE DE GESTION DES PROMOS (🎁) ---
-
-    // 1. Fonction pour analyser les dates de début et de fin via les mots-clés
-    function evaluerPromoActive(promoRawText) {
-        if (!promoRawText) return false;
-        const cleanText = promoRawText.toLowerCase().trim();
-        const now = new Date();
-
-        const months = {
-            'janv': 0, 'january': 0, 'jan': 0,
-            'févr': 1, 'fevr': 1, 'february': 1, 'feb': 1,
-            'mars': 2, 'march': 2, 'mar': 2,
-            'avril': 3, 'april': 3, 'apr': 3,
-            'mai': 4, 'may': 4,
-            'juin': 5, 'june': 5, 'jun': 5,
-            'juil': 6, 'july': 6, 'jul': 6,
-            'août': 7, 'aout': 7, 'august': 7, 'aug': 7,
-            'sept': 8, 'september': 8, 'sep': 8,
-            'oct': 9, 'october': 9,
-            'nov': 10, 'november': 10,
-            'déc': 11, 'dec': 11, 'december': 11
-        };
-
-        let startDate = new Date();
-        let endDate = null;
-
-        // Détection par mot-clé de DÉBUT ("du", "à partir du", "from")
-        const startMatch = cleanText.match(/(?:du|à partir du|depuis|from)\s+(\d{1,2})[\/\-\s]+([a-zéûîäëöç]+|\d{1,2})(?:[\/\-\s]+(\d{4}))?/i);
-        if (startMatch) {
-            let day = parseInt(startMatch[1], 10);
-            let year = startMatch[3] ? parseInt(startMatch[3], 10) : now.getFullYear();
-            let month = parseMonthFront(startMatch[2], months);
-            if (month !== -1) startDate = new Date(year, month, day, 0, 0, 0);
-        }
-
-        // Détection par mot-clé de FIN ("jusqu'au", "fin", "until", "expires")
-        const endMatch = cleanText.match(/(?:jusqu'au|jusqu'à|fin|until|expires?)\s+(\d{1,2})[\/\-\s]+([a-zéûîäëöç]+|\d{1,2})(?:[\/\-\s]+(\d{4}))?/i);
-        if (endMatch) {
-            let day = parseInt(endMatch[1], 10);
-            let year = endMatch[3] ? parseInt(endMatch[3], 10) : now.getFullYear();
-            let month = parseMonthFront(endMatch[2], months);
-            if (month !== -1) endDate = new Date(year, month, day, 23, 59, 59);
-        }
-
-        // Fallback date numérique simple
-        if (!endDate) {
-            const numMatch = cleanText.match(/(\d{1,2})[\/\-](\d{1,2})[\/\-](\d{2,4})/);
-            if (numMatch) {
-                let day = parseInt(numMatch[1], 10);
-                let month = parseInt(numMatch[2], 10) - 1;
-                let year = parseInt(numMatch[3], 10);
-                if (year < 100) year += 2000;
-                endDate = new Date(year, month, day, 23, 59, 59);
-            }
-        }
-
-        // Sécurité de secours de 7 jours si aucune date explicite n'est trouvée
-        if (!endDate) {
-            endDate = new Date();
-            endDate.setDate(endDate.getDate() + 7);
-        }
-
-        return now >= startDate && now <= endDate;
-    }
-
-    function parseMonthFront(input, monthsDict) {
-        if (!isNaN(input)) return parseInt(input, 10) - 1;
-        let cleanM = input.toLowerCase().substring(0, 4);
-        for (let key in monthsDict) {
-            if (cleanM.startsWith(key)) return monthsDict[key];
-        }
-        return -1;
-    }
-
-    // 2. Fonction d'injection unique du symbole 🎁 en vert fluo (#34d399)
-    function renderOperatorNameWithGift(operator) {
-        const isActive = operator.isPromoActive !== undefined ? operator.isPromoActive : evaluerPromoActive(operator.promoRawText);
-
-        let giftBadge = '';
-        if (isActive) {
-            giftBadge = `
-                <span class="inline-flex items-center ml-2 text-base animate-pulse" 
-                      style="color: #34d399 !important;" 
-                      title="${operator.promoRawText || 'Promotion en cours'}">
-                  🎁
-                </span>
-            `;
-        }
-
-        return `
-            <div class="flex items-center">
-                <span class="font-semibold">${operator.operateur || operator.nom}</span>
-                ${giftBadge}
-            </div>
-        `;
-    }
 </script>
 </body>
 </html>
