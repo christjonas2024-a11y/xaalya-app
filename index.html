@@ -527,7 +527,28 @@ function renderResults() {
   const source = document.getElementById('sourceCurrency').value;
   const target = document.getElementById('targetCurrency').value;
   const amount = parseFloat(document.getElementById('sendAmount').value) || 0;
-function mettreAJourTableauOperateurs() {
+
+let promoFilterActive = false;
+
+function togglePromoFilter() {
+    promoFilterActive = !promoFilterActive;
+    const btn = document.getElementById('filterPromoBtn');
+
+    if (promoFilterActive) {
+        btn.style.backgroundColor = 'rgba(52, 211, 153, 0.15)';
+        btn.style.borderColor = '#34d399';
+        btn.style.color = '#34d399';
+    } else {
+        btn.style.backgroundColor = '';
+        btn.style.borderColor = '';
+        btn.style.color = '';
+    }
+
+    renderResults(); // Utilise la vraie fonction d'origine de ton app
+}
+
+
+function renderResults() {
     const tbody = document.getElementById('operatorsList');
     if (!tbody) return;
 
