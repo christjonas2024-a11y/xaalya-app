@@ -527,8 +527,42 @@ function renderResults() {
   const source = document.getElementById('sourceCurrency').value;
   const target = document.getElementById('targetCurrency').value;
   const amount = parseFloat(document.getElementById('sendAmount').value) || 0;
-  const tbody = document.getElementById('operatorsList');
-  if (!tbody) return;
+const tbody = document.getElementById('operatorsList');
+if (!tbody) return;
+
+tbody.innerHTML = '';
+
+let offresAffichees = offresTriees;
+if (promoFilterActive) {
+    offresAffichees = offresTriees.filter(op => {
+        return op.isPromoActive !== undefined ? op.isPromoActive : evaluerPromoActive(op.promoRawText);
+    });
+}
+
+if (offresAffichees.length === 0) {
+    tbody.innerHTML = `<tr><td colspan="5" class="text-center py-6 text-gray-400">Aucune offre promotionnelle disponible actuellement.</td></tr>`;
+    return;
+}
+
+offresAffichees.forEach(op => {
+    const row = document.createElement('tr');
+    
+    row.innerHTML = `
+        <td class="py-4 px-4">
+            ${renderOperatorNameWithGift(op)}
+        </td>
+        <td class="py-4 px-4">${op.frais === 0 ? '<span style="color: #34d399; font-weight: bold;">0 €</span>' : op.frais + ' €'}</td>
+        <td class="py-4 px-4">${op.taux}</td>
+        <td class="py-4 px-4 font-bold" style="color: #34d399;">${op.netRecu} ${deviseArrivee}</td>
+        <td class="py-4 px-4">
+            <a href="${op.url}" target="_blank" rel="noopener noreferrer" class="px-3 py-1 text-sm font-semibold rounded text-black" style="background-color: #34d399;">
+                Envoyer
+            </a>
+        </td>
+    `;
+    
+    tbody.appendChild(row);
+});
   
   let tauxSource = source !== 'EUR' ? (tauxDeChange[source.toLowerCase()] || 1) : 1;
   const tauxCible = tauxDeChange[target.toLowerCase()] || 1;
@@ -601,6 +635,102 @@ document.addEventListener('DOMContentLoaded', async () => {
     } catch(e) {}
   }
 });
+// --- MODULE DE GESTION DES PROMOS (🎁) ---
+
+    // 1. Fonction pour analyser les dates de début et de fin via les mots-clés
+    function evaluerPromoActive(promoRawText) {
+        if (!promoRawText) return false;
+        const cleanText = promoRawText.toLowerCase().trim();
+        const now = new Date();
+
+        const months = {
+            'janv': 0, 'january': 0, 'jan': 0,
+            'févr': 1, 'fevr': 1, 'february': 1, 'feb': 1,
+            'mars': 2, 'march': 2, 'mar': 2,
+            'avril': 3, 'april': 3, 'apr': 3,
+            'mai': 4, 'may': 4,
+            'juin': 5, 'june': 5, 'jun': 5,
+            'juil': 6, 'july': 6, 'jul': 6,
+            'août': 7, 'aout': 7, 'august': 7, 'aug': 7,
+            'sept': 8, 'september': 8, 'sep': 8,
+            'oct': 9, 'october': 9,
+            'nov': 10, 'november': 10,
+            'déc': 11, 'dec': 11, 'december': 11
+        };
+
+        let startDate = new Date();
+        let endDate = null;
+
+        // Détection par mot-clé de DÉBUT ("du", "à partir du", "from")
+        const startMatch = cleanText.match(/(?:du|à partir du|depuis|from)\s+(\d{1,2})[\/\-\s]+([a-zéûîäëöç]+|\d{1,2})(?:[\/\-\s]+(\d{4}))?/i);
+        if (startMatch) {
+            let day = parseInt(startMatch[1], 10);
+            let year = startMatch[3] ? parseInt(startMatch[3], 10) : now.getFullYear();
+            let month = parseMonthFront(startMatch[2], months);
+            if (month !== -1) startDate = new Date(year, month, day, 0, 0, 0);
+        }
+
+        // Détection par mot-clé de FIN ("jusqu'au", "fin", "until", "expires")
+        const endMatch = cleanText.match(/(?:jusqu'au|jusqu'à|fin|until|expires?)\s+(\d{1,2})[\/\-\s]+([a-zéûîäëöç]+|\d{1,2})(?:[\/\-\s]+(\d{4}))?/i);
+        if (endMatch) {
+            let day = parseInt(endMatch[1], 10);
+            let year = endMatch[3] ? parseInt(endMatch[3], 10) : now.getFullYear();
+            let month = parseMonthFront(endMatch[2], months);
+            if (month !== -1) endDate = new Date(year, month, day, 23, 59, 59);
+        }
+
+        // Fallback date numérique simple
+        if (!endDate) {
+            const numMatch = cleanText.match(/(\d{1,2})[\/\-](\d{1,2})[\/\-](\d{2,4})/);
+            if (numMatch) {
+                let day = parseInt(numMatch[1], 10);
+                let month = parseInt(numMatch[2], 10) - 1;
+                let year = parseInt(numMatch[3], 10);
+                if (year < 100) year += 2000;
+                endDate = new Date(year, month, day, 23, 59, 59);
+            }
+        }
+
+        // Sécurité de secours de 7 jours si aucune date explicite n'est trouvée
+        if (!endDate) {
+            endDate = new Date();
+            endDate.setDate(endDate.getDate() + 7);
+        }
+
+        return now >= startDate && now <= endDate;
+    }
+
+    function parseMonthFront(input, monthsDict) {
+        if (!isNaN(input)) return parseInt(input, 10) - 1;
+        let cleanM = input.toLowerCase().substring(0, 4);
+        for (let key in monthsDict) {
+            if (cleanM.startsWith(key)) return monthsDict[key];
+        }
+        return -1;
+    }
+
+    // 2. Fonction d'injection unique du symbole 🎁 en vert fluo (#34d399)
+    function renderOperatorNameWithGift(operator) {
+        const isActive = operator.isPromoActive !== undefined ? operator.isPromoActive : evaluerPromoActive(operator.promoRawText);
+
+        let giftBadge = '';
+        if (isActive) {
+            giftBadge = `
+                <span class="inline-flex items-center ml-2 text-base animate-pulse" 
+                      style="color: #34d399 !important;" 
+                      title="${operator.promoRawText || 'Promotion en cours'}">
+                  🎁
+                </span>
+            `;
+        }
+
+        return `
+            <div class="flex items-center">
+                <span class="font-semibold">${operator.operateur || operator.nom}</span>
+                ${giftBadge}
+            </div>
+        `;
+    }
 </script>
 </body>
 </html>
