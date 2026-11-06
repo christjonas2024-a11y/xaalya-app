@@ -543,48 +543,84 @@ function togglePromoFilter() {
         btn.style.borderColor = '';
         btn.style.color = '';
     }
+let promoFilterActive = false;
 
-    renderResults(); // Utilise la vraie fonction d'origine de ton app
+function togglePromoFilter() {
+    promoFilterActive = !promoFilterActive;
+    const btn = document.getElementById('filterPromoBtn');
+
+    if (promoFilterActive) {
+        btn.style.backgroundColor = 'rgba(52, 211, 153, 0.15)';
+        btn.style.borderColor = '#34d399';
+        btn.style.color = '#34d399';
+    } else {
+        btn.style.backgroundColor = '';
+        btn.style.borderColor = '';
+        btn.style.color = '';
+    }
+
+    renderResults();
 }
 
-
 function renderResults() {
+    const source = document.getElementById('sourceCurrency').value;
+    const target = document.getElementById('targetCurrency').value;
+    const amount = parseFloat(document.getElementById('sendAmount').value) || 0;
     const tbody = document.getElementById('operatorsList');
     if (!tbody) return;
 
-    tbody.innerHTML = '';
+    let tauxSource = source !== 'EUR' ? (tauxDeChange[source.toLowerCase()] || 1) : 1;
+    const tauxCible = tauxDeChange[target.toLowerCase()] || 1;
+    const tauxInterbancaire = tauxCible / tauxSource;
 
-    let offresAffichees = offres;
+    const modelTrad = (typeof TRANSLATIONS_MODEL !== 'undefined' && TRANSLATIONS_MODEL[currentLang]) ? TRANSLATIONS_MODEL[currentLang] : {};
+    const pageTrad = TRANSLATIONS[currentLang] || TRANSLATIONS['en'];
+    const trad = Object.assign({}, modelTrad, pageTrad);
+
+    // 1. Mappage et calcul des résultats avec conservation de l'objet opérateur d'origine pour les promos
+    let resultats = OPERATEURS.map(op => ({
+        opOriginal: op,
+        nom: op.nom,
+        frais: op.fraisFixes,
+        taux: tauxInterbancaire * (1 - op.margeChange),
+        recu: Math.max(0, amount - op.fraisFixes) * (tauxInterbancaire * (1 - op.margeChange)),
+        delai: op.delai,
+        url: op.url,
+        isPromoActive: typeof evaluerPromoActive === 'function' ? evaluerPromoActive(op.promoRawText) : false
+    })).sort((a, b) => b.recu - a.recu);
+
+    // 2. Application du filtre promo si le bouton est activé
     if (promoFilterActive) {
-        offresAffichees = offres.filter(op => {
-            return op.isPromoActive !== undefined ? op.isPromoActive : evaluerPromoActive(op.promoRawText);
-        });
+        resultats = resultats.filter(r => r.isPromoActive);
     }
 
-    if (offresAffichees.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="5" class="text-center py-6 text-gray-400">Aucune offre promotionnelle disponible actuellement.</td></tr>`;
+    // 3. Gestion du cas où aucun opérateur ne correspond au filtre
+    if (resultats.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="7" class="text-center py-6 text-slate-400">Aucune offre promotionnelle disponible actuellement.</td></tr>`;
         return;
     }
 
-    offresAffichees.forEach(op => {
-        const row = document.createElement('tr');
-        
-        row.innerHTML = `
-            <td class="py-4 px-4">
-                ${renderOperatorNameWithGift(op)}
-            </td>
-            <td class="py-4 px-4">${op.frais === 0 ? '<span style="color: #34d399; font-weight: bold;">0 €</span>' : op.frais + ' €'}</td>
-            <td class="py-4 px-4">${op.taux}</td>
-            <td class="py-4 px-4 font-bold" style="color: #34d399;">${op.netRecu} ${deviseArrivee}</td>
-            <td class="py-4 px-4">
-                <a href="${op.url}" target="_blank" rel="noopener noreferrer" class="px-3 py-1 text-sm font-semibold rounded text-black" style="background-color: #34d399;">
-                    Envoyer
-                </a>
-            </td>
-        `;
-        
-        tbody.appendChild(row);
-    });
+    // 4. Génération des 7 colonnes du tableau d'origine avec le badge 🎁
+    tbody.innerHTML = resultats.map((r, index) => {
+        const badge = index === 0 && !promoFilterActive ? `<span class="ml-2 text-[10px] bg-emerald-500 text-white px-2 py-0.5 rounded-full font-bold">${trad.bestRateBadge || 'Cheapest'}</span>` : '';
+        const fraisAffiches = r.frais === 0 ? `<span class="text-emerald-400 font-bold">${trad.freeFee || 'Free'}</span>` : `${r.frais.toFixed(2)} ${source}`;
+        const delaiAffiche = (r.delai === 'Instantané' || r.delai === 'Instant') ? `<span class="text-emerald-400">${trad.instantDelay || 'Instant'}</span>` : r.delai;
+
+        // Intégration propre du nom de l'opérateur avec son badge cadeau 🎁
+        const nomAvecCadeau = typeof renderOperatorNameWithGift === 'function' 
+            ? renderOperatorNameWithGift(r.opOriginal) 
+            : r.nom;
+
+        return `<tr class="border-b border-slate-800/60 hover:bg-slate-800/30 transition">
+            <td class="py-3 px-4 text-slate-400 font-bold">${index + 1}</td>
+            <td class="py-3 px-4 font-semibold text-white">${nomAvecCadeau}${badge}</td>
+            <td class="py-3 px-4 text-slate-300">1 ${source} = ${r.taux.toFixed(4)} ${target}</td>
+            <td class="py-3 px-4">${fraisAffiches}</td>
+            <td class="py-3 px-4 font-bold text-emerald-400">${r.recu.toLocaleString('en-GB', { maximumFractionDigits: 0 })} ${target}</td>
+            <td class="py-3 px-4 text-slate-400">${delaiAffiche}</td>
+            <td class="py-3 px-4"><button class="bg-emerald-500 hover:bg-emerald-600 text-white text-xs font-bold px-3 py-1.5 rounded-lg transition" onclick="window.location.href='${r.url}'">${trad.btnSend || 'Send ➔'}</button></td>
+        </tr>`;
+    }).join('');
 }
   
   let tauxSource = source !== 'EUR' ? (tauxDeChange[source.toLowerCase()] || 1) : 1;
