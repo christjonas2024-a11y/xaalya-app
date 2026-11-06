@@ -543,6 +543,7 @@ function togglePromoFilter() {
         btn.style.borderColor = '';
         btn.style.color = '';
     }
+// 1. Variable d'état et fonction de bascule pour le filtre promo
 let promoFilterActive = false;
 
 function togglePromoFilter() {
@@ -562,6 +563,7 @@ function togglePromoFilter() {
     renderResults();
 }
 
+// 2. Fonction de rendu complète du tableau comparatif à 7 colonnes
 function renderResults() {
     const source = document.getElementById('sourceCurrency').value;
     const target = document.getElementById('targetCurrency').value;
@@ -577,7 +579,7 @@ function renderResults() {
     const pageTrad = TRANSLATIONS[currentLang] || TRANSLATIONS['en'];
     const trad = Object.assign({}, modelTrad, pageTrad);
 
-    // 1. Mappage et calcul des résultats avec conservation de l'objet opérateur d'origine pour les promos
+    // Mappage et calcul des résultats avec conservation de l'objet opérateur d'origine pour les promos
     let resultats = OPERATEURS.map(op => ({
         opOriginal: op,
         nom: op.nom,
@@ -589,24 +591,23 @@ function renderResults() {
         isPromoActive: typeof evaluerPromoActive === 'function' ? evaluerPromoActive(op.promoRawText) : false
     })).sort((a, b) => b.recu - a.recu);
 
-    // 2. Application du filtre promo si le bouton est activé
+    // Application du filtre promo si le bouton est activé
     if (promoFilterActive) {
         resultats = resultats.filter(r => r.isPromoActive);
     }
 
-    // 3. Gestion du cas où aucun opérateur ne correspond au filtre
+    // Gestion du cas où aucun opérateur ne correspond au filtre
     if (resultats.length === 0) {
         tbody.innerHTML = `<tr><td colspan="7" class="text-center py-6 text-slate-400">Aucune offre promotionnelle disponible actuellement.</td></tr>`;
         return;
     }
 
-    // 4. Génération des 7 colonnes du tableau d'origine avec le badge 🎁
+    // Génération des 7 colonnes du tableau avec le badge 🎁
     tbody.innerHTML = resultats.map((r, index) => {
         const badge = index === 0 && !promoFilterActive ? `<span class="ml-2 text-[10px] bg-emerald-500 text-white px-2 py-0.5 rounded-full font-bold">${trad.bestRateBadge || 'Cheapest'}</span>` : '';
         const fraisAffiches = r.frais === 0 ? `<span class="text-emerald-400 font-bold">${trad.freeFee || 'Free'}</span>` : `${r.frais.toFixed(2)} ${source}`;
         const delaiAffiche = (r.delai === 'Instantané' || r.delai === 'Instant') ? `<span class="text-emerald-400">${trad.instantDelay || 'Instant'}</span>` : r.delai;
 
-        // Intégration propre du nom de l'opérateur avec son badge cadeau 🎁
         const nomAvecCadeau = typeof renderOperatorNameWithGift === 'function' 
             ? renderOperatorNameWithGift(r.opOriginal) 
             : r.nom;
