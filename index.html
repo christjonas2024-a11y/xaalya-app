@@ -532,9 +532,9 @@ if (!tbody) return;
 
 tbody.innerHTML = '';
 
-let offresAffichees = offresTriees;
+let offresAffichees = offres;
 if (promoFilterActive) {
-    offresAffichees = offresTriees.filter(op => {
+    offresAffichees = offres.filter(op => {
         return op.isPromoActive !== undefined ? op.isPromoActive : evaluerPromoActive(op.promoRawText);
     });
 }
