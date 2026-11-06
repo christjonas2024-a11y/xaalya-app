@@ -527,42 +527,44 @@ function renderResults() {
   const source = document.getElementById('sourceCurrency').value;
   const target = document.getElementById('targetCurrency').value;
   const amount = parseFloat(document.getElementById('sendAmount').value) || 0;
-const tbody = document.getElementById('operatorsList');
-if (!tbody) return;
+function mettreAJourTableauOperateurs() {
+    const tbody = document.getElementById('operatorsList');
+    if (!tbody) return;
 
-tbody.innerHTML = '';
+    tbody.innerHTML = '';
 
-let offresAffichees = offres;
-if (promoFilterActive) {
-    offresAffichees = offres.filter(op => {
-        return op.isPromoActive !== undefined ? op.isPromoActive : evaluerPromoActive(op.promoRawText);
+    let offresAffichees = offres;
+    if (promoFilterActive) {
+        offresAffichees = offres.filter(op => {
+            return op.isPromoActive !== undefined ? op.isPromoActive : evaluerPromoActive(op.promoRawText);
+        });
+    }
+
+    if (offresAffichees.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="5" class="text-center py-6 text-gray-400">Aucune offre promotionnelle disponible actuellement.</td></tr>`;
+        return;
+    }
+
+    offresAffichees.forEach(op => {
+        const row = document.createElement('tr');
+        
+        row.innerHTML = `
+            <td class="py-4 px-4">
+                ${renderOperatorNameWithGift(op)}
+            </td>
+            <td class="py-4 px-4">${op.frais === 0 ? '<span style="color: #34d399; font-weight: bold;">0 €</span>' : op.frais + ' €'}</td>
+            <td class="py-4 px-4">${op.taux}</td>
+            <td class="py-4 px-4 font-bold" style="color: #34d399;">${op.netRecu} ${deviseArrivee}</td>
+            <td class="py-4 px-4">
+                <a href="${op.url}" target="_blank" rel="noopener noreferrer" class="px-3 py-1 text-sm font-semibold rounded text-black" style="background-color: #34d399;">
+                    Envoyer
+                </a>
+            </td>
+        `;
+        
+        tbody.appendChild(row);
     });
 }
-
-if (offresAffichees.length === 0) {
-    tbody.innerHTML = `<tr><td colspan="5" class="text-center py-6 text-gray-400">Aucune offre promotionnelle disponible actuellement.</td></tr>`;
-    return;
-}
-
-offresAffichees.forEach(op => {
-    const row = document.createElement('tr');
-    
-    row.innerHTML = `
-        <td class="py-4 px-4">
-            ${renderOperatorNameWithGift(op)}
-        </td>
-        <td class="py-4 px-4">${op.frais === 0 ? '<span style="color: #34d399; font-weight: bold;">0 €</span>' : op.frais + ' €'}</td>
-        <td class="py-4 px-4">${op.taux}</td>
-        <td class="py-4 px-4 font-bold" style="color: #34d399;">${op.netRecu} ${deviseArrivee}</td>
-        <td class="py-4 px-4">
-            <a href="${op.url}" target="_blank" rel="noopener noreferrer" class="px-3 py-1 text-sm font-semibold rounded text-black" style="background-color: #34d399;">
-                Envoyer
-            </a>
-        </td>
-    `;
-    
-    tbody.appendChild(row);
-});
   
   let tauxSource = source !== 'EUR' ? (tauxDeChange[source.toLowerCase()] || 1) : 1;
   const tauxCible = tauxDeChange[target.toLowerCase()] || 1;
