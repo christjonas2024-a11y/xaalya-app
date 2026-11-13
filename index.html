@@ -564,13 +564,16 @@ function renderResults() {
 }
 
 document.addEventListener('DOMContentLoaded', async () => {
-  remplirDevises();
   await chargerTaux();
   try {
     const response = await fetch('rates.json');
     const data = await response.json();
     
     window.CATALOGUE_CORRIDORS = Array.isArray(data) ? data : [];
+    
+    if (typeof remplirDevises === 'function') {
+      remplirDevises();
+    }
     
     if (typeof renderResults === 'function') {
       renderResults();
