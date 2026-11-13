@@ -570,10 +570,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     const response = await fetch('rates.json');
     const data = await response.json();
     
-    // On stocke le tableau complet des couloirs dans la variable globale attendue
     window.CATALOGUE_CORRIDORS = Array.isArray(data) ? data : [];
     
-    // On lance l'affichage initial du comparateur
     if (typeof renderResults === 'function') {
       renderResults();
     }
