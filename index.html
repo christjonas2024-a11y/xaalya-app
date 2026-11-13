@@ -323,23 +323,11 @@ body.light-mode input, body.light-mode select { background-color: #f1f5f9 !impor
 <script src="i18n.js"></script>
 
 <script>
+let OPERATEURS = [];
 let tauxDeChange = {};
 let currentLang = 'en';
 
 const REGION_LABELS = { EUR: "Euro Zone (€)", USD: "United States ($)", CAD: "Canada ($)", GBP: "United Kingdom (£)", CNY: "China (¥)", CHF: "Switzerland (CHF)", AED: "UAE (د.إ)", XOF: "West African CFA", XAF: "Central African CFA", NGN: "Nigerian Naira", GHS: "Ghanaian Cedi", KES: "Kenyan Shilling", MAD: "Moroccan Dirham", DZD: "Algerian Dinar", TND: "Tunisian Dinar", ZAR: "South African Rand", LYD: "Libyan Dinar", EGP: "Egyptian Pound", TZS: "Tanzanian Shilling", UGX: "Ugandan Shilling", RWF: "Rwandan Franc", BIF: "Burundian Franc", ETB: "Ethiopian Birr", SOS: "Somali Shilling", DJF: "Djiboutian Franc", ERN: "Eritrean Nakfa", SSP: "South Sudanese Pound", SDG: "Sudanese Pound", NAD: "Namibian Dollar", BWP: "Botswana Pula", ZMW: "Zambian Kwacha", MWK: "Malawian Kwacha", MZN: "Mozambican Metical", ZWG: "Zimbabwe Gold", LSL: "Lesotho Loti", SZL: "Swazi Lilangeni", AOA: "Angolan Kwanza", GMD: "Gambian Dalasi", GNF: "Guinean Franc", LRD: "Liberian Dollar", SLE: "Sierra Leonean Leone", CVE: "Cape Verdean Escudo", MRU: "Mauritanian Ouguiya", MGA: "Malagasy Ariary", MUR: "Mauritian Rupee", SCR: "Seychellois Rupee", KMF: "Comorian Franc" };
-
-const OPERATEURS = [
-  { id: 'lemfi', nom: 'Lemfi', fraisFixes: 0, margeChange: 0.008, delai: 'Instant', url: 'https://lemfi.com' },
-  { id: 'sendwave', nom: 'Sendwave', fraisFixes: 0, margeChange: 0.009, delai: 'Instant', url: 'https://sendwave.com' },
-  { id: 'wise', nom: 'Wise', fraisFixes: 3.80, margeChange: 0.001, delai: '1-2 days', url: 'https://wise.com' },
-  { id: 'remitly', nom: 'Remitly', fraisFixes: 2.99, margeChange: 0.010, delai: 'Instant', url: 'https://remitly.com' },
-  { id: 'worldremit', nom: 'WorldRemit', fraisFixes: 3.99, margeChange: 0.012, delai: 'Instant', url: 'https://worldremit.com' },
-  { id: 'taptapsend', nom: 'Taptap Send', fraisFixes: 0, margeChange: 0.011, delai: 'Instant', url: 'https://taptapsend.com' },
-  { id: 'nala', nom: 'NALA', fraisFixes: 1.99, margeChange: 0.009, delai: 'Instant', url: 'https://nala.com' },
-  { id: 'paysend', nom: 'Paysend', fraisFixes: 2.00, margeChange: 0.015, delai: '1-2 days', url: 'https://paysend.com' },
-  { id: 'westernunion', nom: 'Western Union', fraisFixes: 4.90, margeChange: 0.018, delai: 'Instant', url: 'https://westernunion.com' },
-  { id: 'moneygram', nom: 'MoneyGram', fraisFixes: 4.50, margeChange: 0.017, delai: 'Instant', url: 'https://moneygram.com' }
-];
 
 // Dictionnaire propre à index.html
 const TRANSLATIONS = {
@@ -535,17 +523,26 @@ function renderResults() {
   const tauxInterbancaire = tauxCible / tauxSource;
   
   const modelTrad = (typeof TRANSLATIONS_MODEL !== 'undefined' && TRANSLATIONS_MODEL[currentLang]) ? TRANSLATIONS_MODEL[currentLang] : {};
-  const pageTrad = TRANSLATIONS[currentLang] || TRANSLATIONS['en'];
+  const pageTrad = (typeof TRANSLATIONS !== 'undefined' && TRANSLATIONS[currentLang]) ? TRANSLATIONS[currentLang] : {};
   const trad = Object.assign({}, modelTrad, pageTrad);
   
-  const resultats = OPERATEURS.map(op => ({
-    nom: op.nom,
-    frais: op.fraisFixes,
-    taux: tauxInterbancaire * (1 - op.margeChange),
-    recu: Math.max(0, amount - op.fraisFixes) * (tauxInterbancaire * (1 - op.margeChange)),
-    delai: op.delai,
-    url: op.url
-  })).sort((a, b) => b.recu - a.recu);
+  const resultats = OPERATEURS.map(op => {
+    const fraisFixes = (typeof op.fixed_fees === 'object' && op.fixed_fees !== null) 
+      ? (op.fixed_fees[source] || op.fraisFixes || 0) 
+      : (op.fraisFixes || 0);
+      
+    const marge = op.exchange_margin !== undefined ? op.exchange_margin : (op.margeChange || 0);
+    const delai = op.delivery_time || op.delai || 'Instant';
+    
+    return {
+      nom: op.name || op.nom,
+      frais: fraisFixes,
+      taux: tauxInterbancaire * (1 - marge),
+      recu: Math.max(0, amount - fraisFixes) * (tauxInterbancaire * (1 - marge)),
+      delai: delai,
+      url: op.url
+    };
+  }).sort((a, b) => b.recu - a.recu);
   
   tbody.innerHTML = resultats.map((r, index) => {
     const badge = index === 0 ? `<span class="ml-2 text-[10px] bg-emerald-500 text-white px-2 py-0.5 rounded-full font-bold">${trad.bestRateBadge || 'Cheapest'}</span>` : '';
@@ -567,7 +564,14 @@ function renderResults() {
 document.addEventListener('DOMContentLoaded', async () => {
   remplirDevises();
   await chargerTaux();
-  
+  try {
+    const response = await fetch('rates.json');
+    const data = await response.json();
+    OPERATEURS = data.operators || [];
+  } catch (error) {
+    console.error("Erreur lors du chargement de rates.json :", error);
+  }
+ 
   let langueDetectee = 'en';
   const navLangs = navigator.languages || [navigator.language || 'en'];
   for (let i = 0; i < navLangs.length; i++) {
