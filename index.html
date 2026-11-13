@@ -569,10 +569,18 @@ document.addEventListener('DOMContentLoaded', async () => {
   try {
     const response = await fetch('rates.json');
     const data = await response.json();
-    OPERATEURS = data.operators || [];
+    
+    // On stocke le tableau complet des couloirs dans la variable globale attendue
+    window.CATALOGUE_CORRIDORS = Array.isArray(data) ? data : [];
+    
+    // On lance l'affichage initial du comparateur
+    if (typeof renderResults === 'function') {
+      renderResults();
+    }
   } catch (error) {
     console.error("Erreur lors du chargement de rates.json :", error);
   }
+});
  
   let langueDetectee = 'en';
   const navLangs = navigator.languages || [navigator.language || 'en'];
