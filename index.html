@@ -519,33 +519,34 @@ function renderResults() {
   const amount = parseFloat(document.getElementById('sendAmount').value) || 0;
   const tbody = document.getElementById('operatorsList');
   if (!tbody) return;
-  
-  let tauxSource = source !== 'EUR' ? (tauxDeChange[source.toLowerCase()] || 1) : 1;
-  const tauxCible = tauxDeChange[target.toLowerCase()] || 1;
-  const tauxInterbancaire = tauxCible / tauxSource;
-  
+
   const modelTrad = (typeof TRANSLATIONS_MODEL !== 'undefined' && TRANSLATIONS_MODEL[currentLang]) ? TRANSLATIONS_MODEL[currentLang] : {};
   const pageTrad = (typeof TRANSLATIONS !== 'undefined' && TRANSLATIONS[currentLang]) ? TRANSLATIONS[currentLang] : {};
   const trad = Object.assign({}, modelTrad, pageTrad);
+
+  const catalogue = window.CATALOGUE_CORRIDORS || [];
+  const corridor = catalogue.find(c => c.devisesDepart === source && c.deviseArrivee === target);
   
-  const resultats = OPERATEURS.map(op => {
-    const fraisFixes = (typeof op.fixed_fees === 'object' && op.fixed_fees !== null) 
-      ? (op.fixed_fees[source] || op.fraisFixes || 0) 
-      : (op.fraisFixes || 0);
-      
-    const marge = op.exchange_margin !== undefined ? op.exchange_margin : (op.margeChange || 0);
-    const delai = op.delivery_time || op.delai || 'Instant';
+  if (!corridor || !corridor.offres) {
+    tbody.innerHTML = `<tr><td colspan="7" class="py-4 text-center text-slate-400">Aucun opérateur disponible pour ce couloir</td></tr>`;
+    return;
+  }
+
+  const resultats = corridor.offres.map(op => {
+    const frais = typeof op.frais === 'number' ? op.frais : 0;
+    const taux = typeof op.taux === 'number' ? op.taux : 0;
+    const delai = op.delai || 'Instant';
     
     return {
-      nom: op.name || op.nom,
-      frais: fraisFixes,
-      taux: tauxInterbancaire * (1 - marge),
-      recu: Math.max(0, amount - fraisFixes) * (tauxInterbancaire * (1 - marge)),
+      nom: op.operateur || op.name || 'Opérateur',
+      frais: frais,
+      taux: taux,
+      recu: Math.max(0, amount - frais) * taux,
       delai: delai,
-      url: op.url
+      url: op.url || '#'
     };
-  }).sort((a, b) => b.recu - a.recu);
-  
+  }).sort((a, b) => b.recu - a.recu); 
+
   tbody.innerHTML = resultats.map((r, index) => {
     const badge = index === 0 ? `<span class="ml-2 text-[10px] bg-emerald-500 text-white px-2 py-0.5 rounded-full font-bold">${trad.bestRateBadge || 'Cheapest'}</span>` : '';
     const fraisAffiches = r.frais === 0 ? `<span class="text-emerald-400 font-bold">${trad.freeFee || 'Free'}</span>` : `${r.frais.toFixed(2)} ${source}`;
@@ -562,26 +563,6 @@ function renderResults() {
     </tr>`;
   }).join('');
 }
-
-document.addEventListener('DOMContentLoaded', async () => {
-  await chargerTaux();
-  try {
-    const response = await fetch('rates.json');
-    const data = await response.json();
-    
-    window.CATALOGUE_CORRIDORS = Array.isArray(data) ? data : [];
-    
-    if (typeof remplirDevises === 'function') {
-      remplirDevises();
-    }
-    
-    if (typeof renderResults === 'function') {
-      renderResults();
-    }
-  } catch (error) {
-    console.error("Erreur lors du chargement de rates.json :", error);
-  }
-});
  
   let langueDetectee = 'en';
   const navLangs = navigator.languages || [navigator.language || 'en'];
