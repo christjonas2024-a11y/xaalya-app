@@ -531,32 +531,39 @@ const VOICE_CONFIG_16 = {
 };
 
 const CURRENCY_SPOKEN_NAMES = {
-  XOF: { fr: 'francs CFA', en: 'CFA francs', es: 'francos CFA', pt: 'francos CFA', de: 'CFA-Franc', it: 'franchi CFA', ar: 'فرنك أفريقي', zh: '非洲金融共同体法郎', wo: 'dërëm CFA', default: 'francs CFA' },
-  XAF: { fr: 'francs CFA', en: 'CFA francs', es: 'francos CFA', pt: 'francos CFA', de: 'CFA-Franc', it: 'franchi CFA', ar: 'فرنك أفريقي', zh: '中非法郎', ln: 'falanga CFA', default: 'francs CFA' },
-  GNF: { fr: 'francs guinéens', en: 'Guinean francs', default: 'francs guinéens' },
-  MAD: { fr: 'dirhams marocains', en: 'Moroccan dirhams', ar: 'درهم مغربي', es: 'dirhams marroquíes', default: 'dirhams' },
-  TND: { fr: 'dinars tunisiens', en: 'Tunisian dinars', ar: 'دينار تونسي', default: 'dinars' },
-  DZD: { fr: 'dinars algériens', en: 'Algerian dinars', ar: 'دينار جزائري', default: 'dinars' },
+  XOF: { fr: 'francs CFA', en: 'CFA francs', es: 'francos CFA', pt: 'francos CFA', de: 'CFA-Franc', it: 'franchi CFA', ar: 'CFA francs', zh: '非洲金融共同体法郎', wo: 'dërëm CFA', default: 'CFA francs' },
+  XAF: { fr: 'francs CFA', en: 'CFA francs', es: 'francos CFA', pt: 'francos CFA', de: 'CFA-Franc', it: 'franchi CFA', ar: 'CFA francs', zh: '中非法郎', ln: 'falanga CFA', default: 'CFA francs' },
+  GNF: { fr: 'francs guinéens', en: 'Guinean francs', default: 'Guinean francs' },
+  MAD: { fr: 'dirhams marocains', en: 'Moroccan dirhams', ar: 'Moroccan dirhams', es: 'dirhams marroquíes', default: 'Moroccan dirhams' },
+  TND: { fr: 'dinars tunisiens', en: 'Tunisian dinars', ar: 'Tunisian dinars', default: 'Tunisian dinars' },
+  DZD: { fr: 'dinars algériens', en: 'Algerian dinars', ar: 'Algerian dinars', default: 'Algerian dinars' },
   NGN: { fr: 'nairas', en: 'nairas', yo: 'naira', ha: 'naira', default: 'nairas' },
   GHS: { fr: 'cedis', en: 'cedis', default: 'cedis' },
-  KES: { fr: 'shillings kényans', en: 'Kenyan shillings', sw: 'shilingi za Kenya', default: 'shillings' },
-  TZS: { fr: 'shillings tanzaniens', en: 'Tanzanian shillings', sw: 'shilingi za Tanzania', default: 'shillings' },
-  UGX: { fr: 'shillings ougandais', en: 'Ugandan shillings', sw: 'shilingi za Uganda', default: 'shillings' },
-  ZAR: { fr: 'rands', en: 'rands', zu: 'amarandi', default: 'rands' },
-  ETB: { fr: 'birrs éthiopiens', en: 'Ethiopian birr', am: 'ብር', default: 'birr' },
-  CDF: { fr: 'francs congolais', en: 'Congolese francs', ln: 'falanga ya Kongo', default: 'francs congolais' },
-  ZWL: { fr: 'dollars zimbabwéens', en: 'Zimbabwean dollars', sn: 'madhora eZimbabwe', default: 'dollars' },
-  EUR: { fr: 'euros', en: 'euros', de: 'Euro', es: 'euros', pt: 'euros', it: 'euro', ar: 'يورو', zh: '欧元', default: 'euros' },
-  USD: { fr: 'dollars', en: 'dollars', de: 'Dollar', es: 'dólares', pt: 'dólares', it: 'dollari', ar: 'دولار', zh: '美元', default: 'dollars' },
-  GBP: { fr: 'livres sterling', en: 'pounds', de: 'Pfund', es: 'libras', pt: 'libras', it: 'sterline', ar: 'جنيه إسترليني', zh: '英镑', default: 'pounds' },
+  KES: { fr: 'shillings kényans', en: 'Kenyan shillings', sw: 'Kenyan shillings', default: 'Kenyan shillings' },
+  TZS: { fr: 'shillings tanzaniens', en: 'Tanzanian shillings', sw: 'Tanzanian shillings', default: 'Tanzanian shillings' },
+  UGX: { fr: 'shillings ougandais', en: 'Ugandan shillings', sw: 'Ugandan shillings', default: 'Ugandan shillings' },
+  ZAR: { fr: 'rands', en: 'rands', zu: 'rands', default: 'rands' },
+  ETB: { fr: 'birrs éthiopiens', en: 'Ethiopian birr', am: 'Ethiopian birr', default: 'Ethiopian birr' },
+  CDF: { fr: 'francs congolais', en: 'Congolese francs', ln: 'falanga ya Kongo', default: 'Congolese francs' },
+  ZWL: { fr: 'dollars zimbabwéens', en: 'Zimbabwean dollars', sn: 'Zimbabwean dollars', default: 'Zimbabwean dollars' },
+  EUR: { fr: 'euros', en: 'euros', de: 'Euro', es: 'euros', pt: 'euros', it: 'euro', ar: 'euros', zh: '欧元', default: 'euros' },
+  USD: { fr: 'dollars', en: 'dollars', de: 'Dollar', es: 'dólares', pt: 'dólares', it: 'dollari', ar: 'dollars', zh: '美元', default: 'dollars' },
+  GBP: { fr: 'livres sterling', en: 'pounds', de: 'Pfund', es: 'libras', pt: 'libras', it: 'sterline', ar: 'pounds', zh: '英镑', default: 'pounds' },
   CAD: { fr: 'dollars canadiens', en: 'Canadian dollars', default: 'Canadian dollars' }
 };
 
 function getSpokenCurrency(code, lang) {
   const entry = CURRENCY_SPOKEN_NAMES[code?.toUpperCase()];
   if (!entry) return code;
+
+  const englishPivotLangs = ['am', 'ar', 'zu', 'sw', 'ha', 'yo', 'sn'];
+  if (englishPivotLangs.includes(lang)) {
+    return entry['en'] || entry['default'] || code;
+  }
+
   return entry[lang] || entry['en'] || entry['default'] || code;
 }
+
 function renderResults() {
   const source = document.getElementById('sourceCurrency').value;
   const target = document.getElementById('targetCurrency').value;
@@ -607,7 +614,7 @@ function renderResults() {
     </tr>`;
   }).join('');
 
-  if (resultats.length > 0 && 'speechSynthesis' in window) {
+if (resultats.length > 0 && 'speechSynthesis' in window) {
     window.speechSynthesis.cancel();
     const meilleur = resultats[0];
     
@@ -617,13 +624,18 @@ function renderResults() {
     const prefixe = trad.voiceBestPrefix || configVocale.prefix;
     const montantFormate = Math.round(meilleur.recu);
     const deviseEnToutesLettres = getSpokenCurrency(target, langKey);
-    
-    const texteVocal = `${prefixe} ${meilleur.nom}, ${montantFormate} ${deviseEnToutesLettres}.`;
-    
-    const utterance = new SpeechSynthesisUtterance(texteVocal);
-    utterance.lang = configVocale.lang;
-    utterance.rate = 0.95;
-    window.speechSynthesis.speak(utterance);
+
+    const utteranceIntro = new SpeechSynthesisUtterance(`${prefixe} ${meilleur.nom},`);
+    utteranceIntro.lang = configVocale.lang;
+    utteranceIntro.rate = 0.95;
+
+    const englishPivotLangs = ['am', 'ar', 'zu', 'sw', 'ha', 'yo', 'sn'];
+    const utteranceMontant = new SpeechSynthesisUtterance(`${montantFormate} ${deviseEnToutesLettres}.`);
+    utteranceMontant.lang = englishPivotLangs.includes(langKey) ? 'en-GB' : configVocale.lang;
+    utteranceMontant.rate = 0.95;
+
+    window.speechSynthesis.speak(utteranceIntro);
+    window.speechSynthesis.speak(utteranceMontant);
   }
 }
 
