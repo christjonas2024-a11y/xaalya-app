@@ -512,7 +512,24 @@ function declencherVoixOff() {
     window.speechSynthesis.speak(utterance);
   }
 }
-
+const VOICE_CONFIG_16 = {
+  fr: { lang: 'fr-FR', prefix: 'Le moins cher est' },
+  en: { lang: 'en-US', prefix: 'The cheapest is' },
+  de: { lang: 'de-DE', prefix: 'Der günstigste Anbieter ist' },
+  pt: { lang: 'pt-PT', prefix: 'O mais barato é' },
+  es: { lang: 'es-ES', prefix: 'El más barato es' },
+  zh: { lang: 'zh-CN', prefix: '最便宜的是' },
+  it: { lang: 'it-IT', prefix: 'Il più economico è' },
+  ar: { lang: 'ar-SA', prefix: 'الأرخص هو' },
+  am: { lang: 'am-ET', prefix: 'በጣም ርካሹ' },
+  ha: { lang: 'en-GB', prefix: 'Mafi arha shine' },       
+  zu: { lang: 'zu-ZA', prefix: 'Oshibhile kakhulu ngu' },
+  ln: { lang: 'fr-FR', prefix: 'Oyo ya ntalo moke ezali' }, 
+  sn: { lang: 'en-GB', prefix: 'Yakachipa kupfuura dzose i' }, 
+  sw: { lang: 'sw-KE', prefix: 'Ya bei nafuu zaidi ni' },
+  yo: { lang: 'en-GB', prefix: 'Ti o din owo julọ ni' },  
+  wo: { lang: 'fr-FR', prefix: 'Bi gëna yomb mooy' }      
+};
 function renderResults() {
   const source = document.getElementById('sourceCurrency').value;
   const target = document.getElementById('targetCurrency').value;
@@ -567,14 +584,18 @@ function renderResults() {
     window.speechSynthesis.cancel();
     const meilleur = resultats[0];
     
-    const prefixe = trad.voiceBestPrefix || (currentLang === 'fr' ? 'Le moins cher est' : 'The cheapest is');
-    const texteVocal = `${prefixe} ${meilleur.nom}, ${meilleur.recu.toLocaleString('en-GB', { maximumFractionDigits: 0 })} ${target}.`;
+    const configVocale = VOICE_CONFIG_16[currentLang] || VOICE_CONFIG_16['en'];
+    
+    const prefixe = trad.voiceBestPrefix || configVocale.prefix;
+    const montantFormate = Math.round(meilleur.recu); // Entier brut pour une lecture vocale fluide sans ponctuation parasite
+    
+    const texteVocal = `${prefixe} ${meilleur.nom}, ${montantFormate} ${target}.`;
     
     const utterance = new SpeechSynthesisUtterance(texteVocal);
-    utterance.lang = currentLang === 'fr' ? 'fr-FR' : 'en-US';
+    utterance.lang = configVocale.lang;
+    utterance.rate = 0.95; 
     window.speechSynthesis.speak(utterance);
   }
-}
 
 document.addEventListener('DOMContentLoaded', async () => {
   await chargerTaux();
