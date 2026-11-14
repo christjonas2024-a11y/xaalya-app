@@ -562,10 +562,9 @@ function renderResults() {
       <td class="py-3 px-4"><button class="bg-emerald-500 hover:bg-emerald-600 text-white text-xs font-bold px-3 py-1.5 rounded-lg transition" onclick="window.location.href='${r.url}'">${trad.btnSend || 'Send ➔'}</button></td>
     </tr>`;
   }).join('');
-}).join('');
 
   if (resultats.length > 0 && 'speechSynthesis' in window) {
-    window.speechSynthesis.cancel(); // Vide la file d'attente pour éviter tout blocage
+    window.speechSynthesis.cancel();
     const meilleur = resultats[0];
     
     const prefixe = trad.voiceBestPrefix || (currentLang === 'fr' ? 'Le moins cher est' : 'The cheapest is');
