@@ -68,6 +68,22 @@ body.light-mode input, body.light-mode select { background-color: #f1f5f9 !impor
           <option value="yo">🇳🇬 Èdè Yorùbá</option>
           <option value="ha">🇳🇬 Hausa</option>
           <option value="wo">🇸🇳 Wolof</option>
+<button 
+  id="btnToggleVoice" 
+  type="button" 
+  onclick="toggleVoiceAlert()" 
+  aria-label="Activer ou couper l'annonce vocale"
+  title="Annonce vocale activée"
+  class="inline-flex items-center justify-center w-9 h-9 rounded-lg bg-slate-800/80 hover:bg-slate-700 border border-slate-700/80 text-emerald-400 transition">
+  <!-- Icône Son Activé -->
+  <svg id="iconVoiceOn" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M11 5L6 9H2v6h4l5 4V5zM15.54 8.46a5 5 0 010 7.07M19.07 4.93a10 10 0 010 14.14"/>
+  </svg>
+  <!-- Icône Son Coupé (masquée par défaut) -->
+  <svg id="iconVoiceOff" class="w-4 h-4 hidden text-slate-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M11 5L6 9H2v6h4l5 4V5zM23 9l-6 6M17 9l6 6"/>
+  </svg>
+</button>
         </select>
       </div>
       <button id="theme-toggle" class="theme-toggle-btn" title="Toggle display mode"><span id="theme-icon">🌙</span></button>
@@ -595,6 +611,37 @@ function getSpokenCurrency(code, lang) {
   return entry[lang] || entry['en'] || entry['default'] || code;
 }
 
+let isVoiceEnabled = localStorage.getItem('xaalya_voice_enabled') !== 'false';
+
+function updateVoiceButtonUI() {
+  const iconOn = document.getElementById('iconVoiceOn');
+  const iconOff = document.getElementById('iconVoiceOff');
+  const btn = document.getElementById('btnToggleVoice');
+  if (!iconOn || !iconOff || !btn) return;
+
+  if (isVoiceEnabled) {
+    iconOn.classList.remove('hidden');
+    iconOff.classList.add('hidden');
+    btn.classList.replace('text-slate-400', 'text-emerald-400');
+    btn.title = 'Annonce vocale activée';
+  } else {
+    iconOn.classList.add('hidden');
+    iconOff.classList.remove('hidden');
+    btn.classList.replace('text-emerald-400', 'text-slate-400');
+    btn.title = 'Annonce vocale coupée';
+  }
+}
+
+function toggleVoiceAlert() {
+  isVoiceEnabled = !isVoiceEnabled;
+  localStorage.setItem('xaalya_voice_enabled', isVoiceEnabled);
+  
+  if (!isVoiceEnabled && 'speechSynthesis' in window) {
+    window.speechSynthesis.cancel(); // Coupe immédiatement la voix si elle est en train de parler
+  }
+  updateVoiceButtonUI();
+}
+
 function renderResults() {
   const source = document.getElementById('sourceCurrency').value;
   const target = document.getElementById('targetCurrency').value;
@@ -645,7 +692,7 @@ function renderResults() {
     </tr>`;
   }).join('');
 
-if (resultats.length > 0 && 'speechSynthesis' in window) {
+if (isVoiceEnabled && resultats.length > 0 && 'speechSynthesis' in window) {
     window.speechSynthesis.cancel();
     const meilleur = resultats[0];
     
