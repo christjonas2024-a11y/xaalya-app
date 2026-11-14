@@ -563,6 +563,26 @@ function renderResults() {
     </tr>`;
   }).join('');
 }
+
+document.addEventListener('DOMContentLoaded', async () => {
+  await chargerTaux();
+  try {
+    const response = await fetch('rates.json');
+    const data = await response.json();
+    
+    window.CATALOGUE_CORRIDORS = Array.isArray(data) ? data : [];
+    
+    if (typeof remplirDevises === 'function') {
+      remplirDevises();
+    }
+    
+    if (typeof renderResults === 'function') {
+      renderResults();
+    }
+  } catch (error) {
+    console.error("Erreur lors du chargement de rates.json :", error);
+  }
+});
  
   let langueDetectee = 'en';
   const navLangs = navigator.languages || [navigator.language || 'en'];
