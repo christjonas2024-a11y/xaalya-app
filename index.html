@@ -15,109 +15,101 @@ tailwind.config = { darkMode: 'class', theme: { extend: { colors: { brand: { 400
 </script>
 </head>
 <style>
-:root { --bg-color: #0b0f19; --card-bg: #111827; --card-border: #1f2937; --text-main: #ffffff; --text-muted: #9ca3af; }
-/* ==========================================================================
-   THÈME CLAIR XAALYA : VERT NUIT, NEUTRALITÉ & TRANSPARENCE
-   ========================================================================== */
-body.light-mode {
-  background-color: #F3F7F5 !important; /* Blanc minéral doux, reposant et neutre */
-  color: #06281E !important;            /* Vert nuit profond pour la lisibilité */
-}
+    /* ==========================================================================
+       THÈME CLAIR XAALYA : VERT NUIT, NEUTRALITÉ & TRANSPARENCE
+       ========================================================================== */
+    body.light-mode {
+      background-color: #F3F7F5 !important;
+      color: #06281E !important;
+    }
 
-/* 1. En-tête (Header) */
-body.light-mode header {
-  background-color: rgba(255, 255, 255, 0.92) !important;
-  border-bottom: 1px solid #D5E2DD !important;
-  backdrop-filter: blur(12px);
-}
+    body.light-mode header {
+      background-color: rgba(255, 255, 255, 0.92) !important;
+      border-bottom: 1px solid #D5E2DD !important;
+      backdrop-filter: blur(12px);
+    }
 
-body.light-mode header a {
-  color: #1E3A31 !important;
-}
+    body.light-mode header a {
+      color: #1E3A31 !important;
+    }
 
-body.light-mode header a:hover {
-  color: #059669 !important;
-}
+    body.light-mode header a:hover {
+      color: #059669 !important;
+    }
 
-/* 2. Titre principal Hero ("Vous envoyez 30€ vers l'Afrique...") & sous-titres */
-body.light-mode h1,
-body.light-mode h2,
-body.light-mode h3 {
-  color: #06281E !important;
-}
+    body.light-mode h1,
+    body.light-mode h2,
+    body.light-mode h3 {
+      color: #06281E !important;
+    }
 
-/* 3. Carte principale du comparateur */
-body.light-mode main .bg-slate-900,
-body.light-mode main .bg-slate-900\/80,
-body.light-mode main .bg-slate-950 {
-  background-color: #FFFFFF !important;
-  border-color: #D5E2DD !important;
-  box-shadow: 0 12px 32px -8px rgba(6, 40, 30, 0.08) !important;
-}
+    body.light-mode main .bg-slate-900,
+    body.light-mode main .bg-slate-900\/80,
+    body.light-mode main .bg-slate-950 {
+      background-color: #FFFFFF !important;
+      border-color: #D5E2DD !important;
+      box-shadow: 0 12px 32px -8px rgba(6, 40, 30, 0.08) !important;
+    }
 
-/* 4. Menus déroulants et champ montant */
-body.light-mode main select,
-body.light-mode main input {
-  background-color: #F8FBFA !important;
-  color: #06281E !important;
-  border: 1.5px solid #C2D4CE !important;
-}
+    body.light-mode main select,
+    body.light-mode main input {
+      background-color: #F8FBFA !important;
+      color: #06281E !important;
+      border: 1.5px solid #C2D4CE !important;
+    }
 
-body.light-mode main select:focus,
-body.light-mode main input:focus {
-  border-color: #059669 !important;
-  background-color: #FFFFFF !important;
-}
+    body.light-mode main select:focus,
+    body.light-mode main input:focus {
+      border-color: #059669 !important;
+      background-color: #FFFFFF !important;
+    }
 
-/* 5. Cartes de raccourcis corridors (EUR -> XOF, etc.) : identité Vert Nuit */
-body.light-mode .grid button,
-body.light-mode .grid a {
-  background-color: #082F24 !important;
-  border: 1px solid #0F4737 !important;
-  color: #FFFFFF !important;
-  box-shadow: 0 4px 12px rgba(6, 40, 30, 0.12);
-}
+    body.light-mode .grid button,
+    body.light-mode .grid a {
+      background-color: #082F24 !important;
+      border: 1px solid #0F4737 !important;
+      color: #FFFFFF !important;
+      box-shadow: 0 4px 12px rgba(6, 40, 30, 0.12);
+    }
 
-body.light-mode .grid button:hover,
-body.light-mode .grid a:hover {
-  background-color: #0C4233 !important;
-  border-color: #10B981 !important;
-  transform: translateY(-1px);
-}
+    body.light-mode .grid button:hover,
+    body.light-mode .grid a:hover {
+      background-color: #0C4233 !important;
+      border-color: #10B981 !important;
+      transform: translateY(-1px);
+    }
 
-/* 6. Tableau des opérateurs : correction des noms invisibles */
-body.light-mode table thead th {
-  color: #47635A !important;
-  border-bottom: 1.5px solid #D5E2DD !important;
-}
+    body.light-mode table thead th {
+      color: #47635A !important;
+      border-bottom: 1.5px solid #D5E2DD !important;
+    }
 
-body.light-mode table tbody tr {
-  border-bottom: 1px solid #E6EFEA !important;
-  transition: background-color 0.15s ease;
-}
+    body.light-mode table tbody tr {
+      border-bottom: 1px solid #E6EFEA !important;
+      transition: background-color 0.15s ease;
+    }
 
-body.light-mode table tbody tr:hover {
-  background-color: #F4F9F7 !important;
-}
+    body.light-mode table tbody tr:hover {
+      background-color: #F4F9F7 !important;
+    }
 
-body.light-mode table tbody td,
-body.light-mode table tbody td .text-white,
-body.light-mode table tbody td span:not(.bg-emerald-500):not(.text-emerald-400):not(.text-emerald-500) {
-  color: #06281E !important;
-}
+    body.light-mode table tbody td,
+    body.light-mode table tbody td .text-white,
+    body.light-mode table tbody td span:not(.bg-emerald-500):not(.text-emerald-400):not(.text-emerald-500) {
+      color: #06281E !important;
+    }
 
-/* 7. Mise en valeur transparente des frais gratuits et montants reçus */
-body.light-mode .text-emerald-400 {
-  color: #047857 !important;
-}
+    body.light-mode .text-emerald-400 {
+      color: #047857 !important;
+    }
 
-/* 8. Harmonisation du sélecteur de langue et bouton audio dans le header */
-body.light-mode #language-select,
-body.light-mode #btnToggleVoice {
-  background-color: #F3F7F5 !important;
-  color: #06281E !important;
-  border-color: #C2D4CE !important;
-}
+    body.light-mode #language-select,
+    body.light-mode #btnToggleVoice {
+      background-color: #F3F7F5 !important;
+      color: #06281E !important;
+      border-color: #C2D4CE !important;
+    }
+  </style>
 </head>
 <body class="bg-slate-950 text-slate-100 min-h-screen font-sans antialiased flex flex-col justify-between">
 
