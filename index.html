@@ -790,55 +790,6 @@ function getSpokenCurrency(code, lang) {
   return entry[lang] || entry['en'] || entry['default'] || code;
 }
 
-// ============================================================================
-// SYSTÈME VOCAL XAALYA (100 % MANUEL SUR DEMANDE)
-// ============================================================================
-
-
-  if (offres.length === 0) return;
-
-  window.speechSynthesis.cancel();
-
-  const best = offres[0];
-  const second = offres[1];
-  const lang = typeof currentLang !== 'undefined' ? currentLang : 'fr';
-
-  const spokenSource = typeof getSpokenCurrency === 'function' ? getSpokenCurrency(source, lang) : source;
-  const spokenTarget = typeof getSpokenCurrency === 'function' ? getSpokenCurrency(target, lang) : target;
-
-  let message = '';
-
-  if (lang === 'fr') {
-    const bestAmount = Math.round(best.recu).toLocaleString('fr-FR');
-    const secondAmount = second ? Math.round(second.recu).toLocaleString('fr-FR') : '';
-    message = `Pour ${amount} ${spokenSource}, le moins cher est ${best.nom}. Vous recevez environ ${bestAmount} ${spokenTarget}.` +
-              (second ? ` Le deuxième est ${second.nom}, avec ${secondAmount} ${spokenTarget}.` : '');
-  } else if (lang === 'en') {
-    const bestAmount = Math.round(best.recu).toLocaleString('en-US');
-    const secondAmount = second ? Math.round(second.recu).toLocaleString('en-US') : '';
-    message = `For ${amount} ${spokenSource}, the cheapest is ${best.nom}. You receive about ${bestAmount} ${spokenTarget}.` +
-              (second ? ` The second is ${second.nom}, with ${secondAmount} ${spokenTarget}.` : '');
-  } else {
-    const cfg = (typeof VOICE_CONFIG_16 !== 'undefined' && VOICE_CONFIG_16[lang]) || { bestLabel: 'Best rate' };
-    const bestAmount = Math.round(best.recu).toLocaleString('en-US');
-    message = `${cfg.bestLabel}: ${best.nom}, ${bestAmount} ${spokenTarget}.`;
-  }
-
-  const utterance = new SpeechSynthesisUtterance(message);
-  const langCodeMap = {
-    fr: 'fr-FR', en: 'en-US', zu: 'en-ZA', ln: 'fr-FR', sn: 'en-GB',
-    de: 'de-DE', ar: 'ar-SA', pt: 'pt-PT', es: 'es-ES', zh: 'zh-CN',
-    it: 'it-IT', sw: 'sw-KE', am: 'en-US', yo: 'en-NG', ha: 'en-NG', wo: 'fr-FR'
-  };
-  utterance.lang = langCodeMap[lang] || 'en-US';
-  utterance.rate = 0.95;
-  window.speechSynthesis.speak(utterance);
-}
-
-// Fonctions vides de sécurité si d'anciens appels subsistent ailleurs dans le code
-function triggerVoiceDebounced() {}
-function declencherVoixOff() {}
-
 function renderResults() {
   const tbody = document.getElementById('operatorsList');
   if (!tbody) return;
