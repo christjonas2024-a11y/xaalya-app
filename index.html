@@ -80,23 +80,27 @@ body.light-mode main input:focus {
   border-color: #059669 !important;
 }
 
-/* 5. Cartes de raccourcis corridors (EUR -> XOF, etc.) : identité Vert Nuit */
+/* 5. Cartes de raccourcis corridors (EUR -> XOF, etc.) : même vert que "Envoyer" & texte blanc pur */
 body.light-mode .grid button,
 body.light-mode .grid a {
-  background-color: #082F24 !important;
-  border: 1px solid #0F4737 !important;
+  background-color: #10B981 !important; /* Même vert émeraude que les boutons "Envoyer" */
+  border: 1px solid #059669 !important;
   color: #FFFFFF !important;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.22) !important;
+  transition: all 0.2s ease !important;
 }
 
 body.light-mode .grid button *,
 body.light-mode .grid a * {
-  color: #FFFFFF !important;
+  color: #FFFFFF !important; /* Force tous les sous-textes (ex: "France / Europe vers...") en blanc pur */
 }
 
 body.light-mode .grid button:hover,
 body.light-mode .grid a:hover {
-  background-color: #0C4233 !important;
-  border-color: #10B981 !important;
+  background-color: #059669 !important;
+  border-color: #047857 !important;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(5, 150, 105, 0.28) !important;
 }
 
 /* 6. En-têtes et colonnes du tableau comparatif */
