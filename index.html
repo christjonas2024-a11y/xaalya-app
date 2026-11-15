@@ -19,17 +19,32 @@ tailwind.config = { darkMode: 'class', theme: { extend: { colors: { brand: { 400
    NAVIGATION HEADER EN BLEU NUIT & SOUS-TITRES EN VERT (MODE CLAIR)
    ========================================================================== */
 
-/* 1. Liens de navigation (À PROPOS / NOTRE MODÈLE / FAQ / SÉCURITÉ) en bleu nuit */
+/* 1. En-tête (Header) : liens de navigation en noir pur & sous-titres en vert */
+body.light-mode header {
+  background-color: #FFFFFF !important;
+  border-bottom: 1px solid #D5E2DD !important;
+}
+
 body.light-mode header nav a,
-body.light-mode header a,
-body.light-mode header button:not(#btnToggleVoice):not(#theme-toggle) {
-  color: #0B192C !important; /* Bleu nuit profond et élégant */
-  font-weight: 700 !important;
+body.light-mode header nav button,
+body.light-mode header a {
+  color: #000000 !important;
+  font-weight: 600;
 }
 
 body.light-mode header nav a:hover,
+body.light-mode header nav button:hover,
 body.light-mode header a:hover {
-  color: #059669 !important; /* Rappel vert au survol */
+  color: #059669 !important;
+}
+
+body.light-mode header p,
+body.light-mode header span.text-emerald-400,
+body.light-mode header span.text-brand-400,
+body.light-mode .subtitle,
+body.light-mode p.text-emerald-400,
+body.light-mode p.text-emerald-500 {
+  color: #059669 !important;
 }
 
 /* 2. Sous-titres maintenus en vert émeraude soutenu */
