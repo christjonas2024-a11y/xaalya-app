@@ -15,56 +15,147 @@ tailwind.config = { darkMode: 'class', theme: { extend: { colors: { brand: { 400
 </script>
 </head>
 <style>
- /* ==========================================================================
-   RENFORCEMENT DES COLONNES ET CELLULES DU TABLEAU EN MODE CLAIR
+/* ==========================================================================
+   THÈME CLAIR XAALYA : BLANC PUR (#FFFFFF) & IDENTITÉ VERT NUIT
    ========================================================================== */
+html.light-mode,
+body.light-mode {
+  background-color: #FFFFFF !important; /* Arrière-plan global blanc pur */
+  color: #06281E !important;            /* Vert nuit profond */
+}
 
-/* 1. En-têtes des colonnes (RANG, OPÉRATEUR, TAUX DE CHANGE, FRAIS, etc.) */
+/* Force le blanc pur sur tous les grands conteneurs de fond sombre */
+body.light-mode main,
+body.light-mode section,
+body.light-mode footer,
+body.light-mode .bg-slate-950,
+body.light-mode .bg-slate-900,
+body.light-mode .bg-slate-900\/80,
+body.light-mode .bg-slate-900\/50,
+body.light-mode .bg-gray-950,
+body.light-mode .bg-gray-900 {
+  background-color: #FFFFFF !important;
+}
+
+/* 1. En-tête (Header) blanc pur avec bordure nette */
+body.light-mode header {
+  background-color: #FFFFFF !important;
+  border-bottom: 1px solid #D5E2DD !important;
+}
+
+body.light-mode header a {
+  color: #06281E !important;
+}
+
+body.light-mode header a:hover {
+  color: #059669 !important;
+}
+
+/* 2. Titre principal Hero & sous-titres en Vert Nuit */
+body.light-mode h1,
+body.light-mode h2,
+body.light-mode h3 {
+  color: #06281E !important;
+}
+
+/* 3. Carte principale du comparateur */
+body.light-mode main .bg-slate-900,
+body.light-mode main .bg-slate-900\/80,
+body.light-mode main .bg-slate-950 {
+  background-color: #FFFFFF !important;
+  border: 1px solid #D5E2DD !important;
+  box-shadow: 0 10px 30px -8px rgba(6, 40, 30, 0.07) !important;
+}
+
+/* 4. Menus déroulants et champ montant */
+body.light-mode main select,
+body.light-mode main input {
+  background-color: #FFFFFF !important;
+  color: #06281E !important;
+  border: 1.5px solid #C2D4CE !important;
+}
+
+body.light-mode main select:focus,
+body.light-mode main input:focus {
+  border-color: #059669 !important;
+}
+
+/* 5. Cartes de raccourcis corridors (EUR -> XOF, etc.) : identité Vert Nuit */
+body.light-mode .grid button,
+body.light-mode .grid a {
+  background-color: #082F24 !important;
+  border: 1px solid #0F4737 !important;
+  color: #FFFFFF !important;
+}
+
+body.light-mode .grid button *,
+body.light-mode .grid a * {
+  color: #FFFFFF !important;
+}
+
+body.light-mode .grid button:hover,
+body.light-mode .grid a:hover {
+  background-color: #0C4233 !important;
+  border-color: #10B981 !important;
+}
+
+/* 6. En-têtes et colonnes du tableau comparatif */
 body.light-mode table thead,
 body.light-mode .table-header,
 body.light-mode [class*="grid-cols-"] > div.uppercase,
 body.light-mode th {
-  background-color: #E8F0EC !important; /* Bandeau vert sauge très léger pour structurer les colonnes */
-  color: #06281E !important;            /* Vert nuit net et lisible */
+  background-color: #F4F8F6 !important; /* Léger bandeau sauge pour détacher les colonnes sur le blanc pur */
+  color: #06281E !important;
   font-weight: 700 !important;
   border-bottom: 2px solid #B8CEC6 !important;
 }
 
-/* 2. Toutes les textes gris pâles (slate-300/400/500, gray-300/400) dans les résultats */
+/* Lignes et cellules sur fond blanc pur */
+body.light-mode table tbody tr,
+body.light-mode #results-container > div,
+body.light-mode #operators-list > div {
+  background-color: #FFFFFF !important;
+  border-bottom: 1px solid #E2ECE8 !important;
+}
+
+body.light-mode table tbody tr:hover {
+  background-color: #F8FBFA !important;
+}
+
+/* Tous les textes de colonnes et noms d'opérateurs en Vert Nuit */
 body.light-mode main .text-slate-200,
 body.light-mode main .text-slate-300,
 body.light-mode main .text-slate-400,
 body.light-mode main .text-slate-500,
 body.light-mode main .text-gray-300,
 body.light-mode main .text-gray-400,
-body.light-mode main .text-white {
-  color: #06281E !important; /* Vert nuit profond */
+body.light-mode main .text-white,
+body.light-mode table tbody td,
+body.light-mode table tbody td span:not(.bg-emerald-500):not(.text-emerald-400):not(.text-emerald-500) {
+  color: #06281E !important;
 }
 
-/* 3. Exceptions : conserver le texte blanc UNIQUEMENT sur les boutons verts et cartes vert nuit */
+/* 7. Mise en valeur transparente des frais gratuits et montants reçus */
+body.light-mode .text-emerald-400 {
+  color: #047857 !important;
+}
+
+/* Exceptions : texte blanc conservé sur les boutons verts d'action */
 body.light-mode main a.bg-emerald-500,
 body.light-mode main a.bg-emerald-600,
 body.light-mode main button.bg-emerald-500,
 body.light-mode main button.bg-emerald-600,
-body.light-mode .grid button,
-body.light-mode .grid button *,
-body.light-mode .grid a,
-body.light-mode .grid a *,
 body.light-mode .bg-emerald-500,
 body.light-mode .bg-emerald-600 {
   color: #FFFFFF !important;
 }
 
-/* 4. Séparation visuelle nette entre chaque ligne d'opérateur */
-body.light-mode table tbody tr,
-body.light-mode #results-container > div,
-body.light-mode #operators-list > div {
+/* 8. Sélecteur de langue et bouton audio dans le header */
+body.light-mode #language-select,
+body.light-mode #btnToggleVoice {
   background-color: #FFFFFF !important;
-  border-bottom: 1px solid #CFE0DA !important;
-}
-
-body.light-mode table tbody tr:nth-child(even) {
-  background-color: #F8FBFA !important; /* Légère alternance zébrée pour suivre les colonnes facilement */
+  color: #06281E !important;
+  border-color: #C2D4CE !important;
 }
   </style>
 </head>
