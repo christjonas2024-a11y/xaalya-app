@@ -15,100 +15,57 @@ tailwind.config = { darkMode: 'class', theme: { extend: { colors: { brand: { 400
 </script>
 </head>
 <style>
-    /* ==========================================================================
-       THÈME CLAIR XAALYA : VERT NUIT, NEUTRALITÉ & TRANSPARENCE
-       ========================================================================== */
-    body.light-mode {
-      background-color: #F3F7F5 !important;
-      color: #06281E !important;
-    }
+ /* ==========================================================================
+   RENFORCEMENT DES COLONNES ET CELLULES DU TABLEAU EN MODE CLAIR
+   ========================================================================== */
 
-    body.light-mode header {
-      background-color: rgba(255, 255, 255, 0.92) !important;
-      border-bottom: 1px solid #D5E2DD !important;
-      backdrop-filter: blur(12px);
-    }
+/* 1. En-têtes des colonnes (RANG, OPÉRATEUR, TAUX DE CHANGE, FRAIS, etc.) */
+body.light-mode table thead,
+body.light-mode .table-header,
+body.light-mode [class*="grid-cols-"] > div.uppercase,
+body.light-mode th {
+  background-color: #E8F0EC !important; /* Bandeau vert sauge très léger pour structurer les colonnes */
+  color: #06281E !important;            /* Vert nuit net et lisible */
+  font-weight: 700 !important;
+  border-bottom: 2px solid #B8CEC6 !important;
+}
 
-    body.light-mode header a {
-      color: #1E3A31 !important;
-    }
+/* 2. Toutes les textes gris pâles (slate-300/400/500, gray-300/400) dans les résultats */
+body.light-mode main .text-slate-200,
+body.light-mode main .text-slate-300,
+body.light-mode main .text-slate-400,
+body.light-mode main .text-slate-500,
+body.light-mode main .text-gray-300,
+body.light-mode main .text-gray-400,
+body.light-mode main .text-white {
+  color: #06281E !important; /* Vert nuit profond */
+}
 
-    body.light-mode header a:hover {
-      color: #059669 !important;
-    }
+/* 3. Exceptions : conserver le texte blanc UNIQUEMENT sur les boutons verts et cartes vert nuit */
+body.light-mode main a.bg-emerald-500,
+body.light-mode main a.bg-emerald-600,
+body.light-mode main button.bg-emerald-500,
+body.light-mode main button.bg-emerald-600,
+body.light-mode .grid button,
+body.light-mode .grid button *,
+body.light-mode .grid a,
+body.light-mode .grid a *,
+body.light-mode .bg-emerald-500,
+body.light-mode .bg-emerald-600 {
+  color: #FFFFFF !important;
+}
 
-    body.light-mode h1,
-    body.light-mode h2,
-    body.light-mode h3 {
-      color: #06281E !important;
-    }
+/* 4. Séparation visuelle nette entre chaque ligne d'opérateur */
+body.light-mode table tbody tr,
+body.light-mode #results-container > div,
+body.light-mode #operators-list > div {
+  background-color: #FFFFFF !important;
+  border-bottom: 1px solid #CFE0DA !important;
+}
 
-    body.light-mode main .bg-slate-900,
-    body.light-mode main .bg-slate-900\/80,
-    body.light-mode main .bg-slate-950 {
-      background-color: #FFFFFF !important;
-      border-color: #D5E2DD !important;
-      box-shadow: 0 12px 32px -8px rgba(6, 40, 30, 0.08) !important;
-    }
-
-    body.light-mode main select,
-    body.light-mode main input {
-      background-color: #F8FBFA !important;
-      color: #06281E !important;
-      border: 1.5px solid #C2D4CE !important;
-    }
-
-    body.light-mode main select:focus,
-    body.light-mode main input:focus {
-      border-color: #059669 !important;
-      background-color: #FFFFFF !important;
-    }
-
-    body.light-mode .grid button,
-    body.light-mode .grid a {
-      background-color: #082F24 !important;
-      border: 1px solid #0F4737 !important;
-      color: #FFFFFF !important;
-      box-shadow: 0 4px 12px rgba(6, 40, 30, 0.12);
-    }
-
-    body.light-mode .grid button:hover,
-    body.light-mode .grid a:hover {
-      background-color: #0C4233 !important;
-      border-color: #10B981 !important;
-      transform: translateY(-1px);
-    }
-
-    body.light-mode table thead th {
-      color: #47635A !important;
-      border-bottom: 1.5px solid #D5E2DD !important;
-    }
-
-    body.light-mode table tbody tr {
-      border-bottom: 1px solid #E6EFEA !important;
-      transition: background-color 0.15s ease;
-    }
-
-    body.light-mode table tbody tr:hover {
-      background-color: #F4F9F7 !important;
-    }
-
-    body.light-mode table tbody td,
-    body.light-mode table tbody td .text-white,
-    body.light-mode table tbody td span:not(.bg-emerald-500):not(.text-emerald-400):not(.text-emerald-500) {
-      color: #06281E !important;
-    }
-
-    body.light-mode .text-emerald-400 {
-      color: #047857 !important;
-    }
-
-    body.light-mode #language-select,
-    body.light-mode #btnToggleVoice {
-      background-color: #F3F7F5 !important;
-      color: #06281E !important;
-      border-color: #C2D4CE !important;
-    }
+body.light-mode table tbody tr:nth-child(even) {
+  background-color: #F8FBFA !important; /* Légère alternance zébrée pour suivre les colonnes facilement */
+}
   </style>
 </head>
 <body class="bg-slate-950 text-slate-100 min-h-screen font-sans antialiased flex flex-col justify-between">
