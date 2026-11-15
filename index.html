@@ -16,6 +16,33 @@ tailwind.config = { darkMode: 'class', theme: { extend: { colors: { brand: { 400
 </head>
 <style>
 /* ==========================================================================
+   NAVIGATION HEADER EN BLEU NUIT & SOUS-TITRES EN VERT (MODE CLAIR)
+   ========================================================================== */
+
+/* 1. Liens de navigation (À PROPOS / NOTRE MODÈLE / FAQ / SÉCURITÉ) en bleu nuit */
+body.light-mode header nav a,
+body.light-mode header a,
+body.light-mode header button:not(#btnToggleVoice):not(#theme-toggle) {
+  color: #0B192C !important; /* Bleu nuit profond et élégant */
+  font-weight: 700 !important;
+}
+
+body.light-mode header nav a:hover,
+body.light-mode header a:hover {
+  color: #059669 !important; /* Rappel vert au survol */
+}
+
+/* 2. Sous-titres maintenus en vert émeraude soutenu */
+body.light-mode p.text-emerald-400,
+body.light-mode p.text-emerald-500,
+body.light-mode .subtitle,
+body.light-mode header p,
+body.light-mode main > p,
+body.light-mode main .text-emerald-400,
+body.light-mode main .text-emerald-500 {
+  color: #047857 !important; /* Vert émeraude profond, très lisible sur fond blanc */
+}
+/* ==========================================================================
    THÈME CLAIR XAALYA : BLANC PUR (#FFFFFF) & IDENTITÉ VERT NUIT
    ========================================================================== */
 html.light-mode,
