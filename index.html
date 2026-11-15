@@ -926,28 +926,12 @@ function speakComparisonResult(isManualClick = false) {
   window.speechSynthesis.speak(utterance);
 }
 
-// Compatibilité si une autre partie du code appelle encore declencherVoixOff()
+// Compatibilité avec vos écouteurs du bas
 function declencherVoixOff() {
   triggerVoiceDebounced();
 }
 
 function renderResults() {
-  document.getElementById('sourceCurrency').addEventListener('change', () => {
-  updateHeroTitle();
-  renderResults();
-  triggerVoiceDebounced();
-});
-
-document.getElementById('targetCurrency').addEventListener('change', () => {
-  renderResults();
-  triggerVoiceDebounced();
-});
-
-document.getElementById('sendAmount').addEventListener('input', () => {
-  updateHeroTitle();
-  renderResults();
-  triggerVoiceDebounced();
-});
   const tbody = document.getElementById('operatorsList');
   if (!tbody) return;
 
@@ -1050,11 +1034,9 @@ document.addEventListener('DOMContentLoaded', async () => {
   document.getElementById('language-select').value = langSauvee;
   setLanguage(langSauvee, false);
 
-  document.getElementById('sourceCurrency').addEventListener('change', () => { updateHeroTitle(); renderResults(); declencherVoixOff(); });
-  document.getElementById('targetCurrency').addEventListener('change', () => { renderResults(); declencherVoixOff(); });
-  document.getElementById('sendAmount').addEventListener('input', () => { updateHeroTitle(); renderResults(); });
-  document.getElementById('sendAmount').addEventListener('change', () => { declencherVoixOff(); });
-
+  document.getElementById('sourceCurrency').addEventListener('change', () => { updateHeroTitle(); renderResults(); triggerVoiceDebounced(); });
+  document.getElementById('targetCurrency').addEventListener('change', () => { renderResults(); triggerVoiceDebounced(); });
+  document.getElementById('sendAmount').addEventListener('input', () => { updateHeroTitle(); renderResults(); triggerVoiceDebounced(); });
   const themeToggle = document.getElementById('theme-toggle');
   const themeIcon = document.getElementById('theme-icon');
   if (themeToggle) {
