@@ -426,6 +426,18 @@ body.light-mode #btnToggleVoice {
       <span data-i18n="resultsTitle">Operators comparison</span>
       <span data-i18n="resultsRank" class="text-xs font-normal text-slate-400">Ranked by best net rate</span>
     </h3>
+
+<div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+  <button 
+    id="btnListenResult" 
+    type="button" 
+    onclick="listenResultNow()" 
+    class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-semibold bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-500 border border-emerald-500/30 transition cursor-pointer">
+    <span>🔊</span>
+    <span id="listenResultLabel">Écouter le résultat</span>
+  </button>
+</div>
+
     <div class="overflow-x-auto">
       <table id="comparisonTable" class="w-full text-left border-collapse">
         <thead>
@@ -792,41 +804,150 @@ function getSpokenCurrency(code, lang) {
   return entry[lang] || entry['en'] || entry['default'] || code;
 }
 
-let isVoiceEnabled = localStorage.getItem('xaalya_voice_enabled') !== 'false';
+// ============================================================================
+// SYSTÈME VOCAL XAALYA (DÉSACTIVÉ PAR DÉFAUT + DÉBOUNCE + ÉCOUTE MANUELLE)
+// ============================================================================
+
+// 1. Désactivé par défaut : s'active uniquement si l'utilisateur l'a choisi ('true')
+let isVoiceEnabled = localStorage.getItem('xaalya_voice_enabled') === 'true';
+let voiceDebounceTimer = null;
 
 function updateVoiceButtonUI() {
+  const btn = document.getElementById('btnToggleVoice');
   const iconOn = document.getElementById('iconVoiceOn');
   const iconOff = document.getElementById('iconVoiceOff');
-  const btn = document.getElementById('btnToggleVoice');
-  if (!iconOn || !iconOff || !btn) return;
+  if (!btn || !iconOn || !iconOff) return;
 
   if (isVoiceEnabled) {
     iconOn.classList.remove('hidden');
     iconOff.classList.add('hidden');
-    btn.classList.replace('text-slate-400', 'text-emerald-400');
-    btn.title = 'Annonce vocale activée';
+    btn.title = 'Annonce vocale automatique activée (cliquer pour couper)';
+    btn.classList.add('text-emerald-400');
+    btn.classList.remove('text-slate-400');
   } else {
     iconOn.classList.add('hidden');
     iconOff.classList.remove('hidden');
-    btn.classList.replace('text-emerald-400', 'text-slate-400');
-    btn.title = 'Annonce vocale coupée';
+    btn.title = 'Annonce vocale automatique désactivée (cliquer pour activer)';
+    btn.classList.remove('text-emerald-400');
+    btn.classList.add('text-slate-400');
   }
 }
 
 function toggleVoiceAlert() {
   isVoiceEnabled = !isVoiceEnabled;
-  localStorage.setItem('xaalya_voice_enabled', isVoiceEnabled);
-  
-  if (!isVoiceEnabled && 'speechSynthesis' in window) {
-    window.speechSynthesis.cancel(); // Coupe immédiatement la voix si elle est en train de parler
-  }
+  localStorage.setItem('xaalya_voice_enabled', isVoiceEnabled ? 'true' : 'false');
   updateVoiceButtonUI();
+
+  if (!isVoiceEnabled && 'speechSynthesis' in window) {
+    window.speechSynthesis.cancel();
+  } else if (isVoiceEnabled) {
+    speakComparisonResult(true);
+  }
+}
+
+document.addEventListener('DOMContentLoaded', updateVoiceButtonUI);
+
+// 2. Débounce de 1,5 seconde (uniquement si le mode Auto est activé)
+function triggerVoiceDebounced() {
+  if (!isVoiceEnabled) return;
+  clearTimeout(voiceDebounceTimer);
+  voiceDebounceTimer = setTimeout(() => {
+    speakComparisonResult(false);
+  }, 1500);
+}
+
+// 3. Bouton manuel "Écouter le résultat" (fonctionne toujours au clic, même en mode Mute)
+function listenResultNow() {
+  clearTimeout(voiceDebounceTimer);
+  speakComparisonResult(true);
+}
+
+// 4. Lecture enrichie (1er et 2e meilleur opérateur + prononciation des 27+ devises)
+function speakComparisonResult(isManualClick = false) {
+  if (!isManualClick && !isVoiceEnabled) return;
+  if (!('speechSynthesis' in window)) return;
+
+  const sourceEl = document.getElementById('sourceCurrency');
+  const targetEl = document.getElementById('targetCurrency');
+  const amountEl = document.getElementById('sendAmount');
+  if (!sourceEl || !targetEl || !amountEl) return;
+
+  const source = sourceEl.value;
+  const target = targetEl.value;
+  const amount = parseFloat(amountEl.value) || 0;
+  if (amount <= 0) return;
+
+  let tauxSource = source !== 'EUR' ? (tauxDeChange[source.toLowerCase()] || 1) : 1;
+  const tauxCible = tauxDeChange[target.toLowerCase()] || 1;
+  const tauxInterbancaire = tauxCible / tauxSource;
+
+  const offres = OPERATEURS.map(op => ({
+    nom: op.nom,
+    recu: Math.max(0, amount - op.fraisFixes) * (tauxInterbancaire * (1 - op.margeChange))
+  })).sort((a, b) => b.recu - a.recu);
+
+  if (offres.length === 0) return;
+
+  window.speechSynthesis.cancel();
+
+  const best = offres[0];
+  const second = offres[1];
+  const lang = typeof currentLang !== 'undefined' ? currentLang : 'fr';
+
+  const spokenSource = typeof getSpokenCurrency === 'function' ? getSpokenCurrency(source, lang) : source;
+  const spokenTarget = typeof getSpokenCurrency === 'function' ? getSpokenCurrency(target, lang) : target;
+
+  let message = '';
+
+  if (lang === 'fr') {
+    const bestAmount = Math.round(best.recu).toLocaleString('fr-FR');
+    const secondAmount = second ? Math.round(second.recu).toLocaleString('fr-FR') : '';
+    message = `Pour ${amount} ${spokenSource}, le moins cher est ${best.nom}. Vous recevez environ ${bestAmount} ${spokenTarget}.` +
+              (second ? ` Le deuxième est ${second.nom}, avec ${secondAmount} ${spokenTarget}.` : '');
+  } else if (lang === 'en') {
+    const bestAmount = Math.round(best.recu).toLocaleString('en-US');
+    const secondAmount = second ? Math.round(second.recu).toLocaleString('en-US') : '';
+    message = `For ${amount} ${spokenSource}, the cheapest is ${best.nom}. You receive about ${bestAmount} ${spokenTarget}.` +
+              (second ? ` The second is ${second.nom}, with ${secondAmount} ${spokenTarget}.` : '');
+  } else {
+    const cfg = (typeof VOICE_CONFIG_16 !== 'undefined' && VOICE_CONFIG_16[lang]) || { bestLabel: 'Best rate' };
+    const bestAmount = Math.round(best.recu).toLocaleString('en-US');
+    message = `${cfg.bestLabel}: ${best.nom}, ${bestAmount} ${spokenTarget}.`;
+  }
+
+  const utterance = new SpeechSynthesisUtterance(message);
+  const langCodeMap = {
+    fr: 'fr-FR', en: 'en-US', zu: 'en-ZA', ln: 'fr-FR', sn: 'en-GB',
+    de: 'de-DE', ar: 'ar-SA', pt: 'pt-PT', es: 'es-ES', zh: 'zh-CN',
+    it: 'it-IT', sw: 'sw-KE', am: 'en-US', yo: 'en-NG', ha: 'en-NG', wo: 'fr-FR'
+  };
+  utterance.lang = langCodeMap[lang] || 'en-US';
+  utterance.rate = 0.95;
+  window.speechSynthesis.speak(utterance);
+}
+
+// Compatibilité si une autre partie du code appelle encore declencherVoixOff()
+function declencherVoixOff() {
+  triggerVoiceDebounced();
 }
 
 function renderResults() {
-  const source = document.getElementById('sourceCurrency').value;
-  const target = document.getElementById('targetCurrency').value;
-  const amount = parseFloat(document.getElementById('sendAmount').value) || 0;
+  document.getElementById('sourceCurrency').addEventListener('change', () => {
+  updateHeroTitle();
+  renderResults();
+  triggerVoiceDebounced();
+});
+
+document.getElementById('targetCurrency').addEventListener('change', () => {
+  renderResults();
+  triggerVoiceDebounced();
+});
+
+document.getElementById('sendAmount').addEventListener('input', () => {
+  updateHeroTitle();
+  renderResults();
+  triggerVoiceDebounced();
+});
   const tbody = document.getElementById('operatorsList');
   if (!tbody) return;
 
