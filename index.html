@@ -935,6 +935,10 @@ function renderResults() {
   const tbody = document.getElementById('operatorsList');
   if (!tbody) return;
 
+  const source = document.getElementById('sourceCurrency').value;
+  const target = document.getElementById('targetCurrency').value;
+  const amount = parseFloat(document.getElementById('sendAmount').value) || 0;
+
   const modelTrad = (typeof TRANSLATIONS_MODEL !== 'undefined' && TRANSLATIONS_MODEL[currentLang]) ? TRANSLATIONS_MODEL[currentLang] : {};
   const pageTrad = (typeof TRANSLATIONS !== 'undefined' && TRANSLATIONS[currentLang]) ? TRANSLATIONS[currentLang] : {};
   const trad = Object.assign({}, modelTrad, pageTrad);
