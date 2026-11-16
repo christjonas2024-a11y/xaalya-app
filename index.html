@@ -215,9 +215,9 @@ body.light-mode #btnToggleVoice {
         <div class="flex items-center gap-2 bg-slate-900/80 border border-slate-800 px-3 py-1.5 rounded-xl">
           <div class="w-9 h-9 min-w-[2.25rem] min-h-[2.25rem] rounded-full overflow-hidden border border-emerald-500/40 flex items-center justify-center bg-slate-900 shadow-sm shrink-0">
             <picture>
-  <source srcset="assets/logo.webp" type="image/webp">
-  <img src="assets/logo-optimized.png" alt="Xaalya Logo" class="w-full h-full object-cover">
-</picture>
+              <source srcset="assets/logo.webp" type="image/webp">
+              <img src="assets/logo-optimized.png" alt="Xaalya Logo" class="w-full h-full object-cover">
+            </picture>
           </div>
           <div class="flex flex-col">
             <span class="text-lg font-black tracking-tight text-white leading-tight">XAALYA</span>
@@ -227,11 +227,15 @@ body.light-mode #btnToggleVoice {
         <span data-i18n="badgeTitle" class="text-[9px] font-bold bg-slate-800 text-slate-300 px-2.5 py-1 rounded-full uppercase tracking-wider hidden md:inline-block">FREE & INDEPENDENT COMPARATOR</span>
       </a>
     </div>
-    <div class="flex items-center gap-3 text-xs font-medium text-slate-400">
-      <button onclick="openModal('modal-about')" data-i18n="navAbout" class="hover:text-white transition hidden sm:inline-block">About</button>
-      <button onclick="openModal('modal-model')" data-i18n="navModel" class="hover:text-white transition hidden sm:inline-block">Our Model</button>
-      <button onclick="openModal('modal-faq')" data-i18n="navFaq" class="hover:text-white transition hidden sm:inline-block">FAQ</button>
-      <button onclick="openModal('modal-security')" data-i18n="navSecurity" class="hover:text-white transition hidden sm:inline-block">Security</button>
+
+    <div class="flex flex-wrap items-center gap-4 text-xs font-medium">
+      <nav class="flex flex-wrap items-center gap-4 sm:gap-5 text-sm font-semibold text-slate-200">
+        <a href="transparence.html#a-propos" data-i18n="navAbout" class="hover:text-emerald-400 transition-colors">À Propos</a>
+        <a href="transparence.html#modele-economique" data-i18n="navModel" class="hover:text-emerald-400 transition-colors">Notre Modèle</a>
+        <a href="transparence.html#faq" data-i18n="navFaq" class="hover:text-emerald-400 transition-colors">FAQ</a>
+        <a href="transparence.html#securite-confidentialite" data-i18n="navSecurity" class="hover:text-emerald-400 transition-colors">Sécurité</a>
+      </nav>
+
       <div class="relative">
         <select id="language-select" onchange="setLanguage(this.value, true)" class="bg-slate-900 border border-slate-800 text-white text-xs font-bold rounded-lg px-3 py-2 focus:outline-none focus:border-brand-500 transition cursor-pointer">
           <option value="en">🇬🇧 English</option>
@@ -250,22 +254,7 @@ body.light-mode #btnToggleVoice {
           <option value="yo">🇳🇬 Èdè Yorùbá</option>
           <option value="ha">🇳🇬 Hausa</option>
           <option value="wo">🇸🇳 Wolof</option>
-</select>
-
-        <button 
-          id="btnToggleVoice" 
-          type="button" 
-          onclick="toggleVoiceAlert()" 
-          aria-label="Activer ou couper l'annonce vocale"
-          title="Annonce vocale activée"
-          class="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-slate-900 hover:bg-slate-800 border border-slate-800 text-emerald-400 transition shrink-0">
-          <svg id="iconVoiceOn" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M11 5L6 9H2v6h4l5 4V5zM15.54 8.46a5 5 0 010 7.07M19.07 4.93a10 10 0 010 14.14"/>
-          </svg>
-          <svg id="iconVoiceOff" class="w-4 h-4 hidden text-slate-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M11 5L6 9H2v6h4l5 4V5zM23 9l-6 6M17 9l6 6"/>
-          </svg>
-        </button>
+        </select>
       </div>
       <button id="theme-toggle" class="theme-toggle-btn" title="Toggle display mode"><span id="theme-icon">🌙</span></button>
     </div>
@@ -804,133 +793,6 @@ function getSpokenCurrency(code, lang) {
   return entry[lang] || entry['en'] || entry['default'] || code;
 }
 
-// ============================================================================
-// SYSTÈME VOCAL XAALYA (DÉSACTIVÉ PAR DÉFAUT + DÉBOUNCE + ÉCOUTE MANUELLE)
-// ============================================================================
-
-// 1. Désactivé par défaut : s'active uniquement si l'utilisateur l'a choisi ('true')
-let isVoiceEnabled = localStorage.getItem('xaalya_voice_enabled') === 'true';
-let voiceDebounceTimer = null;
-
-function updateVoiceButtonUI() {
-  const btn = document.getElementById('btnToggleVoice');
-  const iconOn = document.getElementById('iconVoiceOn');
-  const iconOff = document.getElementById('iconVoiceOff');
-  if (!btn || !iconOn || !iconOff) return;
-
-  if (isVoiceEnabled) {
-    iconOn.classList.remove('hidden');
-    iconOff.classList.add('hidden');
-    btn.title = 'Annonce vocale automatique activée (cliquer pour couper)';
-    btn.classList.add('text-emerald-400');
-    btn.classList.remove('text-slate-400');
-  } else {
-    iconOn.classList.add('hidden');
-    iconOff.classList.remove('hidden');
-    btn.title = 'Annonce vocale automatique désactivée (cliquer pour activer)';
-    btn.classList.remove('text-emerald-400');
-    btn.classList.add('text-slate-400');
-  }
-}
-
-function toggleVoiceAlert() {
-  isVoiceEnabled = !isVoiceEnabled;
-  localStorage.setItem('xaalya_voice_enabled', isVoiceEnabled ? 'true' : 'false');
-  updateVoiceButtonUI();
-
-  if (!isVoiceEnabled && 'speechSynthesis' in window) {
-    window.speechSynthesis.cancel();
-  } else if (isVoiceEnabled) {
-    speakComparisonResult(true);
-  }
-}
-
-document.addEventListener('DOMContentLoaded', updateVoiceButtonUI);
-
-// 2. Débounce de 1,5 seconde (uniquement si le mode Auto est activé)
-function triggerVoiceDebounced() {
-  if (!isVoiceEnabled) return;
-  clearTimeout(voiceDebounceTimer);
-  voiceDebounceTimer = setTimeout(() => {
-    speakComparisonResult(false);
-  }, 1500);
-}
-
-// 3. Bouton manuel "Écouter le résultat" (fonctionne toujours au clic, même en mode Mute)
-function listenResultNow() {
-  clearTimeout(voiceDebounceTimer);
-  speakComparisonResult(true);
-}
-
-// 4. Lecture enrichie (1er et 2e meilleur opérateur + prononciation des 27+ devises)
-function speakComparisonResult(isManualClick = false) {
-  if (!isManualClick && !isVoiceEnabled) return;
-  if (!('speechSynthesis' in window)) return;
-
-  const sourceEl = document.getElementById('sourceCurrency');
-  const targetEl = document.getElementById('targetCurrency');
-  const amountEl = document.getElementById('sendAmount');
-  if (!sourceEl || !targetEl || !amountEl) return;
-
-  const source = sourceEl.value;
-  const target = targetEl.value;
-  const amount = parseFloat(amountEl.value) || 0;
-  if (amount <= 0) return;
-
-  let tauxSource = source !== 'EUR' ? (tauxDeChange[source.toLowerCase()] || 1) : 1;
-  const tauxCible = tauxDeChange[target.toLowerCase()] || 1;
-  const tauxInterbancaire = tauxCible / tauxSource;
-
-  const offres = OPERATEURS.map(op => ({
-    nom: op.nom,
-    recu: Math.max(0, amount - op.fraisFixes) * (tauxInterbancaire * (1 - op.margeChange))
-  })).sort((a, b) => b.recu - a.recu);
-
-  if (offres.length === 0) return;
-
-  window.speechSynthesis.cancel();
-
-  const best = offres[0];
-  const second = offres[1];
-  const lang = typeof currentLang !== 'undefined' ? currentLang : 'fr';
-
-  const spokenSource = typeof getSpokenCurrency === 'function' ? getSpokenCurrency(source, lang) : source;
-  const spokenTarget = typeof getSpokenCurrency === 'function' ? getSpokenCurrency(target, lang) : target;
-
-  let message = '';
-
-  if (lang === 'fr') {
-    const bestAmount = Math.round(best.recu).toLocaleString('fr-FR');
-    const secondAmount = second ? Math.round(second.recu).toLocaleString('fr-FR') : '';
-    message = `Pour ${amount} ${spokenSource}, le moins cher est ${best.nom}. Vous recevez environ ${bestAmount} ${spokenTarget}.` +
-              (second ? ` Le deuxième est ${second.nom}, avec ${secondAmount} ${spokenTarget}.` : '');
-  } else if (lang === 'en') {
-    const bestAmount = Math.round(best.recu).toLocaleString('en-US');
-    const secondAmount = second ? Math.round(second.recu).toLocaleString('en-US') : '';
-    message = `For ${amount} ${spokenSource}, the cheapest is ${best.nom}. You receive about ${bestAmount} ${spokenTarget}.` +
-              (second ? ` The second is ${second.nom}, with ${secondAmount} ${spokenTarget}.` : '');
-  } else {
-    const cfg = (typeof VOICE_CONFIG_16 !== 'undefined' && VOICE_CONFIG_16[lang]) || { bestLabel: 'Best rate' };
-    const bestAmount = Math.round(best.recu).toLocaleString('en-US');
-    message = `${cfg.bestLabel}: ${best.nom}, ${bestAmount} ${spokenTarget}.`;
-  }
-
-  const utterance = new SpeechSynthesisUtterance(message);
-  const langCodeMap = {
-    fr: 'fr-FR', en: 'en-US', zu: 'en-ZA', ln: 'fr-FR', sn: 'en-GB',
-    de: 'de-DE', ar: 'ar-SA', pt: 'pt-PT', es: 'es-ES', zh: 'zh-CN',
-    it: 'it-IT', sw: 'sw-KE', am: 'en-US', yo: 'en-NG', ha: 'en-NG', wo: 'fr-FR'
-  };
-  utterance.lang = langCodeMap[lang] || 'en-US';
-  utterance.rate = 0.95;
-  window.speechSynthesis.speak(utterance);
-}
-
-// Compatibilité avec vos écouteurs du bas
-function declencherVoixOff() {
-  triggerVoiceDebounced();
-}
-
 function renderResults() {
   const tbody = document.getElementById('operatorsList');
   if (!tbody) return;
@@ -945,7 +807,7 @@ function renderResults() {
 
   const catalogue = window.CATALOGUE_CORRIDORS || [];
   const corridor = catalogue.find(c => c.devisesDepart === source && c.deviseArrivee === target);
-  
+
   if (!corridor || !corridor.offres) {
     tbody.innerHTML = `<tr><td colspan="7" class="py-4 text-center text-slate-400">Aucun opérateur disponible pour ce couloir</td></tr>`;
     return;
@@ -955,7 +817,7 @@ function renderResults() {
     const frais = typeof op.frais === 'number' ? op.frais : 0;
     const taux = typeof op.taux === 'number' ? op.taux : 0;
     const delai = op.delai || 'Instant';
-    
+
     return {
       nom: op.operateur || op.name || 'Opérateur',
       frais: frais,
@@ -964,13 +826,13 @@ function renderResults() {
       delai: delai,
       url: op.url || '#'
     };
-  }).sort((a, b) => b.recu - a.recu); 
+  }).sort((a, b) => b.recu - a.recu);
 
   tbody.innerHTML = resultats.map((r, index) => {
     const badge = index === 0 ? `<span class="ml-2 text-[10px] bg-emerald-500 text-white px-2 py-0.5 rounded-full font-bold">${trad.bestRateBadge || 'Cheapest'}</span>` : '';
     const fraisAffiches = r.frais === 0 ? `<span class="text-emerald-400 font-bold">${trad.freeFee || 'Free'}</span>` : `${r.frais.toFixed(2)} ${source}`;
     const delaiAffiche = (r.delai === 'Instantané' || r.delai === 'Instant') ? `<span class="text-emerald-400">${trad.instantDelay || 'Instant'}</span>` : r.delai;
-    
+
     return `<tr class="border-b border-slate-800/60 hover:bg-slate-800/30 transition">
       <td class="py-3 px-4 text-slate-400 font-bold">${index + 1}</td>
       <td class="py-3 px-4 font-semibold text-white">${r.nom}${badge}</td>
@@ -981,30 +843,6 @@ function renderResults() {
       <td class="py-3 px-4"><button class="bg-emerald-500 hover:bg-emerald-600 text-white text-xs font-bold px-3 py-1.5 rounded-lg transition" onclick="window.location.href='${r.url}'">${trad.btnSend || 'Send ➔'}</button></td>
     </tr>`;
   }).join('');
-
-if (isVoiceEnabled && resultats.length > 0 && 'speechSynthesis' in window) {
-    window.speechSynthesis.cancel();
-    const meilleur = resultats[0];
-    
-    const langKey = (typeof currentLang !== 'undefined' ? currentLang : 'fr').split('-')[0].toLowerCase();
-    const configVocale = VOICE_CONFIG_16[langKey] || VOICE_CONFIG_16['fr'];
-    
-    const prefixe = trad.voiceBestPrefix || configVocale.prefix;
-    const montantFormate = Math.round(meilleur.recu);
-    const deviseEnToutesLettres = getSpokenCurrency(target, langKey);
-
-    const utteranceIntro = new SpeechSynthesisUtterance(`${prefixe} ${meilleur.nom},`);
-    utteranceIntro.lang = configVocale.lang;
-    utteranceIntro.rate = 0.95;
-
-    const englishPivotLangs = ['am', 'ar', 'zu', 'sw', 'ha', 'yo', 'sn'];
-    const utteranceMontant = new SpeechSynthesisUtterance(`${montantFormate} ${deviseEnToutesLettres}.`);
-    utteranceMontant.lang = englishPivotLangs.includes(langKey) ? 'en-GB' : configVocale.lang;
-    utteranceMontant.rate = 0.95;
-
-    window.speechSynthesis.speak(utteranceIntro);
-    window.speechSynthesis.speak(utteranceMontant);
-  }
 }
 
 document.addEventListener('DOMContentLoaded', async () => {
@@ -1038,9 +876,9 @@ document.addEventListener('DOMContentLoaded', async () => {
   document.getElementById('language-select').value = langSauvee;
   setLanguage(langSauvee, false);
 
-  document.getElementById('sourceCurrency').addEventListener('change', () => { updateHeroTitle(); renderResults(); triggerVoiceDebounced(); });
-  document.getElementById('targetCurrency').addEventListener('change', () => { renderResults(); triggerVoiceDebounced(); });
-  document.getElementById('sendAmount').addEventListener('input', () => { updateHeroTitle(); renderResults(); triggerVoiceDebounced(); });
+  document.getElementById('sourceCurrency').addEventListener('change', () => { updateHeroTitle(); renderResults(); });
+  document.getElementById('targetCurrency').addEventListener('change', () => { renderResults(); });
+  document.getElementById('sendAmount').addEventListener('input', () => { updateHeroTitle(); renderResults(); });
   const themeToggle = document.getElementById('theme-toggle');
   const themeIcon = document.getElementById('theme-icon');
   if (themeToggle) {
@@ -1058,5 +896,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     } catch(e) {}
   } 
 </script>
+<script src="voice.js"></script>
 </body>
 </html>
