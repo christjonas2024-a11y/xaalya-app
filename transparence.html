@@ -22,7 +22,7 @@
       background-color: var(--bg-page);
       color: var(--text-primary);
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      line-height: 1.7;
+      line-height: 1.75;
     }
     section[id] {
       scroll-margin-top: 5.5rem;
@@ -33,17 +33,20 @@
 
   <!-- HEADER DE NAVIGATION -->
   <header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-slate-200">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 py-3.5 flex items-center justify-between gap-4">
-      <a href="index.html" class="flex items-center gap-2 font-bold text-xl tracking-tight text-[#06281E]">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 py-4 flex flex-wrap items-center justify-between gap-4">
+      <a href="index.html" onclick="if (document.referrer.includes('index.html') || document.referrer.endsWith('xaalya.com/')) { history.back(); return false; }" class="flex items-center gap-2 font-bold text-xl tracking-tight text-[#06281E]">
         <span class="inline-block w-3 h-3 rounded-full bg-[#10B981]"></span>
         <span>XAALYA</span>
       </a>
 
-      <nav aria-label="Retour au comparateur">
-        <a href="index.html" class="inline-flex items-center gap-2 bg-[#06281E] hover:bg-[#059669] text-white text-sm font-semibold px-4 py-2 rounded-lg transition-colors shadow-sm">
-          <span>←</span>
-          <span>Comparateur</span>
-        </a>
+      <nav aria-label="Navigation principale" class="flex flex-wrap items-center gap-5 text-sm font-semibold text-black">
+        <a href="index.html" onclick="if (document.referrer.includes('index.html') || document.referrer.endsWith('xaalya.com/')) { history.back(); return false; }" class="hover:text-[#10B981] transition-colors">Comparateur</a>
+        <a href="#a-propos" class="hover:text-[#10B981] transition-colors">À Propos</a>
+        <a href="#modele-economique" class="hover:text-[#10B981] transition-colors">Notre Modèle</a>
+        <a href="#securite-confidentialite" class="hover:text-[#10B981] transition-colors">Sécurité</a>
+        <a href="#faq" class="hover:text-[#10B981] transition-colors">FAQ</a>
+        <a href="#cgu" class="hover:text-[#10B981] transition-colors">CGU</a>
+        <a href="#contact" class="hover:text-[#10B981] transition-colors">Contact</a>
       </nav>
     </div>
   </header>
@@ -101,7 +104,7 @@
       </ol>
     </nav>
 
-    <div class="space-y-14">
+    <div class="space-y-16">
 
       <!-- SECTION 1 : À PROPOS -->
       <section id="a-propos" class="border-t border-slate-200 pt-10">
@@ -109,20 +112,24 @@
           À propos de Xaalya — Qui nous sommes et pourquoi nous existons
         </h2>
 
-        <div class="space-y-6">
+        <div class="space-y-6 text-slate-800">
           <div>
             <h3 class="text-xl font-semibold text-[#06281E] mb-2">Notre mission pour la diaspora africaine</h3>
-            <p class="text-slate-700">[Rédigez ici votre paragraphe sur la mission de Xaalya : apporter une visibilité claire sur le coût réel des envois d'argent vers l'Afrique et aider chaque expéditeur à maximiser le montant reçu par ses proches.]</p>
+            <p>Chaque année, les diasporas africaines envoient des dizaines de milliards d'euros et de dollars vers le continent pour soutenir leurs familles, financer des projets ou investir. Pourtant, l'Afrique demeure la région du monde où les frais de transfert sont les plus élevés, souvent masqués derrière des promesses de « zéro commission » compensées par des taux de change dégradés. Xaalya est né d'un objectif simple : offrir à chaque expéditeur une lecture immédiate, chiffrée et honnête du montant réel qui arrivera dans la poche de son bénéficiaire.</p>
           </div>
 
           <div>
             <h3 class="text-xl font-semibold text-[#06281E] mb-2">Nos trois engagements fondateurs</h3>
-            <p class="text-slate-700">[Détaillez vos trois piliers : 1. Neutralité absolue des classements, 2. Transparence sur les marges de change cachées, 3. Respect strict de la vie privée.]</p>
+            <ul class="list-disc pl-6 space-y-2">
+              <li><strong>Vérité du montant net reçu :</strong> Nous calculons le résultat final après déduction cumulée des frais fixes et de la marge prélevée sur le taux de change par rapport au cours interbancaire.</li>
+              <li><strong>Neutralité algorithmique absolue :</strong> Le classement des opérateurs obéit uniquement à l'intérêt financier de l'utilisateur — du montant reçu le plus élevé au moins élevé.</li>
+              <li><strong>Accessibilité universelle :</strong> Notre interface est conçue pour fonctionner sans inscription, en 16 langues (dont plusieurs langues africaines et européennes), avec une synthèse vocale à la demande pour faciliter l'usage par tous.</li>
+            </ul>
           </div>
 
           <div>
             <h3 class="text-xl font-semibold text-[#06281E] mb-2">Un observatoire citoyen, pas une fintech</h3>
-            <p class="text-slate-700">[Précisez que Xaalya est un outil d'information et de comparaison indépendant : Xaalya ne détient pas de fonds, n'exécute aucun virement et n'est affilié à aucun groupe bancaire.]</p>
+            <p>Xaalya n'est ni une banque, ni un établissement de paiement, ni un courtier en devises. Nous ne détenons aucun fonds, n'exécutons aucun virement et n'appartenons à aucun groupe financier ou opérateur de transfert. Xaalya agit comme un observatoire indépendant des corridors financiers vers l'Afrique : nous mesurons, comparons et orientons l'utilisateur directement vers le site officiel du prestataire qu'il choisit.</p>
           </div>
         </div>
       </section>
@@ -133,35 +140,41 @@
           Notre modèle économique — Comment Xaalya se finance sans vendre de classement
         </h2>
 
-        <div class="space-y-6">
+        <div class="space-y-6 text-slate-800">
           <div>
             <h3 class="text-xl font-semibold text-[#06281E] mb-2">En une phrase</h3>
-            <p class="text-slate-700">[Synthèse directe : Xaalya est 100 % gratuit pour les utilisateurs et aucun opérateur ne peut payer pour améliorer sa position dans notre comparateur.]</p>
+            <p class="font-medium text-[#06281E] bg-slate-50 border-l-4 border-[#10B981] p-4 rounded-r-lg">
+              Xaalya est 100 % gratuit pour les particuliers et aucun opérateur ne peut payer pour améliorer sa position dans notre comparateur.
+            </p>
           </div>
 
           <div>
             <h3 class="text-xl font-semibold text-[#06281E] mb-2">Ce que nous ne faisons pas (la liste des interdits)</h3>
-            <p class="text-slate-700">[Énumérez ce qui est strictement exclu : vente de premières places, biais algorithmique en faveur d'un partenaire, revente de données utilisateurs.]</p>
+            <ul class="list-disc pl-6 space-y-2">
+              <li><strong>Aucune vente de première place :</strong> Un opérateur partenaire ou sponsor ne peut jamais acheter le rang n° 1 s'il offre un taux moins avantageux qu'un concurrent.</li>
+              <li><strong>Aucun déréférencement punitif :</strong> Nous affichons les acteurs majeurs du marché sur chaque corridor, qu'ils entretiennent ou non une relation commerciale avec Xaalya.</li>
+              <li><strong>Aucune revente de données personnelles :</strong> N'ayant ni compte utilisateur ni formulaire de collecte, nous ne vendons aucun fichier prospect, e-mail ou profil financier.</li>
+            </ul>
           </div>
 
           <div>
             <h3 class="text-xl font-semibold text-[#06281E] mb-2">Comment le classement est calculé</h3>
-            <p class="text-slate-700">[Expliquez la formule mathématique objective : classement exclusivement par montant net réellement reçu par le bénéficiaire, après déduction des frais fixes et de la marge de change.]</p>
+            <p>Pour un montant envoyé <em>M</em>, des frais fixes <em>F</em> et un taux de change appliqué par l'opérateur <em>T</em>, le montant net reçu est calculé selon la formule unique : <strong>Montant reçu = (M − F) × T</strong>. Les opérateurs sont ensuite triés par ordre décroissant du montant net reçu. Si une offre promotionnelle (par exemple frais offerts sur le premier transfert) est activée par l'utilisateur, son impact est calculé selon les mêmes règles mathématiques.</p>
           </div>
 
           <div>
             <h3 class="text-xl font-semibold text-[#06281E] mb-2">Séparation entre le rédactionnel et le commercial</h3>
-            <p class="text-slate-700">[Décrivez la muraille de Chine entre l'algorithme de comparaison et d'éventuels partenariats ou licences de données (XaalyaData).]</p>
+            <p>Pour pérenniser notre infrastructure technique et la collecte quotidienne des taux tout en garantissant notre indépendance, Xaalya s'appuie sur une muraille stricte entre l'algorithme de comparaison et ses sources de revenus potentielles (études macroéconomiques agrégées <em>XaalyaData</em> à destination des chercheurs ou institutions, ou liens d'affiliation standards n'ayant aucune incidence sur le tri). Lorsqu'un lien comporte un suivi d'affiliation, le prix payé par l'utilisateur reste strictement identique au tarif public de l'opérateur.</p>
           </div>
 
           <div>
             <h3 class="text-xl font-semibold text-[#06281E] mb-2">Erreurs et corrections</h3>
-            <p class="text-slate-700">[Expliquez votre protocole de mise à jour des taux et de rectification rapide lorsqu'un écart est signalé.]</p>
+            <p>Les grilles tarifaires et les taux de change des opérateurs évoluent plusieurs fois par jour. Si un décalage ponctuel survient entre notre relevé et la grille en direct d'un prestataire, nous le corrigeons dès sa détection ou dès le signalement d'un utilisateur, sans favoritisme.</p>
           </div>
 
           <div>
             <h3 class="text-xl font-semibold text-[#06281E] mb-2">Comment vérifier nos affirmations</h3>
-            <p class="text-slate-700">[Invitez l'utilisateur à comparer directement le montant affiché sur Xaalya avec la simulation finale sur le site de l'opérateur sélectionné.]</p>
+            <p>Nous encourageons chaque utilisateur à tester la fiabilité de Xaalya par lui-même : relevez les deux meilleurs opérateurs affichés sur Xaalya pour votre montant, puis lancez une simulation sur leurs sites officiels respectifs avant de valider votre paiement. Vous constaterez que l'ordre de classement correspond au montant net réellement versé.</p>
           </div>
         </div>
       </section>
@@ -172,45 +185,45 @@
           Sécurité et confidentialité — La politique Zéro Trace
         </h2>
 
-        <div class="space-y-6">
+        <div class="space-y-6 text-slate-800">
           <div>
             <h3 class="text-xl font-semibold text-[#06281E] mb-2">1. Aucune donnée bancaire collectée</h3>
-            <p class="text-slate-700">[Précisez que Xaalya ne demande jamais de numéro de carte, d'IBAN ni d'identifiant mobile money.]</p>
+            <p>Xaalya ne vous demandera jamais votre numéro de carte bancaire, votre IBAN, votre numéro de compte Mobile Money, ni l'identité de votre bénéficiaire. La transaction financière s'effectue exclusivement sur la plateforme sécurisée de l'opérateur que vous avez choisi.</p>
           </div>
 
           <div>
             <h3 class="text-xl font-semibold text-[#06281E] mb-2">2. Anonymat total, sans compte ni e-mail</h3>
-            <p class="text-slate-700">[Expliquez que toutes les fonctionnalités du comparateur sont accessibles sans inscription.]</p>
+            <p>L'accès à l'intégralité du comparateur, aux filtres promotionnels et à la lecture vocale ne requiert aucune création de compte, aucun mot de passe, aucun numéro de téléphone et aucune adresse e-mail.</p>
           </div>
 
           <div>
             <h3 class="text-xl font-semibold text-[#06281E] mb-2">3. Zéro traçage publicitaire intrusif</h3>
-            <p class="text-slate-700">[Indiquez l'absence de cookies publicitaires tiers et le stockage uniquement local (localStorage) de vos préférences d'affichage comme la langue ou le thème.]</p>
+            <p>Xaalya n'utilise aucun cookie publicitaire tiers, aucun pixel de reciblage commercial (Meta, régies publicitaires, courtiers en données) et ne réalise aucune empreinte numérique (fingerprinting) de votre appareil. Seules vos préférences d'interface (langue d'affichage, thème clair/sombre et corridor en cours pendant votre session) sont mémorisées localement dans votre propre navigateur (<code class="bg-slate-100 px-1.5 py-0.5 rounded text-sm">localStorage</code> / <code class="bg-slate-100 px-1.5 py-0.5 rounded text-sm">sessionStorage</code>) et ne quittent jamais votre terminal.</p>
           </div>
 
           <div>
             <h3 class="text-xl font-semibold text-[#06281E] mb-2">4. Conformité RGPD</h3>
-            <p class="text-slate-700">[Détaillez le principe de minimisation des données appliqué dès la conception (Privacy by Design).]</p>
+            <p>Xaalya applique le principe européen de protection des données dès la conception (<em>Privacy by Design</em>) et de minimisation absolue prévu par le Règlement Général sur la Protection des Données (RGPD — Règlement UE 2016/679). La meilleure façon de protéger vos données personnelles est de ne pas les collecter.</p>
           </div>
 
           <div>
             <h3 class="text-xl font-semibold text-[#06281E] mb-2">5. Vos droits (et pourquoi ils ne s'appliquent pas ici)</h3>
-            <p class="text-slate-700">[Expliquez que ne collectant aucune donnée personnelle identifiable, Xaalya ne détient aucun fichier nominatif à modifier ou supprimer.]</p>
+            <p>En vertu du RGPD, vous disposez d'un droit d'accès, de rectification, d'effacement et de portabilité de vos données personnelles. Parce que Xaalya ne collecte ni ne stocke aucune donnée personnelle identifiable lors de votre navigation, nous ne détenons aucun dossier nominatif vous concernant. Si vous nous écrivez volontairement par e-mail à <a href="mailto:info@xaalya.com" class="text-[#059669] underline">info@xaalya.com</a>, votre message est utilisé uniquement pour vous répondre puis supprimé sur simple demande.</p>
           </div>
 
           <div>
             <h3 class="text-xl font-semibold text-[#06281E] mb-2">6. Sécurité des liens sortants</h3>
-            <p class="text-slate-700">[Précisez que les liens vers les opérateurs officiels s'ouvrent en HTTPS sécurisé (`rel="noopener noreferrer"`).]</p>
+            <p>L'ensemble des échanges avec xaalya.com est chiffré via le protocole HTTPS (TLS) et protégé par notre infrastructure réseau. Tous les liens redirigeant vers les opérateurs de transfert s'ouvrent vers leurs domaines officiels vérifiés avec les attributs de sécurité <code class="bg-slate-100 px-1.5 py-0.5 rounded text-sm">rel="noopener noreferrer"</code> afin d'empêcher toute transmission de contexte entre onglets.</p>
           </div>
 
           <div>
             <h3 class="text-xl font-semibold text-[#06281E] mb-2">7. Ce que Xaalya ne fait pas</h3>
-            <p class="text-slate-700">[Rappelez que Xaalya ne vous démarchera jamais par téléphone, SMS ou e-mail pour vous proposer un transfert.]</p>
+            <p>Xaalya ne vous contactera jamais par téléphone, SMS, WhatsApp ou e-mail pour vous proposer un transfert d'argent, vous réclamer des frais ou vous demander des justificatifs d'identité. Toute sollicitation de ce type usurpant le nom de Xaalya doit être considérée comme frauduleuse et signalée immédiatement.</p>
           </div>
 
           <div>
             <h3 class="text-xl font-semibold text-[#06281E] mb-2">8. Comment vérifier nos affirmations (F12)</h3>
-            <p class="text-slate-700">[Expliquez comment tout utilisateur peut ouvrir les outils développeur de son navigateur (F12 → Réseau / Stockage) pour vérifier l'absence de traqueurs.]</p>
+            <p>Tout utilisateur ou auditeur technique peut vérifier notre politique Zéro Trace en quelques secondes : ouvrez les outils de développement de votre navigateur (touche <strong>F12</strong> ou clic droit → <em>Inspecter</em>), puis consultez les onglets <strong>Réseau (Network)</strong> et <strong>Application / Stockage (Cookies)</strong>. Vous constaterez l'absence totale de cookies publicitaires et de requêtes vers des régies de profilage.</p>
           </div>
         </div>
       </section>
@@ -221,40 +234,40 @@
           Questions fréquentes — Gratuité, données et fiabilité
         </h2>
 
-        <div class="space-y-6">
+        <div class="space-y-6 text-slate-800">
           <div>
             <h3 class="text-xl font-semibold text-[#06281E] mb-2">Xaalya est-il vraiment 100 % gratuit ?</h3>
-            <p class="text-slate-700">[Réponse claire sur la gratuité totale pour l'utilisateur.]</p>
+            <p>Oui. L'utilisation du comparateur, la consultation de tous les corridors et l'assistant vocal sont entièrement gratuits pour les particuliers, sans frais cachés ni abonnement.</p>
           </div>
 
           <div>
             <h3 class="text-xl font-semibold text-[#06281E] mb-2">Comment Xaalya se finance-t-il s'il est gratuit ?</h3>
-            <p class="text-slate-700">[Explication synthétique renvoyant à la section Notre modèle économique.]</p>
+            <p>Xaalya est un projet léger et indépendant dont les coûts d'infrastructure sont maîtrisés. Son financement repose sur la valorisation d'analyses statistiques anonymisées sur les corridors africains (<em>XaalyaData</em>) et sur d'éventuels partenariats transparents qui n'influencent jamais l'ordre mathématique des résultats.</p>
           </div>
 
           <div>
             <h3 class="text-xl font-semibold text-[#06281E] mb-2">Les taux affichés sont-ils mis à jour en temps réel ?</h3>
-            <p class="text-slate-700">[Explication sur la fréquence d'actualisation des taux interbancaires et des grilles opérateurs.]</p>
+            <p>Les taux de référence et les grilles opérateurs sont actualisés régulièrement tout au long de la journée. Toutefois, sur le marché des changes, un taux peut varier à la seconde près au moment où vous validez votre transaction : le montant affiché sur Xaalya constitue une estimation fiable de comparaison avant confirmation finale chez l'opérateur.</p>
           </div>
 
           <div>
             <h3 class="text-xl font-semibold text-[#06281E] mb-2">Dois-je créer un compte pour utiliser le comparateur ?</h3>
-            <p class="text-slate-700">[Non, aucun compte n'est requis.]</p>
+            <p>Non. Aucun compte n'est nécessaire sur Xaalya. Vous n'aurez à vous identifier que sur le site ou l'application de l'opérateur agréé que vous choisirez pour exécuter votre transfert (conformément aux obligations légales de lutte contre le blanchiment auxquelles sont soumis les établissements financiers).</p>
           </div>
 
           <div>
             <h3 class="text-xl font-semibold text-[#06281E] mb-2">Comment Xaalya détermine-t-il ses taux au quotidien ?</h3>
-            <p class="text-slate-700">[Présentation de la méthodologie de collecte et de calcul des frais et taux nets.]</p>
+            <p>Nous croisons les taux de change interbancaires de référence avec les grilles de frais et de conversion publiées par chaque opérateur sur chaque corridor (pays d'envoi, devise de réception et mode de retrait), afin de calculer le taux net effectif appliqué à votre montant.</p>
           </div>
 
           <div>
             <h3 class="text-xl font-semibold text-[#06281E] mb-2">Xaalya collecte-t-il mes données personnelles ?</h3>
-            <p class="text-slate-700">[Non, conformément à la politique Zéro Trace.]</p>
+            <p>Non. Conformément à notre politique Zéro Trace détaillée plus haut, nous ne collectons ni votre nom, ni votre adresse IP à des fins de profilage, ni vos montants transférés.</p>
           </div>
 
           <div>
             <h3 class="text-xl font-semibold text-[#06281E] mb-2">Que se passe-t-il si un opérateur propose une somme importante pour être mieux classé ?</h3>
-            <p class="text-slate-700">[Refus catégorique : le classement est strictement mathématique et non négociable.]</p>
+            <p>La proposition est refusée. La crédibilité de Xaalya repose entièrement sur la confiance des utilisateurs de la diaspora : vendre une place dans le classement détruirait la raison d'être même de notre observatoire.</p>
           </div>
         </div>
       </section>
@@ -265,60 +278,60 @@
           Conditions générales d'utilisation (CGU)
         </h2>
 
-        <div class="space-y-6">
+        <div class="space-y-6 text-slate-800">
           <div>
             <h3 class="text-xl font-semibold text-[#06281E] mb-2">1. Objet</h3>
-            <p class="text-slate-700">[Définition de l'objet des présentes CGU encadrant l'accès et l'utilisation du site xaalya.com.]</p>
+            <p>Les présentes Conditions Générales d'Utilisation (CGU) ont pour objet de définir les modalités et conditions d'accès et d'utilisation du site internet <strong>xaalya.com</strong> (ci-après « le Site ») par tout utilisateur.</p>
           </div>
 
           <div>
             <h3 class="text-xl font-semibold text-[#06281E] mb-2">2. Nature du service</h3>
-            <p class="text-slate-700">[Service de comparaison informative indépendant, sans prestation de services de paiement.]</p>
+            <p>Le Site fournit un service indépendant d'information et de comparaison des tarifs et taux de change appliqués par différents prestataires de services de transfert d'argent. Xaalya n'est pas un prestataire de services de paiement, n'intervient pas dans la relation contractuelle entre l'utilisateur et l'opérateur sélectionné et ne perçoit aucun fonds pour le compte de tiers.</p>
           </div>
 
           <div>
             <h3 class="text-xl font-semibold text-[#06281E] mb-2">3. Gratuité</h3>
-            <p class="text-slate-700">[Accès libre et gratuit pour tout utilisateur disposant d'un accès Internet.]</p>
+            <p>L'accès au Site et l'utilisation de l'outil de comparaison sont libres et gratuits pour tout utilisateur disposant d'un accès à Internet. Les frais de connexion et d'équipement restent à la charge de l'utilisateur.</p>
           </div>
 
           <div>
             <h3 class="text-xl font-semibold text-[#06281E] mb-2">4. Exactitude des informations</h3>
-            <p class="text-slate-700">[Caractère indicatif des simulations avant validation définitive chez l'opérateur choisi.]</p>
+            <p>Xaalya met tout en œuvre pour fournir des données précises et régulièrement actualisées. Toutefois, les résultats affichés ont une valeur indicative et informative : seul le récapitulatif présenté par l'opérateur de transfert au moment de la validation définitive du paiement fait foi.</p>
           </div>
 
           <div>
             <h3 class="text-xl font-semibold text-[#06281E] mb-2">5. Responsabilité</h3>
-            <p class="text-slate-700">[Limitation de responsabilité concernant l'exécution des transferts opérés sur des plateformes tierces.]</p>
+            <p>Xaalya ne saurait être tenu responsable des variations de taux intervenues entre la consultation du Site et l'exécution du transfert, ni des délais, incidents techniques, blocages réglementaires ou litiges survenant lors de l'utilisation des services d'un opérateur tiers.</p>
           </div>
 
           <div>
             <h3 class="text-xl font-semibold text-[#06281E] mb-2">6. Propriété intellectuelle</h3>
-            <p class="text-slate-700">[Protection de la marque Xaalya, de l'interface, des textes et de la structure de données.]</p>
+            <p>La marque Xaalya, le logo, la charte graphique, l'architecture du Site, les textes, les traductions et le code source sont protégés par les dispositions relatives à la propriété intellectuelle. Toute reproduction, extraction automatisée massive (scraping) ou réutilisation commerciale sans autorisation écrite préalable est interdite.</p>
           </div>
 
           <div>
             <h3 class="text-xl font-semibold text-[#06281E] mb-2">7. Données personnelles (renvoi vers la section Sécurité)</h3>
-            <p class="text-slate-700">Voir la section <a href="#securite-confidentialite" class="text-[#059669] underline hover:text-[#06281E]">Sécurité et confidentialité — La politique Zéro Trace</a>.</p>
+            <p>Les engagements de Xaalya en matière de protection de la vie privée et d'absence de collecte de données personnelles sont détaillés à la section <a href="#securite-confidentialite" class="text-[#059669] underline hover:text-[#06281E]">Sécurité et confidentialité — La politique Zéro Trace</a> des présentes.</p>
           </div>
 
           <div>
             <h3 class="text-xl font-semibold text-[#06281E] mb-2">8. Liens hypertextes</h3>
-            <p class="text-slate-700">[Conditions relatives aux liens sortants vers les sites des prestataires de transfert.]</p>
+            <p>Le Site contient des liens hypertextes redirigeant vers les sites officiels d'opérateurs de transfert d'argent. Xaalya n'exerce aucun contrôle sur le contenu, la disponibilité ou les conditions générales de ces sites tiers.</p>
           </div>
 
           <div>
             <h3 class="text-xl font-semibold text-[#06281E] mb-2">9. Modification des CGU</h3>
-            <p class="text-slate-700">[Droit d'actualiser les CGU à tout moment pour refléter l'évolution du service.]</p>
+            <p>Xaalya se réserve le droit de modifier ou d'actualiser les présentes CGU à tout moment afin de les adapter aux évolutions du Site ou du cadre réglementaire. La version applicable est celle publiée en ligne à la date de consultation.</p>
           </div>
 
           <div>
             <h3 class="text-xl font-semibold text-[#06281E] mb-2">10. Droit applicable et juridiction</h3>
-            <p class="text-slate-700">[Précision du droit applicable et des juridictions compétentes.]</p>
+            <p>Les présentes CGU sont régies par le droit français et les règles applicables au sein de l'Union européenne. En cas de différend relatif à leur interprétation ou à leur exécution, et à défaut de résolution amiable, les tribunaux compétents seront saisis conformément aux règles de droit commun.</p>
           </div>
 
           <div>
             <h3 class="text-xl font-semibold text-[#06281E] mb-2">11. Contact</h3>
-            <p class="text-slate-700">Pour toute question relative aux présentes CGU, consultez la section <a href="#contact" class="text-[#059669] underline hover:text-[#06281E]">Contact et signalement</a>.</p>
+            <p>Pour toute question relative aux présentes CGU, vous pouvez contacter l'équipe Xaalya via les coordonnées indiquées à la section <a href="#contact" class="text-[#059669] underline hover:text-[#06281E]">Contact et signalement</a>.</p>
           </div>
         </div>
       </section>
@@ -329,20 +342,20 @@
           Contact et signalement
         </h2>
 
-        <div class="space-y-6">
+        <div class="space-y-6 text-slate-800">
           <div>
             <h3 class="text-xl font-semibold text-[#06281E] mb-2">Signaler une erreur ou une inexactitude</h3>
-            <p class="text-slate-700">Vous avez constaté un écart de taux ou de frais sur un corridor ? Écrivez-nous à <a href="mailto:info@xaalya.com" class="font-semibold text-[#059669] underline">info@xaalya.com</a> en précisant le corridor et l'opérateur concernés.</p>
+            <p>Vous avez constaté un écart de taux, une promotion expirée ou des frais erronés sur un corridor ? Écrivez-nous à <a href="mailto:info@xaalya.com" class="font-semibold text-[#059669] underline">info@xaalya.com</a> en précisant le pays d'envoi, le pays de réception, le montant simulé et l'opérateur concerné. Nous vérifions chaque signalement sous 24 à 48 heures ouvrées.</p>
           </div>
 
           <div>
             <h3 class="text-xl font-semibold text-[#06281E] mb-2">Question relative à la confidentialité</h3>
-            <p class="text-slate-700">Pour toute demande concernant notre politique Zéro Trace ou le RGPD : <a href="mailto:info@xaalya.com" class="font-semibold text-[#059669] underline">info@xaalya.com</a>.</p>
+            <p>Pour toute question concernant notre politique Zéro Trace, la sécurité du site ou l'exercice de vos droits : <a href="mailto:info@xaalya.com" class="font-semibold text-[#059669] underline">info@xaalya.com</a>.</p>
           </div>
 
           <div>
             <h3 class="text-xl font-semibold text-[#06281E] mb-2">Presse, partenariats et XaalyaData</h3>
-            <p class="text-slate-700">Journalistes, chercheurs ou institutions souhaitant accéder à nos analyses de corridors : contactez <a href="mailto:info@xaalya.com" class="font-semibold text-[#059669] underline">info@xaalya.com</a>.</p>
+            <p>Journalistes, chercheurs, ONG ou institutions souhaitant accéder à nos études agrégées sur le coût des transferts vers l'Afrique : contactez <a href="mailto:info@xaalya.com" class="font-semibold text-[#059669] underline">info@xaalya.com</a>.</p>
           </div>
         </div>
       </section>
@@ -355,8 +368,8 @@
     <div class="max-w-4xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
       <p>&copy; 2026 Xaalya. Tous droits réservés.</p>
       <div class="flex flex-wrap justify-center gap-4">
-        <a href="index.html" class="hover:text-[#06281E]">Comparateur</a>
-        <a href="index.html" class="hover:text-[#06281E]">Comparateur</a>
+        <a href="index.html" onclick="if (document.referrer.includes('index.html') || document.referrer.endsWith('xaalya.com/')) { history.back(); return false; }" class="hover:text-[#06281E]">Comparateur</a>
+        <a href="#a-propos" class="hover:text-[#06281E]">À Propos</a>
         <a href="#modele-economique" class="hover:text-[#06281E]">Notre Modèle</a>
         <a href="#securite-confidentialite" class="hover:text-[#06281E]">Confidentialité</a>
         <a href="#cgu" class="hover:text-[#06281E]">CGU</a>
