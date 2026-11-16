@@ -228,13 +228,10 @@ body.light-mode #btnToggleVoice {
       </a>
     </div>
     <div class="flex items-center gap-3 text-xs font-medium text-slate-400">
-      <nav class="flex items-center gap-6 text-sm font-medium text-black">
-  <nav class="flex flex-wrap items-center gap-4 sm:gap-6 text-sm font-semibold text-black">
-  <a href="transparence.html#a-propos" data-i18n="navAbout" class="text-black hover:text-[#10B981] transition-colors">À Propos</a>
-  <a href="transparence.html#modele-economique" data-i18n="navModel" class="text-black hover:text-[#10B981] transition-colors">Notre Modèle</a>
-  <a href="transparence.html#faq" data-i18n="navFaq" class="text-black hover:text-[#10B981] transition-colors">FAQ</a>
-  <a href="transparence.html#securite-confidentialite" data-i18n="navSecurity" class="text-black hover:text-[#10B981] transition-colors">Sécurité</a>
-</nav>
+      <button onclick="openModal('modal-about')" data-i18n="navAbout" class="hover:text-white transition hidden sm:inline-block">About</button>
+      <button onclick="openModal('modal-model')" data-i18n="navModel" class="hover:text-white transition hidden sm:inline-block">Our Model</button>
+      <button onclick="openModal('modal-faq')" data-i18n="navFaq" class="hover:text-white transition hidden sm:inline-block">FAQ</button>
+      <button onclick="openModal('modal-security')" data-i18n="navSecurity" class="hover:text-white transition hidden sm:inline-block">Security</button>
       <div class="relative">
         <select id="language-select" onchange="setLanguage(this.value, true)" class="bg-slate-900 border border-slate-800 text-white text-xs font-bold rounded-lg px-3 py-2 focus:outline-none focus:border-brand-500 transition cursor-pointer">
           <option value="en">🇬🇧 English</option>
@@ -255,6 +252,20 @@ body.light-mode #btnToggleVoice {
           <option value="wo">🇸🇳 Wolof</option>
 </select>
 
+        <button 
+          id="btnToggleVoice" 
+          type="button" 
+          onclick="toggleVoiceAlert()" 
+          aria-label="Activer ou couper l'annonce vocale"
+          title="Annonce vocale activée"
+          class="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-slate-900 hover:bg-slate-800 border border-slate-800 text-emerald-400 transition shrink-0">
+          <svg id="iconVoiceOn" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M11 5L6 9H2v6h4l5 4V5zM15.54 8.46a5 5 0 010 7.07M19.07 4.93a10 10 0 010 14.14"/>
+          </svg>
+          <svg id="iconVoiceOff" class="w-4 h-4 hidden text-slate-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M11 5L6 9H2v6h4l5 4V5zM23 9l-6 6M17 9l6 6"/>
+          </svg>
+        </button>
       </div>
       <button id="theme-toggle" class="theme-toggle-btn" title="Toggle display mode"><span id="theme-icon">🌙</span></button>
     </div>
@@ -793,6 +804,133 @@ function getSpokenCurrency(code, lang) {
   return entry[lang] || entry['en'] || entry['default'] || code;
 }
 
+// ============================================================================
+// SYSTÈME VOCAL XAALYA (DÉSACTIVÉ PAR DÉFAUT + DÉBOUNCE + ÉCOUTE MANUELLE)
+// ============================================================================
+
+// 1. Désactivé par défaut : s'active uniquement si l'utilisateur l'a choisi ('true')
+let isVoiceEnabled = localStorage.getItem('xaalya_voice_enabled') === 'true';
+let voiceDebounceTimer = null;
+
+function updateVoiceButtonUI() {
+  const btn = document.getElementById('btnToggleVoice');
+  const iconOn = document.getElementById('iconVoiceOn');
+  const iconOff = document.getElementById('iconVoiceOff');
+  if (!btn || !iconOn || !iconOff) return;
+
+  if (isVoiceEnabled) {
+    iconOn.classList.remove('hidden');
+    iconOff.classList.add('hidden');
+    btn.title = 'Annonce vocale automatique activée (cliquer pour couper)';
+    btn.classList.add('text-emerald-400');
+    btn.classList.remove('text-slate-400');
+  } else {
+    iconOn.classList.add('hidden');
+    iconOff.classList.remove('hidden');
+    btn.title = 'Annonce vocale automatique désactivée (cliquer pour activer)';
+    btn.classList.remove('text-emerald-400');
+    btn.classList.add('text-slate-400');
+  }
+}
+
+function toggleVoiceAlert() {
+  isVoiceEnabled = !isVoiceEnabled;
+  localStorage.setItem('xaalya_voice_enabled', isVoiceEnabled ? 'true' : 'false');
+  updateVoiceButtonUI();
+
+  if (!isVoiceEnabled && 'speechSynthesis' in window) {
+    window.speechSynthesis.cancel();
+  } else if (isVoiceEnabled) {
+    speakComparisonResult(true);
+  }
+}
+
+document.addEventListener('DOMContentLoaded', updateVoiceButtonUI);
+
+// 2. Débounce de 1,5 seconde (uniquement si le mode Auto est activé)
+function triggerVoiceDebounced() {
+  if (!isVoiceEnabled) return;
+  clearTimeout(voiceDebounceTimer);
+  voiceDebounceTimer = setTimeout(() => {
+    speakComparisonResult(false);
+  }, 1500);
+}
+
+// 3. Bouton manuel "Écouter le résultat" (fonctionne toujours au clic, même en mode Mute)
+function listenResultNow() {
+  clearTimeout(voiceDebounceTimer);
+  speakComparisonResult(true);
+}
+
+// 4. Lecture enrichie (1er et 2e meilleur opérateur + prononciation des 27+ devises)
+function speakComparisonResult(isManualClick = false) {
+  if (!isManualClick && !isVoiceEnabled) return;
+  if (!('speechSynthesis' in window)) return;
+
+  const sourceEl = document.getElementById('sourceCurrency');
+  const targetEl = document.getElementById('targetCurrency');
+  const amountEl = document.getElementById('sendAmount');
+  if (!sourceEl || !targetEl || !amountEl) return;
+
+  const source = sourceEl.value;
+  const target = targetEl.value;
+  const amount = parseFloat(amountEl.value) || 0;
+  if (amount <= 0) return;
+
+  let tauxSource = source !== 'EUR' ? (tauxDeChange[source.toLowerCase()] || 1) : 1;
+  const tauxCible = tauxDeChange[target.toLowerCase()] || 1;
+  const tauxInterbancaire = tauxCible / tauxSource;
+
+  const offres = OPERATEURS.map(op => ({
+    nom: op.nom,
+    recu: Math.max(0, amount - op.fraisFixes) * (tauxInterbancaire * (1 - op.margeChange))
+  })).sort((a, b) => b.recu - a.recu);
+
+  if (offres.length === 0) return;
+
+  window.speechSynthesis.cancel();
+
+  const best = offres[0];
+  const second = offres[1];
+  const lang = typeof currentLang !== 'undefined' ? currentLang : 'fr';
+
+  const spokenSource = typeof getSpokenCurrency === 'function' ? getSpokenCurrency(source, lang) : source;
+  const spokenTarget = typeof getSpokenCurrency === 'function' ? getSpokenCurrency(target, lang) : target;
+
+  let message = '';
+
+  if (lang === 'fr') {
+    const bestAmount = Math.round(best.recu).toLocaleString('fr-FR');
+    const secondAmount = second ? Math.round(second.recu).toLocaleString('fr-FR') : '';
+    message = `Pour ${amount} ${spokenSource}, le moins cher est ${best.nom}. Vous recevez environ ${bestAmount} ${spokenTarget}.` +
+              (second ? ` Le deuxième est ${second.nom}, avec ${secondAmount} ${spokenTarget}.` : '');
+  } else if (lang === 'en') {
+    const bestAmount = Math.round(best.recu).toLocaleString('en-US');
+    const secondAmount = second ? Math.round(second.recu).toLocaleString('en-US') : '';
+    message = `For ${amount} ${spokenSource}, the cheapest is ${best.nom}. You receive about ${bestAmount} ${spokenTarget}.` +
+              (second ? ` The second is ${second.nom}, with ${secondAmount} ${spokenTarget}.` : '');
+  } else {
+    const cfg = (typeof VOICE_CONFIG_16 !== 'undefined' && VOICE_CONFIG_16[lang]) || { bestLabel: 'Best rate' };
+    const bestAmount = Math.round(best.recu).toLocaleString('en-US');
+    message = `${cfg.bestLabel}: ${best.nom}, ${bestAmount} ${spokenTarget}.`;
+  }
+
+  const utterance = new SpeechSynthesisUtterance(message);
+  const langCodeMap = {
+    fr: 'fr-FR', en: 'en-US', zu: 'en-ZA', ln: 'fr-FR', sn: 'en-GB',
+    de: 'de-DE', ar: 'ar-SA', pt: 'pt-PT', es: 'es-ES', zh: 'zh-CN',
+    it: 'it-IT', sw: 'sw-KE', am: 'en-US', yo: 'en-NG', ha: 'en-NG', wo: 'fr-FR'
+  };
+  utterance.lang = langCodeMap[lang] || 'en-US';
+  utterance.rate = 0.95;
+  window.speechSynthesis.speak(utterance);
+}
+
+// Compatibilité avec vos écouteurs du bas
+function declencherVoixOff() {
+  triggerVoiceDebounced();
+}
+
 function renderResults() {
   const tbody = document.getElementById('operatorsList');
   if (!tbody) return;
@@ -844,6 +982,7 @@ function renderResults() {
     </tr>`;
   }).join('');
 
+if (isVoiceEnabled && resultats.length > 0 && 'speechSynthesis' in window) {
     window.speechSynthesis.cancel();
     const meilleur = resultats[0];
     
@@ -899,9 +1038,9 @@ document.addEventListener('DOMContentLoaded', async () => {
   document.getElementById('language-select').value = langSauvee;
   setLanguage(langSauvee, false);
 
-  document.getElementById('sourceCurrency').addEventListener('change', () => { updateHeroTitle(); renderResults(); });
-  document.getElementById('targetCurrency').addEventListener('change', () => { renderResults(); });
-  document.getElementById('sendAmount').addEventListener('input', () => { updateHeroTitle(); renderResults(); });
+  document.getElementById('sourceCurrency').addEventListener('change', () => { updateHeroTitle(); renderResults(); triggerVoiceDebounced(); });
+  document.getElementById('targetCurrency').addEventListener('change', () => { renderResults(); triggerVoiceDebounced(); });
+  document.getElementById('sendAmount').addEventListener('input', () => { updateHeroTitle(); renderResults(); triggerVoiceDebounced(); });
   const themeToggle = document.getElementById('theme-toggle');
   const themeIcon = document.getElementById('theme-icon');
   if (themeToggle) {
@@ -919,6 +1058,5 @@ document.addEventListener('DOMContentLoaded', async () => {
     } catch(e) {}
   } 
 </script>
-<script src="voice.js"></script>
 </body>
 </html>
