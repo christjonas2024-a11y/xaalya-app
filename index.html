@@ -229,10 +229,11 @@ body.light-mode #btnToggleVoice {
     </div>
     <div class="flex items-center gap-3 text-xs font-medium text-slate-400">
       <nav class="flex items-center gap-6 text-sm font-medium text-black">
-  <a href="transparence.html#a-propos" data-i18n="navAbout" class="hover:text-[#10B981] transition-colors">À Propos</a>
-  <a href="transparence.html#modele-economique" data-i18n="navModel" class="hover:text-[#10B981] transition-colors">Notre Modèle</a>
-  <a href="transparence.html#faq" data-i18n="navFaq" class="hover:text-[#10B981] transition-colors">FAQ</a>
-  <a href="transparence.html#securite-confidentialite" data-i18n="navSecurity" class="hover:text-[#10B981] transition-colors">Sécurité</a>
+  <nav class="flex flex-wrap items-center gap-4 sm:gap-6 text-sm font-semibold text-black">
+  <a href="transparence.html#a-propos" data-i18n="navAbout" class="text-black hover:text-[#10B981] transition-colors">À Propos</a>
+  <a href="transparence.html#modele-economique" data-i18n="navModel" class="text-black hover:text-[#10B981] transition-colors">Notre Modèle</a>
+  <a href="transparence.html#faq" data-i18n="navFaq" class="text-black hover:text-[#10B981] transition-colors">FAQ</a>
+  <a href="transparence.html#securite-confidentialite" data-i18n="navSecurity" class="text-black hover:text-[#10B981] transition-colors">Sécurité</a>
 </nav>
       <div class="relative">
         <select id="language-select" onchange="setLanguage(this.value, true)" class="bg-slate-900 border border-slate-800 text-white text-xs font-bold rounded-lg px-3 py-2 focus:outline-none focus:border-brand-500 transition cursor-pointer">
@@ -843,7 +844,6 @@ function renderResults() {
     </tr>`;
   }).join('');
 
-if (isVoiceEnabled && resultats.length > 0 && 'speechSynthesis' in window) {
     window.speechSynthesis.cancel();
     const meilleur = resultats[0];
     
