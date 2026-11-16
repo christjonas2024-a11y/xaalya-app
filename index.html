@@ -228,10 +228,12 @@ body.light-mode #btnToggleVoice {
       </a>
     </div>
     <div class="flex items-center gap-3 text-xs font-medium text-slate-400">
-      <button onclick="openModal('modal-about')" data-i18n="navAbout" class="hover:text-white transition hidden sm:inline-block">About</button>
-      <button onclick="openModal('modal-model')" data-i18n="navModel" class="hover:text-white transition hidden sm:inline-block">Our Model</button>
-      <button onclick="openModal('modal-faq')" data-i18n="navFaq" class="hover:text-white transition hidden sm:inline-block">FAQ</button>
-      <button onclick="openModal('modal-security')" data-i18n="navSecurity" class="hover:text-white transition hidden sm:inline-block">Security</button>
+      <nav class="flex items-center gap-6 text-sm font-medium text-black">
+  <a href="transparence.html#a-propos" data-i18n="navAbout" class="hover:text-[#10B981] transition-colors">À Propos</a>
+  <a href="transparence.html#modele-economique" data-i18n="navModel" class="hover:text-[#10B981] transition-colors">Notre Modèle</a>
+  <a href="transparence.html#faq" data-i18n="navFaq" class="hover:text-[#10B981] transition-colors">FAQ</a>
+  <a href="transparence.html#securite-confidentialite" data-i18n="navSecurity" class="hover:text-[#10B981] transition-colors">Sécurité</a>
+</nav>
       <div class="relative">
         <select id="language-select" onchange="setLanguage(this.value, true)" class="bg-slate-900 border border-slate-800 text-white text-xs font-bold rounded-lg px-3 py-2 focus:outline-none focus:border-brand-500 transition cursor-pointer">
           <option value="en">🇬🇧 English</option>
