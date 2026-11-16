@@ -897,5 +897,68 @@ document.addEventListener('DOMContentLoaded', async () => {
   } 
 </script>
 <script src="voice.js"></script>
+<script>
+(function() {
+  const fields = ['sourceCurrency', 'targetCurrency', 'sendAmount'];
+
+  function saveComparatorState() {
+    const state = {};
+    fields.forEach(id => {
+      const el = document.getElementById(id);
+      if (el) state[id] = el.value;
+    });
+    sessionStorage.setItem('xaalya_comparator_state', JSON.stringify(state));
+  }
+
+  window.restoreComparatorState = function() {
+    const raw = sessionStorage.getItem('xaalya_comparator_state');
+    if (!raw) return;
+    try {
+      const state = JSON.parse(raw);
+      let restored = false;
+      fields.forEach(id => {
+        const el = document.getElementById(id);
+        if (!el || !state[id]) return;
+        if (id === 'sendAmount') {
+          el.value = state[id];
+          restored = true;
+        } else if (Array.from(el.options || []).some(o => o.value === state[id])) {
+          el.value = state[id];
+          restored = true;
+        }
+      });
+      if (restored && typeof renderResults === 'function') {
+        renderResults();
+      }
+    } catch (e) {}
+  };
+
+  window.addEventListener('DOMContentLoaded', () => {
+    const sourceEl = document.getElementById('sourceCurrency');
+
+    // Déclenche automatiquement la restauration dès que rates.json remplit les <option>
+    if (sourceEl) {
+      const observer = new MutationObserver(() => {
+        if (sourceEl.options.length > 0) {
+          window.restoreComparatorState();
+          observer.disconnect();
+        }
+      });
+      observer.observe(sourceEl, { childList: true });
+    }
+
+    // Sécurité si les options étaient déjà présentes dans le HTML
+    window.restoreComparatorState();
+
+    fields.forEach(id => {
+      const el = document.getElementById(id);
+      if (el) {
+        el.addEventListener('change', saveComparatorState);
+        el.addEventListener('input', saveComparatorState);
+      }
+    });
+  });
+})();
+</script>
 </body>
 </html>
