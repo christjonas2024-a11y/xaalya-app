@@ -442,61 +442,41 @@ body.light-mode #btnToggleVoice {
         <h2 class="text-xl sm:text-2xl font-bold text-white tracking-tight">
           Valeur de Référence Officielle & Écart Réel
         </h2>
-      </div>
+     </div>
       <div class="text-left sm:text-right">
         <span class="text-xs text-slate-400 block">Dernière mise à jour</span>
         <span id="last-update-time" class="text-xs font-mono text-emerald-400">Chargement...</span>
       </div>
     </div>
 
-    <!-- Grille de configuration responsive (Montant & Devise) -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
-      <div>
-        <label class="block text-xs font-medium text-slate-400 mb-1.5 uppercase tracking-wider">Montant envoyé (EUR)</label>
-        <div class="relative">
-          <input type="number" id="sim-amount" value="500" min="1" 
-            class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white font-semibold focus:ring-2 focus:ring-emerald-500 focus:outline-none transition">
-          <span class="absolute right-4 top-3.5 text-slate-400 text-sm font-bold">EUR</span>
-        </div>
+    <!-- ANCIENNE GRILLE SUPPRIMÉE : Montant envoyé (EUR) & Devise de destination sont désormais pilotés par le haut / corridors -->
+
+    <!-- Boîte de Résultat Dynamique avec Mention de Parité Fixe -->
+    <div class="bg-slate-950/80 border border-slate-800/80 rounded-xl p-6 text-center space-y-4">
+      <p id="ref-corridor-label" class="text-xs uppercase tracking-wider text-slate-400">
+        Corridor actif : EUR → XOF
+      </p>
+
+      <p class="text-sm text-slate-300">
+        Valeur brute convertie au taux interbancaire officiel des banques centrales :
+      </p>
+
+      <div id="sim-net-display" class="text-3xl sm:text-4xl font-black text-emerald-400 tracking-tight">
+        -
       </div>
 
-      <div>
-        <label class="block text-xs font-medium text-slate-400 mb-1.5 uppercase tracking-wider">Devise de destination</label>
-        <select id="sim-currency" 
-          class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white font-semibold focus:ring-2 focus:ring-emerald-500 focus:outline-none transition appearance-none cursor-pointer">
-          <option value="XOF">XOF - Franc CFA (UEMOA)</option>
-          <option value="XAF">XAF - Franc CFA (CEMAC)</option>
-          <option value="NGN">NGN - Naira nigérian</option>
-          <option value="GHS">GHS - Cedi ghanéen</option>
-          <option value="KES">KES - Shilling kényan</option>
-          <option value="MAD">MAD - Dirham marocain</option>
-          <option value="EUR">EUR - Euro</option>
-        </select>
+      <div class="pt-3 border-t border-slate-800 flex flex-col sm:flex-row justify-center items-center gap-2 sm:gap-6 text-xs text-slate-400 font-mono">
+        <span>Taux de référence : <strong id="sim-rate-display" class="text-white">-</strong></span>
+      </div>
+
+      <!-- Badge dynamique pour les parités fixes BCEAO / BEAC -->
+      <div id="peg-notice" class="hidden pt-2">
+        <span class="inline-flex items-center gap-1.5 px-3 py-1 bg-blue-500/10 text-blue-400 border border-blue-500/20 rounded-full text-[11px] font-medium">
+          <span>🛡️</span>
+          <span>Parité fixe légale garantie par traité monétaire (BCEAO / BEAC : 1 EUR = 655,957 F)</span>
+        </span>
       </div>
     </div>
-
-<!-- Boîte de Résultat Dynamique avec Mention de Parité Fixe -->
-<div class="bg-slate-950/80 border border-slate-800/80 rounded-xl p-6 text-center space-y-4">
-  <p class="text-sm text-slate-300">
-    Valeur brute convertie au taux interbancaire officiel des banques centrales :
-  </p>
-
-  <div id="sim-net-display" class="text-3xl sm:text-4xl font-black text-emerald-400 tracking-tight">
-    -
-  </div>
-
-  <div class="pt-3 border-t border-slate-800 flex flex-col sm:flex-row justify-center items-center gap-2 sm:gap-6 text-xs text-slate-400 font-mono">
-    <span>Taux de référence : <strong id="sim-rate-display" class="text-white">-</strong></span>
-  </div>
-
-  <!-- NOUVEAU : Badge dynamique pour les parités fixes BCEAO / BEAC -->
-  <div id="peg-notice" class="hidden pt-2">
-    <span class="inline-flex items-center gap-1.5 px-3 py-1 bg-blue-500/10 text-blue-400 border border-blue-500/20 rounded-full text-[11px] font-medium">
-      <span>🛡️</span>
-      <span>Parité fixe légale garantie par traité monétaire (BCEAO / BEAC : 1 EUR = 655,957 F)</span>
-    </span>
-  </div>
-</div>
 
     <!-- Note Pédagogique et Juridique -->
     <div class="mt-6 text-center">

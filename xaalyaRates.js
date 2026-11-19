@@ -1,56 +1,113 @@
 // xaalyaRates.js - Gestion globale des taux et du simulateur d'écart de change
-let xaalyaRates = {};
+let xaalyaRatesData = { base: 'EUR', updatedAt: null, rates: {} };
 
-async function initXaalyaRates() {
+async function loadXaalyaReferenceRates() {
+  const updateEl = document.getElementById('ref-last-update');
   try {
-    const response = await fetch('rates.json?' + new Date().getTime());
-    if (!response.ok) throw new Error('Erreur de chargement des taux');
-    
-    const data = await response.json();
-    xaalyaRates = data.rates || {};
+    const res = await fetch('rates.json?' + Date.now());
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    const json = await res.json();
 
-    // Affichage dynamique de la date de dernière mise à jour
-    const updateEl = document.getElementById('last-update-time');
-    if (updateEl && data.updatedAt) {
-      const d = new Date(data.updatedAt);
-      updateEl.textContent = `${d.toLocaleDateString('fr-FR')} à ${d.toLocaleTimeString('fr-FR', {hour: '2-digit', minute:'2-digit'})}`;
+    xaalyaRatesData = {
+      base: json.base || 'EUR',
+      updatedAt: json.updatedAt || null,
+      rates: json.rates || {}
+    };
+
+    if (updateEl && json.updatedAt) {
+      const d = new Date(json.updatedAt);
+      updateEl.textContent = isNaN(d.getTime())
+        ? json.updatedAt
+        : `${d.toLocaleDateString('fr-FR')} à ${d.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' })}`;
+    } else if (updateEl) {
+      updateEl.textContent = 'À jour';
     }
-
-    // Exécuter le calcul du simulateur une fois les taux chargés
-    updateSimulation();
-  } catch (e) {
-    console.warn('Utilisation des taux de secours :', e);
+  } catch (err) {
+    console.warn('Chargement rates.json impossible, repli partiel :', err);
+    // Parités de secours minimales si rates.json est absent en local
+    xaalyaRatesData.rates = {
+      EUR: 1,
+      XOF: 655.957,
+      XAF: 655.957,
+      ...xaalyaRatesData.rates
+    };
+    if (updateEl) updateEl.textContent = 'Mode secours';
   }
+
+  refreshReferenceCompartment();
 }
 
-// Fonction de calcul synchrone reliée aux IDs du simulateur HTML
-function updateSimulation() {
-  const amountInput = document.getElementById('sim-amount');
-  const currencySelect = document.getElementById('sim-currency');
-  const rateDisplay = document.getElementById('sim-rate-display');
-  const netDisplay = document.getElementById('sim-net-display');
-  const pegNotice = document.getElementById('peg-notice'); // Élément du badge CFA
+// Conversion croisée propre même si la devise source n'est pas EUR (ex: CAD -> XOF ou USD -> GHS)
+function getCrossRate(fromCurr, toCurr) {
+  if (fromCurr === toCurr) return 1;
+  const rates = xaalyaRatesData.rates || {};
+  const base = xaalyaRatesData.base || 'EUR';
 
-  if (!amountInput || !currencySelect || !rateDisplay || !netDisplay) return;
+  const fromInBase = fromCurr === base ? 1 : rates[fromCurr];
+  const toInBase = toCurr === base ? 1 : rates[toCurr];
 
-  const amount = parseFloat(amountInput.value) || 0;
-  const target = currencySelect.value;
-  const source = 'EUR';
+  if (!fromInBase || !toInBase) return null;
+  return toInBase / fromInBase;
+}
 
-  // Récupération sécurisée du taux
-  const rate = (xaalyaRates && xaalyaRates[target]) ? xaalyaRates[target] : 1;
-  const netReceived = amount * rate;
+function refreshReferenceCompartment() {
+  const amountEl = document.getElementById('sim-amount') || document.querySelector('input[type="number"]');
+  const fromEl = document.getElementById('from-currency') || document.querySelectorAll('select')[0];
+  const toEl = document.getElementById('to-currency') || document.querySelectorAll('select')[1];
 
-  // Mise à jour de l'affichage
-  rateDisplay.textContent = `1 ${source} = ${rate.toFixed(4)} ${target}`;
-  netDisplay.textContent = `${netReceived.toLocaleString('fr-FR', { maximumFractionDigits: 2 })} ${target}`;
+  const corridorLabel = document.getElementById('ref-corridor-label');
+  const netDisplay = document.getElementById('ref-net-display');
+  const rateDisplay = document.getElementById('ref-rate-display');
+  const pegNotice = document.getElementById('ref-peg-notice');
 
-  // Gestion de l'affichage du badge de parité fixe Zone Franc (XOF / XAF)
+  const amount = parseFloat(amountEl?.value) || 0;
+  const fromCurr = (fromEl?.value || 'EUR').toUpperCase();
+  const toCurr = (toEl?.value || 'XOF').toUpperCase();
+
+  const rate = getCrossRate(fromCurr, toCurr);
+  if (corridorLabel) corridorLabel.textContent = `Corridor actif : ${fromCurr} → ${toCurr}`;
+
+  if (!rate) {
+    if (rateDisplay) rateDisplay.textContent = `Indisponible (${fromCurr} → ${toCurr})`;
+    if (netDisplay) netDisplay.textContent = '-';
+    return;
+  }
+
+  const converted = amount * rate;
+  if (rateDisplay) rateDisplay.textContent = `1 ${fromCurr} = ${rate.toFixed(4)} ${toCurr}`;
+  if (netDisplay) {
+    netDisplay.textContent = `${converted.toLocaleString('fr-FR', { maximumFractionDigits: 2 })} ${toCurr}`;
+  }
+
   if (pegNotice) {
-    if (target === 'XOF' || target === 'XAF') {
-      pegNotice.classList.remove('hidden'); // Affiche le badge si c'est du CFA
-    } else {
-      pegNotice.classList.add('hidden');    // Le masque pour les autres devises (NGN, GHS, etc.)
-    }
+    const isCfa = toCurr === 'XOF' || toCurr === 'XAF';
+    pegNotice.classList.toggle('hidden', !isCfa);
   }
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+  loadXaalyaReferenceRates();
+
+  // Écoute des champs principaux
+  ['input', 'change'].forEach((evt) => {
+    document.addEventListener(evt, (e) => {
+      if (e.target && (e.target.matches('input[type="number"]') || e.target.matches('select'))) {
+        refreshReferenceCompartment();
+      }
+    });
+  });
+
+  // Clic sur un bouton "Corridors les plus populaires" (ex: data-from="CAD" data-to="XOF")
+  document.addEventListener('click', (e) => {
+    const btn = e.target.closest('[data-from][data-to], .corridor-card, .corridor-btn');
+    if (!btn) return;
+
+    const fromEl = document.getElementById('from-currency') || document.querySelectorAll('select')[0];
+    const toEl = document.getElementById('to-currency') || document.querySelectorAll('select')[1];
+
+    if (btn.dataset.from && fromEl) fromEl.value = btn.dataset.from;
+    if (btn.dataset.to && toEl) toEl.value = btn.dataset.to;
+
+    refreshReferenceCompartment();
+  });
+});
