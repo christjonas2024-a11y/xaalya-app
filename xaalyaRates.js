@@ -174,75 +174,137 @@ function updateSimulation() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+  async function initXaalyaRates() {
+  const updateEls = [
+    document.getElementById('last-update-time'),
+    document.getElementById('ref-last-update')
+  ].filter(Boolean);
+
+  try {
+    const response = await fetch('rates.json?' + Date.now(), { cache: 'no-store' });
+    if (!response.ok) throw new Error('HTTP ' + response.status);
+
+    const data = await response.json();
+    xaalyaRatesData = {
+      base: data.base || 'EUR',
+      updatedAt: data.updatedAt || null,
+      rates: {
+        EUR: 1,
+        XOF: 655.957,
+        XAF: 655.957,
+        ...(data.rates || {})
+      }
+    };
+
+    const formatted = data.updatedAt
+      ? (() => {
+          const d = new Date(data.updatedAt);
+          return isNaN(d.getTime())
+            ? String(data.updatedAt)
+            : `${d.toLocaleDateString('fr-FR')} à ${d.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' })}`;
+        })()
+      : 'À jour';
+
+    updateEls.forEach((el) => {
+      el.textContent = formatted;
+    });
+  } catch (e) {
+    console.warn('Repli sur les taux de référence intégrés :', e);
+    xaalyaRatesData.rates = {
+      EUR: 1,
+      XOF: 655.957,
+      XAF: 655.957,
+      ...(xaalyaRatesData.rates || {})
+    };
+    updateEls.forEach((el) => {
+      el.textContent = 'Mode référence';
+    });
+  }
+
+  updateSimulation();
+}
+
+function startXaalyaSync() {
   initXaalyaRates();
+  // Deuxième passe courte au cas où un autre script (ex: i18n ou sélecteurs) initialise ses valeurs juste après
+  setTimeout(updateSimulation, 150);
+  setTimeout(updateSimulation, 600);
+}
 
-  // Mise à jour en temps réel sur les changements de montant ou de devises
-  document.addEventListener('input', (e) => {
-    if (e.target && e.target.matches('input[type="number"]')) {
-      updateSimulation();
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', startXaalyaSync);
+} else {
+  startXaalyaSync();
+}
+
+document.addEventListener('input', (e) => {
+  if (e.target && e.target.matches('input[type="number"], input[id*="amount"], input[id*="montant"]')) {
+    updateSimulation();
+  }
+});
+
+document.addEventListener('change', (e) => {
+  if (e.target && e.target.matches('select')) {
+    updateSimulation();
+  }
+});
+
+document.addEventListener('click', (e) => {
+  const corridorBtn = e.target.closest('[data-from][data-to], [data-corridor], .corridor-btn, .corridor-card, button, a');
+  if (!corridorBtn) return;
+
+  const text = (corridorBtn.textContent || '').trim();
+  const hasArrow = /(?:→|->|➔|➜)/.test(text) || corridorBtn.dataset.from || corridorBtn.dataset.corridor;
+  if (!hasArrow) return;
+
+  const selects = Array.from(document.querySelectorAll('select'));
+  const fromSelect =
+    document.getElementById('from-currency') ||
+    document.getElementById('sourceCurrency') ||
+    selects[0] ||
+    null;
+  const toSelect =
+    document.getElementById('to-currency') ||
+    document.getElementById('targetCurrency') ||
+    document.getElementById('sim-currency') ||
+    selects[1] ||
+    null;
+
+  let nextFrom = corridorBtn.dataset.from;
+  let nextTo = corridorBtn.dataset.to;
+
+  if ((!nextFrom || !nextTo) && corridorBtn.dataset.corridor) {
+    const parts = corridorBtn.dataset.corridor.split(/[^A-Za-z]+/).filter(Boolean);
+    if (parts.length >= 2) {
+      nextFrom = nextFrom || parts[0];
+      nextTo = nextTo || parts[1];
     }
-  });
+  }
 
-  document.addEventListener('change', (e) => {
-    if (e.target && e.target.matches('select')) {
-      updateSimulation();
+  if (!nextFrom || !nextTo) {
+    const match = text.match(/\b([A-Z]{3})\b.*?(?:→|->|➔|➜).*?\b([A-Z]{3})\b/);
+    if (match) {
+      nextFrom = nextFrom || match[1];
+      nextTo = nextTo || match[2];
     }
-  });
+  }
 
-  // Synchronisation lors d'un clic sur un corridor populaire
-  document.addEventListener('click', (e) => {
-    const corridorBtn = e.target.closest('[data-from][data-to], [data-corridor], .corridor-btn, .corridor-card');
-    if (!corridorBtn) return;
+  if (nextFrom && fromSelect) {
+    const normFrom = normalizeCurrencyCode(nextFrom, 'EUR');
+    const opt = Array.from(fromSelect.options).find(
+      (o) => normalizeCurrencyCode(o.value, '') === normFrom || normalizeCurrencyCode(o.text, '') === normFrom
+    );
+    if (opt) fromSelect.value = opt.value;
+  }
 
-    const selects = Array.from(document.querySelectorAll('select'));
-    const fromSelect =
-      document.getElementById('from-currency') ||
-      document.getElementById('sourceCurrency') ||
-      selects[0] ||
-      null;
-    const toSelect =
-      document.getElementById('to-currency') ||
-      document.getElementById('targetCurrency') ||
-      document.getElementById('sim-currency') ||
-      selects[1] ||
-      null;
+  if (nextTo && toSelect) {
+    const normTo = normalizeCurrencyCode(nextTo, 'XOF');
+    const opt = Array.from(toSelect.options).find(
+      (o) => normalizeCurrencyCode(o.value, '') === normTo || normalizeCurrencyCode(o.text, '') === normTo
+    );
+    if (opt) toSelect.value = opt.value;
+  }
 
-    let nextFrom = corridorBtn.dataset.from;
-    let nextTo = corridorBtn.dataset.to;
-
-    if ((!nextFrom || !nextTo) && corridorBtn.dataset.corridor) {
-      const parts = corridorBtn.dataset.corridor.split(/[-→>]+/).map((s) => s.trim());
-      if (parts.length >= 2) {
-        nextFrom = nextFrom || parts[0];
-        nextTo = nextTo || parts[1];
-      }
-    }
-
-    if (!nextFrom || !nextTo) {
-      const text = corridorBtn.textContent || '';
-      const match = text.match(/\b([A-Z]{3})\b.*?(?:→|->|>|-).*?\b([A-Z]{3})\b/);
-      if (match) {
-        nextFrom = nextFrom || match[1];
-        nextTo = nextTo || match[2];
-      }
-    }
-
-    if (nextFrom && fromSelect) {
-      const normFrom = normalizeCurrencyCode(nextFrom, 'EUR');
-      const opt = Array.from(fromSelect.options).find(
-        (o) => normalizeCurrencyCode(o.value, '') === normFrom || normalizeCurrencyCode(o.text, '') === normFrom
-      );
-      if (opt) fromSelect.value = opt.value;
-    }
-
-    if (nextTo && toSelect) {
-      const normTo = normalizeCurrencyCode(nextTo, 'XOF');
-      const opt = Array.from(toSelect.options).find(
-        (o) => normalizeCurrencyCode(o.value, '') === normTo || normalizeCurrencyCode(o.text, '') === normTo
-      );
-      if (opt) toSelect.value = opt.value;
-    }
-
-    setTimeout(updateSimulation, 0);
-  });
+  setTimeout(updateSimulation, 0);
+  setTimeout(updateSimulation, 120);
 });
