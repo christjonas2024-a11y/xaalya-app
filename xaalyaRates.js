@@ -1,4 +1,4 @@
-// xaalyaRates.js - Gestion globale des taux et du simulateur d'écart de change
+// xaalyaRates.js - Gestion globale des taux et du compartiment Valeur de Référence Officielle
 let xaalyaRatesData = { base: 'EUR', updatedAt: null, rates: {} };
 
 // Normalise un code pays, libellé ou texte vers un code ISO devise à 3 lettres
@@ -49,7 +49,7 @@ function normalizeCurrencyCode(code, fallback = 'EUR') {
 
   if (map[clean]) return map[clean];
 
-  // Si le libellé contient directement un code ISO de 3 lettres connu (ex: "West African CFA (XOF)", "CAD", "EUR")
+  // Si le libellé contient directement un code ISO de 3 lettres connu
   const isoMatch = clean.match(/\b(EUR|USD|GBP|CAD|XOF|XAF|NGN|GHS|KES|MAD|ZAR|TND)\b/);
   if (isoMatch) return isoMatch[1];
 
@@ -58,12 +58,13 @@ function normalizeCurrencyCode(code, fallback = 'EUR') {
 }
 
 async function initXaalyaRates() {
-  const updateEl =
-    document.getElementById('last-update-time') ||
-    document.getElementById('ref-last-update');
+  const updateEls = [
+    document.getElementById('last-update-time'),
+    document.getElementById('ref-last-update')
+  ].filter(Boolean);
 
   try {
-    const response = await fetch('rates.json?' + Date.now());
+    const response = await fetch('rates.json?' + Date.now(), { cache: 'no-store' });
     if (!response.ok) throw new Error('HTTP ' + response.status);
 
     const data = await response.json();
@@ -78,25 +79,29 @@ async function initXaalyaRates() {
       }
     };
 
-    if (updateEl && data.updatedAt) {
-      const d = new Date(data.updatedAt);
-      updateEl.textContent = isNaN(d.getTime())
-        ? data.updatedAt
-        : `${d.toLocaleDateString('fr-FR')} à ${d.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' })}`;
-    } else if (updateEl) {
-      updateEl.textContent = 'À jour';
-    }
+    const formatted = data.updatedAt
+      ? (() => {
+          const d = new Date(data.updatedAt);
+          return isNaN(d.getTime())
+            ? String(data.updatedAt)
+            : `${d.toLocaleDateString('fr-FR')} à ${d.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' })}`;
+        })()
+      : 'À jour';
+
+    updateEls.forEach((el) => {
+      el.textContent = formatted;
+    });
   } catch (e) {
-    console.warn('Utilisation des taux de référence de secours :', e);
+    console.warn('Repli sur les taux de référence intégrés :', e);
     xaalyaRatesData.rates = {
       EUR: 1,
       XOF: 655.957,
       XAF: 655.957,
       ...(xaalyaRatesData.rates || {})
     };
-    if (updateEl) {
-      updateEl.textContent = 'Mode secours';
-    }
+    updateEls.forEach((el) => {
+      el.textContent = 'Mode référence';
+    });
   }
 
   updateSimulation();
@@ -173,60 +178,9 @@ function updateSimulation() {
   }
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-  async function initXaalyaRates() {
-  const updateEls = [
-    document.getElementById('last-update-time'),
-    document.getElementById('ref-last-update')
-  ].filter(Boolean);
-
-  try {
-    const response = await fetch('rates.json?' + Date.now(), { cache: 'no-store' });
-    if (!response.ok) throw new Error('HTTP ' + response.status);
-
-    const data = await response.json();
-    xaalyaRatesData = {
-      base: data.base || 'EUR',
-      updatedAt: data.updatedAt || null,
-      rates: {
-        EUR: 1,
-        XOF: 655.957,
-        XAF: 655.957,
-        ...(data.rates || {})
-      }
-    };
-
-    const formatted = data.updatedAt
-      ? (() => {
-          const d = new Date(data.updatedAt);
-          return isNaN(d.getTime())
-            ? String(data.updatedAt)
-            : `${d.toLocaleDateString('fr-FR')} à ${d.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' })}`;
-        })()
-      : 'À jour';
-
-    updateEls.forEach((el) => {
-      el.textContent = formatted;
-    });
-  } catch (e) {
-    console.warn('Repli sur les taux de référence intégrés :', e);
-    xaalyaRatesData.rates = {
-      EUR: 1,
-      XOF: 655.957,
-      XAF: 655.957,
-      ...(xaalyaRatesData.rates || {})
-    };
-    updateEls.forEach((el) => {
-      el.textContent = 'Mode référence';
-    });
-  }
-
-  updateSimulation();
-}
-
 function startXaalyaSync() {
   initXaalyaRates();
-  // Deuxième passe courte au cas où un autre script (ex: i18n ou sélecteurs) initialise ses valeurs juste après
+  // Deuxième passe courte au cas où un autre script initialise ses valeurs juste après
   setTimeout(updateSimulation, 150);
   setTimeout(updateSimulation, 600);
 }
