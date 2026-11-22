@@ -1,4 +1,4 @@
-// xaalyaRates.js - Gestion globale des taux et du compartiment Valeur de Référence Officielle
+// xaalyaRates.js - Taux de change, régression prédictive RPW journalière et compartiment de référence
 const XAALYA_FALLBACK_RATES = {
   EUR: 1,
   XOF: 655.957,
@@ -13,19 +13,59 @@ const XAALYA_FALLBACK_RATES = {
   TND: 3.35
 };
 
+// Paramètres de régression prédictive par corridor (RPW trimestriel désagrégé en journalier + FX)
+// fixedFeeSource : frais fixes estimés dans la devise source (ex. EUR)
+// feeCiLowSource / feeCiHighSource : bornes de l'intervalle de prédiction des frais fixes
+const XAALYA_DEFAULT_CORRIDORS = {
+  'EUR->XOF': {
+    fixedFeeSource: 2.5,
+    feeCiLowSource: 2.0,
+    feeCiHighSource: 3.0,
+    volatilityFactor: 0.85,
+    model: 'Régression RPW journalière (Chow-Lin + FX arrimé)'
+  },
+  'EUR->XAF': {
+    fixedFeeSource: 2.6,
+    feeCiLowSource: 2.1,
+    feeCiHighSource: 3.1,
+    volatilityFactor: 0.85,
+    model: 'Régression RPW journalière (Chow-Lin + FX arrimé)'
+  },
+  'EUR->NGN': {
+    fixedFeeSource: 4.2,
+    feeCiLowSource: 3.1,
+    feeCiHighSource: 5.5,
+    volatilityFactor: 1.2,
+    model: 'Régression RPW journalière (Chow-Lin + FX volatil)'
+  },
+  'USD->NGN': {
+    fixedFeeSource: 3.9,
+    feeCiLowSource: 2.9,
+    feeCiHighSource: 5.1,
+    volatilityFactor: 1.15,
+    model: 'Régression RPW journalière (Chow-Lin + FX volatil)'
+  },
+  'GBP->NGN': {
+    fixedFeeSource: 4.5,
+    feeCiLowSource: 3.3,
+    feeCiHighSource: 5.9,
+    volatilityFactor: 1.25,
+    model: 'Régression RPW journalière (Chow-Lin + FX volatil)'
+  }
+};
+
 window.xaalyaRatesData = {
   base: 'EUR',
   updatedAt: null,
-  rates: { ...XAALYA_FALLBACK_RATES }
+  rates: { ...XAALYA_FALLBACK_RATES },
+  corridors: { ...XAALYA_DEFAULT_CORRIDORS }
 };
 let xaalyaRatesData = window.xaalyaRatesData;
 
-// Normalise un code pays, libellé ou texte vers un code ISO devise à 3 lettres
 function normalizeCurrencyCode(code, fallback = 'EUR') {
   if (!code) return fallback;
   const clean = code.toString().trim().toUpperCase();
 
-  // Correspondances pays / régions fréquentes vers leur devise ISO
   const map = {
     FR: 'EUR',
     FRANCE: 'EUR',
@@ -68,7 +108,6 @@ function normalizeCurrencyCode(code, fallback = 'EUR') {
 
   if (map[clean]) return map[clean];
 
-  // Si le libellé contient directement un code ISO de 3 lettres connu
   const isoMatch = clean.match(/\b(EUR|USD|GBP|CAD|XOF|XAF|NGN|GHS|KES|MAD|ZAR|TND)\b/);
   if (isoMatch) return isoMatch[1];
 
@@ -82,7 +121,6 @@ async function initXaalyaRates() {
     document.getElementById('ref-last-update')
   ].filter(Boolean);
 
-  // Premier calcul immédiat avec les taux de repli pour éviter tout affichage figé sur "-"
   updateSimulation();
 
   try {
@@ -96,6 +134,10 @@ async function initXaalyaRates() {
       rates: {
         ...XAALYA_FALLBACK_RATES,
         ...(data.rates || {})
+      },
+      corridors: {
+        ...XAALYA_DEFAULT_CORRIDORS,
+        ...(data.corridors || {})
       }
     };
     xaalyaRatesData = window.xaalyaRatesData;
@@ -113,10 +155,14 @@ async function initXaalyaRates() {
       el.textContent = formatted;
     });
   } catch (e) {
-    console.warn('Repli sur les taux de référence intégrés :', e);
+    console.warn('Repli sur les taux et corridors intégrés :', e);
     window.xaalyaRatesData.rates = {
       ...XAALYA_FALLBACK_RATES,
       ...(window.xaalyaRatesData.rates || {})
+    };
+    window.xaalyaRatesData.corridors = {
+      ...XAALYA_DEFAULT_CORRIDORS,
+      ...(window.xaalyaRatesData.corridors || {})
     };
     xaalyaRatesData = window.xaalyaRatesData;
     updateEls.forEach((el) => {
@@ -139,8 +185,96 @@ function getCrossRate(fromCurr, toCurr) {
   return toInBase / fromInBase;
 }
 
+/**
+ * Calcule la valeur brute convertie et les frais de transfert bruts
+ * = valeur brute convertie (taux de change) + frais fixes de transfert par corridor
+ * (issus d'une régression prédictive sur RPW journaliers désagrégés).
+ */
+function computePredictiveFixedFeeGross(amount, rate, fromCurr, toCurr, ratesData) {
+  const grossConverted = amount * rate;
+  const corridorKey = `${fromCurr}->${toCurr}`;
+  const reverseKey = `${toCurr}->${fromCurr}`;
+
+  const corridors = (ratesData && ratesData.corridors) || {};
+  const cfg = corridors[corridorKey] || corridors[reverseKey] || null;
+
+  const isCfaTarget = toCurr === 'XOF' || toCurr === 'XAF';
+  const isPeggedPair =
+    (fromCurr === 'EUR' && isCfaTarget) ||
+    ((fromCurr === 'XOF' || fromCurr === 'XAF') && toCurr === 'EUR');
+
+  const defaultFixedSource = isPeggedPair ? 2.5 : 4.0;
+  const defaultHalfBandSource = isPeggedPair ? 0.5 : 1.25;
+
+  const fixedFeeSource =
+    cfg && typeof cfg.fixedFeeSource === 'number'
+      ? cfg.fixedFeeSource
+      : defaultFixedSource;
+
+  const ciLowSource =
+    cfg && typeof cfg.feeCiLowSource === 'number'
+      ? cfg.feeCiLowSource
+      : Math.max(0, fixedFeeSource - defaultHalfBandSource);
+
+  const ciHighSource =
+    cfg && typeof cfg.feeCiHighSource === 'number'
+      ? cfg.feeCiHighSource
+      : fixedFeeSource + defaultHalfBandSource;
+
+  const volatilityFactor =
+    cfg && typeof cfg.volatilityFactor === 'number' && cfg.volatilityFactor > 0
+      ? cfg.volatilityFactor
+      : isPeggedPair ? 0.85 : 1.15;
+
+  const halfWidthSource = ((ciHighSource - ciLowSource) / 2) * volatilityFactor;
+  const lowFeeSource = Math.max(0, fixedFeeSource - halfWidthSource);
+  const highFeeSource = Math.max(lowFeeSource, fixedFeeSource + halfWidthSource);
+
+  // Conversion des frais fixes dans la devise cible
+  const fixedFeeTarget = fixedFeeSource * rate;
+  const lowFeeTarget = lowFeeSource * rate;
+  const highFeeTarget = highFeeSource * rate;
+
+  // Frais de transfert bruts = valeur brute convertie + frais fixes par corridor
+  const grossTransferCost = grossConverted + fixedFeeTarget;
+  const grossTransferCostLow = grossConverted + lowFeeTarget;
+  const grossTransferCostHigh = grossConverted + highFeeTarget;
+
+  return {
+    corridorKey,
+    grossConverted,
+    fixedFeeSource,
+    lowFeeSource,
+    highFeeSource,
+    fixedFeeTarget,
+    grossTransferCost,
+    grossTransferCostLow,
+    grossTransferCostHigh,
+    hasFixedRegressionFee: true,
+    modelLabel: (cfg && cfg.model) || 'Régression prédictive RPW journalière'
+  };
+}
+
+function findGrossTitleElement() {
+  const byId =
+    document.getElementById('ref-gross-title') ||
+    document.getElementById('gross-value-title') ||
+    document.getElementById('ref-gross-label');
+  if (byId) return byId;
+
+  return (
+    Array.from(document.querySelectorAll('p, h2, h3, h4, span, div, label')).find((el) => {
+      if (el.children.length > 0) return false;
+      const txt = (el.textContent || '').trim();
+      return (
+        /Valeur brute convertie au taux interbancaire/i.test(txt) ||
+        /^frais de transfert bruts\s*=/i.test(txt)
+      );
+    }) || null
+  );
+}
+
 function updateSimulation() {
-  // Récupère l'input montant et les sélecteurs du compartiment du haut
   const amountInput =
     document.querySelector('input[type="number"]') ||
     document.getElementById('sim-amount');
@@ -160,11 +294,11 @@ function updateSimulation() {
     null;
 
   const corridorLabel = document.getElementById('ref-corridor-label');
+  const grossTitleEl = findGrossTitleElement();
   const rateDisplay = document.getElementById('sim-rate-display');
   const netDisplay = document.getElementById('sim-net-display');
   const pegNotice = document.getElementById('peg-notice');
 
-  // Montant par défaut = 300 si vide ou invalide
   const rawAmount = amountInput ? String(amountInput.value).trim() : '';
   const parsedAmount = parseFloat(rawAmount);
   const amount = rawAmount === '' || isNaN(parsedAmount) ? 300 : parsedAmount;
@@ -172,26 +306,48 @@ function updateSimulation() {
   const fromCurr = normalizeCurrencyCode(fromSelect ? fromSelect.value : 'EUR', 'EUR');
   const toCurr = normalizeCurrencyCode(toSelect ? toSelect.value : 'XOF', 'XOF');
 
+  const rate = getCrossRate(fromCurr, toCurr);
+  const calc =
+    rate !== null && rate !== undefined
+      ? computePredictiveFixedFeeGross(amount, rate, fromCurr, toCurr, window.xaalyaRatesData)
+      : null;
+
   if (corridorLabel) {
-    corridorLabel.textContent = `Corridor actif : ${fromCurr} → ${toCurr}`;
+    corridorLabel.textContent = calc
+      ? `Corridor actif : ${fromCurr} → ${toCurr} · ${calc.modelLabel}`
+      : `Corridor actif : ${fromCurr} → ${toCurr}`;
   }
 
-  const rate = getCrossRate(fromCurr, toCurr);
+  if (grossTitleEl && calc && calc.hasFixedRegressionFee) {
+    grossTitleEl.textContent =
+      'frais de transfert bruts = valeur brute convertie (taux de change) + frais fixes de transfert par corridor :';
+  }
 
-  if (rate === null || rate === undefined) {
+  if (!calc) {
     if (rateDisplay) rateDisplay.textContent = `Indisponible (${fromCurr} → ${toCurr})`;
     if (netDisplay) netDisplay.textContent = '-';
   } else {
-    const netReceived = amount * rate;
-    if (rateDisplay) {
-      rateDisplay.textContent = `1 ${fromCurr} = ${rate.toFixed(4)} ${toCurr}`;
-    }
+    const isZeroDec = toCurr === 'XOF' || toCurr === 'XAF';
+    const fmtTarget = (val) =>
+      val.toLocaleString('fr-FR', {
+        minimumFractionDigits: isZeroDec ? 0 : 2,
+        maximumFractionDigits: isZeroDec ? 0 : 2
+      });
+
     if (netDisplay) {
-      netDisplay.textContent = `${netReceived.toLocaleString('fr-FR', { maximumFractionDigits: 2 })} ${toCurr}`;
+      netDisplay.textContent =
+        `${fmtTarget(calc.grossTransferCost)} ${toCurr} ` +
+        `(fourchette : ${fmtTarget(calc.grossTransferCostLow)} – ${fmtTarget(calc.grossTransferCostHigh)} ${toCurr})`;
+    }
+
+    if (rateDisplay) {
+      rateDisplay.textContent =
+        `1 ${fromCurr} = ${rate.toFixed(4)} ${toCurr} · ` +
+        `Frais fixes prédits : ${calc.fixedFeeSource.toFixed(2)} ${fromCurr} ` +
+        `[${calc.lowFeeSource.toFixed(2)} – ${calc.highFeeSource.toFixed(2)} ${fromCurr}]`;
     }
   }
 
-  // Affichage conditionnel du badge de parité fixe BCEAO / BEAC
   if (pegNotice) {
     const isCfa = toCurr === 'XOF' || toCurr === 'XAF';
     pegNotice.classList.toggle('hidden', !isCfa);
@@ -200,15 +356,16 @@ function updateSimulation() {
 
 function startXaalyaSync() {
   initXaalyaRates();
-  // Deuxième passe courte au cas où un autre script (ex: i18n ou sélecteurs) initialise ses valeurs juste après
   setTimeout(updateSimulation, 150);
   setTimeout(updateSimulation, 600);
 }
 
 window.XAALYA_FALLBACK_RATES = XAALYA_FALLBACK_RATES;
+window.XAALYA_DEFAULT_CORRIDORS = XAALYA_DEFAULT_CORRIDORS;
 window.normalizeCurrencyCode = normalizeCurrencyCode;
 window.initXaalyaRates = initXaalyaRates;
 window.getCrossRate = getCrossRate;
+window.computePredictiveFixedFeeGross = computePredictiveFixedFeeGross;
 window.updateSimulation = updateSimulation;
 
 if (document.readyState === 'loading') {
