@@ -1,5 +1,24 @@
 // xaalyaRates.js - Gestion globale des taux et du compartiment Valeur de Référence Officielle
-let xaalyaRatesData = { base: 'EUR', updatedAt: null, rates: {} };
+const XAALYA_FALLBACK_RATES = {
+  EUR: 1,
+  XOF: 655.957,
+  XAF: 655.957,
+  NGN: 1700,
+  GHS: 16.5,
+  KES: 140,
+  MAD: 10.8,
+  GBP: 0.84,
+  USD: 1.08,
+  CAD: 1.5,
+  TND: 3.35
+};
+
+window.xaalyaRatesData = {
+  base: 'EUR',
+  updatedAt: null,
+  rates: { ...XAALYA_FALLBACK_RATES }
+};
+let xaalyaRatesData = window.xaalyaRatesData;
 
 // Normalise un code pays, libellé ou texte vers un code ISO devise à 3 lettres
 function normalizeCurrencyCode(code, fallback = 'EUR') {
@@ -63,21 +82,23 @@ async function initXaalyaRates() {
     document.getElementById('ref-last-update')
   ].filter(Boolean);
 
+  // Premier calcul immédiat avec les taux de repli pour éviter tout affichage figé sur "-"
+  updateSimulation();
+
   try {
-    const response = await fetch('rates.json?' + Date.now(), { cache: 'no-store' });
+    const response = await fetch('rates.json?t=' + Date.now(), { cache: 'no-store' });
     if (!response.ok) throw new Error('HTTP ' + response.status);
 
     const data = await response.json();
-    xaalyaRatesData = {
+    window.xaalyaRatesData = {
       base: data.base || 'EUR',
       updatedAt: data.updatedAt || null,
       rates: {
-        EUR: 1,
-        XOF: 655.957,
-        XAF: 655.957,
+        ...XAALYA_FALLBACK_RATES,
         ...(data.rates || {})
       }
     };
+    xaalyaRatesData = window.xaalyaRatesData;
 
     const formatted = data.updatedAt
       ? (() => {
@@ -93,12 +114,11 @@ async function initXaalyaRates() {
     });
   } catch (e) {
     console.warn('Repli sur les taux de référence intégrés :', e);
-    xaalyaRatesData.rates = {
-      EUR: 1,
-      XOF: 655.957,
-      XAF: 655.957,
-      ...(xaalyaRatesData.rates || {})
+    window.xaalyaRatesData.rates = {
+      ...XAALYA_FALLBACK_RATES,
+      ...(window.xaalyaRatesData.rates || {})
     };
+    xaalyaRatesData = window.xaalyaRatesData;
     updateEls.forEach((el) => {
       el.textContent = 'Mode référence';
     });
@@ -109,8 +129,8 @@ async function initXaalyaRates() {
 
 function getCrossRate(fromCurr, toCurr) {
   if (fromCurr === toCurr) return 1;
-  const rates = xaalyaRatesData.rates || {};
-  const base = xaalyaRatesData.base || 'EUR';
+  const rates = (window.xaalyaRatesData && window.xaalyaRatesData.rates) || {};
+  const base = (window.xaalyaRatesData && window.xaalyaRatesData.base) || 'EUR';
 
   const fromInBase = fromCurr === base ? 1 : rates[fromCurr];
   const toInBase = toCurr === base ? 1 : rates[toCurr];
@@ -180,10 +200,16 @@ function updateSimulation() {
 
 function startXaalyaSync() {
   initXaalyaRates();
-  // Deuxième passe courte au cas où un autre script initialise ses valeurs juste après
+  // Deuxième passe courte au cas où un autre script (ex: i18n ou sélecteurs) initialise ses valeurs juste après
   setTimeout(updateSimulation, 150);
   setTimeout(updateSimulation, 600);
 }
+
+window.XAALYA_FALLBACK_RATES = XAALYA_FALLBACK_RATES;
+window.normalizeCurrencyCode = normalizeCurrencyCode;
+window.initXaalyaRates = initXaalyaRates;
+window.getCrossRate = getCrossRate;
+window.updateSimulation = updateSimulation;
 
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', startXaalyaSync);
