@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Xaalya™ | Independent & Free Money Transfer Comparator to Africa</title>
+<div class="text-xs text-slate-400 mt-2 flex items-center justify-center gap-2">
+  <span class="inline-block w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
 <script src="https://cdn.tailwindcss.com"></script>
 <meta name="description" content="Xaalya is a 100% free comparator, fully independent from fintechs and money transfer operators. Compare real-time exchange rates and fees for transfers to Africa. Zero trace architecture.">
 <meta name="robots" content="index, follow">
@@ -229,9 +231,9 @@ body.light-mode #btnToggleVoice {
     </div>
 
     <div class="flex flex-wrap items-center gap-4 text-xs font-medium">
-      <nav class="flex items-center gap-4 text-sm font-semibold text-slate-200">
-        <a href="transparence.html" data-i18n="navTransparency" class="hover:text-emerald-400 transition-colors">Transparence &amp; Mentions Légales</a>
-      </nav>
+      <nav class="flex flex-wrap items-center gap-4 sm:gap-5 text-sm font-semibold text-slate-200">
+        <nav class="flex items-center text-sm font-semibold text-slate-200">
+<a href="transparence.html" data-i18n="navTransparency" class="hover:text-emerald-400 transition-colors">Transparence &amp; Mentions Légales</a>
       <div class="relative">
         <select id="language-select" onchange="setLanguage(this.value, true)" class="bg-slate-900 border border-slate-800 text-white text-xs font-bold rounded-lg px-3 py-2 focus:outline-none focus:border-brand-500 transition cursor-pointer">
           <option value="en">🇬🇧 English</option>
@@ -431,15 +433,17 @@ body.light-mode #btnToggleVoice {
     <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6 pb-4 border-b border-slate-800">
       <div>
         <span class="inline-block px-3 py-1 bg-emerald-500/10 text-emerald-400 text-xs font-semibold rounded-full border border-emerald-500/20 mb-2">
-          Indice de Référence Mid-Market
-        </span>
-        <h2 class="text-xl sm:text-2xl font-bold text-white tracking-tight">
-          Valeur de Référence Officielle & Écart Réel 
-<span id="ref-cadence-info" class="text-xs font-mono text-emerald-400">Frais : quotidiens · Taux : toutes les 4–6 h</span>
-     </div>
+<h2 class="text-xl sm:text-2xl font-bold text-white tracking-tight">
+          Valeur de Référence Officielle &amp; Écart Réel
+        </h2>
+        <span id="ref-cadence-info" class="block text-xs font-mono text-emerald-400 mt-1">Frais : quotidiens · Taux : toutes les 4–6 h</span>
+      </div>
       <div class="text-left sm:text-right">
         <span class="text-xs text-slate-400 block">Dernière mise à jour</span>
-        <span id="last-update-time" class="text-xs font-mono text-emerald-400">Frais : quotidiens · Taux : toutes les 4–6 h</span>
+        <span id="last-update-time" class="text-xs font-mono text-emerald-400">23/11/2026 20:24</span>
+      <div class="text-left sm:text-right">
+        <span class="text-xs text-slate-400 block">Dernière mise à jour</span>
+        <span id="last-update-time" class="text-xs font-mono text-emerald-400">Chargement...</span>
       </div>
     </div>
 
@@ -557,6 +561,9 @@ body.light-mode #btnToggleVoice {
 </div>
 
 <footer class="border-t border-slate-800/80 bg-slate-950 py-8 text-center text-xs text-slate-500 space-y-2">
+  <p>
+   <a href="mentions-legales.html" class="text-xs text-slate-400 hover:text-emerald-400 transition">
+</a>
   <p data-i18n="footerCopy">© 2026 Xaalya. All rights reserved.</p>
 </footer>
 
