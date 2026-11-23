@@ -1,0 +1,19 @@
+{
+  "base": "EUR",
+  "updatedAt": "2026-11-17T21:20:22.768Z",
+  "rates": {
+    "EUR": 1,
+    "XOF": 655.957,
+    "XAF": 655.957
+  },
+  "corridors": {
+    "EUR->XOF": {
+      "feeRatePct": 3.2,
+      "ciLowPct": 2.8,
+      "ciHighPct": 3.6,
+      "confidenceLabel": "Intervalle de prédiction (90 % / 5–10 % d'écart type)",
+      "model": "Chow-Lin + rolling window",
+      "updatedAt": "2026-Q3"
+    }
+  }
+}

@@ -1,4 +1,4 @@
-// xaalyaRates.js - Taux de change, régression prédictive RPW journalière et compartiment de référence
+// xaalyaRates.js - Taux de change, régression prédictive RPW journalière et valeur nette estimée
 const XAALYA_FALLBACK_RATES = {
   EUR: 1,
   XOF: 655.957,
@@ -13,44 +13,41 @@ const XAALYA_FALLBACK_RATES = {
   TND: 3.35
 };
 
-// Paramètres de régression prédictive par corridor (RPW trimestriel désagrégé en journalier + FX)
-// fixedFeeSource : frais fixes estimés dans la devise source (ex. EUR)
-// feeCiLowSource / feeCiHighSource : bornes de l'intervalle de prédiction des frais fixes
 const XAALYA_DEFAULT_CORRIDORS = {
   'EUR->XOF': {
     fixedFeeSource: 2.5,
     feeCiLowSource: 2.0,
     feeCiHighSource: 3.0,
     volatilityFactor: 0.85,
-    model: 'Régression RPW journalière (Chow-Lin + FX arrimé)'
+    model: 'Chow-Lin + rolling window (RPW + FX arrimé)'
   },
   'EUR->XAF': {
     fixedFeeSource: 2.6,
     feeCiLowSource: 2.1,
     feeCiHighSource: 3.1,
     volatilityFactor: 0.85,
-    model: 'Régression RPW journalière (Chow-Lin + FX arrimé)'
+    model: 'Chow-Lin + rolling window (RPW + FX arrimé)'
   },
   'EUR->NGN': {
     fixedFeeSource: 4.2,
     feeCiLowSource: 3.1,
     feeCiHighSource: 5.5,
     volatilityFactor: 1.2,
-    model: 'Régression RPW journalière (Chow-Lin + FX volatil)'
+    model: 'Chow-Lin + rolling window (RPW + FX volatil)'
   },
   'USD->NGN': {
     fixedFeeSource: 3.9,
     feeCiLowSource: 2.9,
     feeCiHighSource: 5.1,
     volatilityFactor: 1.15,
-    model: 'Régression RPW journalière (Chow-Lin + FX volatil)'
+    model: 'Chow-Lin + rolling window (RPW + FX volatil)'
   },
   'GBP->NGN': {
     fixedFeeSource: 4.5,
     feeCiLowSource: 3.3,
     feeCiHighSource: 5.9,
     volatilityFactor: 1.25,
-    model: 'Régression RPW journalière (Chow-Lin + FX volatil)'
+    model: 'Chow-Lin + rolling window (RPW + FX volatil)'
   }
 };
 
@@ -58,7 +55,8 @@ window.xaalyaRatesData = {
   base: 'EUR',
   updatedAt: null,
   rates: { ...XAALYA_FALLBACK_RATES },
-  corridors: { ...XAALYA_DEFAULT_CORRIDORS }
+  corridors: { ...XAALYA_DEFAULT_CORRIDORS },
+  lastForecast: null
 };
 let xaalyaRatesData = window.xaalyaRatesData;
 
@@ -129,6 +127,7 @@ async function initXaalyaRates() {
 
     const data = await response.json();
     window.xaalyaRatesData = {
+      ...window.xaalyaRatesData,
       base: data.base || 'EUR',
       updatedAt: data.updatedAt || null,
       rates: {
@@ -186,15 +185,12 @@ function getCrossRate(fromCurr, toCurr) {
 }
 
 /**
- * Calcule la valeur brute convertie et les frais de transfert bruts
- * = valeur brute convertie (taux de change) + frais fixes de transfert par corridor
- * (issus d'une régression prédictive sur RPW journaliers désagrégés).
+ * Valeur nette estimée = (montant d'envoi - frais fixes) × Taux de change
+ * Les bornes de la fourchette proviennent de l'intervalle de frais fixes prédit (RPW journalier).
  */
-function computePredictiveFixedFeeGross(amount, rate, fromCurr, toCurr, ratesData) {
-  const grossConverted = amount * rate;
+function computeEstimatedNetForecast(amount, rate, fromCurr, toCurr, ratesData) {
   const corridorKey = `${fromCurr}->${toCurr}`;
   const reverseKey = `${toCurr}->${fromCurr}`;
-
   const corridors = (ratesData && ratesData.corridors) || {};
   const cfg = corridors[corridorKey] || corridors[reverseKey] || null;
 
@@ -230,28 +226,23 @@ function computePredictiveFixedFeeGross(amount, rate, fromCurr, toCurr, ratesDat
   const lowFeeSource = Math.max(0, fixedFeeSource - halfWidthSource);
   const highFeeSource = Math.max(lowFeeSource, fixedFeeSource + halfWidthSource);
 
-  // Conversion des frais fixes dans la devise cible
-  const fixedFeeTarget = fixedFeeSource * rate;
-  const lowFeeTarget = lowFeeSource * rate;
-  const highFeeTarget = highFeeSource * rate;
-
-  // Frais de transfert bruts = valeur brute convertie + frais fixes par corridor
-  const grossTransferCost = grossConverted + fixedFeeTarget;
-  const grossTransferCostLow = grossConverted + lowFeeTarget;
-  const grossTransferCostHigh = grossConverted + highFeeTarget;
+  // Formule : (montant d'envoi - frais fixes) × Taux de change
+  const netEstimated = Math.max(0, (amount - fixedFeeSource) * rate);
+  // Frais fixes hauts => net plus bas ; frais fixes bas => net plus haut
+  const netLow = Math.max(0, (amount - highFeeSource) * rate);
+  const netHigh = Math.max(netLow, (amount - lowFeeSource) * rate);
 
   return {
     corridorKey,
-    grossConverted,
+    amount,
+    rate,
     fixedFeeSource,
     lowFeeSource,
     highFeeSource,
-    fixedFeeTarget,
-    grossTransferCost,
-    grossTransferCostLow,
-    grossTransferCostHigh,
-    hasFixedRegressionFee: true,
-    modelLabel: (cfg && cfg.model) || 'Régression prédictive RPW journalière'
+    netEstimated,
+    netLow,
+    netHigh,
+    model: (cfg && cfg.model) || 'Chow-Lin + rolling window (RPW + FX)'
   };
 }
 
@@ -297,6 +288,7 @@ function updateSimulation() {
   const grossTitleEl = findGrossTitleElement();
   const rateDisplay = document.getElementById('sim-rate-display');
   const netDisplay = document.getElementById('sim-net-display');
+  const rangeWatermark = document.getElementById('sim-range-watermark');
   const pegNotice = document.getElementById('peg-notice');
 
   const rawAmount = amountInput ? String(amountInput.value).trim() : '';
@@ -309,42 +301,41 @@ function updateSimulation() {
   const rate = getCrossRate(fromCurr, toCurr);
   const calc =
     rate !== null && rate !== undefined
-      ? computePredictiveFixedFeeGross(amount, rate, fromCurr, toCurr, window.xaalyaRatesData)
+      ? computeEstimatedNetForecast(amount, rate, fromCurr, toCurr, window.xaalyaRatesData)
       : null;
 
+  window.xaalyaRatesData.lastForecast = calc;
+
   if (corridorLabel) {
-    corridorLabel.textContent = calc
-      ? `Corridor actif : ${fromCurr} → ${toCurr} · ${calc.modelLabel}`
-      : `Corridor actif : ${fromCurr} → ${toCurr}`;
+    corridorLabel.textContent = `Corridor actif : ${fromCurr} → ${toCurr}`;
   }
 
-  if (grossTitleEl && calc && calc.hasFixedRegressionFee) {
-    grossTitleEl.textContent =
-      'frais de transfert bruts = valeur brute convertie (taux de change) + frais fixes de transfert par corridor :';
+  if (grossTitleEl && calc) {
+    grossTitleEl.textContent = 'Valeur nette estimée :';
   }
 
   if (!calc) {
     if (rateDisplay) rateDisplay.textContent = `Indisponible (${fromCurr} → ${toCurr})`;
     if (netDisplay) netDisplay.textContent = '-';
+    if (rangeWatermark) rangeWatermark.textContent = '';
   } else {
     const isZeroDec = toCurr === 'XOF' || toCurr === 'XAF';
-    const fmtTarget = (val) =>
+    const fmtNum = (val) =>
       val.toLocaleString('fr-FR', {
         minimumFractionDigits: isZeroDec ? 0 : 2,
         maximumFractionDigits: isZeroDec ? 0 : 2
       });
 
     if (netDisplay) {
-      netDisplay.textContent =
-        `${fmtTarget(calc.grossTransferCost)} ${toCurr} ` +
-        `(fourchette : ${fmtTarget(calc.grossTransferCostLow)} – ${fmtTarget(calc.grossTransferCostHigh)} ${toCurr})`;
+      netDisplay.textContent = `${fmtNum(calc.netEstimated)} ${toCurr}`;
+    }
+
+    if (rangeWatermark) {
+      rangeWatermark.textContent = `[${fmtNum(calc.netLow)}${toCurr} – ${fmtNum(calc.netHigh)} ${toCurr}]`;
     }
 
     if (rateDisplay) {
-      rateDisplay.textContent =
-        `1 ${fromCurr} = ${rate.toFixed(4)} ${toCurr} · ` +
-        `Frais fixes prédits : ${calc.fixedFeeSource.toFixed(2)} ${fromCurr} ` +
-        `[${calc.lowFeeSource.toFixed(2)} – ${calc.highFeeSource.toFixed(2)} ${fromCurr}]`;
+      rateDisplay.textContent = `1 ${fromCurr} = ${rate.toFixed(4)} ${toCurr}`;
     }
   }
 
@@ -365,7 +356,7 @@ window.XAALYA_DEFAULT_CORRIDORS = XAALYA_DEFAULT_CORRIDORS;
 window.normalizeCurrencyCode = normalizeCurrencyCode;
 window.initXaalyaRates = initXaalyaRates;
 window.getCrossRate = getCrossRate;
-window.computePredictiveFixedFeeGross = computePredictiveFixedFeeGross;
+window.computeEstimatedNetForecast = computeEstimatedNetForecast;
 window.updateSimulation = updateSimulation;
 
 if (document.readyState === 'loading') {
