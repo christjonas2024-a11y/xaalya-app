@@ -114,10 +114,16 @@ function normalizeCurrencyCode(code, fallback = 'EUR') {
 }
 
 async function initXaalyaRates() {
+  const cadenceLabel = 'Frais : quotidiens · Taux : toutes les 4–6 h';
   const updateEls = [
+    document.getElementById('ref-cadence-info'),
     document.getElementById('last-update-time'),
     document.getElementById('ref-last-update')
   ].filter(Boolean);
+
+  updateEls.forEach((el) => {
+    el.textContent = cadenceLabel;
+  });
 
   updateSimulation();
 
@@ -141,17 +147,8 @@ async function initXaalyaRates() {
     };
     xaalyaRatesData = window.xaalyaRatesData;
 
-    const formatted = data.updatedAt
-      ? (() => {
-          const d = new Date(data.updatedAt);
-          return isNaN(d.getTime())
-            ? String(data.updatedAt)
-            : `${d.toLocaleDateString('fr-FR')} à ${d.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' })}`;
-        })()
-      : 'À jour';
-
     updateEls.forEach((el) => {
-      el.textContent = formatted;
+      el.textContent = cadenceLabel;
     });
   } catch (e) {
     console.warn('Repli sur les taux et corridors intégrés :', e);
@@ -165,7 +162,7 @@ async function initXaalyaRates() {
     };
     xaalyaRatesData = window.xaalyaRatesData;
     updateEls.forEach((el) => {
-      el.textContent = 'Mode référence';
+      el.textContent = cadenceLabel;
     });
   }
 
