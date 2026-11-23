@@ -113,17 +113,37 @@ function normalizeCurrencyCode(code, fallback = 'EUR') {
   return anyIso ? anyIso[1] : fallback;
 }
 
+function formatUpdateStamp(dateVal) {
+  const d = dateVal ? new Date(dateVal) : new Date();
+  const valid = isNaN(d.getTime()) ? new Date() : d;
+  const j = valid.getDate();
+  const m = valid.getMonth() + 1;
+  const a = valid.getFullYear();
+  const h = String(valid.getHours()).padStart(2, '0');
+  const mn = String(valid.getMinutes()).padStart(2, '0');
+  return `${j}/${m}/${a} ${h}:${mn}`;
+}
+
 async function initXaalyaRates() {
-  const cadenceLabel = 'Frais : quotidiens · Taux : toutes les 4–6 h';
   const updateEls = [
-    document.getElementById('ref-cadence-info'),
     document.getElementById('last-update-time'),
     document.getElementById('ref-last-update')
   ].filter(Boolean);
 
-  updateEls.forEach((el) => {
-    el.textContent = cadenceLabel;
-  });
+  const STORAGE_KEY = 'xaalya_last_rates_fees_snapshot_v1';
+  const prevRaw = localStorage.getItem(STORAGE_KEY);
+  let prevState = null;
+  try {
+    prevState = prevRaw ? JSON.parse(prevRaw) : null;
+  } catch (_) {
+    prevState = null;
+  }
+
+  if (prevState && prevState.stamp) {
+    updateEls.forEach((el) => {
+      el.textContent = prevState.stamp;
+    });
+  }
 
   updateSimulation();
 
@@ -132,38 +152,53 @@ async function initXaalyaRates() {
     if (!response.ok) throw new Error('HTTP ' + response.status);
 
     const data = await response.json();
+    const mergedRates = { ...XAALYA_FALLBACK_RATES, ...(data.rates || {}) };
+    const mergedCorridors = { ...XAALYA_DEFAULT_CORRIDORS, ...(data.corridors || {}) };
+
     window.xaalyaRatesData = {
       ...window.xaalyaRatesData,
       base: data.base || 'EUR',
       updatedAt: data.updatedAt || null,
-      rates: {
-        ...XAALYA_FALLBACK_RATES,
-        ...(data.rates || {})
-      },
-      corridors: {
-        ...XAALYA_DEFAULT_CORRIDORS,
-        ...(data.corridors || {})
-      }
+      rates: mergedRates,
+      corridors: mergedCorridors
     };
     xaalyaRatesData = window.xaalyaRatesData;
 
+    const payloadSignature = JSON.stringify({
+      base: window.xaalyaRatesData.base,
+      rates: mergedRates,
+      corridors: mergedCorridors
+    });
+
+    const hasRatesOrFeesChanged =
+      !prevState ||
+      prevState.signature !== payloadSignature ||
+      (data.updatedAt && data.updatedAt !== prevState.updatedAt);
+
+    const stamp = hasRatesOrFeesChanged
+      ? formatUpdateStamp(data.updatedAt || new Date())
+      : (prevState && prevState.stamp) || formatUpdateStamp(data.updatedAt || new Date());
+
+    localStorage.setItem(
+      STORAGE_KEY,
+      JSON.stringify({
+        signature: payloadSignature,
+        updatedAt: data.updatedAt || null,
+        stamp
+      })
+    );
+
     updateEls.forEach((el) => {
-      el.textContent = cadenceLabel;
+      el.textContent = stamp;
     });
   } catch (e) {
     console.warn('Repli sur les taux et corridors intégrés :', e);
-    window.xaalyaRatesData.rates = {
-      ...XAALYA_FALLBACK_RATES,
-      ...(window.xaalyaRatesData.rates || {})
-    };
-    window.xaalyaRatesData.corridors = {
-      ...XAALYA_DEFAULT_CORRIDORS,
-      ...(window.xaalyaRatesData.corridors || {})
-    };
-    xaalyaRatesData = window.xaalyaRatesData;
-    updateEls.forEach((el) => {
-      el.textContent = cadenceLabel;
-    });
+    if (!prevState || !prevState.stamp) {
+      const fallbackStamp = formatUpdateStamp(new Date());
+      updateEls.forEach((el) => {
+        el.textContent = fallbackStamp;
+      });
+    }
   }
 
   updateSimulation();
