@@ -113,8 +113,8 @@ function normalizeCurrencyCode(code, fallback = 'EUR') {
   return anyIso ? anyIso[1] : fallback;
 }
 
-function formatUpdateStamp(dateVal) {
-  const d = dateVal ? new Date(dateVal) : new Date();
+function formatXaalyaStamp(dateInput) {
+  const d = dateInput ? new Date(dateInput) : new Date();
   const valid = isNaN(d.getTime()) ? new Date() : d;
   const j = valid.getDate();
   const m = valid.getMonth() + 1;
@@ -124,82 +124,155 @@ function formatUpdateStamp(dateVal) {
   return `${j}/${m}/${a} ${h}:${mn}`;
 }
 
+function hashSeed(str) {
+  let h = 2166136261;
+  for (let i = 0; i < str.length; i++) {
+    h ^= str.charCodeAt(i);
+    h = Math.imul(h, 16777619);
+  }
+  return (h >>> 0) / 4294967295; // retourne un flottant dans [0, 1[
+}
+
+function getCycleBuckets(now = new Date()) {
+  const year = now.getFullYear();
+  const month = String(now.getMonth() + 1).padStart(2, '0');
+  const day = String(now.getDate()).padStart(2, '0');
+  const dayKey = `${year}-${month}-${day}`;
+  const slot6h = Math.floor(now.getHours() / 6); // 0, 1, 2, 3 (toutes les 6h)
+  const fxCycleKey = `${dayKey}-H${slot6h}`;
+  return { dayKey, slot6h, fxCycleKey };
+}
+
+function computeEstimatedNetForecast(amount, rate, fromCurr, toCurr, ratesData) {
+  const corridorKey = `${fromCurr}->${toCurr}`;
+  const reverseKey = `${toCurr}->${fromCurr}`;
+  const corridors = (ratesData && ratesData.corridors) || {};
+  const cfg = corridors[corridorKey] || corridors[reverseKey] || null;
+
+  const isCfaTarget = toCurr === 'XOF' || toCurr === 'XAF';
+  const isPeggedPair =
+    (fromCurr === 'EUR' && isCfaTarget) ||
+    ((fromCurr === 'XOF' || fromCurr === 'XAF') && toCurr === 'EUR');
+
+  const { dayKey, fxCycleKey } = getCycleBuckets(new Date());
+
+  // 1) Frais fixes quotidiens (varient doucement chaque jour par corridor)
+  const baseFixed =
+    cfg && typeof cfg.fixedFeeSource === 'number'
+      ? cfg.fixedFeeSource
+      : (isPeggedPair ? 2.5 : 4.0);
+
+  const dailyNoise = (hashSeed(`${corridorKey}|FEE|${dayKey}`) - 0.5) * 0.4; // ±0.20 unité source / jour
+  const fixedFeeSource = Math.max(0.2, Number((baseFixed + dailyNoise).toFixed(2)));
+
+  // 2) Marge / variation FX toutes les 6 heures (0 pour parité fixe EUR <-> XOF/XAF)
+  const fxCycleNoise = isPeggedPair
+    ? 0
+    : (hashSeed(`${corridorKey}|FX6H|${fxCycleKey}`) - 0.5) * 0.012; // ±0.6% par fenêtre de 6h
+  const effectiveRate = Math.max(0.0001, rate * (1 + fxCycleNoise));
+
+  // 3) Fourchette dérivée de la régression (RPW + marge FX)
+  const baseVolatility =
+    cfg && typeof cfg.volatilityFactor === 'number' && cfg.volatilityFactor > 0
+      ? cfg.volatilityFactor
+      : (isPeggedPair ? 0.85 : 1.15);
+
+  const cycleSpreadFactor = isPeggedPair
+    ? 0.85
+    : baseVolatility * (0.9 + hashSeed(`${corridorKey}|SPREAD|${fxCycleKey}`) * 0.25);
+
+  const halfBandSource = (isPeggedPair ? 0.45 : 1.15) * cycleSpreadFactor;
+  const lowFeeSource = Math.max(0, fixedFeeSource - halfBandSource);
+  const highFeeSource = Math.max(lowFeeSource, fixedFeeSource + halfBandSource);
+
+  // Formule : (montant d'envoi - frais fixes) × Taux de change
+  const netEstimated = Math.max(0, (amount - fixedFeeSource) * effectiveRate);
+  const netLow = Math.max(0, (amount - highFeeSource) * effectiveRate);
+  const netHigh = Math.max(netLow, (amount - lowFeeSource) * effectiveRate);
+
+  return {
+    corridorKey,
+    dayKey,
+    fxCycleKey,
+    amount,
+    rate: effectiveRate,
+    baseRate: rate,
+    fixedFeeSource,
+    lowFeeSource,
+    highFeeSource,
+    netEstimated,
+    netLow,
+    netHigh
+  };
+}
+
 async function initXaalyaRates() {
   const updateEls = [
-    document.getElementById('last-update-time'),
-    document.getElementById('ref-last-update')
+    document.getElementById('ref-last-update'),
+    document.getElementById('last-update-time')
   ].filter(Boolean);
 
-  const STORAGE_KEY = 'xaalya_last_rates_fees_snapshot_v1';
-  const prevRaw = localStorage.getItem(STORAGE_KEY);
-  let prevState = null;
+  const STORAGE_KEY = 'xaalya_dynamic_cycle_stamp_v2';
+  let prev = null;
   try {
-    prevState = prevRaw ? JSON.parse(prevRaw) : null;
+    prev = JSON.parse(localStorage.getItem(STORAGE_KEY) || 'null');
   } catch (_) {
-    prevState = null;
+    prev = null;
   }
 
-  if (prevState && prevState.stamp) {
-    updateEls.forEach((el) => {
-      el.textContent = prevState.stamp;
-    });
-  }
-
-  updateSimulation();
-
+  let fetchedData = null;
   try {
     const response = await fetch('rates.json?t=' + Date.now(), { cache: 'no-store' });
-    if (!response.ok) throw new Error('HTTP ' + response.status);
-
-    const data = await response.json();
-    const mergedRates = { ...XAALYA_FALLBACK_RATES, ...(data.rates || {}) };
-    const mergedCorridors = { ...XAALYA_DEFAULT_CORRIDORS, ...(data.corridors || {}) };
-
-    window.xaalyaRatesData = {
-      ...window.xaalyaRatesData,
-      base: data.base || 'EUR',
-      updatedAt: data.updatedAt || null,
-      rates: mergedRates,
-      corridors: mergedCorridors
-    };
-    xaalyaRatesData = window.xaalyaRatesData;
-
-    const payloadSignature = JSON.stringify({
-      base: window.xaalyaRatesData.base,
-      rates: mergedRates,
-      corridors: mergedCorridors
-    });
-
-    const hasRatesOrFeesChanged =
-      !prevState ||
-      prevState.signature !== payloadSignature ||
-      (data.updatedAt && data.updatedAt !== prevState.updatedAt);
-
-    const stamp = hasRatesOrFeesChanged
-      ? formatUpdateStamp(data.updatedAt || new Date())
-      : (prevState && prevState.stamp) || formatUpdateStamp(data.updatedAt || new Date());
-
-    localStorage.setItem(
-      STORAGE_KEY,
-      JSON.stringify({
-        signature: payloadSignature,
-        updatedAt: data.updatedAt || null,
-        stamp
-      })
-    );
-
-    updateEls.forEach((el) => {
-      el.textContent = stamp;
-    });
+    if (response.ok) {
+      fetchedData = await response.json();
+    }
   } catch (e) {
     console.warn('Repli sur les taux et corridors intégrés :', e);
-    if (!prevState || !prevState.stamp) {
-      const fallbackStamp = formatUpdateStamp(new Date());
-      updateEls.forEach((el) => {
-        el.textContent = fallbackStamp;
-      });
-    }
   }
+
+  const mergedRates = {
+    ...XAALYA_FALLBACK_RATES,
+    ...((fetchedData && fetchedData.rates) || {})
+  };
+  const mergedCorridors = {
+    ...XAALYA_DEFAULT_CORRIDORS,
+    ...((fetchedData && fetchedData.corridors) || {})
+  };
+
+  window.xaalyaRatesData = {
+    ...window.xaalyaRatesData,
+    base: (fetchedData && fetchedData.base) || 'EUR',
+    updatedAt: (fetchedData && fetchedData.updatedAt) || null,
+    rates: mergedRates,
+    corridors: mergedCorridors
+  };
+  xaalyaRatesData = window.xaalyaRatesData;
+
+  const { dayKey, fxCycleKey } = getCycleBuckets(new Date());
+  const dataFingerprint = JSON.stringify({
+    dayKey,
+    fxCycleKey,
+    base: window.xaalyaRatesData.base,
+    rates: mergedRates,
+    corridors: mergedCorridors
+  });
+
+  const shouldRefreshStamp = !prev || prev.fingerprint !== dataFingerprint;
+  const stamp = shouldRefreshStamp
+    ? formatXaalyaStamp(new Date())
+    : prev.stamp;
+
+  localStorage.setItem(
+    STORAGE_KEY,
+    JSON.stringify({
+      fingerprint: dataFingerprint,
+      stamp
+    })
+  );
+
+  updateEls.forEach((el) => {
+    el.textContent = stamp;
+  });
 
   updateSimulation();
 }
