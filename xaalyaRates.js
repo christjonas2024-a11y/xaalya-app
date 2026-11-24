@@ -122,16 +122,13 @@
           <div class="text-xs font-semibold uppercase tracking-wider text-slate-200">
             Estimation nette Xaalya (modèle Chow-Lin)
           </div>
-          <div id="xaalya-daily-stamp" data-daily-updated="${isNewDailyStamp ? "1" : "0"}" class="text-[11px] font-mono text-slate-400">
-            ${stamp}
-          </div>
-          <div id="xaalya-net-main" class="text-2xl sm:text-3xl font-black text-emerald-400 pt-1">
+<div id="xaalya-net-main" class="text-2xl sm:text-3xl font-black text-emerald-400 pt-1">
             ${formatMoney(bestNonNeutral.netCentral, target)}
           </div>
           <div class="text-xs text-slate-400">
             Taux de référence : <span class="font-mono text-slate-300">1 ${source} = ${refRate.toLocaleString("fr-FR", { maximumFractionDigits: 4 })} ${target}</span>
           </div>
-          <p class="text-xs text-slate-400 pt-1">
+          <p class="text-xs text-emerald-400 pt-1">
             vérifier auprès des opérateurs avant d'envoyer
           </p>
         </div>
