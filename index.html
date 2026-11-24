@@ -287,6 +287,81 @@ body.light-mode #btnToggleVoice {
       <span id="lastUpdatedInfo"></span>
     </div>
   </section>
+  <section id="resultsContainer" class="space-y-4">
+    <h3 class="text-xl font-bold text-white flex items-center justify-between">
+      <span data-i18n="resultsTitle">Operators comparison</span>
+      <span data-i18n="resultsRank" class="text-xs font-normal text-slate-400">Ranked by best net rate</span>
+    </h3>
+
+<div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+  <button 
+    id="btnListenResult" 
+    type="button" 
+    onclick="listenResultNow()" 
+    class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-semibold bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-500 border border-emerald-500/30 transition cursor-pointer">
+    <span>🔊</span>
+    <span id="listenResultLabel">Écouter le résultat</span>
+  </button>
+</div>
+
+<!-- NOUVEAU : Simulateur d'Écart de Change (The Real Cost Gap) -->
+<div class="w-full max-w-4xl mx-auto px-4 py-8">
+  <div class="bg-slate-900 border border-slate-800 rounded-2xl shadow-2xl overflow-hidden p-6 sm:p-8 backdrop-blur-md">
+    
+    <!-- En-tête du module -->
+    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6 pb-4 border-b border-slate-800">
+      <div>
+        <span class="inline-block px-3 py-1 bg-emerald-500/10 text-emerald-400 text-xs font-semibold rounded-full border border-emerald-500/20 mb-2">
+<h2 class="text-xl sm:text-2xl font-bold text-white tracking-tight">
+          Valeur de Référence Officielle &amp; Écart Réel
+        </h2>
+</div>
+      <div class="text-left sm:text-right">
+      </div>
+    </div>
+
+    <!-- ANCIENNE GRILLE SUPPRIMÉE : Montant envoyé (EUR) & Devise de destination sont désormais pilotés par le haut / corridors -->
+
+    <!-- Boîte de Résultat Dynamique avec Mention de Parité Fixe -->
+    <div class="bg-slate-950/80 border border-slate-800/80 rounded-xl p-6 text-center space-y-4">
+      <p id="ref-corridor-label" class="text-xs uppercase tracking-wider text-slate-400">
+        Corridor actif : EUR → XOF
+      </p>
+
+      <p id="ref-gross-title" class="text-sm text-slate-300 mt-2">
+  Valeur brute convertie au taux interbancaire officiel des banques centrales :
+</p>
+
+<div id="sim-net-display" class="text-3xl sm:text-4xl font-black text-emerald-400 tracking-tight">
+  -
+</div>
+<p id="sim-range-watermark" class="text-xs text-slate-500 font-normal tracking-wide mt-1 select-none" style="opacity: 0.65;">
+  -
+</p>
+
+      <div class="pt-3 border-t border-slate-800 flex flex-col sm:flex-row justify-center items-center gap-2 sm:gap-6 text-xs text-slate-400 font-mono">
+        <span>Taux de référence : <strong id="sim-rate-display" class="text-white">-</strong></span>
+      </div>
+
+      <!-- Badge dynamique pour les parités fixes BCEAO / BEAC -->
+      <div id="peg-notice" class="hidden pt-2">
+        <span class="inline-flex items-center gap-1.5 px-3 py-1 bg-blue-500/10 text-blue-400 border border-blue-500/20 rounded-full text-[11px] font-medium">
+          <span>🛡️</span>
+          <span>Parité fixe légale garantie par traité monétaire (BCEAO / BEAC : 1 EUR = 655,957 F)</span>
+        </span>
+      </div>
+    </div>
+
+    <!-- Note Pédagogique et Juridique -->
+    <div class="mt-6 text-center">
+      <p class="text-xs text-slate-500 leading-relaxed max-w-2xl mx-auto">
+        💡 <strong class="text-slate-400">Transparence Xaalya :</strong> Aucun opérateur commercial n'est listé afin de vous garantir une information neutre, sans frais cachés ni biais publicitaire. Tout montant perçu en deçà de cette valeur de référence reflète la marge de l'intermédiaire.
+      </p>
+    </div>
+
+  </div>
+</div>
+  </section>
   
   <section class="space-y-4 pt-4">
     <div class="flex items-center justify-between">
@@ -407,83 +482,6 @@ body.light-mode #btnToggleVoice {
 </div>
   </section>
 
-  <section id="resultsContainer" class="space-y-4">
-    <h3 class="text-xl font-bold text-white flex items-center justify-between">
-      <span data-i18n="resultsTitle">Operators comparison</span>
-      <span data-i18n="resultsRank" class="text-xs font-normal text-slate-400">Ranked by best net rate</span>
-    </h3>
-
-<div class="flex flex-wrap items-center justify-between gap-2 mb-3">
-  <button 
-    id="btnListenResult" 
-    type="button" 
-    onclick="listenResultNow()" 
-    class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-semibold bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-500 border border-emerald-500/30 transition cursor-pointer">
-    <span>🔊</span>
-    <span id="listenResultLabel">Écouter le résultat</span>
-  </button>
-</div>
-
-<!-- NOUVEAU : Simulateur d'Écart de Change (The Real Cost Gap) -->
-<div class="w-full max-w-4xl mx-auto px-4 py-8">
-  <div class="bg-slate-900 border border-slate-800 rounded-2xl shadow-2xl overflow-hidden p-6 sm:p-8 backdrop-blur-md">
-    
-    <!-- En-tête du module -->
-    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6 pb-4 border-b border-slate-800">
-      <div>
-        <span class="inline-block px-3 py-1 bg-emerald-500/10 text-emerald-400 text-xs font-semibold rounded-full border border-emerald-500/20 mb-2">
-<h2 class="text-xl sm:text-2xl font-bold text-white tracking-tight">
-          Valeur de Référence Officielle &amp; Écart Réel
-        </h2>
-</div>
-      <div class="text-left sm:text-right">
-        <span class="text-xs text-slate-400 block">Dernière mise à jour</span>
-        <span id="ref-last-update" class="text-xs font-mono text-emerald-400">23/11/2026 21:40</span>
-      </div>
-    </div>
-
-    <!-- ANCIENNE GRILLE SUPPRIMÉE : Montant envoyé (EUR) & Devise de destination sont désormais pilotés par le haut / corridors -->
-
-    <!-- Boîte de Résultat Dynamique avec Mention de Parité Fixe -->
-    <div class="bg-slate-950/80 border border-slate-800/80 rounded-xl p-6 text-center space-y-4">
-      <p id="ref-corridor-label" class="text-xs uppercase tracking-wider text-slate-400">
-        Corridor actif : EUR → XOF
-      </p>
-
-      <p id="ref-gross-title" class="text-sm text-slate-300 mt-2">
-  Valeur brute convertie au taux interbancaire officiel des banques centrales :
-</p>
-
-<div id="sim-net-display" class="text-3xl sm:text-4xl font-black text-emerald-400 tracking-tight">
-  -
-</div>
-<p id="sim-range-watermark" class="text-xs text-slate-500 font-normal tracking-wide mt-1 select-none" style="opacity: 0.65;">
-  -
-</p>
-
-      <div class="pt-3 border-t border-slate-800 flex flex-col sm:flex-row justify-center items-center gap-2 sm:gap-6 text-xs text-slate-400 font-mono">
-        <span>Taux de référence : <strong id="sim-rate-display" class="text-white">-</strong></span>
-      </div>
-
-      <!-- Badge dynamique pour les parités fixes BCEAO / BEAC -->
-      <div id="peg-notice" class="hidden pt-2">
-        <span class="inline-flex items-center gap-1.5 px-3 py-1 bg-blue-500/10 text-blue-400 border border-blue-500/20 rounded-full text-[11px] font-medium">
-          <span>🛡️</span>
-          <span>Parité fixe légale garantie par traité monétaire (BCEAO / BEAC : 1 EUR = 655,957 F)</span>
-        </span>
-      </div>
-    </div>
-
-    <!-- Note Pédagogique et Juridique -->
-    <div class="mt-6 text-center">
-      <p class="text-xs text-slate-500 leading-relaxed max-w-2xl mx-auto">
-        💡 <strong class="text-slate-400">Transparence Xaalya :</strong> Aucun opérateur commercial n'est listé afin de vous garantir une information neutre, sans frais cachés ni biais publicitaire. Tout montant perçu en deçà de cette valeur de référence reflète la marge de l'intermédiaire.
-      </p>
-    </div>
-
-  </div>
-</div>
-  </section>
 </main>
 
 <!-- Modals -->

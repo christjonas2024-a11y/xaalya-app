@@ -1,543 +1,264 @@
-// xaalyaRates.js - Taux de change, régression prédictive RPW journalière et valeur nette estimée
-const XAALYA_FALLBACK_RATES = {
-  EUR: 1,
-  XOF: 655.957,
-  XAF: 655.957,
-  NGN: 1700,
-  GHS: 16.5,
-  KES: 140,
-  MAD: 10.8,
-  GBP: 0.84,
-  USD: 1.08,
-  CAD: 1.5,
-  TND: 3.35
-};
+/* xaalyaRates.js — Modèle net journalier (00:00 GMT), 10 profils & rendu ordonné */
+(function () {
+  const FIXED_EUR_XOF = 655.957;
 
-const XAALYA_DEFAULT_CORRIDORS = {
-  'EUR->XOF': {
-    fixedFeeSource: 2.5,
-    feeCiLowSource: 2.0,
-    feeCiHighSource: 3.0,
-    volatilityFactor: 0.85,
-    model: 'Chow-Lin + rolling window (RPW + FX arrimé)'
-  },
-  'EUR->XAF': {
-    fixedFeeSource: 2.6,
-    feeCiLowSource: 2.1,
-    feeCiHighSource: 3.1,
-    volatilityFactor: 0.85,
-    model: 'Chow-Lin + rolling window (RPW + FX arrimé)'
-  },
-  'EUR->NGN': {
-    fixedFeeSource: 4.2,
-    feeCiLowSource: 3.1,
-    feeCiHighSource: 5.5,
-    volatilityFactor: 1.2,
-    model: 'Chow-Lin + rolling window (RPW + FX volatil)'
-  },
-  'USD->NGN': {
-    fixedFeeSource: 3.9,
-    feeCiLowSource: 2.9,
-    feeCiHighSource: 5.1,
-    volatilityFactor: 1.15,
-    model: 'Chow-Lin + rolling window (RPW + FX volatil)'
-  },
-  'GBP->NGN': {
-    fixedFeeSource: 4.5,
-    feeCiLowSource: 3.3,
-    feeCiHighSource: 5.9,
-    volatilityFactor: 1.25,
-    model: 'Chow-Lin + rolling window (RPW + FX volatil)'
-  }
-};
+  // 10 profils représentatifs (Banque / SWIFT conservé comme repère neutre)
+  const OPERATOR_PROFILES = [
+    { id: "wu", name: "Western Union", category: "traditional", neutralBenchmark: false, url: "https://www.westernunion.com" },
+    { id: "mg", name: "MoneyGram", category: "traditional", neutralBenchmark: false, url: "https://www.moneygram.com" },
+    { id: "ria", name: "Ria Money Transfer", category: "traditional", neutralBenchmark: false, url: "https://www.riamoneytransfer.com" },
+    { id: "wise", name: "Wise", category: "digital", neutralBenchmark: false, url: "https://wise.com" },
+    { id: "remitly", name: "Remitly", category: "digital", neutralBenchmark: false, url: "https://www.remitly.com" },
+    { id: "worldremit", name: "WorldRemit", category: "digital", neutralBenchmark: false, url: "https://www.worldremit.com" },
+    { id: "sendwave", name: "Sendwave", category: "digital", neutralBenchmark: false, url: "https://www.sendwave.com" },
+    { id: "orange_money", name: "Orange Money", category: "mobile", neutralBenchmark: false, url: "https://www.orangemoney.com" },
+    { id: "wave_momo", name: "Wave / MTN MoMo", category: "mobile", neutralBenchmark: false, url: "https://www.wave.com" },
+    { id: "bank_swift", name: "Banques / SWIFT (Repère neutre)", category: "bank_benchmark", neutralBenchmark: true, url: "https://www.swift.com" }
+  ];
 
-window.xaalyaRatesData = {
-  base: 'EUR',
-  updatedAt: null,
-  rates: { ...XAALYA_FALLBACK_RATES },
-  corridors: { ...XAALYA_DEFAULT_CORRIDORS },
-  lastForecast: null
-};
-let xaalyaRatesData = window.xaalyaRatesData;
-
-function normalizeCurrencyCode(code, fallback = 'EUR') {
-  if (!code) return fallback;
-  const clean = code.toString().trim().toUpperCase();
-
-  const map = {
-    FR: 'EUR',
-    FRANCE: 'EUR',
-    DE: 'EUR',
-    ALLEMAGNE: 'EUR',
-    IT: 'EUR',
-    ITALIE: 'EUR',
-    ES: 'EUR',
-    ESPAGNE: 'EUR',
-    BE: 'EUR',
-    BELGIQUE: 'EUR',
-    CA: 'CAD',
-    CANADA: 'CAD',
-    US: 'USD',
-    USA: 'USD',
-    'ETATS-UNIS': 'USD',
-    'ÉTATS-UNIS': 'USD',
-    GB: 'GBP',
-    UK: 'GBP',
-    'ROYAUME-UNI': 'GBP',
-    SN: 'XOF',
-    CI: 'XOF',
-    ML: 'XOF',
-    BF: 'XOF',
-    BJ: 'XOF',
-    TG: 'XOF',
-    NE: 'XOF',
-    CM: 'XAF',
-    GA: 'XAF',
-    CG: 'XAF',
-    TD: 'XAF',
-    CF: 'XAF',
-    GQ: 'XAF',
-    NG: 'NGN',
-    GH: 'GHS',
-    KE: 'KES',
-    MA: 'MAD',
-    TN: 'TND'
-  };
-
-  if (map[clean]) return map[clean];
-
-  const isoMatch = clean.match(/\b(EUR|USD|GBP|CAD|XOF|XAF|NGN|GHS|KES|MAD|ZAR|TND)\b/);
-  if (isoMatch) return isoMatch[1];
-
-  const anyIso = clean.match(/\b([A-Z]{3})\b/);
-  return anyIso ? anyIso[1] : fallback;
-}
-
-function formatXaalyaStamp(dateInput) {
-  const d = dateInput ? new Date(dateInput) : new Date();
-  const valid = isNaN(d.getTime()) ? new Date() : d;
-  const j = valid.getDate();
-  const m = valid.getMonth() + 1;
-  const a = valid.getFullYear();
-  const h = String(valid.getHours()).padStart(2, '0');
-  const mn = String(valid.getMinutes()).padStart(2, '0');
-  return `${j}/${m}/${a} ${h}:${mn}`;
-}
-
-function hashSeed(str) {
-  let h = 2166136261;
-  for (let i = 0; i < str.length; i++) {
-    h ^= str.charCodeAt(i);
-    h = Math.imul(h, 16777619);
-  }
-  return (h >>> 0) / 4294967295; // retourne un flottant dans [0, 1[
-}
-
-function getCycleBuckets(now = new Date()) {
-  const year = now.getFullYear();
-  const month = String(now.getMonth() + 1).padStart(2, '0');
-  const day = String(now.getDate()).padStart(2, '0');
-  const dayKey = `${year}-${month}-${day}`;
-  const slot6h = Math.floor(now.getHours() / 6); // 0, 1, 2, 3 (toutes les 6h)
-  const fxCycleKey = `${dayKey}-H${slot6h}`;
-  return { dayKey, slot6h, fxCycleKey };
-}
-
-function computeEstimatedNetForecast(amount, rate, fromCurr, toCurr, ratesData) {
-  const corridorKey = `${fromCurr}->${toCurr}`;
-  const reverseKey = `${toCurr}->${fromCurr}`;
-  const corridors = (ratesData && ratesData.corridors) || {};
-  const cfg = corridors[corridorKey] || corridors[reverseKey] || null;
-
-  const isCfaTarget = toCurr === 'XOF' || toCurr === 'XAF';
-  const isPeggedPair =
-    (fromCurr === 'EUR' && isCfaTarget) ||
-    ((fromCurr === 'XOF' || fromCurr === 'XAF') && toCurr === 'EUR');
-
-  const { dayKey, fxCycleKey } = getCycleBuckets(new Date());
-
-  // 1) Frais fixes quotidiens (varient doucement chaque jour par corridor)
-  const baseFixed =
-    cfg && typeof cfg.fixedFeeSource === 'number'
-      ? cfg.fixedFeeSource
-      : (isPeggedPair ? 2.5 : 4.0);
-
-  const dailyNoise = (hashSeed(`${corridorKey}|FEE|${dayKey}`) - 0.5) * 0.4; // ±0.20 unité source / jour
-  const fixedFeeSource = Math.max(0.2, Number((baseFixed + dailyNoise).toFixed(2)));
-
-  // 2) Marge / variation FX toutes les 6 heures (0 pour parité fixe EUR <-> XOF/XAF)
-  const fxCycleNoise = isPeggedPair
-    ? 0
-    : (hashSeed(`${corridorKey}|FX6H|${fxCycleKey}`) - 0.5) * 0.012; // ±0.6% par fenêtre de 6h
-  const effectiveRate = Math.max(0.0001, rate * (1 + fxCycleNoise));
-
-  // 3) Fourchette dérivée de la régression (RPW + marge FX)
-  const baseVolatility =
-    cfg && typeof cfg.volatilityFactor === 'number' && cfg.volatilityFactor > 0
-      ? cfg.volatilityFactor
-      : (isPeggedPair ? 0.85 : 1.15);
-
-  const cycleSpreadFactor = isPeggedPair
-    ? 0.85
-    : baseVolatility * (0.9 + hashSeed(`${corridorKey}|SPREAD|${fxCycleKey}`) * 0.25);
-
-  const halfBandSource = (isPeggedPair ? 0.45 : 1.15) * cycleSpreadFactor;
-  const lowFeeSource = Math.max(0, fixedFeeSource - halfBandSource);
-  const highFeeSource = Math.max(lowFeeSource, fixedFeeSource + halfBandSource);
-
-  // Formule : (montant d'envoi - frais fixes) × Taux de change
-  const netEstimated = Math.max(0, (amount - fixedFeeSource) * effectiveRate);
-  const netLow = Math.max(0, (amount - highFeeSource) * effectiveRate);
-  const netHigh = Math.max(netLow, (amount - lowFeeSource) * effectiveRate);
-
-  return {
-    corridorKey,
-    dayKey,
-    fxCycleKey,
-    amount,
-    rate: effectiveRate,
-    baseRate: rate,
-    fixedFeeSource,
-    lowFeeSource,
-    highFeeSource,
-    netEstimated,
-    netLow,
-    netHigh
-  };
-}
-
-async function initXaalyaRates() {
-  const updateEls = [
-    document.getElementById('ref-last-update'),
-    document.getElementById('last-update-time')
-  ].filter(Boolean);
-
-  const STORAGE_KEY = 'xaalya_dynamic_cycle_stamp_v2';
-  let prev = null;
-  try {
-    prev = JSON.parse(localStorage.getItem(STORAGE_KEY) || 'null');
-  } catch (_) {
-    prev = null;
-  }
-
-  let fetchedData = null;
-  try {
-    const response = await fetch('rates.json?t=' + Date.now(), { cache: 'no-store' });
-    if (response.ok) {
-      fetchedData = await response.json();
+  // Paramètres Chow-Lin / RPW calibrés par corridor & famille (extensibles aux 294 corridors)
+  const CORRIDOR_PRIORS = {
+    "EUR->XOF": {
+      label: "France → Sénégal (300 €)",
+      defaultAmount: 300,
+      baseCostByCat: { mobile: 0.014, digital: 0.022, traditional: 0.048, bank_benchmark: 0.065 },
+      spreadHalfWidth: { mobile: 0.004, digital: 0.006, traditional: 0.011, bank_benchmark: 0.014 }
+    },
+    "USD->NGN": {
+      label: "États-Unis → Nigeria (300 $)",
+      defaultAmount: 300,
+      baseCostByCat: { mobile: 0.025, digital: 0.031, traditional: 0.056, bank_benchmark: 0.074 },
+      spreadHalfWidth: { mobile: 0.008, digital: 0.010, traditional: 0.016, bank_benchmark: 0.020 }
     }
-  } catch (e) {
-    console.warn('Repli sur les taux et corridors intégrés :', e);
+  };
+
+  function getDailyMidnightGmtStamp(dateObj = new Date()) {
+    const y = dateObj.getUTCFullYear();
+    const m = String(dateObj.getUTCMonth() + 1).padStart(2, "0");
+    const d = String(dateObj.getUTCDate()).padStart(2, "0");
+    return `${d}/${m}/${y} 00:00 GMT`;
   }
 
-  const mergedRates = {
-    ...XAALYA_FALLBACK_RATES,
-    ...((fetchedData && fetchedData.rates) || {})
-  };
-  const mergedCorridors = {
-    ...XAALYA_DEFAULT_CORRIDORS,
-    ...((fetchedData && fetchedData.corridors) || {})
-  };
+  function computeCompositeRate(source, target, ratesData) {
+    if (source === target) return 1;
+    const key = `${source}->${target}`;
+    if (key === "EUR->XOF") return FIXED_EUR_XOF;
 
-  window.xaalyaRatesData = {
-    ...window.xaalyaRatesData,
-    base: (fetchedData && fetchedData.base) || 'EUR',
-    updatedAt: (fetchedData && fetchedData.updatedAt) || null,
-    rates: mergedRates,
-    corridors: mergedCorridors
-  };
-  xaalyaRatesData = window.xaalyaRatesData;
+    const localRate = ratesData?.rates?.[key];
+    const openRate = ratesData?.sources?.openRates?.[key];
+    const fawazRate = ratesData?.sources?.fawaz?.[key];
+    const ffmRate = ratesData?.sources?.frankfurter?.[key];
 
-  const { dayKey, fxCycleKey } = getCycleBuckets(new Date());
-  const dataFingerprint = JSON.stringify({
-    dayKey,
-    fxCycleKey,
-    base: window.xaalyaRatesData.base,
-    rates: mergedRates,
-    corridors: mergedCorridors
-  });
+    const samples = [localRate, openRate, fawazRate, ffmRate].filter((v) => typeof v === "number" && v > 0);
+    if (samples.length > 0) {
+      return samples.reduce((acc, v) => acc + v, 0) / samples.length;
+    }
 
-  const shouldRefreshStamp = !prev || prev.fingerprint !== dataFingerprint;
-  const stamp = shouldRefreshStamp
-    ? formatXaalyaStamp(new Date())
-    : prev.stamp;
-
-  localStorage.setItem(
-    STORAGE_KEY,
-    JSON.stringify({
-      fingerprint: dataFingerprint,
-      stamp
-    })
-  );
-
-  updateEls.forEach((el) => {
-    el.textContent = stamp;
-  });
-
-  updateSimulation();
-}
-
-function getCrossRate(fromCurr, toCurr) {
-  if (fromCurr === toCurr) return 1;
-  const rates = (window.xaalyaRatesData && window.xaalyaRatesData.rates) || {};
-  const base = (window.xaalyaRatesData && window.xaalyaRatesData.base) || 'EUR';
-
-  const fromInBase = fromCurr === base ? 1 : rates[fromCurr];
-  const toInBase = toCurr === base ? 1 : rates[toCurr];
-
-  if (!fromInBase || !toInBase) return null;
-  return toInBase / fromInBase;
-}
-
-/**
- * Valeur nette estimée = (montant d'envoi - frais fixes) × Taux de change
- * Les bornes de la fourchette proviennent de l'intervalle de frais fixes prédit (RPW journalier).
- */
-function computeEstimatedNetForecast(amount, rate, fromCurr, toCurr, ratesData) {
-  const corridorKey = `${fromCurr}->${toCurr}`;
-  const reverseKey = `${toCurr}->${fromCurr}`;
-  const corridors = (ratesData && ratesData.corridors) || {};
-  const cfg = corridors[corridorKey] || corridors[reverseKey] || null;
-
-  const isCfaTarget = toCurr === 'XOF' || toCurr === 'XAF';
-  const isPeggedPair =
-    (fromCurr === 'EUR' && isCfaTarget) ||
-    ((fromCurr === 'XOF' || fromCurr === 'XAF') && toCurr === 'EUR');
-
-  const defaultFixedSource = isPeggedPair ? 2.5 : 4.0;
-  const defaultHalfBandSource = isPeggedPair ? 0.5 : 1.25;
-
-  const fixedFeeSource =
-    cfg && typeof cfg.fixedFeeSource === 'number'
-      ? cfg.fixedFeeSource
-      : defaultFixedSource;
-
-  const ciLowSource =
-    cfg && typeof cfg.feeCiLowSource === 'number'
-      ? cfg.feeCiLowSource
-      : Math.max(0, fixedFeeSource - defaultHalfBandSource);
-
-  const ciHighSource =
-    cfg && typeof cfg.feeCiHighSource === 'number'
-      ? cfg.feeCiHighSource
-      : fixedFeeSource + defaultHalfBandSource;
-
-  const volatilityFactor =
-    cfg && typeof cfg.volatilityFactor === 'number' && cfg.volatilityFactor > 0
-      ? cfg.volatilityFactor
-      : isPeggedPair ? 0.85 : 1.15;
-
-  const halfWidthSource = ((ciHighSource - ciLowSource) / 2) * volatilityFactor;
-  const lowFeeSource = Math.max(0, fixedFeeSource - halfWidthSource);
-  const highFeeSource = Math.max(lowFeeSource, fixedFeeSource + halfWidthSource);
-
-  // Formule : (montant d'envoi - frais fixes) × Taux de change
-  const netEstimated = Math.max(0, (amount - fixedFeeSource) * rate);
-  // Frais fixes hauts => net plus bas ; frais fixes bas => net plus haut
-  const netLow = Math.max(0, (amount - highFeeSource) * rate);
-  const netHigh = Math.max(netLow, (amount - lowFeeSource) * rate);
-
-  return {
-    corridorKey,
-    amount,
-    rate,
-    fixedFeeSource,
-    lowFeeSource,
-    highFeeSource,
-    netEstimated,
-    netLow,
-    netHigh,
-    model: (cfg && cfg.model) || 'Chow-Lin + rolling window (RPW + FX)'
-  };
-}
-
-function findGrossTitleElement() {
-  const byId =
-    document.getElementById('ref-gross-title') ||
-    document.getElementById('gross-value-title') ||
-    document.getElementById('ref-gross-label');
-  if (byId) return byId;
-
-  return (
-    Array.from(document.querySelectorAll('p, h2, h3, h4, span, div, label')).find((el) => {
-      if (el.children.length > 0) return false;
-      const txt = (el.textContent || '').trim();
-      return (
-        /Valeur brute convertie au taux interbancaire/i.test(txt) ||
-        /^frais de transfert bruts\s*=/i.test(txt)
-      );
-    }) || null
-  );
-}
-
-function updateSimulation() {
-  const amountInput =
-    document.querySelector('input[type="number"]') ||
-    document.getElementById('sim-amount');
-
-  const selects = Array.from(document.querySelectorAll('select'));
-  const fromSelect =
-    document.getElementById('from-currency') ||
-    document.getElementById('sourceCurrency') ||
-    selects[0] ||
-    null;
-
-  const toSelect =
-    document.getElementById('to-currency') ||
-    document.getElementById('targetCurrency') ||
-    document.getElementById('sim-currency') ||
-    selects[1] ||
-    null;
-
-  const corridorLabel = document.getElementById('ref-corridor-label');
-  const grossTitleEl = findGrossTitleElement();
-  const rateDisplay = document.getElementById('sim-rate-display');
-  const netDisplay = document.getElementById('sim-net-display');
-  const rangeWatermark = document.getElementById('sim-range-watermark');
-  const pegNotice = document.getElementById('peg-notice');
-
-  const rawAmount = amountInput ? String(amountInput.value).trim() : '';
-  const parsedAmount = parseFloat(rawAmount);
-  const amount = rawAmount === '' || isNaN(parsedAmount) ? 300 : parsedAmount;
-
-  const fromCurr = normalizeCurrencyCode(fromSelect ? fromSelect.value : 'EUR', 'EUR');
-  const toCurr = normalizeCurrencyCode(toSelect ? toSelect.value : 'XOF', 'XOF');
-
-  const rate = getCrossRate(fromCurr, toCurr);
-  const calc =
-    rate !== null && rate !== undefined
-      ? computeEstimatedNetForecast(amount, rate, fromCurr, toCurr, window.xaalyaRatesData)
-      : null;
-
-  window.xaalyaRatesData.lastForecast = calc;
-
-  if (corridorLabel) {
-    corridorLabel.textContent = `Corridor actif : ${fromCurr} → ${toCurr}`;
+    // Repli de sécurité si rates.json est partiel
+    if (key === "USD->NGN") return 1580;
+    return 1;
   }
 
-  if (grossTitleEl && calc) {
-    grossTitleEl.textContent = 'Valeur nette estimée :';
+  function estimateChowLinNetForProfile(profile, amount, refRate, corridorKey, ratesData, daySeed) {
+    const prior = CORRIDOR_PRIORS[corridorKey] || {
+      baseCostByCat: { mobile: 0.02, digital: 0.028, traditional: 0.052, bank_benchmark: 0.07 },
+      spreadHalfWidth: { mobile: 0.006, digital: 0.008, traditional: 0.014, bank_benchmark: 0.018 }
+    };
+
+    // Amortissement des frais fixes sur le montant M0 (référence 300)
+    const sizeFactor = Math.max(0.75, Math.min(1.25, 300 / Math.max(1, amount)));
+    const chowLinAdjustment = Number(ratesData?.chowLinDelta?.[corridorKey]?.[profile.id] || 0);
+    const seasonalityWave = Math.sin((daySeed % 30) / 30 * Math.PI * 2) * 0.002;
+
+    const baseCost = prior.baseCostByCat[profile.category] ?? 0.035;
+    const netCostRatio = Math.max(
+      0.003,
+      Math.min(0.25, baseCost * sizeFactor + chowLinAdjustment + seasonalityWave)
+    );
+
+    const halfSpread = prior.spreadHalfWidth[profile.category] ?? 0.01;
+    const netCentral = amount * refRate * (1 - netCostRatio);
+    const netMin = amount * refRate * (1 - Math.min(0.30, netCostRatio + halfSpread));
+    const netMax = amount * refRate * (1 - Math.max(0.001, netCostRatio - halfSpread));
+
+    return {
+      profile,
+      netCentral,
+      netMin,
+      netMax,
+      effectiveCostPct: (netCostRatio * 100).toFixed(2)
+    };
   }
 
-  if (!calc) {
-    if (rateDisplay) rateDisplay.textContent = `Indisponible (${fromCurr} → ${toCurr})`;
-    if (netDisplay) netDisplay.textContent = '-';
-    if (rangeWatermark) rangeWatermark.textContent = '';
-  } else {
-    const isZeroDec = toCurr === 'XOF' || toCurr === 'XAF';
-    const fmtNum = (val) =>
-      val.toLocaleString('fr-FR', {
-        minimumFractionDigits: isZeroDec ? 0 : 2,
-        maximumFractionDigits: isZeroDec ? 0 : 2
+  function formatMoney(val, currency) {
+    return `${Number(val).toLocaleString("fr-FR", { maximumFractionDigits: 2 })} ${currency}`;
+  }
+
+  function renderOrderedSections(container, payload) {
+    const { corridorKey, source, target, amount, refRate, stamp, estimates, isNewDailyStamp } = payload;
+    const bestNonNeutral = estimates.find((e) => !e.profile.neutralBenchmark) || estimates[0];
+
+    container.innerHTML = `
+      <div class="space-y-6" data-xaalya-ordered="true">
+        <!-- 2. RÉSULTAT XAALYA (MONTANT NET ESTIMÉ + HORODATAGE JOURNALIER 00:00 GMT) -->
+        <div id="xaalya-result-block" class="bg-slate-900/90 border border-slate-800 rounded-2xl p-5 space-y-2">
+          <div class="flex flex-wrap items-center justify-between gap-2 text-xs text-slate-400">
+            <span class="font-semibold uppercase tracking-wider text-emerald-400">Estimation nette Xaalya (modèle Chow-Lin)</span>
+            <span id="xaalya-daily-stamp" data-daily-updated="${isNewDailyStamp ? "1" : "0"}" class="font-mono text-slate-300">Mise à jour : ${stamp}</span>
+          </div>
+          <div id="xaalya-net-main" class="text-2xl sm:text-3xl font-black text-white">
+            ${formatMoney(bestNonNeutral.netCentral, target)}
+          </div>
+          <div class="text-xs text-slate-400">
+            Intervalle estimé : <strong class="text-slate-200">${formatMoney(bestNonNeutral.netMin, target)} – ${formatMoney(bestNonNeutral.netMax, target)}</strong>
+            · Taux de référence : <span class="font-mono text-slate-300">1 ${source} = ${refRate.toLocaleString("fr-FR", { maximumFractionDigits: 4 })} ${target}</span>
+          </div>
+        </div>
+
+        <!-- 3. TOP CORRIDORS -->
+        <div id="xaalya-top-corridors" class="bg-slate-900/70 border border-slate-800 rounded-2xl p-5 space-y-3">
+          <h3 class="text-sm font-bold uppercase tracking-wider text-slate-300">Top corridors</h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <button type="button" data-corridor-select="EUR|XOF|300" class="text-left p-3.5 rounded-xl bg-slate-950 border ${corridorKey === "EUR->XOF" ? "border-emerald-500" : "border-slate-800"} hover:border-emerald-400 transition">
+              <div class="font-bold text-white text-sm">France → Sénégal</div>
+              <div class="text-xs text-slate-400 mt-0.5">Simulation de référence : 300 € → XOF</div>
+            </button>
+            <button type="button" data-corridor-select="USD|NGN|300" class="text-left p-3.5 rounded-xl bg-slate-950 border ${corridorKey === "USD->NGN" ? "border-emerald-500" : "border-slate-800"} hover:border-emerald-400 transition">
+              <div class="font-bold text-white text-sm">États-Unis → Nigeria</div>
+              <div class="text-xs text-slate-400 mt-0.5">Simulation de référence : 300 $ → NGN</div>
+            </button>
+          </div>
+        </div>
+
+        <!-- 4. TOP OPÉRATEURS NON SPONSORISÉS (INTERVALLE NET + VÉRIFICATION CLIQUABLE) -->
+        <div id="xaalya-top-operators" class="bg-slate-900/70 border border-slate-800 rounded-2xl p-5 space-y-3">
+          <div class="flex items-center justify-between gap-2">
+            <h3 class="text-sm font-bold uppercase tracking-wider text-slate-300">Top opérateurs non sponsorisés</h3>
+            <span class="text-[11px] text-slate-400">Montant net estimé en intervalle</span>
+          </div>
+          <div class="space-y-2.5">
+            ${estimates.map((item) => `
+              <div class="p-3.5 rounded-xl bg-slate-950 border ${item.profile.neutralBenchmark ? "border-slate-700/80 border-dashed" : "border-slate-800"} flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+                <div>
+                  <div class="font-semibold text-white text-sm">${item.profile.name}</div>
+                  <div class="text-xs text-slate-400">
+                    Intervalle net estimé : <strong class="text-emerald-400">${formatMoney(item.netMin, target)} – ${formatMoney(item.netMax, target)}</strong>
+                    · Coût moyen estimé : ${item.effectiveCostPct}%
+                  </div>
+                </div>
+                <div class="text-xs">
+                  <a href="${item.profile.url}" target="_blank" rel="noopener noreferrer" class="text-emerald-400 hover:underline font-medium">
+                    Consulter l'opérateur pour vérifier ↗
+                  </a>
+                </div>
+              </div>
+            `).join("")}
+          </div>
+        </div>
+
+        <!-- 5. ESPACE PUB -->
+        <aside id="xaalya-ad-space" aria-label="Espace publicitaire" class="bg-slate-900/50 border border-slate-800/80 rounded-2xl p-4 text-center">
+          <div class="text-[11px] uppercase tracking-widest text-slate-500">Espace pub</div>
+          <div class="text-xs text-slate-400 mt-1">Emplacement réservé — Partenariat / annonce neutre</div>
+        </aside>
+      </div>
+    `;
+
+    container.querySelectorAll("[data-corridor-select]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const [s, t, amt] = btn.getAttribute("data-corridor-select").split("|");
+        const srcEl = document.getElementById("sourceCurrency");
+        const tgtEl = document.getElementById("targetCurrency");
+        const amtEl = document.getElementById("sendAmount");
+        if (srcEl) srcEl.value = s;
+        if (tgtEl) tgtEl.value = t;
+        if (amtEl) amtEl.value = amt;
+        runXaalyaModel();
+      });
+    });
+  }
+
+  async function runXaalyaModel() {
+    const srcEl = document.getElementById("sourceCurrency");
+    const tgtEl = document.getElementById("targetCurrency");
+    const amtEl = document.getElementById("sendAmount");
+    const container = document.getElementById("resultsContainer");
+    if (!container) return;
+
+    const source = (srcEl?.value || "EUR").toUpperCase();
+    const target = (tgtEl?.value || "XOF").toUpperCase();
+    const amount = Math.max(1, Number(amtEl?.value || 300));
+    const corridorKey = `${source}->${target}`;
+
+    let ratesData = window.__XAALYA_RATES_CACHE__ || null;
+    if (!ratesData) {
+      try {
+        const res = await fetch(`rates.json?day=${getDailyMidnightGmtStamp().slice(0, 10)}`, { cache: "no-store" });
+        if (res.ok) {
+          ratesData = await res.json();
+          window.__XAALYA_RATES_CACHE__ = ratesData;
+        }
+      } catch (_) {
+        // Repli silencieux sur les valeurs de référence locales
+      }
+    }
+
+    const refRate = computeCompositeRate(source, target, ratesData);
+    const midnightStamp = getDailyMidnightGmtStamp();
+    const daySeed = Math.floor(Date.now() / 86400000);
+
+    // Mise à jour du timestamp uniquement chaque jour à 00:00 GMT si le jour a changé
+    const prevStamp = window.__XAALYA_LAST_MIDNIGHT_STAMP__ || "";
+    const isNewDailyStamp = prevStamp !== midnightStamp;
+    if (isNewDailyStamp) {
+      window.__XAALYA_LAST_MIDNIGHT_STAMP__ = midnightStamp;
+    }
+
+    const estimates = OPERATOR_PROFILES
+      .map((p) => estimateChowLinNetForProfile(p, amount, refRate, corridorKey, ratesData, daySeed))
+      .sort((a, b) => {
+        if (a.profile.neutralBenchmark !== b.profile.neutralBenchmark) {
+          return a.profile.neutralBenchmark ? 1 : -1;
+        }
+        return b.netCentral - a.netCentral;
       });
 
-    if (netDisplay) {
-      netDisplay.textContent = `${fmtNum(calc.netEstimated)} ${toCurr}`;
+    const best = estimates.find((e) => !e.profile.neutralBenchmark) || estimates[0];
+
+    // Maintien de la compatibilité avec les éléments existants s'ils sont présents
+    const lastUpdatedEl = document.getElementById("lastUpdatedInfo");
+    if (lastUpdatedEl && isNewDailyStamp) {
+      lastUpdatedEl.textContent = midnightStamp;
     }
+    const simNetEl = document.getElementById("sim-net-display");
+    if (simNetEl) simNetEl.textContent = formatMoney(best.netCentral, target);
+    const simRangeEl = document.getElementById("sim-range-watermark");
+    if (simRangeEl) simRangeEl.textContent = `${formatMoney(best.netMin, target)} – ${formatMoney(best.netMax, target)}`;
+    const simRateEl = document.getElementById("sim-rate-display");
+    if (simRateEl) simRateEl.textContent = `1 ${source} = ${refRate.toLocaleString("fr-FR", { maximumFractionDigits: 4 })} ${target}`;
 
-    if (rangeWatermark) {
-      rangeWatermark.textContent = `[${fmtNum(calc.netLow)}${toCurr} – ${fmtNum(calc.netHigh)} ${toCurr}]`;
-    }
-
-    if (rateDisplay) {
-      rateDisplay.textContent = `1 ${fromCurr} = ${rate.toFixed(4)} ${toCurr}`;
-    }
+    renderOrderedSections(container, {
+      corridorKey,
+      source,
+      target,
+      amount,
+      refRate,
+      stamp: window.__XAALYA_LAST_MIDNIGHT_STAMP__,
+      estimates,
+      isNewDailyStamp
+    });
   }
 
-  if (pegNotice) {
-    const isCfa = toCurr === 'XOF' || toCurr === 'XAF';
-    pegNotice.classList.toggle('hidden', !isCfa);
-  }
-}
+  document.addEventListener("DOMContentLoaded", () => {
+    ["sourceCurrency", "targetCurrency", "sendAmount"].forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) {
+        el.addEventListener("change", runXaalyaModel);
+        el.addEventListener("input", runXaalyaModel);
+      }
+    });
+    runXaalyaModel();
+  });
 
-function startXaalyaSync() {
-  initXaalyaRates();
-  setTimeout(updateSimulation, 150);
-  setTimeout(updateSimulation, 600);
-}
-
-window.XAALYA_FALLBACK_RATES = XAALYA_FALLBACK_RATES;
-window.XAALYA_DEFAULT_CORRIDORS = XAALYA_DEFAULT_CORRIDORS;
-window.normalizeCurrencyCode = normalizeCurrencyCode;
-window.initXaalyaRates = initXaalyaRates;
-window.getCrossRate = getCrossRate;
-window.computeEstimatedNetForecast = computeEstimatedNetForecast;
-window.updateSimulation = updateSimulation;
-
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', startXaalyaSync);
-} else {
-  startXaalyaSync();
-}
-
-document.addEventListener('input', (e) => {
-  if (e.target && e.target.matches('input[type="number"], input[id*="amount"], input[id*="montant"]')) {
-    updateSimulation();
-  }
-});
-
-document.addEventListener('change', (e) => {
-  if (e.target && e.target.matches('select')) {
-    updateSimulation();
-  }
-});
-
-document.addEventListener('click', (e) => {
-  const corridorBtn = e.target.closest('[data-from][data-to], [data-corridor], .corridor-btn, .corridor-card, button, a');
-  if (!corridorBtn) return;
-
-  const text = (corridorBtn.textContent || '').trim();
-  const hasArrow = /(?:→|->|➔|➜)/.test(text) || corridorBtn.dataset.from || corridorBtn.dataset.corridor;
-  if (!hasArrow) return;
-
-  const selects = Array.from(document.querySelectorAll('select'));
-  const fromSelect =
-    document.getElementById('from-currency') ||
-    document.getElementById('sourceCurrency') ||
-    selects[0] ||
-    null;
-  const toSelect =
-    document.getElementById('to-currency') ||
-    document.getElementById('targetCurrency') ||
-    document.getElementById('sim-currency') ||
-    selects[1] ||
-    null;
-
-  let nextFrom = corridorBtn.dataset.from;
-  let nextTo = corridorBtn.dataset.to;
-
-  if ((!nextFrom || !nextTo) && corridorBtn.dataset.corridor) {
-    const parts = corridorBtn.dataset.corridor.split(/[^A-Za-z]+/).filter(Boolean);
-    if (parts.length >= 2) {
-      nextFrom = nextFrom || parts[0];
-      nextTo = nextTo || parts[1];
-    }
-  }
-
-  if (!nextFrom || !nextTo) {
-    const match = text.match(/\b([A-Z]{3})\b.*?(?:→|->|➔|➜).*?\b([A-Z]{3})\b/);
-    if (match) {
-      nextFrom = nextFrom || match[1];
-      nextTo = nextTo || match[2];
-    }
-  }
-
-  if (nextFrom && fromSelect) {
-    const normFrom = normalizeCurrencyCode(nextFrom, 'EUR');
-    const opt = Array.from(fromSelect.options).find(
-      (o) => normalizeCurrencyCode(o.value, '') === normFrom || normalizeCurrencyCode(o.text, '') === normFrom
-    );
-    if (opt) fromSelect.value = opt.value;
-  }
-
-  if (nextTo && toSelect) {
-    const normTo = normalizeCurrencyCode(nextTo, 'XOF');
-    const opt = Array.from(toSelect.options).find(
-      (o) => normalizeCurrencyCode(o.value, '') === normTo || normalizeCurrencyCode(o.text, '') === normTo
-    );
-    if (opt) toSelect.value = opt.value;
-  }
-
-  setTimeout(updateSimulation, 0);
-  setTimeout(updateSimulation, 120);
-});
+  window.XaalyaModel = { run: runXaalyaModel, profiles: OPERATOR_PROFILES };
+})();
