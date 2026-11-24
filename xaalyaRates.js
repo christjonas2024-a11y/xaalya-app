@@ -1,8 +1,7 @@
-/* xaalyaRates.js — Modèle net journalier (00:00 GMT), 10 profils & rendu ordonné */
+/* xaalyaRates.js — Modèle net journalier (00:00 GMT), taux croisés rates.json & 5 colonnes */
 (function () {
-  const FIXED_EUR_XOF = 655.957;
+  const FIXED_CFA_PER_EUR = 655.957;
 
-  // 10 profils représentatifs (Banque / SWIFT conservé comme repère neutre, Wave corrigé)
   const OPERATOR_PROFILES = [
     { id: "wu", name: "Western Union", category: "traditional", neutralBenchmark: false, url: "https://www.westernunion.com" },
     { id: "mg", name: "MoneyGram", category: "traditional", neutralBenchmark: false, url: "https://www.moneygram.com" },
@@ -16,17 +15,16 @@
     { id: "bank_swift", name: "Banques / SWIFT (Repère neutre)", category: "bank_benchmark", neutralBenchmark: true, url: "https://www.swift.com" }
   ];
 
-  // Paramètres Chow-Lin / RPW calibrés par corridor & famille (extensibles aux 294 corridors)
   const CORRIDOR_PRIORS = {
     "EUR->XOF": {
-      label: "France → Sénégal (300 €)",
-      defaultAmount: 300,
       baseCostByCat: { mobile: 0.014, digital: 0.022, traditional: 0.048, bank_benchmark: 0.065 },
       spreadHalfWidth: { mobile: 0.004, digital: 0.006, traditional: 0.011, bank_benchmark: 0.014 }
     },
+    "EUR->XAF": {
+      baseCostByCat: { mobile: 0.015, digital: 0.023, traditional: 0.049, bank_benchmark: 0.066 },
+      spreadHalfWidth: { mobile: 0.004, digital: 0.006, traditional: 0.011, bank_benchmark: 0.014 }
+    },
     "USD->NGN": {
-      label: "États-Unis → Nigeria (300 $)",
-      defaultAmount: 300,
       baseCostByCat: { mobile: 0.025, digital: 0.031, traditional: 0.056, bank_benchmark: 0.074 },
       spreadHalfWidth: { mobile: 0.008, digital: 0.010, traditional: 0.016, bank_benchmark: 0.020 }
     }
@@ -39,23 +37,44 @@
     return `${d}/${m}/${y} 00:00 GMT`;
   }
 
+  function extractCurrencyCode(rawVal) {
+    if (!rawVal) return "";
+    const match = String(rawVal).toUpperCase().match(/\b[A-Z]{3}\b/);
+    return match ? match[0] : String(rawVal).trim().toUpperCase();
+  }
+
   function computeCompositeRate(source, target, ratesData) {
-    if (source === target) return 1;
-    const key = `${source}->${target}`;
-    if (key === "EUR->XOF") return FIXED_EUR_XOF;
-
-    const localRate = ratesData?.rates?.[key];
-    const openRate = ratesData?.sources?.openRates?.[key];
-    const fawazRate = ratesData?.sources?.fawaz?.[key];
-    const ffmRate = ratesData?.sources?.frankfurter?.[key];
-
-    const samples = [localRate, openRate, fawazRate, ffmRate].filter((v) => typeof v === "number" && v > 0);
-    if (samples.length > 0) {
-      return samples.reduce((acc, v) => acc + v, 0) / samples.length;
+    if (!source || !target || source === target) return 1;
+    if (source === "EUR" && (target === "XOF" || target === "XAF")) {
+      return FIXED_CFA_PER_EUR;
     }
 
-    if (key === "USD->NGN") return 1580;
-    return 1;
+    const ratesObj = ratesData && typeof ratesData.rates === "object" ? ratesData.rates : null;
+    if (ratesObj) {
+      const baseCode = extractCurrencyCode(ratesData.base || "EUR") || "EUR";
+      const srcRate = source === baseCode ? 1 : Number(ratesObj[source]);
+      const tgtRate = target === baseCode ? 1 : Number(ratesObj[target]);
+
+      if (Number.isFinite(srcRate) && srcRate > 0 && Number.isFinite(tgtRate) && tgtRate > 0) {
+        return tgtRate / srcRate;
+      }
+    }
+
+    // Repli de sécurité uniquement si rates.json ne contient pas la devise
+    const fallbackTable = {
+      "EUR->NGN": 1700,
+      "USD->NGN": 1580,
+      "GBP->NGN": 2000,
+      "USD->XOF": 605,
+      "USD->XAF": 605,
+      "CAD->XOF": 430,
+      "EUR->MAD": 10.8,
+      "EUR->KES": 140,
+      "USD->KES": 129,
+      "USD->GHS": 16.5,
+      "EUR->TND": 3.35
+    };
+    return fallbackTable[`${source}->${target}`] || 1;
   }
 
   function estimateChowLinNetForProfile(profile, amount, refRate, corridorKey, ratesData, daySeed) {
@@ -117,31 +136,31 @@
           </p>
         </div>
 
-        <!-- 3. TOP OPÉRATEURS NON SPONSORISÉS (5 COLONNES) -->
-        <div id="xaalya-top-operators" class="bg-slate-900/70 border border-slate-800 rounded-2xl p-5 space-y-3">
+        <!-- 3. TOP OPÉRATEURS NON SPONSORISÉS (5 COLONNES — LISIBLE MOBILE) -->
+        <div id="xaalya-top-operators" class="bg-slate-900/70 border border-slate-800 rounded-2xl p-3 sm:p-5 space-y-3">
           <div class="flex items-center justify-between gap-2">
-            <h3 class="text-sm font-bold uppercase tracking-wider text-slate-200">Top opérateurs non sponsorisés</h3>
+            <h3 class="text-xs sm:text-sm font-bold uppercase tracking-wider text-slate-200">Top opérateurs non sponsorisés</h3>
           </div>
-          <div class="overflow-x-auto">
-            <table class="w-full text-left border-collapse text-xs sm:text-sm">
+          <div class="overflow-x-auto -mx-1 sm:mx-0">
+            <table class="w-full text-left border-collapse text-[11px] sm:text-sm">
               <thead>
-                <tr class="border-b border-slate-800 text-slate-400 text-xs uppercase">
-                  <th class="py-2.5 px-3">Opérateur</th>
-                  <th class="py-2.5 px-3">Intervalle net estimé</th>
-                  <th class="py-2.5 px-3">Coût moyen estimé</th>
-                  <th class="py-2.5 px-3">Montant à recevoir estimé</th>
-                  <th class="py-2.5 px-3 text-right">Action</th>
+                <tr class="border-b border-slate-800 text-slate-400 text-[10px] sm:text-xs uppercase">
+                  <th class="py-2 px-1.5 sm:px-3">Opérateur</th>
+                  <th class="py-2 px-1.5 sm:px-3">Intervalle net estimé</th>
+                  <th class="py-2 px-1.5 sm:px-3">Coût moyen estimé</th>
+                  <th class="py-2 px-1.5 sm:px-3">Montant à recevoir estimé</th>
+                  <th class="py-2 px-1.5 sm:px-3 text-right">Action</th>
                 </tr>
               </thead>
               <tbody class="divide-y divide-slate-800/80">
                 ${estimates.map((item) => `
                   <tr class="${item.profile.neutralBenchmark ? "bg-slate-950/50 text-slate-300" : "hover:bg-slate-950/60 text-white"}">
-                    <td class="py-3 px-3 font-semibold">${item.profile.name}</td>
-                    <td class="py-3 px-3 font-mono text-xs text-slate-300">${formatMoney(item.netMin, target)} – ${formatMoney(item.netMax, target)}</td>
-                    <td class="py-3 px-3 font-mono text-xs text-slate-300">${item.effectiveCostPct} %</td>
-                    <td class="py-3 px-3 font-bold text-emerald-400">${formatMoney(item.netCentral, target)}</td>
-                    <td class="py-3 px-3 text-right">
-                      <a href="${item.profile.url}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center px-3 py-1.5 rounded-lg text-xs font-semibold bg-emerald-500/15 hover:bg-emerald-500/25 text-emerald-400 border border-emerald-500/30 transition">
+                    <td class="py-2.5 px-1.5 sm:px-3 font-semibold leading-tight">${item.profile.name}</td>
+                    <td class="py-2.5 px-1.5 sm:px-3 font-mono text-[10px] sm:text-xs text-slate-300 leading-tight">${formatMoney(item.netMin, target)} – ${formatMoney(item.netMax, target)}</td>
+                    <td class="py-2.5 px-1.5 sm:px-3 font-mono text-[10px] sm:text-xs text-slate-300 whitespace-nowrap">${item.effectiveCostPct} %</td>
+                    <td class="py-2.5 px-1.5 sm:px-3 font-bold text-emerald-400 whitespace-nowrap">${formatMoney(item.netCentral, target)}</td>
+                    <td class="py-2.5 px-1.5 sm:px-3 text-right whitespace-nowrap">
+                      <a href="${item.profile.url}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center px-2 sm:px-3 py-1 sm:py-1.5 rounded-lg text-[10px] sm:text-xs font-semibold bg-emerald-500/15 hover:bg-emerald-500/25 text-emerald-400 border border-emerald-500/30 transition">
                         Envoyer
                       </a>
                     </td>
@@ -168,8 +187,8 @@
     const container = document.getElementById("resultsContainer");
     if (!container) return;
 
-    const source = (srcEl?.value || "EUR").toUpperCase();
-    const target = (tgtEl?.value || "XOF").toUpperCase();
+    const source = extractCurrencyCode(srcEl?.value || "EUR") || "EUR";
+    const target = extractCurrencyCode(tgtEl?.value || "XOF") || "XOF";
     const amount = Math.max(1, Number(amtEl?.value || 300));
     const corridorKey = `${source}->${target}`;
 
