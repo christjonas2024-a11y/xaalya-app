@@ -883,6 +883,10 @@ function renderResults() {
       <td class="py-3 px-4"><button class="bg-emerald-500 hover:bg-emerald-600 text-white text-xs font-bold px-3 py-1.5 rounded-lg transition" onclick="window.location.href='${r.url}'">${trad.btnSend || 'Send ➔'}</button></td>
     </tr>`;
   }).join('');
+
+  if (window.XaalyaModel && typeof window.XaalyaModel.run === "function") {
+    window.XaalyaModel.run();
+  }
 }
 
 document.addEventListener('DOMContentLoaded', async () => {
