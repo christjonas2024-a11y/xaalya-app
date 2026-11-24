@@ -13,8 +13,7 @@
     { id: "worldremit", name: "WorldRemit", category: "digital", neutralBenchmark: false, url: "https://www.worldremit.com/fr" },
     { id: "wu", name: "Western Union", category: "traditional", neutralBenchmark: false, url: "https://www.westernunion.com/fr/fr/web/send-money.html" },
     { id: "mg", name: "MoneyGram", category: "traditional", neutralBenchmark: false, url: "https://www.moneygram.com/m/fr/fr/send.html" },
-    { id: "ria", name: "Ria Money Transfer", category: "traditional", neutralBenchmark: false, url: "https://www.riamoneytransfer.com/fr/fr/" },
-    { id: "bank_swift", name: "Banques / SWIFT (Repère neutre)", category: "bank_benchmark", neutralBenchmark: true, hideAction: true, url: "https://www.swift.com/our-solutions/swift-gpi" }
+    { id: "ria", name: "Ria Money Transfer", category: "traditional", neutralBenchmark: false, url: "https://www.riamoneytransfer.com/fr/fr/" }
   ];
 
   const CORRIDOR_PRIORS = {
