@@ -260,5 +260,25 @@
     runXaalyaModel();
   });
 
-  window.XaalyaModel = { run: runXaalyaModel, profiles: OPERATOR_PROFILES };
+
+  function bindTopCorridors() {
+    const origSelect = window.selectCorridor;
+    window.selectCorridor = function (src, tgt) {
+      if (typeof origSelect === "function") {
+        origSelect(src, tgt);
+      }
+      const srcEl = document.getElementById("sourceCurrency");
+      const tgtEl = document.getElementById("targetCurrency");
+      if (srcEl && src) srcEl.value = extractCurrencyCode(src);
+      if (tgtEl && tgt) tgtEl.value = extractCurrencyCode(tgt);
+      runXaalyaModel();
+    };
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", bindTopCorridors);
+  } else {
+    bindTopCorridors();
+  }
+  window.XaalyaModel = { run: runXaalyaModel, profiles: OPERATOR_PROFILES, bindCorridors: bindTopCorridors };
 })();
