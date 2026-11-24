@@ -12,7 +12,7 @@
     { id: "worldremit", name: "WorldRemit", category: "digital", neutralBenchmark: false, url: "https://www.worldremit.com" },
     { id: "sendwave", name: "Sendwave", category: "digital", neutralBenchmark: false, url: "https://www.sendwave.com" },
     { id: "orange_money", name: "Orange Money", category: "mobile", neutralBenchmark: false, url: "https://www.orangemoney.com" },
-    { id: "wave_momo", name: "Wave / MTN MoMo", category: "mobile", neutralBenchmark: false, url: "https://www.wave.com" },
+    { id: "wave_momo", name: "Wave", category: "mobile", neutralBenchmark: false, url: "https://www.wave.com" },
     { id: "bank_swift", name: "Banques / SWIFT (Repère neutre)", category: "bank_benchmark", neutralBenchmark: true, url: "https://www.swift.com" }
   ];
 
