@@ -3,16 +3,18 @@
   const FIXED_CFA_PER_EUR = 655.957;
 
   const OPERATOR_PROFILES = [
-    { id: "wu", name: "Western Union", category: "traditional", neutralBenchmark: false, url: "https://www.westernunion.com" },
-    { id: "mg", name: "MoneyGram", category: "traditional", neutralBenchmark: false, url: "https://www.moneygram.com" },
-    { id: "ria", name: "Ria Money Transfer", category: "traditional", neutralBenchmark: false, url: "https://www.riamoneytransfer.com" },
-    { id: "wise", name: "Wise", category: "digital", neutralBenchmark: false, url: "https://wise.com" },
-    { id: "remitly", name: "Remitly", category: "digital", neutralBenchmark: false, url: "https://www.remitly.com" },
-    { id: "worldremit", name: "WorldRemit", category: "digital", neutralBenchmark: false, url: "https://www.worldremit.com" },
-    { id: "sendwave", name: "Sendwave", category: "digital", neutralBenchmark: false, url: "https://www.sendwave.com" },
-    { id: "orange_money", name: "Orange Money", category: "mobile", neutralBenchmark: false, url: "https://www.orangemoney.com" },
-    { id: "wave", name: "Wave", category: "mobile", neutralBenchmark: false, url: "https://www.wave.com" },
-    { id: "bank_swift", name: "Banques / SWIFT (Repère neutre)", category: "bank_benchmark", neutralBenchmark: true, url: "https://www.swift.com" }
+    { id: "nala", name: "Nala", category: "digital", neutralBenchmark: false, url: "https://www.nala.money/" },
+    { id: "sendwave", name: "Sendwave", category: "digital", neutralBenchmark: false, url: "https://www.sendwave.com/fr" },
+    { id: "taptap", name: "Taptap Send", category: "digital", neutralBenchmark: false, url: "https://www.taptapsend.com/" },
+    { id: "lemfi", name: "Lemfi", category: "digital", neutralBenchmark: false, url: "https://lemfi.com/" },
+    { id: "paysend", name: "Paysend", category: "digital", neutralBenchmark: false, url: "https://paysend.com/" },
+    { id: "wise", name: "Wise", category: "digital", neutralBenchmark: false, url: "https://wise.com/fr/send-money/" },
+    { id: "remitly", name: "Remitly", category: "digital", neutralBenchmark: false, url: "https://www.remitly.com/fr/home" },
+    { id: "worldremit", name: "WorldRemit", category: "digital", neutralBenchmark: false, url: "https://www.worldremit.com/fr" },
+    { id: "wu", name: "Western Union", category: "traditional", neutralBenchmark: false, url: "https://www.westernunion.com/fr/fr/web/send-money.html" },
+    { id: "mg", name: "MoneyGram", category: "traditional", neutralBenchmark: false, url: "https://www.moneygram.com/m/fr/fr/send.html" },
+    { id: "ria", name: "Ria Money Transfer", category: "traditional", neutralBenchmark: false, url: "https://www.riamoneytransfer.com/fr/fr/" },
+    { id: "bank_swift", name: "Banques / SWIFT (Repère neutre)", category: "bank_benchmark", neutralBenchmark: true, hideAction: true, url: "https://www.swift.com/our-solutions/swift-gpi" }
   ];
 
   const CORRIDOR_PRIORS = {
