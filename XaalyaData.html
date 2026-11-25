@@ -470,7 +470,7 @@
         preEl.dataset.benchJson = JSON.stringify(bench);
 
         updateMailto(bench);
-        renderMultiCorridors(amount, ratesData);
+        try { renderMultiCorridors(amount, ratesData); } catch (e) { console.error("Multi-corridors error:", e); }
       }
 
       document.addEventListener("DOMContentLoaded", () => {
@@ -618,5 +618,28 @@
       });
     })();
   </script>
+<script>
+
+      (function () {
+        const btn = document.getElementById("b2b-contact-btn");
+        if (!btn) return;
+        btn.addEventListener("click", function (ev) {
+          const href = btn.getAttribute("href") || "mailto:info@xaalya.com";
+          // Si le protocole mailto est bloque ou non gere, ouvrir Gmail compose dans un nouvel onglet
+          setTimeout(function () {
+            if (document.hasFocus()) {
+              const gmailUrl = "https://mail.google.com/mail/?view=cm&fs=1&to=info@xaalya.com&su=" +
+                encodeURIComponent("XaalyaData — Demande B2B");
+              window.open(gmailUrl, "_blank", "noopener,noreferrer");
+            }
+          }, 700);
+          if (!href.startsWith("mailto:")) {
+            ev.preventDefault();
+            window.location.href = href;
+          }
+        });
+      })();
+
+</script>
 </body>
 </html>
