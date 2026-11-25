@@ -1,4 +1,4 @@
-/* xaalyaData.js — Socle de données & repères bancaires / SWIFT pour XaalyaData */
+/* xaalyaData.js — Socle de donnees & reperes bancaires / SWIFT pour XaalyaData */
 (function (root, factory) {
   const api = factory();
   if (typeof module === "object" && module.exports) {
@@ -13,37 +13,117 @@
   const SWIFT_BENCHMARKS = {
     "EUR->XOF": {
       corridor: "EUR->XOF",
-      label: "Banques / SWIFT (Repère interbancaire)",
+      label: "Banques / SWIFT (Repere interbancaire)",
       baseCostRatio: 0.062,
       spreadHalfWidth: 0.015,
-      fixedFeeHint: "15 € – 35 € (frais émetteur + correspondants)",
-      settlementDays: "2 à 5 jours ouvrés"
+      fixedFeeHint: "15 EUR - 35 EUR (frais emetteur + correspondants)",
+      settlementDays: "2 a 5 jours ouvres"
     },
     "EUR->XAF": {
       corridor: "EUR->XAF",
-      label: "Banques / SWIFT (Repère interbancaire)",
+      label: "Banques / SWIFT (Repere interbancaire)",
       baseCostRatio: 0.064,
       spreadHalfWidth: 0.015,
-      fixedFeeHint: "15 € – 35 € (frais émetteur + correspondants)",
-      settlementDays: "2 à 5 jours ouvrés"
+      fixedFeeHint: "15 EUR - 35 EUR (frais emetteur + correspondants)",
+      settlementDays: "2 a 5 jours ouvres"
     },
     "USD->NGN": {
       corridor: "USD->NGN",
-      label: "Banques / SWIFT (Repère interbancaire)",
+      label: "Banques / SWIFT (Repere interbancaire)",
       baseCostRatio: 0.072,
       spreadHalfWidth: 0.020,
-      fixedFeeHint: "$20 – $45 (correspondants & change)",
-      settlementDays: "2 à 5 jours ouvrés"
+      fixedFeeHint: "20 USD - 45 USD (correspondants et change)",
+      settlementDays: "2 a 5 jours ouvres"
+    },
+    "GBP->NGN": {
+      corridor: "GBP->NGN",
+      label: "Banques / SWIFT (Repere interbancaire)",
+      baseCostRatio: 0.074,
+      spreadHalfWidth: 0.021,
+      fixedFeeHint: "15 GBP - 35 GBP (correspondants et liquidite NGN)",
+      settlementDays: "2 a 5 jours ouvres"
+    },
+    "USD->XOF": {
+      corridor: "USD->XOF",
+      label: "Banques / SWIFT (Repere interbancaire)",
+      baseCostRatio: 0.066,
+      spreadHalfWidth: 0.016,
+      fixedFeeHint: "20 USD - 40 USD (correspondants et change EUR/USD)",
+      settlementDays: "2 a 5 jours ouvres"
+    },
+    "GBP->XOF": {
+      corridor: "GBP->XOF",
+      label: "Banques / SWIFT (Repere interbancaire)",
+      baseCostRatio: 0.067,
+      spreadHalfWidth: 0.017,
+      fixedFeeHint: "15 GBP - 35 GBP (correspondants et change EUR/GBP)",
+      settlementDays: "2 a 5 jours ouvres"
+    },
+    "EUR->MAD": {
+      corridor: "EUR->MAD",
+      label: "Banques / SWIFT (Repere interbancaire)",
+      baseCostRatio: 0.056,
+      spreadHalfWidth: 0.014,
+      fixedFeeHint: "15 EUR - 30 EUR (frais emetteur + correspondants)",
+      settlementDays: "2 a 4 jours ouvres"
+    },
+    "USD->KES": {
+      corridor: "USD->KES",
+      label: "Banques / SWIFT (Repere interbancaire)",
+      baseCostRatio: 0.066,
+      spreadHalfWidth: 0.016,
+      fixedFeeHint: "20 USD - 40 USD (correspondants et change)",
+      settlementDays: "2 a 5 jours ouvres"
+    },
+    "GBP->GHS": {
+      corridor: "GBP->GHS",
+      label: "Banques / SWIFT (Repere interbancaire)",
+      baseCostRatio: 0.075,
+      spreadHalfWidth: 0.022,
+      fixedFeeHint: "15 GBP - 35 GBP (correspondants et liquidite GHS)",
+      settlementDays: "2 a 5 jours ouvres"
+    },
+    "EUR->ZAR": {
+      corridor: "EUR->ZAR",
+      label: "Banques / SWIFT (Repere interbancaire)",
+      baseCostRatio: 0.052,
+      spreadHalfWidth: 0.013,
+      fixedFeeHint: "15 EUR - 30 EUR (frais emetteur + correspondants)",
+      settlementDays: "1 a 4 jours ouvres"
+    },
+    "USD->TZS": {
+      corridor: "USD->TZS",
+      label: "Banques / SWIFT (Repere interbancaire)",
+      baseCostRatio: 0.070,
+      spreadHalfWidth: 0.018,
+      fixedFeeHint: "20 USD - 40 USD (correspondants et change)",
+      settlementDays: "2 a 5 jours ouvres"
+    },
+    "USD->UGX": {
+      corridor: "USD->UGX",
+      label: "Banques / SWIFT (Repere interbancaire)",
+      baseCostRatio: 0.069,
+      spreadHalfWidth: 0.018,
+      fixedFeeHint: "20 USD - 40 USD (correspondants et change)",
+      settlementDays: "2 a 5 jours ouvres"
+    },
+    "EUR->RWF": {
+      corridor: "EUR->RWF",
+      label: "Banques / SWIFT (Repere interbancaire)",
+      baseCostRatio: 0.068,
+      spreadHalfWidth: 0.017,
+      fixedFeeHint: "15 EUR - 35 EUR (correspondants et change)",
+      settlementDays: "2 a 5 jours ouvres"
     }
   };
 
   const DEFAULT_SWIFT_BENCHMARK = {
     corridor: "DEFAULT",
-    label: "Banques / SWIFT (Repère interbancaire)",
+    label: "Banques / SWIFT (Repere interbancaire)",
     baseCostRatio: 0.068,
     spreadHalfWidth: 0.018,
     fixedFeeHint: "Variable selon banque et correspondants",
-    settlementDays: "2 à 5 jours ouvrés"
+    settlementDays: "2 a 5 jours ouvres"
   };
 
   function extractCurrencyCode(rawVal) {
