@@ -262,7 +262,7 @@
           </div>
 
           <div class="flex flex-wrap items-center gap-2.5 pt-1">
-            <a id="b2b-contact-btn" href="mailto:info@xaalya.com?subject=XaalyaData%20%E2%80%94%20Demande%20B2B" class="inline-flex items-center justify-center px-4 py-2.5 rounded-xl text-xs font-semibold bg-emerald-500 hover:bg-emerald-400 text-slate-950 transition cursor-pointer">
+            <a id="b2b-contact-btn" href="mailto:info@xaalya.com?subject=XaalyaData%20%E2%80%94%20Demande%20B2B&body=Bonjour%2C%0A%0AContact%20%3A%20info%40xaalya.com%20(sous%20couvert%20de%20christjonas2024%40gmail.com).%0A" class="inline-flex items-center justify-center px-4 py-2.5 rounded-xl text-xs font-semibold bg-emerald-500 hover:bg-emerald-400 text-slate-950 transition cursor-pointer">
               Contacter info@xaalya.com
             </a>
             <button id="b2b-copy-brief-btn" type="button" class="inline-flex items-center justify-center px-3 py-2 rounded-xl text-xs font-semibold bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-800 transition cursor-pointer">
@@ -680,92 +680,6 @@
         });
       })();
 
-</script>
-
-<script>
-(function () {
-  function runFallbackMultiCorridors() {
-    const tbody = document.getElementById("xd-multi-tbody");
-    if (!tbody || !window.XaalyaData) return;
-    if (tbody.querySelector(".xd-corridor-row")) return;
-
-    const amountInput = document.getElementById("xd-amount");
-    const amount = Math.max(1, Number(amountInput && amountInput.value ? amountInput.value : 1000) || 1000);
-    const pairs = [
-      { source: "EUR", target: "XOF" },
-      { source: "EUR", target: "XAF" },
-      { source: "USD", target: "NGN" },
-      { source: "GBP", target: "NGN" },
-      { source: "USD", target: "XOF" },
-      { source: "GBP", target: "XOF" },
-      { source: "EUR", target: "MAD" },
-      { source: "USD", target: "KES" },
-      { source: "GBP", target: "GHS" },
-      { source: "EUR", target: "ZAR" },
-      { source: "USD", target: "TZS" },
-      { source: "USD", target: "UGX" },
-      { source: "EUR", target: "RWF" }
-    ];
-
-    const fmt = (n, d) => Number(n || 0).toLocaleString("fr-FR", {
-      minimumFractionDigits: d,
-      maximumFractionDigits: d
-    });
-
-    const rows = pairs.map((p) =>
-      window.XaalyaData.computeBankBenchmark({
-        source: p.source,
-        target: p.target,
-        amount,
-        ratesData: FALLBACK_RATES
-      })
-    );
-
-    tbody.dataset.multiRows = JSON.stringify(rows);
-    tbody.dataset.multiAmount = String(amount);
-    tbody.innerHTML = rows.map((b) => `
-      <tr data-src="${b.source}" data-tgt="${b.target}" class="xd-corridor-row hover:bg-slate-800/50 transition cursor-pointer">
-        <td class="py-2.5 pr-3 font-mono font-bold text-white whitespace-nowrap">${b.corridor}</td>
-        <td class="py-2.5 px-3 font-mono text-slate-300 whitespace-nowrap">${fmt(b.refRate, 4)}</td>
-        <td class="py-2.5 px-3 font-mono text-amber-300 whitespace-nowrap">${fmt(b.effectiveCostPct, 2)} %</td>
-        <td class="py-2.5 px-3 font-mono font-semibold text-emerald-400 whitespace-nowrap">${fmt(b.netCentral, 2)} ${b.target}</td>
-        <td class="py-2.5 px-3 font-mono text-slate-400 whitespace-nowrap">${fmt(b.netMin, 2)} - ${fmt(b.netMax, 2)}</td>
-        <td class="py-2.5 pl-3 text-right text-slate-300 whitespace-nowrap">${b.settlementDays}</td>
-      </tr>
-    `).join("");
-  }
-
-  function bindContactLink() {
-    const btn = document.getElementById("b2b-contact-btn");
-    if (!btn || btn.dataset.xaalyaBound === "1") return;
-    btn.dataset.xaalyaBound = "1";
-    btn.addEventListener("click", function () {
-      const profile = (document.getElementById("b2b-profile") && document.getElementById("b2b-profile").value) || "Veille corridors & benchmarks FX";
-      const subj = encodeURIComponent("XaalyaData — " + profile);
-      const body = encodeURIComponent("Bonjour,\n\nJe souhaite echanger concernant XaalyaData (" + profile + ").\n");
-      btn.setAttribute("href", "mailto:info@xaalya.com?subject=" + subj + "&body=" + body);
-
-      setTimeout(function () {
-        if (document.hasFocus()) {
-          window.open(
-            "https://mail.google.com/mail/?view=cm&fs=1&to=info@xaalya.com&su=" + subj + "&body=" + body,
-            "_blank",
-            "noopener,noreferrer"
-          );
-        }
-      }, 750);
-    });
-  }
-
-  window.addEventListener("DOMContentLoaded", function () {
-    bindContactLink();
-    setTimeout(runFallbackMultiCorridors, 250);
-  });
-  setTimeout(function () {
-    bindContactLink();
-    runFallbackMultiCorridors();
-  }, 600);
-})();
 </script>
 
 </body>
