@@ -222,7 +222,7 @@
           </div>
 
           <div class="flex flex-wrap items-center gap-2.5 pt-1">
-            <a id="b2b-mailto-link" href="mailto:info@xaalya.com?subject=XaalyaData%20%E2%80%94%20Demande%20B2B" class="inline-flex items-center justify-center px-4 py-2 rounded-xl text-xs font-semibold bg-emerald-500 text-slate-950 hover:bg-emerald-400 transition">
+            <a id="b2b-contact-btn" href="mailto:info@xaalya.com?subject=XaalyaData%20%E2%80%94%20Demande%20B2B" class="inline-flex items-center justify-center px-4 py-2.5 rounded-xl text-xs font-semibold bg-emerald-500 hover:bg-emerald-400 text-slate-950 transition cursor-pointer">
               Contacter info@xaalya.com
             </a>
             <button id="b2b-copy-brief-btn" type="button" class="inline-flex items-center justify-center px-3 py-2 rounded-xl text-xs font-semibold bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-800 transition cursor-pointer">
@@ -261,7 +261,7 @@
       }
 
 
-      function escapeCsvCell(val) {
+            function escapeCsvCell(val) {
         const str = String(val ?? "");
         if (/[";,\n\r]/.test(str)) {
           return '"' + str.replace(/"/g, '""') + '"';
@@ -269,120 +269,88 @@
         return str;
       }
 
+      function formatCsvNumber(val, decimals = 2) {
+        const num = Number(val);
+        if (!Number.isFinite(num)) return "";
+        return num.toFixed(decimals).replace(".", ",");
+      }
+
       function buildCsvFromParsed(parsed) {
         const b = parsed.benchmark || {};
         const headers = [
-          "product",
-          "schemaVersion",
-          "generatedAt",
-          "corridor",
-          "sourceCurrency",
-          "targetCurrency",
-          "amount",
-          "refRate",
-          "benchmarkLabel",
-          "effectiveCostPct",
-          "netMin",
-          "netCentral",
-          "netMax",
-          "fixedFeeHint",
-          "settlementDays"
+          "Corridor",
+          "Devise source",
+          "Devise cible",
+          "Montant",
+          "Taux ref.",
+          "Cout estime (%)",
+          "Net min",
+          "Net central",
+          "Net max",
+          "Frais fixes indicatifs",
+          "Delai",
+          "Source repere",
+          "Genere le"
         ];
         const row = [
-          parsed.product || "XaalyaData",
-          parsed.schemaVersion || "1.0",
-          parsed.generatedAt || "",
           parsed.corridor || "",
           parsed.sourceCurrency || "",
           parsed.targetCurrency || "",
-          parsed.amount ?? "",
-          parsed.refRate ?? "",
-          b.label || "",
-          b.effectiveCostPct ?? "",
-          b.netMin ?? "",
-          b.netCentral ?? "",
-          b.netMax ?? "",
+          formatCsvNumber(parsed.amount, 2),
+          formatCsvNumber(parsed.refRate, 4),
+          formatCsvNumber(b.effectiveCostPct, 2),
+          formatCsvNumber(b.netMin, 2),
+          formatCsvNumber(b.netCentral, 2),
+          formatCsvNumber(b.netMax, 2),
           b.fixedFeeHint || "",
-          b.settlementDays || ""
+          b.settlementDays || "",
+          b.label || "Banques / SWIFT",
+          parsed.generatedAt || ""
         ];
-        return "\uFEFF" + headers.map(escapeCsvCell).join(",") + "\n" + row.map(escapeCsvCell).join(",") + "\n";
+        return (
+          "\uFEFFsep=;\n" +
+          headers.map(escapeCsvCell).join(";") +
+          "\n" +
+          row.map(escapeCsvCell).join(";") +
+          "\n"
+        );
       }
-
-      function buildB2bBriefText(bench) {
-        return [
-          "Bonjour XaalyaData,",
-          "Je souhaite échanger au sujet des données et repères suivants :",
-          `- Profil / besoin : ${document.getElementById("b2b-usecase")?.value || "Veille corridors"}`,
-          `- Corridor exemple : ${bench.corridor} (montant : ${bench.amount} ${bench.source})`,
-          `- Net central estimé (repère bancaire/SWIFT) : ${fmtNum(bench.netCentral, 2)} ${bench.target} (${bench.effectiveCostPct} %)`
-        ].join("\n");
-      }
-
-      function updateMailto(bench) {
-        const link = document.getElementById("b2b-mailto-link");
-        const usecase = document.getElementById("b2b-usecase")?.value || "Demande B2B";
-        if (!link || !bench) return;
-        const subject = encodeURIComponent(`XaalyaData B2B — ${bench.corridor} (${usecase})`);
-        const body = encodeURIComponent(buildB2bBriefText(bench));
-        link.href = `mailto:info@xaalya.com?subject=${subject}&body=${body}`;
-      }
-
-
-                  const MULTI_CORRIDORS = [
-        { source: "EUR", target: "XOF" },
-        { source: "EUR", target: "XAF" },
-        { source: "USD", target: "NGN" },
-        { source: "GBP", target: "NGN" },
-        { source: "USD", target: "XOF" },
-        { source: "GBP", target: "XOF" },
-        { source: "EUR", target: "MAD" },
-        { source: "USD", target: "KES" },
-        { source: "GBP", target: "GHS" },
-        { source: "EUR", target: "ZAR" },
-        { source: "USD", target: "TZS" },
-        { source: "USD", target: "UGX" },
-        { source: "EUR", target: "RWF" }
-      ];
 
       function buildMultiCsv(rows, amount) {
         const generatedAt = new Date().toISOString();
         const headers = [
-          "product",
-          "schemaVersion",
-          "generatedAt",
-          "corridor",
-          "sourceCurrency",
-          "targetCurrency",
-          "amount",
-          "refRate",
-          "benchmarkLabel",
-          "effectiveCostPct",
-          "netMin",
-          "netCentral",
-          "netMax",
-          "fixedFeeHint",
-          "settlementDays"
+          "Corridor",
+          "Devise source",
+          "Devise cible",
+          "Montant",
+          "Taux ref.",
+          "Cout estime (%)",
+          "Net min",
+          "Net central",
+          "Net max",
+          "Frais fixes indicatifs",
+          "Delai",
+          "Source repere",
+          "Genere le"
         ];
-        const lines = [headers.map(escapeCsvCell).join(",")];
+        const lines = ["sep=;", headers.map(escapeCsvCell).join(";")];
         for (const b of rows) {
           const line = [
-            "XaalyaData",
-            "1.0",
-            generatedAt,
             b.corridor,
             b.source,
             b.target,
-            amount,
-            Number(b.refRate.toFixed(6)),
-            b.label,
-            b.effectiveCostPct,
-            Number(b.netMin.toFixed(2)),
-            Number(b.netCentral.toFixed(2)),
-            Number(b.netMax.toFixed(2)),
+            formatCsvNumber(amount, 2),
+            formatCsvNumber(b.refRate, 4),
+            formatCsvNumber(b.effectiveCostPct, 2),
+            formatCsvNumber(b.netMin, 2),
+            formatCsvNumber(b.netCentral, 2),
+            formatCsvNumber(b.netMax, 2),
             b.fixedFeeHint,
-            b.settlementDays
+            b.settlementDays,
+            b.label || "Banques / SWIFT",
+            generatedAt
           ];
-          lines.push(line.map(escapeCsvCell).join(","));
+          lines.push(line.map(escapeCsvCell).join(";"));
         }
         return "\uFEFF" + lines.join("\n") + "\n";
       }
