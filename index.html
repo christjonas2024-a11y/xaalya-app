@@ -845,7 +845,7 @@ function renderResults() {
   const corridor = catalogue.find(c => c.devisesDepart === source && c.deviseArrivee === target);
 
   if (!corridor || !corridor.offres) {
-    tbody.innerHTML = `<tr><td colspan="7" class="py-4 text-center text-slate-400">Aucun opérateur disponible pour ce couloir</td></tr>`;
+    tbody.innerHTML = `<tr><td colspan="7" class="py-4 text-center text-slate-400">${trad.noOperatorAvailable || (currentLang === 'fr' ? 'Aucun opérateur disponible pour ce couloir' : 'No operator available for this corridor')}</td></tr>`;
     return;
   }
 

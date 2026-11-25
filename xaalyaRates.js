@@ -121,33 +121,33 @@
         <!-- 2. ESTIMATION NETTE XAALYA (MODÈLE CHOW-LIN) — CENTRÉ -->
         <div id="xaalya-result-block" class="bg-slate-900/90 border border-slate-800 rounded-2xl p-6 text-center space-y-2">
           <div class="text-xs font-semibold uppercase tracking-wider text-slate-200">
-            Estimation nette Xaalya (modèle Chow-Lin)
+            ${getRatesI18n().netTitle}
           </div>
 <div id="xaalya-net-main" class="text-2xl sm:text-3xl font-black text-emerald-400 pt-1">
             ${formatMoney(bestNonNeutral.netCentral, target)}
           </div>
           <div class="text-xs text-slate-400">
-            Taux de référence : <span class="font-mono text-slate-300">1 ${source} = ${refRate.toLocaleString("fr-FR", { maximumFractionDigits: 4 })} ${target}</span>
+            ${getRatesI18n().refRateLabel} <span class="font-mono text-slate-300">1 ${source} = ${refRate.toLocaleString(getRatesI18n().locale, { maximumFractionDigits: 4 })} ${target}</span>
           </div>
           <p class="text-xs text-emerald-400 pt-1">
-            vérifier auprès des opérateurs avant d'envoyer
+            ${getRatesI18n().verifyNotice}
           </p>
         </div>
 
         <!-- 3. TOP OPÉRATEURS NON SPONSORISÉS (5 COLONNES — LISIBLE MOBILE) -->
         <div id="xaalya-top-operators" class="bg-slate-900/70 border border-slate-800 rounded-2xl p-3 sm:p-5 space-y-3">
           <div class="flex items-center justify-between gap-2">
-            <h3 class="text-xs sm:text-sm font-bold uppercase tracking-wider text-slate-200">Top opérateurs non sponsorisés</h3>
+            <h3 class="text-xs sm:text-sm font-bold uppercase tracking-wider text-slate-200">${getRatesI18n().topOpsTitle}</h3>
           </div>
           <div class="overflow-x-auto -mx-1 sm:mx-0">
             <table class="w-full text-left border-collapse text-[11px] sm:text-sm">
               <thead>
                 <tr class="border-b border-slate-800 text-slate-400 text-[10px] sm:text-xs uppercase">
-                  <th class="py-2 px-1.5 sm:px-3">Opérateur</th>
-                  <th class="py-2 px-1.5 sm:px-3">Intervalle net estimé</th>
-                  <th class="py-2 px-1.5 sm:px-3">Coût moyen estimé</th>
-                  <th class="py-2 px-1.5 sm:px-3">Montant à recevoir estimé</th>
-                  <th class="py-2 px-1.5 sm:px-3 text-right">Action</th>
+                  <th class="py-2 px-1.5 sm:px-3">${getRatesI18n().colOperator}</th>
+                  <th class="py-2 px-1.5 sm:px-3">${getRatesI18n().colRange}</th>
+                  <th class="py-2 px-1.5 sm:px-3">${getRatesI18n().colCost}</th>
+                  <th class="py-2 px-1.5 sm:px-3">${getRatesI18n().colReceive}</th>
+                  <th class="py-2 px-1.5 sm:px-3 text-right">${getRatesI18n().colAction}</th>
                 </tr>
               </thead>
               <tbody class="divide-y divide-slate-800/80">
@@ -159,7 +159,7 @@
                     <td class="py-2.5 px-1.5 sm:px-3 font-bold text-emerald-400 whitespace-nowrap">${formatMoney(item.netCentral, target)}</td>
                     <td class="py-2.5 px-1.5 sm:px-3 text-right whitespace-nowrap">
                       <a href="${item.profile.url}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center px-2 sm:px-3 py-1 sm:py-1.5 rounded-lg text-[10px] sm:text-xs font-semibold bg-emerald-500/15 hover:bg-emerald-500/25 text-emerald-400 border border-emerald-500/30 transition">
-                        Envoyer
+                        ${getRatesI18n().btnSend}
                       </a>
                     </td>
                   </tr>
@@ -170,12 +170,279 @@
         </div>
 
         <!-- ESPACE PUB -->
-        <aside id="xaalya-ad-space" aria-label="Espace publicitaire" class="bg-slate-900/50 border border-slate-800/80 rounded-2xl p-4 text-center">
-          <div class="text-[11px] uppercase tracking-widest text-slate-500">Espace pub</div>
-          <div class="text-xs text-slate-400 mt-1">Emplacement réservé — Partenariat / annonce neutre</div>
+        <aside id="xaalya-ad-space" aria-label="${getRatesI18n().adAria}" class="bg-slate-900/50 border border-slate-800/80 rounded-2xl p-4 text-center">
+          <div class="text-[11px] uppercase tracking-widest text-slate-500">${getRatesI18n().adTitle}</div>
+          <div class="text-xs text-slate-400 mt-1">${getRatesI18n().adSub}</div>
         </aside>
       </div>
     `;
+  }
+
+  
+  const XAALYA_RATES_I18N = {
+    fr: {
+      locale: "fr-FR",
+      netTitle: "Estimation nette Xaalya (modèle Chow-Lin)",
+      refRateLabel: "Taux de référence :",
+      verifyNotice: "Vérifier auprès des opérateurs avant d'envoyer",
+      topOpsTitle: "Top opérateurs non sponsorisés",
+      colOperator: "Opérateur",
+      colRange: "Intervalle net estimé",
+      colCost: "Coût moyen estimé",
+      colReceive: "Montant à recevoir estimé",
+      colAction: "Action",
+      btnSend: "Envoyer",
+      adAria: "Espace publicitaire",
+      adTitle: "Espace pub",
+      adSub: "Emplacement réservé — Partenariat / annonce neutre"
+    },
+    en: {
+      locale: "en-GB",
+      netTitle: "Xaalya Net Estimate (Chow-Lin Model)",
+      refRateLabel: "Reference rate:",
+      verifyNotice: "Verify with operators before sending",
+      topOpsTitle: "Top non-sponsored operators",
+      colOperator: "Operator",
+      colRange: "Estimated net range",
+      colCost: "Estimated avg. cost",
+      colReceive: "Estimated amount received",
+      colAction: "Action",
+      btnSend: "Send",
+      adAria: "Advertising space",
+      adTitle: "Ad space",
+      adSub: "Reserved slot — Neutral partnership / announcement"
+    },
+    es: {
+      locale: "es-ES",
+      netTitle: "Estimación neta Xaalya (modelo Chow-Lin)",
+      refRateLabel: "Tipo de referencia:",
+      verifyNotice: "Verifica con los operadores antes de enviar",
+      topOpsTitle: "Principales operadores no patrocinados",
+      colOperator: "Operador",
+      colRange: "Rango neto estimado",
+      colCost: "Coste medio estimado",
+      colReceive: "Importe estimado a recibir",
+      colAction: "Acción",
+      btnSend: "Enviar",
+      adAria: "Espacio publicitario",
+      adTitle: "Espacio publicitario",
+      adSub: "Espacio reservado — Colaboración / anuncio neutral"
+    },
+    pt: {
+      locale: "pt-PT",
+      netTitle: "Estimativa líquida Xaalya (modelo Chow-Lin)",
+      refRateLabel: "Taxa de referência:",
+      verifyNotice: "Verifique com os operadores antes de enviar",
+      topOpsTitle: "Principais operadores não patrocinados",
+      colOperator: "Operador",
+      colRange: "Intervalo líquido estimado",
+      colCost: "Custo médio estimado",
+      colReceive: "Valor estimado a receber",
+      colAction: "Ação",
+      btnSend: "Enviar",
+      adAria: "Espaço publicitário",
+      adTitle: "Espaço publicitário",
+      adSub: "Espaço reservado — Parceria / anúncio neutro"
+    },
+    de: {
+      locale: "de-DE",
+      netTitle: "Xaalya-Nettoschätzung (Chow-Lin-Modell)",
+      refRateLabel: "Referenzkurs:",
+      verifyNotice: "Vor dem Senden beim Anbieter prüfen",
+      topOpsTitle: "Top nicht gesponserte Anbieter",
+      colOperator: "Anbieter",
+      colRange: "Geschätzter Nettobereich",
+      colCost: "Geschätzte Ø-Kosten",
+      colReceive: "Geschätzter Empfangsbetrag",
+      colAction: "Aktion",
+      btnSend: "Senden",
+      adAria: "Werbefläche",
+      adTitle: "Werbefläche",
+      adSub: "Reservierter Platz — Neutrale Partnerschaft / Anzeige"
+    },
+    it: {
+      locale: "it-IT",
+      netTitle: "Stima netta Xaalya (modello Chow-Lin)",
+      refRateLabel: "Tasso di riferimento:",
+      verifyNotice: "Verifica presso gli operatori prima di inviare",
+      topOpsTitle: "Migliori operatori non sponsorizzati",
+      colOperator: "Operatore",
+      colRange: "Intervallo netto stimato",
+      colCost: "Costo medio stimato",
+      colReceive: "Importo stimato ricevuto",
+      colAction: "Azione",
+      btnSend: "Invia",
+      adAria: "Spazio pubblicitario",
+      adTitle: "Spazio pub",
+      adSub: "Spazio riservato — Partnership / annuncio neutrale"
+    },
+    ar: {
+      locale: "en-GB",
+      netTitle: "تقدير Xaalya الصافي (نموذج Chow-Lin)",
+      refRateLabel: "سعر الصرف المرجعي:",
+      verifyNotice: "تحقق لدى مزوّدي الخدمة قبل الإرسال",
+      topOpsTitle: "أفضل مزوّدي التحويل غير المموّلين",
+      colOperator: "المزوّد",
+      colRange: "النطاق الصافي المقدّر",
+      colCost: "متوسط التكلفة المقدّر",
+      colReceive: "المبلغ المقدّر استلامه",
+      colAction: "إجراء",
+      btnSend: "إرسال",
+      adAria: "مساحة إعلانية",
+      adTitle: "مساحة إعلانية",
+      adSub: "مساحة محجوزة — شراكة أو إعلان محايد"
+    },
+    zh: {
+      locale: "zh-CN",
+      netTitle: "Xaalya 净额估算（Chow-Lin 模型）",
+      refRateLabel: "参考汇率：",
+      verifyNotice: "汇款前请向汇款机构核实",
+      topOpsTitle: "热门非赞助汇款机构",
+      colOperator: "机构",
+      colRange: "预计净收款区间",
+      colCost: "预计平均成本",
+      colReceive: "预计收款金额",
+      colAction: "操作",
+      btnSend: "汇款",
+      adAria: "广告位",
+      adTitle: "广告位",
+      adSub: "预留位置 — 中立合作 / 公告"
+    },
+    sw: {
+      locale: "en-GB",
+      netTitle: "Makadirio halisi ya Xaalya (mfano wa Chow-Lin)",
+      refRateLabel: "Kiwango cha marejeleo:",
+      verifyNotice: "Thibitisha na watoa huduma kabla ya kutuma",
+      topOpsTitle: "Watoa huduma bora wasiodhaminiwa",
+      colOperator: "Mtoa huduma",
+      colRange: "Kiwango halisi kinachokadiriwa",
+      colCost: "Gharama ya wastani",
+      colReceive: "Kiasi kinachokadiriwa kupokelewa",
+      colAction: "Hatua",
+      btnSend: "Tuma",
+      adAria: "Nafasi ya tangazo",
+      adTitle: "Tangazo",
+      adSub: "Nafasi iliyohifadhiwa — Ushirikiano / tangazo huru"
+    },
+    am: {
+      locale: "en-GB",
+      netTitle: "የXaalya የተጣራ ግምት (Chow-Lin ሞዴል)",
+      refRateLabel: "የማጣቀሻ ተመን:",
+      verifyNotice: "ከመላክዎ በፊት ከአገልግሎት ሰጪዎች ጋር ያረጋግጡ",
+      topOpsTitle: "ያልተደገፉ ዋና አገልግሎት ሰጪዎች",
+      colOperator: "አገልግሎት ሰጪ",
+      colRange: "የተገመተ የተጣራ ክልል",
+      colCost: "አማካይ ወጪ ግምት",
+      colReceive: "የሚደርስ መጠን ግምት",
+      colAction: "እርምጃ",
+      btnSend: "ላክ",
+      adAria: "የማስታወቂያ ቦታ",
+      adTitle: "ማስታወቂያ",
+      adSub: "የተያዘ ቦታ — ገለልተኛ አጋርነት / ማስታወቂያ"
+    },
+    yo: {
+      locale: "en-GB",
+      netTitle: "Ìṣírò àpapọ̀ Xaalya (àwòkọ́ṣe Chow-Lin)",
+      refRateLabel: "Oṣùwọ̀n ìtọ́kasí:",
+      verifyNotice: "Ṣàyẹ̀wò pẹ̀lú àwọn olùpèsè kí o tó fi ránṣẹ́",
+      topOpsTitle: "Àwọn olùpèsè tó dára jù láìní ìpolówó",
+      colOperator: "Olùpèsè",
+      colRange: "Ìwọ̀n àpapọ̀ tí a fojú bù",
+      colCost: "Ìdá iye owó ìnáwó",
+      colReceive: "Iye tí a fojú bù pé yóò dé",
+      colAction: "Ìgbésẹ̀",
+      btnSend: "Fi ránṣẹ́",
+      adAria: "Ààyè ìpolówó",
+      adTitle: "Ìpolówó",
+      adSub: "Ààyè tí a yà sọ́tọ̀ — Ìbáṣepọ̀ / ìkéde"
+    },
+    ha: {
+      locale: "en-GB",
+      netTitle: "Ƙididdigar tsantsa ta Xaalya (tsarin Chow-Lin)",
+      refRateLabel: "Farashin musaya na asali:",
+      verifyNotice: "Tabbatar da masu aiko da kuɗi kafin ka tura",
+      topOpsTitle: "Manyan masu aiko da kuɗi ba tare da talla ba",
+      colOperator: "Mai aiko",
+      colRange: "Kewayon tsantsa da aka ƙiyasta",
+      colCost: "Matsakaicin farashi",
+      colReceive: "Adadin da aka ƙiyasta za a karɓa",
+      colAction: "Mataki",
+      btnSend: "Tura",
+      adAria: "Wurin talla",
+      adTitle: "Wurin talla",
+      adSub: "Wuri na musamman — Haɗin gwiwa / sanarwa"
+    },
+    zu: {
+      locale: "en-GB",
+      netTitle: "Isilinganiso esiphelele se-Xaalya (imodeli ye-Chow-Lin)",
+      refRateLabel: "Izinga lesithenjwa:",
+      verifyNotice: "Qinisekisa nabanikezeli ngaphambi kokuthumela",
+      topOpsTitle: "Abanikezeli abaphezulu abangaxhasiwe",
+      colOperator: "Umnikezeli",
+      colRange: "Ibanga elilinganiselwe",
+      colCost: "Izindleko ezilinganiselwe",
+      colReceive: "Imali elinganiselwe ezotholwa",
+      colAction: "Isenzo",
+      btnSend: "Thumela",
+      adAria: "Isikhala sesikhangiso",
+      adTitle: "Isikhangiso",
+      adSub: "Isikhala esigciniwe — Ubambiswano / isimemezelo"
+    },
+    sn: {
+      locale: "en-GB",
+      netTitle: "Fungidziro yakachena yeXaalya (muenzaniso weChow-Lin)",
+      refRateLabel: "Mutengo wekuyera:",
+      verifyNotice: "Ongorora nevanotumira mari usati watumira",
+      topOpsTitle: "Vanotumira mari vakasarudzika vasina kushambadzwa",
+      colOperator: "Mutumiri",
+      colRange: "Huwandu hunofungidzirwa",
+      colCost: "Mutengo wepakati unofungidzirwa",
+      colReceive: "Mari inofungidzirwa kugamuchirwa",
+      colAction: "Chiito",
+      btnSend: "Tumira",
+      adAria: "Nzvimbo yekushambadza",
+      adTitle: "Shambadziro",
+      adSub: "Nzvimbo yakachengeterwa — Kudyidzana / chiziviso"
+    },
+    ln: {
+      locale: "fr-FR",
+      netTitle: "Bokaboli ya solo ya Xaalya (modèle Chow-Lin)",
+      refRateLabel: "Taux ya référence :",
+      verifyNotice: "Tala malamu epai ya ba opérateurs liboso ya kotinda",
+      topOpsTitle: "Ba opérateurs minene bazangi sponsor",
+      colOperator: "Opérateur",
+      colRange: "Motuya ya pɛtɛɛ oyo ekoki kozwa",
+      colCost: "Ntalo ya mwayene",
+      colReceive: "Mbongo oyo ekoki kokoma",
+      colAction: "Mosala",
+      btnSend: "Tinda",
+      adAria: "Esika ya piblisite",
+      adTitle: "Piblisite",
+      adSub: "Esika ebombami — Boyokani / liyebisi"
+    },
+    wo: {
+      locale: "fr-FR",
+      netTitle: "Nattub Xaalya bu leer (modèle Chow-Lin)",
+      refRateLabel: "Nattub wéccoo :",
+      verifyNotice: "Seetal ci opérateurs yi bala ngay yónnee",
+      topOpsTitle: "Opérateurs yi gën te amul sponsor",
+      colOperator: "Opérateur",
+      colRange: "Li ñu yaakaar ci xaalis bu mat",
+      colCost: "Njàggat bu ñu yaakaar",
+      colReceive: "Xaalis bi ñu yaakaar mu jot",
+      colAction: "Jëf",
+      btnSend: "Yónnee",
+      adAria: "Bérabub yégle",
+      adTitle: "Yégle",
+      adSub: "Bérab bu ñu téye — Lëkkaloo / yégle"
+    }
+  };
+
+  function getRatesI18n() {
+    const sel = document.getElementById("language-select");
+    const raw = (sel && sel.value) || localStorage.getItem("xaalya-lang") || document.documentElement.lang || "en";
+    const code = String(raw).toLowerCase().slice(0, 2);
+    return XAALYA_RATES_I18N[code] || XAALYA_RATES_I18N.en;
   }
 
   async function runXaalyaModel() {
@@ -233,7 +500,7 @@
     const simRangeEl = document.getElementById("sim-range-watermark");
     if (simRangeEl) simRangeEl.textContent = `${formatMoney(best.netMin, target)} – ${formatMoney(best.netMax, target)}`;
     const simRateEl = document.getElementById("sim-rate-display");
-    if (simRateEl) simRateEl.textContent = `1 ${source} = ${refRate.toLocaleString("fr-FR", { maximumFractionDigits: 4 })} ${target}`;
+    if (simRateEl) simRateEl.textContent = `1 ${source} = ${refRate.toLocaleString(getRatesI18n().locale, { maximumFractionDigits: 4 })} ${target}`;
 
     renderOrderedSections(container, {
       corridorKey,
@@ -255,6 +522,10 @@
         el.addEventListener("input", runXaalyaModel);
       }
     });
+    const langEl = document.getElementById("language-select");
+    if (langEl) {
+      langEl.addEventListener("change", () => setTimeout(runXaalyaModel, 0));
+    }
     runXaalyaModel();
   });
 
