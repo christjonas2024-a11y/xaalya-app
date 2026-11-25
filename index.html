@@ -300,7 +300,7 @@ body.light-mode #btnToggleVoice {
     onclick="listenResultNow()" 
     class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-semibold bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-500 border border-emerald-500/30 transition cursor-pointer">
     <span>🔊</span>
-    <span id="listenResultLabel">Écouter le résultat</span>
+    <span id="listenResultLabel" data-i18n="listenResult">Écouter le résultat</span>
   </button>
 </div>
 
@@ -312,9 +312,7 @@ body.light-mode #btnToggleVoice {
     <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6 pb-4 border-b border-slate-800">
       <div>
         <span class="inline-block px-3 py-1 bg-emerald-500/10 text-emerald-400 text-xs font-semibold rounded-full border border-emerald-500/20 mb-2">
-<h2 class="text-xl sm:text-2xl font-bold text-white tracking-tight">
-          Valeur de Référence Officielle &amp; Écart Réel
-        </h2>
+<h2 data-i18n="simTitle" class="text-xl sm:text-2xl font-bold text-white tracking-tight">Valeur de Référence Officielle &amp; Écart Réel</h2>
 </div>
       <div class="text-left sm:text-right">
       </div>
@@ -328,9 +326,7 @@ body.light-mode #btnToggleVoice {
         Corridor actif : EUR → XOF
       </p>
 
-      <p id="ref-gross-title" class="text-sm text-slate-300 mt-2">
-  Valeur brute convertie au taux interbancaire officiel des banques centrales :
-</p>
+      <p id="ref-gross-title" class="text-sm text-slate-300 mt-2" data-i18n="simGrossTitle">Valeur brute convertie au taux interbancaire officiel des banques centrales :</p>
 
 <div id="sim-net-display" class="text-3xl sm:text-4xl font-black text-emerald-400 tracking-tight">
   -
@@ -340,14 +336,14 @@ body.light-mode #btnToggleVoice {
 </p>
 
       <div class="pt-3 border-t border-slate-800 flex flex-col sm:flex-row justify-center items-center gap-2 sm:gap-6 text-xs text-slate-400 font-mono">
-        <span>Taux de référence : <strong id="sim-rate-display" class="text-white">-</strong></span>
+        <span><span data-i18n="simRateLabel">Taux de référence :</span> <strong id="sim-rate-display" class="text-white">-</strong></span>
       </div>
 
       <!-- Badge dynamique pour les parités fixes BCEAO / BEAC -->
       <div id="peg-notice" class="hidden pt-2">
         <span class="inline-flex items-center gap-1.5 px-3 py-1 bg-blue-500/10 text-blue-400 border border-blue-500/20 rounded-full text-[11px] font-medium">
           <span>🛡️</span>
-          <span>Parité fixe légale garantie par traité monétaire (BCEAO / BEAC : 1 EUR = 655,957 F)</span>
+          <span data-i18n="simPegNotice">Parité fixe légale garantie par traité monétaire (BCEAO / BEAC : 1 EUR = 655,957 F)</span>
         </span>
       </div>
     </div>
@@ -355,7 +351,7 @@ body.light-mode #btnToggleVoice {
     <!-- Note Pédagogique et Juridique -->
     <div class="mt-6 text-center">
       <p class="text-xs text-slate-500 leading-relaxed max-w-2xl mx-auto">
-        💡 <strong class="text-slate-400">Transparence Xaalya :</strong> Aucun opérateur commercial n'est listé afin de vous garantir une information neutre, sans frais cachés ni biais publicitaire. Tout montant perçu en deçà de cette valeur de référence reflète la marge de l'intermédiaire.
+        💡 <span data-i18n="simTransparency"><strong class="text-slate-400">Transparence Xaalya :</strong> Aucun opérateur commercial n'est listé afin de vous garantir une information neutre, sans frais cachés ni biais publicitaire. Tout montant perçu en deçà de cette valeur de référence reflète la marge de l'intermédiaire.</span>
       </p>
     </div>
 
