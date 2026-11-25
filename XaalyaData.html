@@ -149,6 +149,44 @@
       </section>
     </main>
 
+
+    <!-- Tableau multi-corridors B2B -->
+    <section id="xd-multi-corridors" class="bg-slate-900/80 border border-slate-800 rounded-2xl p-5 sm:p-6 space-y-4">
+      <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+        <div>
+          <h2 class="text-xs font-bold uppercase tracking-wider text-slate-200">
+            Synthèse multi-corridors (Repères Banques / SWIFT)
+          </h2>
+          <p id="xd-multi-subtitle" class="text-xs text-slate-400 mt-0.5">
+            Calculé pour le montant sélectionné — cliquez sur une ligne pour l'inspecter en JSON.
+          </p>
+        </div>
+        <button id="xd-export-all-csv-btn" type="button" class="px-3.5 py-2 rounded-xl text-xs font-semibold bg-emerald-500/15 hover:bg-emerald-500/25 text-emerald-400 border border-emerald-500/30 transition cursor-pointer shrink-0">
+          Exporter tout (.csv)
+        </button>
+      </div>
+
+      <div class="overflow-x-auto">
+        <table class="w-full text-left border-collapse text-xs">
+          <thead>
+            <tr class="border-b border-slate-800 text-[11px] uppercase tracking-wider text-slate-400">
+              <th class="py-2.5 pr-3">Corridor</th>
+              <th class="py-2.5 px-3">Taux réf.</th>
+              <th class="py-2.5 px-3">Coût estimé</th>
+              <th class="py-2.5 px-3">Net central</th>
+              <th class="py-2.5 px-3">Fourchette nette</th>
+              <th class="py-2.5 pl-3 text-right">Délai</th>
+            </tr>
+          </thead>
+          <tbody id="xd-multi-tbody" class="divide-y divide-slate-800/70">
+            <tr>
+              <td colspan="6" class="py-4 text-center text-slate-400">Chargement des corridors…</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
     <!-- Bloc Contact B2B -->
     <section id="b2b-contact" class="bg-slate-900/90 border border-slate-800 rounded-2xl p-5 sm:p-7">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
@@ -286,6 +324,116 @@
         link.href = `mailto:info@xaalya.com?subject=${subject}&body=${body}`;
       }
 
+
+      const MULTI_CORRIDORS = [
+        { source: "EUR", target: "XOF" },
+        { source: "EUR", target: "XAF" },
+        { source: "USD", target: "NGN" },
+        { source: "GBP", target: "NGN" },
+        { source: "USD", target: "XOF" },
+        { source: "GBP", target: "XOF" }
+      ];
+
+      function buildMultiCsv(rows, amount) {
+        const generatedAt = new Date().toISOString();
+        const headers = [
+          "product",
+          "schemaVersion",
+          "generatedAt",
+          "corridor",
+          "sourceCurrency",
+          "targetCurrency",
+          "amount",
+          "refRate",
+          "benchmarkLabel",
+          "effectiveCostPct",
+          "netMin",
+          "netCentral",
+          "netMax",
+          "fixedFeeHint",
+          "settlementDays"
+        ];
+        const lines = [headers.map(escapeCsvCell).join(",")];
+        for (const b of rows) {
+          const line = [
+            "XaalyaData",
+            "1.0",
+            generatedAt,
+            b.corridor,
+            b.source,
+            b.target,
+            amount,
+            Number(b.refRate.toFixed(6)),
+            b.label,
+            b.effectiveCostPct,
+            Number(b.netMin.toFixed(2)),
+            Number(b.netCentral.toFixed(2)),
+            Number(b.netMax.toFixed(2)),
+            b.fixedFeeHint,
+            b.settlementDays
+          ];
+          lines.push(line.map(escapeCsvCell).join(","));
+        }
+        return "\uFEFF" + lines.join("\n") + "\n";
+      }
+
+      function renderMultiCorridors(amount, ratesData) {
+        const tbody = document.getElementById("xd-multi-tbody");
+        const subtitle = document.getElementById("xd-multi-subtitle");
+        if (!tbody || !window.XaalyaData) return;
+
+        if (subtitle) {
+          subtitle.textContent = `Simulation sur ${fmtNum(amount, 0)} unités par corridor — cliquez sur une ligne pour charger l'aperçu JSON.`;
+        }
+
+        const benchmarks = MULTI_CORRIDORS.map((pair) =>
+          window.XaalyaData.computeBankBenchmark({
+            source: pair.source,
+            target: pair.target,
+            amount,
+            ratesData
+          })
+        );
+
+        tbody.dataset.multiRows = JSON.stringify(benchmarks);
+        tbody.dataset.multiAmount = String(amount);
+
+        tbody.innerHTML = benchmarks
+          .map(
+            (b) => `
+            <tr data-src="${b.source}" data-tgt="${b.target}" class="xd-corridor-row hover:bg-slate-800/50 transition cursor-pointer">
+              <td class="py-2.5 pr-3 font-mono font-bold text-white whitespace-nowrap">${b.corridor}</td>
+              <td class="py-2.5 px-3 font-mono text-slate-300 whitespace-nowrap">${fmtNum(b.refRate, 4)}</td>
+              <td class="py-2.5 px-3 font-mono text-amber-300 whitespace-nowrap">${fmtNum(b.effectiveCostPct, 2)} %</td>
+              <td class="py-2.5 px-3 font-mono font-semibold text-emerald-400 whitespace-nowrap">${fmtNum(b.netCentral, 2)} ${b.target}</td>
+              <td class="py-2.5 px-3 font-mono text-slate-400 whitespace-nowrap">${fmtNum(b.netMin, 2)} – ${fmtNum(b.netMax, 2)}</td>
+              <td class="py-2.5 pl-3 text-right text-slate-300 whitespace-nowrap">${b.settlementDays}</td>
+            </tr>`
+          )
+          .join("");
+
+        tbody.querySelectorAll(".xd-corridor-row").forEach((tr) => {
+          tr.addEventListener("click", () => {
+            const srcEl = document.getElementById("xd-source");
+            const tgtEl = document.getElementById("xd-target");
+            const src = tr.getAttribute("data-src");
+            const tgt = tr.getAttribute("data-tgt");
+            if (srcEl && src) {
+              if (![...srcEl.options].some((o) => o.value === src)) {
+                const opt = document.createElement("option");
+                opt.value = src;
+                opt.textContent = src;
+                srcEl.appendChild(opt);
+              }
+              srcEl.value = src;
+            }
+            if (tgtEl && tgt) tgtEl.value = tgt;
+            renderPreview();
+            document.getElementById("xd-json-output")?.scrollIntoView({ behavior: "smooth", block: "nearest" });
+          });
+        });
+      }
+
       async function renderPreview() {
         if (!window.XaalyaData) return;
         const ratesData = await loadRatesIfAvailable();
@@ -344,6 +492,7 @@
         preEl.dataset.benchJson = JSON.stringify(bench);
 
         updateMailto(bench);
+        renderMultiCorridors(amount, ratesData);
       }
 
       document.addEventListener("DOMContentLoaded", () => {
@@ -434,6 +583,38 @@
               setTimeout(() => { downloadCsvBtn.textContent = prev; }, 1600);
             } catch (_) {
               // Repli silencieux si l'export CSV échoue
+            }
+          });
+        }
+
+
+        const exportAllBtn = document.getElementById("xd-export-all-csv-btn");
+        if (exportAllBtn) {
+          exportAllBtn.addEventListener("click", () => {
+            const tbody = document.getElementById("xd-multi-tbody");
+            const rawRows = tbody?.dataset.multiRows || "";
+            if (!rawRows) return;
+            try {
+              const rows = JSON.parse(rawRows);
+              const amount = Number(tbody?.dataset.multiAmount || 1000);
+              const csvText = buildMultiCsv(rows, amount);
+              const fileName = `xaalyadata-multi-corridors-${amount}.csv`;
+
+              const blob = new Blob([csvText], { type: "text/csv;charset=utf-8" });
+              const url = URL.createObjectURL(blob);
+              const a = document.createElement("a");
+              a.href = url;
+              a.download = fileName;
+              document.body.appendChild(a);
+              a.click();
+              a.remove();
+              setTimeout(() => URL.revokeObjectURL(url), 1000);
+
+              const prev = exportAllBtn.textContent;
+              exportAllBtn.textContent = "Exporté ✓";
+              setTimeout(() => { exportAllBtn.textContent = prev; }, 1600);
+            } catch (_) {
+              // Repli silencieux si l'export échoue
             }
           });
         }
