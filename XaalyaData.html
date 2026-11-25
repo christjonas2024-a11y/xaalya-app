@@ -395,6 +395,35 @@
         return "\uFEFF" + lines.join("\n") + "\n";
       }
 
+      
+      if (typeof fmtNum !== "function") {
+        window.fmtNum = function (val, decimals = 2) {
+          const num = Number(val);
+          if (!Number.isFinite(num)) return "0";
+          return num.toLocaleString("fr-FR", {
+            minimumFractionDigits: decimals,
+            maximumFractionDigits: decimals
+          });
+        };
+      }
+      if (typeof MULTI_CORRIDORS === "undefined") {
+        var MULTI_CORRIDORS = [
+          { source: "EUR", target: "XOF" },
+          { source: "EUR", target: "XAF" },
+          { source: "USD", target: "NGN" },
+          { source: "GBP", target: "NGN" },
+          { source: "USD", target: "XOF" },
+          { source: "GBP", target: "XOF" },
+          { source: "EUR", target: "MAD" },
+          { source: "USD", target: "KES" },
+          { source: "GBP", target: "GHS" },
+          { source: "EUR", target: "ZAR" },
+          { source: "USD", target: "TZS" },
+          { source: "USD", target: "UGX" },
+          { source: "EUR", target: "RWF" }
+        ];
+      }
+
       function renderMultiCorridors(amount, ratesData) {
         const tbody = document.getElementById("xd-multi-tbody");
         const subtitle = document.getElementById("xd-multi-subtitle");
