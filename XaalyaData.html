@@ -508,6 +508,19 @@
         preEl.textContent = jsonStr;
         preEl.dataset.rawJson = jsonStr;
         preEl.dataset.benchJson = JSON.stringify(bench);
+      function updateMailto(bench) {
+        const contactLink = document.getElementById("b2b-contact-btn");
+        if (!contactLink) return;
+        const profileVal = document.getElementById("b2b-profile")?.value || "Veille corridors & benchmarks FX";
+        const corridorText = bench && bench.corridor ? bench.corridor : "Multi-corridors";
+        const amountText = bench && bench.amount ? bench.amount : "1000";
+        const subject = encodeURIComponent(`XaalyaData — ${profileVal} (${corridorText})`);
+        const body = encodeURIComponent(
+          `Bonjour l'equipe Xaalya,\n\nJe souhaite echanger au sujet de XaalyaData.\nProfil : ${profileVal}\nCorridor : ${corridorText}\nMontant de reference : ${amountText}\nContact : info@xaalya.com (sous couvert de christjonas2024@gmail.com)\n`
+        );
+        contactLink.setAttribute("href", `mailto:info@xaalya.com?subject=${subject}&body=${body}`);
+      }
+
 
         updateMailto(bench);
         try { renderMultiCorridors(amount, ratesData); } catch (e) { console.error("Multi-corridors error:", e); }
@@ -658,29 +671,5 @@
       });
     })();
   </script>
-<script>
-
-      (function () {
-        const btn = document.getElementById("b2b-contact-btn");
-        if (!btn) return;
-        btn.addEventListener("click", function (ev) {
-          const href = btn.getAttribute("href") || "mailto:info@xaalya.com";
-          // Si le protocole mailto est bloque ou non gere, ouvrir Gmail compose dans un nouvel onglet
-          setTimeout(function () {
-            if (document.hasFocus()) {
-              const gmailUrl = "https://mail.google.com/mail/?view=cm&fs=1&to=info@xaalya.com&su=" +
-                encodeURIComponent("XaalyaData — Demande B2B");
-              window.open(gmailUrl, "_blank", "noopener,noreferrer");
-            }
-          }, 700);
-          if (!href.startsWith("mailto:")) {
-            ev.preventDefault();
-            window.location.href = href;
-          }
-        });
-      })();
-
-</script>
-
 </body>
 </html>
