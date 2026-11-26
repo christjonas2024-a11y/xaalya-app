@@ -123,17 +123,22 @@
 
     // Repli de sécurité uniquement si rates.json ne contient pas la devise
     const fallbackTable = {
-      "EUR->NGN": 1700,
-      "USD->NGN": 1580,
-      "GBP->NGN": 2000,
-      "USD->XOF": 605,
-      "USD->XAF": 605,
-      "CAD->XOF": 430,
-      "EUR->MAD": 10.8,
-      "EUR->KES": 140,
-      "USD->KES": 129,
-      "USD->GHS": 16.5,
-      "EUR->TND": 3.35
+      "EUR->NGN": 1481.5869,
+      "USD->NGN": 1348.2454,
+      "GBP->NGN": 1778.5089,
+      "USD->XOF": 596.9215,
+      "USD->XAF": 596.9215,
+      "GBP->XOF": 787.4161,
+      "GBP->XAF": 787.4161,
+      "CAD->XOF": 417.7006,
+      "EUR->MAD": 10.9974,
+      "EUR->KES": 143.128,
+      "GBP->KES": 171.812,
+      "USD->KES": 130.2466,
+      "EUR->GHS": 12.8845,
+      "GBP->GHS": 15.4666,
+      "USD->GHS": 11.7249,
+      "EUR->TND": 3.32
     };
     return fallbackTable[`${source}->${target}`] || 1;
   }
