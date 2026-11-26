@@ -702,5 +702,54 @@
   </script>
 
 
+
+<section id="b2b-chowlin-model" aria-labelledby="b2b-model-title" class="max-w-6xl mx-auto px-4 py-8">
+  <div class="bg-slate-900/90 border border-slate-800 rounded-2xl p-6 sm:p-8 space-y-5 shadow-xl">
+    <div class="border-b border-slate-800 pb-4">
+      <span class="inline-block px-3 py-1 rounded-full text-[11px] font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 mb-2">
+        Notre Modèle — Documentation B2B
+      </span>
+      <h2 id="b2b-model-title" class="text-xl sm:text-2xl font-bold text-white">
+        Comment sont calculées et estimées les valeurs pour nos clients B2B
+      </h2>
+    </div>
+
+    <div class="space-y-3 text-xs sm:text-sm text-slate-300 leading-relaxed">
+      <p>
+        Les valeurs et fourchettes de transfert mises à disposition des partenaires et entreprises B2B reposent sur une approche combinant <strong class="text-white">taux de référence</strong>, <strong class="text-white">coûts de corridor</strong> et le <strong class="text-white">modèle économétrique de Chow-Lin</strong> :
+      </p>
+      <ul class="list-disc pl-5 space-y-1.5 text-slate-300">
+        <li><strong class="text-white">Taux de référence et taux croisés :</strong> calculés à partir des données de change disponibles (et de la parité fixe officielle lorsque applicable) afin d'établir une base neutre avant application des écarts de marché.</li>
+        <li><strong class="text-white">Estimation Chow-Lin par corridor et profil :</strong> le modèle Chow-Lin croise les repères structurels de coûts par couloir et catégorie d'opérateur avec les variations liées au montant envoyé, au profil d'acteur et aux ajustements observés, afin d'estimer un montant net central ainsi qu'une fourchette (<span class="text-white">min – max</span>) et un pourcentage de coût effectif.</li>
+        <li><strong class="text-white">Finalité B2B :</strong> cette méthodologie offre aux équipes financières, compliance et produit un repère auditable et homogène pour comparer les corridors et intégrer nos données en toute transparence.</li>
+      </ul>
+    </div>
+
+    <div class="pt-3 border-t border-slate-800 space-y-3">
+      <h3 class="text-sm sm:text-base font-semibold text-white">
+        Sources Open Source créditées
+      </h3>
+      <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs sm:text-sm text-slate-300">
+        <li class="bg-slate-950/70 border border-slate-800/80 rounded-xl p-3.5">
+          <strong class="text-emerald-400">Frankfurter</strong> — Données de taux de change open source :
+          <a href="https://www.frankfurter.app" target="_blank" rel="noopener noreferrer" class="underline hover:text-white">frankfurter.app</a>
+        </li>
+        <li class="bg-slate-950/70 border border-slate-800/80 rounded-xl p-3.5">
+          <strong class="text-emerald-400">RPW (Remittance Prices Worldwide)</strong> — Référentiel ouvert sur les coûts de transfert de fonds :
+          <a href="https://remittanceprices.worldbank.org" target="_blank" rel="noopener noreferrer" class="underline hover:text-white">remittanceprices.worldbank.org</a>
+        </li>
+        <li class="bg-slate-950/70 border border-slate-800/80 rounded-xl p-3.5">
+          <strong class="text-emerald-400">openRates</strong> — Flux de taux de change ouverts :
+          <a href="https://openrates.dev" target="_blank" rel="noopener noreferrer" class="underline hover:text-white">openrates.dev</a>
+        </li>
+        <li class="bg-slate-950/70 border border-slate-800/80 rounded-xl p-3.5">
+          <strong class="text-emerald-400">Fawaz Ahmed</strong> — API de taux de change open source :
+          <a href="https://github.com/fawazahmed0/exchange-api" target="_blank" rel="noopener noreferrer" class="underline hover:text-white">github.com/fawazahmed0/exchange-api</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
 </body>
 </html>
