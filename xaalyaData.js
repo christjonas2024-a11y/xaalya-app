@@ -265,6 +265,135 @@
     });
   }
 
+  
+  const CORRIDOR_PROFILES = {
+    "EUR->XOF": {
+      fxRegime: "Parité fixe (Zone CFA — 655,957 XOF/EUR)",
+      payoutMethods: ["Mobile Money", "Compte bancaire", "Cash pickup"],
+      digitalCostFactor: 0.34,
+      digitalSettlement: "Instantané à 24 h ouvrées"
+    },
+    "EUR->XAF": {
+      fxRegime: "Parité fixe (Zone CEMAC — 655,957 XAF/EUR)",
+      payoutMethods: ["Compte bancaire", "Mobile Money", "Cash pickup"],
+      digitalCostFactor: 0.38,
+      digitalSettlement: "Instantané à 24 h ouvrées"
+    },
+    "USD->NGN": {
+      fxRegime: "Change flottant / liquidité locale NGN",
+      payoutMethods: ["Compte bancaire", "Mobile wallet", "Cash pickup"],
+      digitalCostFactor: 0.42,
+      digitalSettlement: "Quelques minutes à 1 jour ouvré"
+    },
+    "GBP->NGN": {
+      fxRegime: "Change flottant / liquidité locale NGN",
+      payoutMethods: ["Compte bancaire", "Mobile wallet", "Cash pickup"],
+      digitalCostFactor: 0.42,
+      digitalSettlement: "Quelques minutes à 1 jour ouvré"
+    },
+    "USD->XOF": {
+      fxRegime: "Croisé USD/EUR + parité fixe XOF",
+      payoutMethods: ["Mobile Money", "Compte bancaire", "Cash pickup"],
+      digitalCostFactor: 0.38,
+      digitalSettlement: "Instantané à 24 h ouvrées"
+    },
+    "GBP->XOF": {
+      fxRegime: "Croisé GBP/EUR + parité fixe XOF",
+      payoutMethods: ["Mobile Money", "Compte bancaire", "Cash pickup"],
+      digitalCostFactor: 0.38,
+      digitalSettlement: "Instantané à 24 h ouvrées"
+    },
+    "EUR->MAD": {
+      fxRegime: "Panier géré (EUR/USD) — MAD",
+      payoutMethods: ["Compte bancaire", "Cash pickup", "Wallet"],
+      digitalCostFactor: 0.36,
+      digitalSettlement: "Instantané à 24 h ouvrées"
+    },
+    "USD->KES": {
+      fxRegime: "Change flottant géré — KES",
+      payoutMethods: ["Mobile Money (M-Pesa)", "Compte bancaire", "Cash pickup"],
+      digitalCostFactor: 0.35,
+      digitalSettlement: "Instantané à 24 h ouvrées"
+    },
+    "GBP->GHS": {
+      fxRegime: "Change flottant / liquidité locale GHS",
+      payoutMethods: ["Mobile Money", "Compte bancaire", "Cash pickup"],
+      digitalCostFactor: 0.44,
+      digitalSettlement: "Quelques minutes à 1 jour ouvré"
+    },
+    "EUR->ZAR": {
+      fxime: "Change flottant liquide — ZAR",
+      payoutMethods: ["Compte bancaire", "Instant EFT / Wallet"],
+      digitalCostFactor: 0.33,
+      digitalSettlement: "Instantané à 24 h ouvrées"
+    },
+    "USD->TZS": {
+      fxRegime: "Change flottant — TZS",
+      payoutMethods: ["Mobile Money", "Compte bancaire", "Cash pickup"],
+      digitalCostFactor: 0.39,
+      digitalSettlement: "Instantané à 24 h ouvrées"
+    },
+    "USD->UGX": {
+      fxRegime: "Change flottant — UGX",
+      payoutMethods: ["Mobile Money", "Compte bancaire", "Cash pickup"],
+      digitalCostFactor: 0.39,
+      digitalSettlement: "Instantané à 24 h ouvrées"
+    },
+    "EUR->RWF": {
+      fxRegime: "Change flottant géré — RWF",
+      payoutMethods: ["Mobile Money", "Compte bancaire", "Cash pickup"],
+      digitalCostFactor: 0.38,
+      digitalSettlement: "Instantané à 24 h ouvrées"
+    }
+  };
+
+  const DEFAULT_CORRIDOR_PROFILE = {
+    fxRegime: "Change de marché / liquidité corridor",
+    payoutMethods: ["Compte bancaire", "Mobile Money", "Cash pickup"],
+    digitalCostFactor: 0.38,
+    digitalSettlement: "Instantané à 24 h ouvrées"
+  };
+
+  function getCorridorProfile(corridorKey) {
+    const raw = CORRIDOR_PROFILES[corridorKey] || DEFAULT_CORRIDOR_PROFILE;
+    return {
+      fxRegime: raw.fxRegime || DEFAULT_CORRIDOR_PROFILE.fxRegime,
+      payoutMethods: Array.isArray(raw.payoutMethods) ? raw.payoutMethods : DEFAULT_CORRIDOR_PROFILE.payoutMethods,
+      digitalCostFactor: typeof raw.digitalCostFactor === "number" ? raw.digitalCostFactor : DEFAULT_CORRIDOR_PROFILE.digitalCostFactor,
+      digitalSettlement: raw.digitalSettlement || DEFAULT_CORRIDOR_PROFILE.digitalSettlement
+    };
+  }
+
+  function buildChannelComparison({ source, target, amount, ratesData }) {
+    const src = extractCurrencyCode(source) || "EUR";
+    const tgt = extractCurrencyCode(target) || "XOF";
+    const amt = Math.max(1, Number(amount || 1000));
+    const corridorKey = `${src}->${tgt}`;
+    const bench = computeBankBenchmark({ source: src, target: tgt, amount: amt, ratesData });
+    const profile = getCorridorProfile(corridorKey);
+
+    const digitalCostRatio = Math.max(0.006, Math.min(0.08, (bench.effectiveCostPct / 100) * profile.digitalCostFactor));
+    const digitalEstimatedCostPct = Number((digitalCostRatio * 100).toFixed(2));
+    const digitalEstimatedNet = amt * bench.refRate * (1 - digitalCostRatio);
+
+    const deltaVsDigitalPct = Number((bench.effectiveCostPct - digitalEstimatedCostPct).toFixed(2));
+    const deltaVsDigitalAmount = digitalEstimatedNet - bench.netCentral;
+
+    return {
+      corridor: corridorKey,
+      fxRegime: profile.fxRegime,
+      payoutMethods: profile.payoutMethods,
+      bankEffectiveCostPct: bench.effectiveCostPct,
+      bankNetCentral: bench.netCentral,
+      bankSettlement: bench.settlementDays,
+      digitalEstimatedCostPct,
+      digitalEstimatedNet,
+      digitalSettlement: profile.digitalSettlement,
+      deltaVsDigitalPct,
+      deltaVsDigitalAmount
+    };
+  }
+
   return {
     FIXED_CFA_PER_EUR,
     SWIFT_BENCHMARKS,
@@ -273,6 +402,8 @@
     getSwiftBenchmark,
     computeBankBenchmark,
     buildFxSnapshot,
-    buildDegressivityCurve
+    buildDegressivityCurve,
+    getCorridorProfile,
+    buildChannelComparison
   };
 });
