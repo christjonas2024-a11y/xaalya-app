@@ -3,7 +3,7 @@
   const FIXED_CFA_PER_EUR = 655.957;
 
   const OPERATOR_PROFILES = [
-    { id: "nala", name: "Nala", category: "digital", costOffset: -0.0025, neutralBenchmark: false, url: "https://www.nala.money/" },
+    { id: "nala", name: "Nala", category: "digital", costOffset: -0.0025, neutralBenchmark: false, url: "https://www.nala.com/" },
     { id: "sendwave", name: "Sendwave", category: "digital", costOffset: -0.0018, neutralBenchmark: false, url: "https://www.sendwave.com/fr" },
     { id: "taptap", name: "Taptap Send", category: "digital", costOffset: -0.0012, neutralBenchmark: false, url: "https://www.taptapsend.com/" },
     { id: "lemfi", name: "Lemfi", category: "digital", costOffset: 0.0000, neutralBenchmark: false, url: "https://lemfi.com/" },
