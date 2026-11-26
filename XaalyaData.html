@@ -218,6 +218,41 @@
             <span id="xd-gov-assumptions" class="font-mono text-slate-400 text-right">—</span>
           </div>
         </div>
+
+        <div id="xd-snapshots-box" class="bg-slate-950/75 border border-slate-800/90 rounded-xl p-3.5 text-xs space-y-2.5">
+          <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-800/70 pb-1.5">
+            <span class="font-semibold uppercase tracking-wider text-[11px] text-emerald-400">Historique &amp; comparaison de snapshots (local)</span>
+            <div class="flex items-center gap-2">
+              <button id="xd-save-snapshot-btn" type="button" class="px-2.5 py-1 rounded-lg text-[11px] font-semibold bg-emerald-500/15 hover:bg-emerald-500/25 text-emerald-300 border border-emerald-500/30 transition cursor-pointer">
+                + Capturer snapshot
+              </button>
+              <button id="xd-clear-snapshots-btn" type="button" class="px-2.5 py-1 rounded-lg text-[11px] font-semibold bg-slate-900 hover:bg-slate-800 text-slate-400 border border-slate-800 transition cursor-pointer">
+                Vider
+              </button>
+              <button id="xd-export-snap-csv" type="button" class="px-2.5 py-1 rounded-lg text-[11px] font-semibold bg-slate-900 hover:bg-slate-800 text-emerald-300 border border-slate-800 transition cursor-pointer">
+                CSV snapshots
+              </button>
+              <button id="xd-export-snap-json" type="button" class="px-2.5 py-1 rounded-lg text-[11px] font-semibold bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-800 transition cursor-pointer">
+                JSON snapshots
+              </button>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+            <div>
+              <label for="xd-snap-a" class="block text-[10px] uppercase tracking-wider text-slate-400 mb-1">Instantané A (référence)</label>
+              <select id="xd-snap-a" class="w-full bg-slate-900 border border-slate-800 rounded-lg px-2.5 py-1.5 text-[11px] font-mono text-slate-200 focus:outline-none focus:border-emerald-500"></select>
+            </div>
+            <div>
+              <label for="xd-snap-b" class="block text-[10px] uppercase tracking-wider text-slate-400 mb-1">Instantané B (comparé)</label>
+              <select id="xd-snap-b" class="w-full bg-slate-900 border border-slate-800 rounded-lg px-2.5 py-1.5 text-[11px] font-mono text-slate-200 focus:outline-none focus:border-emerald-500"></select>
+            </div>
+          </div>
+
+          <div id="xd-snap-diff" class="bg-slate-900/70 border border-slate-800/80 rounded-lg p-2.5 font-mono text-[11px] text-slate-300 space-y-1">
+            Capturez au moins deux instantanés (ou modifiez un paramètre puis capturez) pour comparer deux états dans le temps.
+          </div>
+        </div>
           <div class="flex items-center justify-between gap-2">
             <span class="text-slate-400">Indication frais fixes / correspondants</span>
             <span id="xd-fee-hint" class="text-slate-300 text-right">—</span>
@@ -602,6 +637,191 @@
         renderMultiCorridors(amount, ratesData);
       }
 
+      
+      const SNAPSHOT_STORAGE_KEY = "xaalyaData_snapshots_v1";
+
+      function readSnapshots() {
+        try {
+          const raw = window.localStorage ? window.localStorage.getItem(SNAPSHOT_STORAGE_KEY) : null;
+          const parsed = raw ? JSON.parse(raw) : [];
+          return Array.isArray(parsed) ? parsed : [];
+        } catch (_) {
+          return [];
+        }
+      }
+
+      function writeSnapshots(list) {
+        try {
+          if (window.localStorage) {
+            window.localStorage.setItem(SNAPSHOT_STORAGE_KEY, JSON.stringify(list.slice(-30)));
+          }
+        } catch (_) {}
+      }
+
+      function formatSnapshotLabel(snap, idx) {
+        const datePart = snap.capturedAt ? snap.capturedAt.replace("T", " ").slice(0, 19) : `#${idx + 1}`;
+        const netStr = Number.isFinite(Number(snap.netCentral)) ? fmtNum(snap.netCentral, 2) : "—";
+        return `#${idx + 1} · ${snap.corridor} (${fmtNum(snap.amount, 0)}) · ${netStr} ${snap.targetCurrency} · ${datePart}`;
+      }
+
+      function renderSnapshotComparison() {
+        const selA = document.getElementById("xd-snap-a");
+        const selB = document.getElementById("xd-snap-b");
+        const diffBox = document.getElementById("xd-snap-diff");
+        if (!selA || !selB || !diffBox) return;
+
+        const list = readSnapshots();
+        const prevA = selA.value;
+        const prevB = selB.value;
+
+        if (list.length === 0) {
+          selA.innerHTML = '<option value="">Aucun snapshot</option>';
+          selB.innerHTML = '<option value="">Aucun snapshot</option>';
+          diffBox.textContent = "Aucun instantané enregistré localement. Cliquez sur « + Capturer snapshot » pour démarrer.";
+          return;
+        }
+
+        const optionsHtml = list
+          .map((snap, idx) => `<option value="${snap.id}">${formatSnapshotLabel(snap, idx)}</option>`)
+          .join("");
+
+        selA.innerHTML = optionsHtml;
+        selB.innerHTML = optionsHtml;
+
+        if (list.some((s) => s.id === prevA)) selA.value = prevA;
+        else selA.value = list[Math.max(0, list.length - 2)].id;
+
+        if (list.some((s) => s.id === prevB)) selB.value = prevB;
+        else selB.value = list[list.length - 1].id;
+
+        const snapA = list.find((s) => s.id === selA.value) || list[0];
+        const snapB = list.find((s) => s.id === selB.value) || list[list.length - 1];
+        if (!snapA || !snapB) return;
+
+        const deltaRate = Number(snapB.refRate) - Number(snapA.refRate);
+        const deltaCostPts = Number(snapB.effectiveCostPct) - Number(snapA.effectiveCostPct);
+        const deltaNet = Number(snapB.netCentral) - Number(snapA.netCentral);
+        const deltaNetPct = Number(snapA.netCentral) !== 0 ? (deltaNet / Number(snapA.netCentral)) * 100 : 0;
+        const sign = (v) => (v > 0 ? "+" : "");
+
+        diffBox.innerHTML = `
+          <div class="flex flex-wrap items-center justify-between gap-2">
+            <span class="text-slate-400">Taux réf. (B − A) :</span>
+            <span class="text-white">${sign(deltaRate)}${fmtNum(deltaRate, 4)} (${fmtNum(snapA.refRate, 4)} → ${fmtNum(snapB.refRate, 4)})</span>
+          </div>
+          <div class="flex flex-wrap items-center justify-between gap-2">
+            <span class="text-slate-400">Coût estimé (B − A) :</span>
+            <span class="text-amber-300">${sign(deltaCostPts)}${fmtNum(deltaCostPts, 2)} pts (${fmtNum(snapA.effectiveCostPct, 2)} % → ${fmtNum(snapB.effectiveCostPct, 2)} %)</span>
+          </div>
+          <div class="flex flex-wrap items-center justify-between gap-2">
+            <span class="text-slate-400">Net central (B − A) :</span>
+            <span class="text-emerald-400">${sign(deltaNet)}${fmtNum(deltaNet, 2)} ${snapB.targetCurrency} (${sign(deltaNetPct)}${fmtNum(deltaNetPct, 2)} %)</span>
+          </div>
+        `;
+      }
+
+      
+      function triggerFileDownload(content, filename, mimeType) {
+        const blob = new Blob([content], { type: mimeType });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = filename;
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        setTimeout(() => URL.revokeObjectURL(url), 1000);
+      }
+
+      function exportSnapshotsJson() {
+        const list = readSnapshots();
+        const payload = {
+          product: "XaalyaData",
+          exportType: "local_snapshots_history",
+          privacyMode: "zero-trace",
+          exportedAt: new Date().toISOString(),
+          count: list.length,
+          snapshots: list
+        };
+        triggerFileDownload(
+          JSON.stringify(payload, null, 2),
+          `xaalyadata-snapshots-${new Date().toISOString().slice(0, 10)}.json`,
+          "application/json;charset=utf-8"
+        );
+      }
+
+      function exportSnapshotsCsv() {
+        const list = readSnapshots();
+        const headers = [
+          "Index",
+          "ID",
+          "Capture le",
+          "Corridor",
+          "Source",
+          "Cible",
+          "Montant",
+          "Taux ref.",
+          "Cout estime (%)",
+          "Net central",
+          "Fraicheur"
+        ];
+        const escapeCell = (v) => {
+          const s = String(v ?? "");
+          return /[;"\n\r]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s;
+        };
+        const lines = list.map((s, idx) => [
+          idx + 1,
+          s.id || "",
+          s.capturedAt || "",
+          s.corridor || "",
+          s.sourceCurrency || "",
+          s.targetCurrency || "",
+          s.amount ?? "",
+          s.refRate ?? "",
+          s.effectiveCostPct ?? "",
+          s.netCentral ?? "",
+          s.freshnessStatus || ""
+        ].map(escapeCell).join(";"));
+
+        const csv = "\uFEFFsep=;\n" + headers.map(escapeCell).join(";") + "\n" + lines.join("\n") + (lines.length ? "\n" : "");
+        triggerFileDownload(
+          csv,
+          `xaalyadata-snapshots-${new Date().toISOString().slice(0, 10)}.csv`,
+          "text/csv;charset=utf-8"
+        );
+      }
+
+      function captureCurrentSnapshot() {
+        const preEl = document.getElementById("xd-json-output");
+        if (!preEl || !preEl.dataset.rawJson) return;
+        try {
+          const parsed = JSON.parse(preEl.dataset.rawJson);
+          const bench = parsed.benchmark || {};
+          const list = readSnapshots();
+          const id = `snap_${Date.now()}_${Math.random().toString(36).slice(2, 6)}`;
+          const entry = {
+            id,
+            capturedAt: new Date().toISOString(),
+            corridor: parsed.corridor,
+            amount: parsed.amount,
+            sourceCurrency: parsed.sourceCurrency,
+            targetCurrency: parsed.targetCurrency,
+            refRate: parsed.refRate,
+            effectiveCostPct: bench.effectiveCostPct,
+            netCentral: bench.netCentral,
+            freshnessStatus: parsed.governance?.freshnessStatus || "unknown"
+          };
+          list.push(entry);
+          writeSnapshots(list);
+          renderSnapshotComparison();
+          const selB = document.getElementById("xd-snap-b");
+          if (selB) {
+            selB.value = id;
+            renderSnapshotComparison();
+          }
+        } catch (_) {}
+      }
+
       document.addEventListener("DOMContentLoaded", () => {
         ["xd-source", "xd-target", "xd-amount"].forEach((id) => {
           const el = document.getElementById(id);
@@ -626,6 +846,29 @@
         }
 
         renderPreview();
+        renderSnapshotComparison();
+
+        const saveSnapBtn = document.getElementById("xd-save-snapshot-btn");
+        if (saveSnapBtn) saveSnapBtn.addEventListener("click", captureCurrentSnapshot);
+
+        const clearSnapBtn = document.getElementById("xd-clear-snapshots-btn");
+        if (clearSnapBtn) {
+          clearSnapBtn.addEventListener("click", () => {
+            writeSnapshots([]);
+            renderSnapshotComparison();
+          });
+        }
+
+        const expSnapCsvBtn = document.getElementById("xd-export-snap-csv");
+        if (expSnapCsvBtn) expSnapCsvBtn.addEventListener("click", exportSnapshotsCsv);
+
+        const expSnapJsonBtn = document.getElementById("xd-export-snap-json");
+        if (expSnapJsonBtn) expSnapJsonBtn.addEventListener("click", exportSnapshotsJson);
+
+        ["xd-snap-a", "xd-snap-b"].forEach((id) => {
+          const el = document.getElementById(id);
+          if (el) el.addEventListener("change", renderSnapshotComparison);
+        });
       });
 
       if (document.readyState !== "loading") {
