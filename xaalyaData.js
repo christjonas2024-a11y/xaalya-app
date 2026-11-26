@@ -394,6 +394,32 @@
     };
   }
 
+  
+  function buildGovernanceMetadata({ source, target, amount, ratesData }) {
+    const src = extractCurrencyCode(source) || "EUR";
+    const tgt = extractCurrencyCode(target) || "XOF";
+    const amt = Math.max(1, Number(amount || 1000));
+    const corridorKey = `${src}->${tgt}`;
+    const bench = computeBankBenchmark({ source: src, target: tgt, amount: amt, ratesData });
+    const sizeFactor = Number(Math.max(0.7, Math.min(1.2, 500 / amt)).toFixed(4));
+    const isFallback = Boolean(!ratesData || ratesData.__isFallback === true);
+    const freshnessStatus = isFallback ? "fallback" : "live";
+
+    return {
+      schemaVersion: "1.3",
+      freshnessStatus,
+      freshnessLabel: isFallback ? "Repli secours (fallback)" : "En direct (rates.json)",
+      privacyMode: "zero-trace",
+      modelAssumptions: {
+        methodology: "Chow-Lin econometric estimation + SWIFT corridor benchmarks",
+        sizeFactor,
+        baseCostRatio: bench.effectiveCostPct ? Number((bench.effectiveCostPct / 100 / (sizeFactor || 1)).toFixed(4)) : null,
+        fixedCfaPerEur: FIXED_CFA_PER_EUR,
+        corridor: corridorKey
+      }
+    };
+  }
+
   return {
     FIXED_CFA_PER_EUR,
     SWIFT_BENCHMARKS,
@@ -404,6 +430,7 @@
     buildFxSnapshot,
     buildDegressivityCurve,
     getCorridorProfile,
-    buildChannelComparison
+    buildChannelComparison,
+    buildGovernanceMetadata
   };
 });
