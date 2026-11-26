@@ -25,9 +25,69 @@
       baseCostByCat: { mobile: 0.0045, digital: 0.006, traditional: 0.033, bank_benchmark: 0.056 },
       spreadHalfWidth: { mobile: 0.002, digital: 0.003, traditional: 0.008, bank_benchmark: 0.012 }
     },
+    "GBP->XOF": {
+      baseCostByCat: { mobile: 0.007, digital: 0.009, traditional: 0.036, bank_benchmark: 0.058 },
+      spreadHalfWidth: { mobile: 0.003, digital: 0.004, traditional: 0.009, bank_benchmark: 0.013 }
+    },
+    "GBP->XAF": {
+      baseCostByCat: { mobile: 0.0075, digital: 0.0095, traditional: 0.037, bank_benchmark: 0.059 },
+      spreadHalfWidth: { mobile: 0.003, digital: 0.004, traditional: 0.009, bank_benchmark: 0.013 }
+    },
+    "USD->XOF": {
+      baseCostByCat: { mobile: 0.008, digital: 0.010, traditional: 0.038, bank_benchmark: 0.060 },
+      spreadHalfWidth: { mobile: 0.003, digital: 0.004, traditional: 0.009, bank_benchmark: 0.013 }
+    },
+    "USD->XAF": {
+      baseCostByCat: { mobile: 0.0085, digital: 0.0105, traditional: 0.039, bank_benchmark: 0.061 },
+      spreadHalfWidth: { mobile: 0.003, digital: 0.004, traditional: 0.009, bank_benchmark: 0.013 }
+    },
+    "CAD->XOF": {
+      baseCostByCat: { mobile: 0.009, digital: 0.011, traditional: 0.040, bank_benchmark: 0.062 },
+      spreadHalfWidth: { mobile: 0.003, digital: 0.0045, traditional: 0.010, bank_benchmark: 0.014 }
+    },
+    "EUR->NGN": {
+      baseCostByCat: { mobile: 0.009, digital: 0.011, traditional: 0.042, bank_benchmark: 0.068 },
+      spreadHalfWidth: { mobile: 0.004, digital: 0.005, traditional: 0.012, bank_benchmark: 0.016 }
+    },
+    "GBP->NGN": {
+      baseCostByCat: { mobile: 0.0085, digital: 0.0105, traditional: 0.041, bank_benchmark: 0.067 },
+      spreadHalfWidth: { mobile: 0.004, digital: 0.005, traditional: 0.012, bank_benchmark: 0.016 }
+    },
     "USD->NGN": {
-      baseCostByCat: { mobile: 0.025, digital: 0.031, traditional: 0.056, bank_benchmark: 0.074 },
-      spreadHalfWidth: { mobile: 0.008, digital: 0.010, traditional: 0.016, bank_benchmark: 0.020 }
+      baseCostByCat: { mobile: 0.010, digital: 0.012, traditional: 0.044, bank_benchmark: 0.070 },
+      spreadHalfWidth: { mobile: 0.004, digital: 0.006, traditional: 0.013, bank_benchmark: 0.017 }
+    },
+    "EUR->KES": {
+      baseCostByCat: { mobile: 0.008, digital: 0.010, traditional: 0.039, bank_benchmark: 0.063 },
+      spreadHalfWidth: { mobile: 0.003, digital: 0.0045, traditional: 0.010, bank_benchmark: 0.014 }
+    },
+    "GBP->KES": {
+      baseCostByCat: { mobile: 0.008, digital: 0.010, traditional: 0.039, bank_benchmark: 0.063 },
+      spreadHalfWidth: { mobile: 0.003, digital: 0.0045, traditional: 0.010, bank_benchmark: 0.014 }
+    },
+    "USD->KES": {
+      baseCostByCat: { mobile: 0.0085, digital: 0.0105, traditional: 0.040, bank_benchmark: 0.064 },
+      spreadHalfWidth: { mobile: 0.003, digital: 0.005, traditional: 0.011, bank_benchmark: 0.015 }
+    },
+    "USD->GHS": {
+      baseCostByCat: { mobile: 0.010, digital: 0.0125, traditional: 0.043, bank_benchmark: 0.068 },
+      spreadHalfWidth: { mobile: 0.004, digital: 0.0055, traditional: 0.012, bank_benchmark: 0.016 }
+    },
+    "GBP->GHS": {
+      baseCostByCat: { mobile: 0.0095, digital: 0.012, traditional: 0.042, bank_benchmark: 0.067 },
+      spreadHalfWidth: { mobile: 0.004, digital: 0.0055, traditional: 0.012, bank_benchmark: 0.016 }
+    },
+    "EUR->GHS": {
+      baseCostByCat: { mobile: 0.010, digital: 0.0125, traditional: 0.043, bank_benchmark: 0.068 },
+      spreadHalfWidth: { mobile: 0.004, digital: 0.0055, traditional: 0.012, bank_benchmark: 0.016 }
+    },
+    "EUR->MAD": {
+      baseCostByCat: { mobile: 0.007, digital: 0.009, traditional: 0.036, bank_benchmark: 0.058 },
+      spreadHalfWidth: { mobile: 0.003, digital: 0.004, traditional: 0.009, bank_benchmark: 0.013 }
+    },
+    "EUR->TND": {
+      baseCostByCat: { mobile: 0.008, digital: 0.010, traditional: 0.038, bank_benchmark: 0.060 },
+      spreadHalfWidth: { mobile: 0.003, digital: 0.0045, traditional: 0.010, bank_benchmark: 0.014 }
     }
   };
 
