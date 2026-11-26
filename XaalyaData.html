@@ -389,7 +389,8 @@
   </div>
 
   <script src="xaalyaData.js"></script>
-  <script>
+
+    <script>
     (function () {
       let cachedRatesData = null;
 
@@ -410,275 +411,64 @@
             if (data && typeof data.rates === "object") {
               cachedRatesData = { ...data, __isFallback: Boolean(data.__isFallback) };
               return cachedRatesData;
-      }
-          }
-        } catch (_) {
-          // Repli silencieux sur FALLBACK_RATES
-        }
-        cachedRatesData = fallback;
-        return cachedRatesData;
-      }
-        try {
-          const res = await fetch("./rates.json", { cache: "no-store" });
-          if (res && res.ok) {
-            const data = await res.json();
-            if (data && typeof data.rates === "object") {
-              cachedRatesData = data;
-              return cachedRatesData;
             }
           }
-        } catch (_) {
-          // Repli silencieux sur FALLBACK_RATES
-        }
+        } catch (_) {}
         cachedRatesData = fallback;
         return cachedRatesData;
       }
 
-      function fmtNum(val, maxFrac = 2) {
-        return Number(val).toLocaleString("fr-FR", {
-          minimumFractionDigits: maxFrac === 2 ? 2 : 0,
-          maximumFractionDigits: maxFrac
+      function fmtNum(val, decimals = 2) {
+        const n = Number(val);
+        if (!Number.isFinite(n)) return "—";
+        return n.toLocaleString("fr-FR", {
+          minimumFractionDigits: decimals,
+          maximumFractionDigits: decimals
         });
-      }
-
-            function escapeCsvCell(val) {
-        const str = String(val ?? "");
-        if (/[";,\n\r]/.test(str)) {
-          return '"' + str.replace(/"/g, '""') + '"';
-        }
-        return str;
-      }
-
-      function formatCsvNumber(val, decimals = 2) {
-        const num = Number(val);
-        if (!Number.isFinite(num)) return "";
-        return num.toFixed(decimals).replace(".", ",");
-      }
-
-      function buildCsvFromParsed(parsed) {
-        const b = parsed.benchmark || {};
-        const fx = parsed.fxMarket || {};
-        const ch = parsed.channelComparison || {};
-        const gov = parsed.governance || {};
-        const headers = [
-          "Corridor",
-          "Devise source",
-          "Devise cible",
-          "Montant",
-          "Taux ref.",
-          "Taux mid-market",
-          "Ecart (%)",
-          "Ecart (bps)",
-          "Cout estime (%)",
-          "Net min",
-          "Net central",
-          "Net max",
-          "Cout numerique (%)",
-          "Net numerique",
-          "Ecart vs numerique",
-          "Regime FX",
-          "Modes versement",
-          "Frais fixes indicatifs",
-          "Delai",
-          "Source repere",
-          "Fraicheur",
-          "Version schema",
-          "Genere le"
-        ];
-        const row = [
-          parsed.corridor || "",
-          parsed.sourceCurrency || "",
-          parsed.targetCurrency || "",
-          formatCsvNumber(parsed.amount, 2),
-          formatCsvNumber(parsed.refRate, 4),
-          formatCsvNumber(fx.midMarketCrossRate, 6),
-          formatCsvNumber(fx.spreadPct, 2),
-          formatCsvNumber(fx.spreadBps, 0),
-          formatCsvNumber(b.effectiveCostPct, 2),
-          formatCsvNumber(b.netMin, 2),
-          formatCsvNumber(b.netCentral, 2),
-          formatCsvNumber(b.netMax, 2),
-          formatCsvNumber(ch.digitalEstimatedCostPct, 2),
-          formatCsvNumber(ch.digitalEstimatedNet, 2),
-          formatCsvNumber(ch.deltaVsDigitalAmount, 2),
-          ch.fxRegime || "",
-          Array.isArray(ch.payoutMethods) ? ch.payoutMethods.join(" | ") : "",
-          b.fixedFeeHint || "",
-          b.settlementDays || "",
-          b.label || "Banques / SWIFT",
-          gov.freshnessStatus || "",
-          gov.schemaVersion || parsed.schemaVersion || "",
-          parsed.generatedAt || ""
-        ];
-        return (
-          "\uFEFFsep=;\n" +
-          headers.map(escapeCsvCell).join(";") +
-          "\n" +
-          row.map(escapeCsvCell).join(";") +
-          "\n"
-        );
-      }
-
-      function buildMultiCsv(rows, amount) {
-        const generatedAt = new Date().toISOString();
-        const headers = [
-          "Corridor",
-          "Devise source",
-          "Devise cible",
-          "Montant",
-          "Taux ref.",
-          "Cout estime (%)",
-          "Net min",
-          "Net central",
-          "Net max",
-          "Frais fixes indicatifs",
-          "Delai",
-          "Source repere",
-          "Genere le"
-        ];
-        const lines = ["sep=;", headers.map(escapeCsvCell).join(";")];
-        for (const b of rows) {
-          const line = [
-            b.corridor,
-            b.source,
-            b.target,
-            formatCsvNumber(amount, 2),
-            formatCsvNumber(b.refRate, 4),
-            formatCsvNumber(b.effectiveCostPct, 2),
-            formatCsvNumber(b.netMin, 2),
-            formatCsvNumber(b.netCentral, 2),
-            formatCsvNumber(b.netMax, 2),
-            b.fixedFeeHint,
-            b.settlementDays,
-            b.label || "Banques / SWIFT",
-            generatedAt
-          ];
-          lines.push(line.map(escapeCsvCell).join(";"));
-        }
-        return "\uFEFF" + lines.join("\n") + "\n";
-      }
-
-      
-      if (typeof fmtNum !== "function") {
-        window.fmtNum = function (val, decimals = 2) {
-          const num = Number(val);
-          if (!Number.isFinite(num)) return "0";
-          return num.toLocaleString("fr-FR", {
-            minimumFractionDigits: decimals,
-            maximumFractionDigits: decimals
-          });
-        };
-      }
-      if (typeof MULTI_CORRIDORS === "undefined") {
-        var MULTI_CORRIDORS = [
-          { source: "EUR", target: "XOF" },
-          { source: "EUR", target: "XAF" },
-          { source: "USD", target: "NGN" },
-          { source: "GBP", target: "NGN" },
-          { source: "USD", target: "XOF" },
-          { source: "GBP", target: "XOF" },
-          { source: "EUR", target: "MAD" },
-          { source: "USD", target: "KES" },
-          { source: "GBP", target: "GHS" },
-          { source: "EUR", target: "ZAR" },
-          { source: "USD", target: "TZS" },
-          { source: "USD", target: "UGX" },
-          { source: "EUR", target: "RWF" }
-        ];
       }
 
       function renderMultiCorridors(amount, ratesData) {
         const tbody = document.getElementById("xd-multi-tbody");
-        const subtitle = document.getElementById("xd-multi-subtitle");
-        if (!tbody || !window.XaalyaData) return;
-
-        if (subtitle) {
-          subtitle.textContent = `Simulation sur ${fmtNum(amount, 0)} unités par corridor — cliquez sur une ligne pour charger l'aperçu JSON.`;
+        if (!tbody) return;
+        if (!window.XaalyaData || typeof window.XaalyaData.computeAllCorridors !== "function") {
+          tbody.innerHTML = '<tr><td colspan="6" class="py-4 text-center text-amber-400">Module xaalyaData.js indisponible.</td></tr>';
+          return;
         }
+        const rows = window.XaalyaData.computeAllCorridors({ amount, ratesData });
+        if (!Array.isArray(rows) || rows.length === 0) {
+          tbody.innerHTML = '<tr><td colspan="6" class="py-4 text-center text-slate-400">Aucun corridor disponible.</td></tr>';
+          return;
+        }
+        tbody.innerHTML = rows.map((r) => `
+          <tr class="hover:bg-slate-900/70 transition">
+            <td class="py-2.5 pr-3 font-mono text-white whitespace-nowrap">${r.corridor}</td>
+            <td class="py-2.5 px-3 font-mono text-slate-300 whitespace-nowrap">${fmtNum(r.refRate, 4)}</td>
+            <td class="py-2.5 px-3 font-mono text-amber-300 whitespace-nowrap">${fmtNum(r.effectiveCostPct, 2)} %</td>
+            <td class="py-2.5 px-3 font-mono text-emerald-400 whitespace-nowrap">${fmtNum(r.netCentral, 2)} ${r.target}</td>
+            <td class="py-2.5 px-3 font-mono text-slate-400 whitespace-nowrap">${fmtNum(r.netMin, 2)} – ${fmtNum(r.netMax, 2)}</td>
+            <td class="py-2.5 pl-3 text-slate-400 whitespace-nowrap">${r.settlementDays}</td>
+          </tr>
+        `).join("");
+      }
 
-        const benchmarks = MULTI_CORRIDORS.map((pair) =>
-          window.XaalyaData.computeBankBenchmark({
-            source: pair.source,
-            target: pair.target,
-            amount,
-            ratesData
-          })
+      function updateMailto(bench) {
+        const contactLink = document.getElementById("b2b-contact-btn");
+        if (!contactLink) return;
+        const profileVal = document.getElementById("b2b-usecase")?.value || "Veille corridors & benchmarks FX";
+        const corridorText = bench && bench.corridor ? bench.corridor : "Multi-corridors";
+        const amountText = bench && bench.amount ? bench.amount : "1000";
+        const subject = encodeURIComponent(`XaalyaData — ${profileVal} (${corridorText})`);
+        const body = encodeURIComponent(
+          `Bonjour l'equipe Xaalya,\n\nJe souhaite echanger au sujet de XaalyaData.\nProfil : ${profileVal}\nCorridor : ${corridorText}\nMontant de reference : ${amountText}\nContact : info@xaalya.com\n`
         );
-
-        tbody.dataset.multiRows = JSON.stringify(benchmarks);
-        tbody.dataset.multiAmount = String(amount);
-
-        tbody.innerHTML = benchmarks
-          .map(
-            (b) => `
-            <tr data-src="${b.source}" data-tgt="${b.target}" class="xd-corridor-row hover:bg-slate-800/50 transition cursor-pointer">
-              <td class="py-2.5 pr-3 font-mono font-bold text-white whitespace-nowrap">${b.corridor}</td>
-              <td class="py-2.5 px-3 font-mono text-slate-300 whitespace-nowrap">${fmtNum(b.refRate, 4)}</td>
-              <td class="py-2.5 px-3 font-mono text-amber-300 whitespace-nowrap">${fmtNum(b.effectiveCostPct, 2)} %</td>
-              <td class="py-2.5 px-3 font-mono font-semibold text-emerald-400 whitespace-nowrap">${fmtNum(b.netCentral, 2)} ${b.target}</td>
-              <td class="py-2.5 px-3 font-mono text-slate-400 whitespace-nowrap">${fmtNum(b.netMin, 2)} – ${fmtNum(b.netMax, 2)}</td>
-              <td class="py-2.5 pl-3 text-right text-slate-300 whitespace-nowrap">${b.settlementDays}</td>
-            </tr>`
-          )
-          .join("");
-
-        tbody.querySelectorAll(".xd-corridor-row").forEach((tr) => {
-          tr.addEventListener("click", async () => {
-            const srcEl = document.getElementById("xd-source");
-            const tgtEl = document.getElementById("xd-target");
-            const src = tr.getAttribute("data-src");
-            const tgt = tr.getAttribute("data-tgt");
-            if (srcEl && src) {
-              if (![...srcEl.options].some((o) => o.value === src)) {
-                const opt = document.createElement("option");
-                opt.value = src;
-                opt.textContent = src;
-                srcEl.appendChild(opt);
-              }
-              srcEl.value = src;
-            }
-            if (tgtEl && tgt) tgtEl.value = tgt;
-            renderPreview();
-            document.getElementById("xd-json-output")?.scrollIntoView({ behavior: "smooth", block: "nearest" });
-          });
-        });
+        contactLink.setAttribute("href", `mailto:info@xaalya.com?subject=${subject}&body=${body}`);
       }
 
       async function renderPreview() {
-        const fallback = typeof FALLBACK_RATES !== "undefined"
-          ? FALLBACK_RATES
-          : {
-              base: "EUR",
-              rates: {
-                EUR: 1,
-                USD: 1.0989,
-                GBP: 0.83305,
-                XOF: 655.957,
-                XAF: 655.957,
-                NGN: 1481.58685818,
-                MAD: 10.99737431,
-                KES: 143.12795023,
-                GHS: 12.88449254,
-                ZAR: 18.6073,
-                TZS: 2914.80870551,
-                UGX: 4577.12913587,
-                RWF: 1622.90526683
-              }
-            };
-
         const source = document.getElementById("xd-source")?.value || "EUR";
         const target = document.getElementById("xd-target")?.value || "XOF";
         const amount = Math.max(1, Number(document.getElementById("xd-amount")?.value || 1000));
-
-        let ratesData = fallback;
-        try {
-          const loaded = await loadRatesIfAvailable();
-          if (loaded && typeof loaded.rates === "object") {
-            ratesData = loaded;
-          }
-        } catch (_) {
-          ratesData = fallback;
-        }
+        const ratesData = await loadRatesIfAvailable();
 
         const tbody = document.getElementById("xd-multi-tbody");
         if (!window.XaalyaData || typeof window.XaalyaData.computeBankBenchmark !== "function") {
@@ -688,37 +478,7 @@
           return;
         }
 
-        const bench = window.XaalyaData.computeBankBenchmark({
-          source,
-          target,
-          amount,
-          ratesData
-        });
-
-        const rateSourceEl = document.getElementById("xd-rate-source");
-        if (rateSourceEl) {
-          rateSourceEl.textContent =
-            ratesData && ratesData.rates ? "Source : rates.json + XaalyaData" : "Source : XaalyaData";
-        }
-
-        const netCentralEl = document.getElementById("xd-net-central");
-        if (netCentralEl) netCentralEl.textContent = `${fmtNum(bench.netCentral, 2)} ${bench.target}`;
-
-        const rangeEl = document.getElementById("xd-range");
-        if (rangeEl) rangeEl.textContent = `Fourchette : ${fmtNum(bench.netMin, 2)} – ${fmtNum(bench.netMax, 2)} ${bench.target}`;
-
-        const costPctEl = document.getElementById("xd-cost-pct");
-        if (costPctEl) costPctEl.textContent = `${fmtNum(bench.effectiveCostPct, 2)} %`;
-
-        const settlementEl = document.getElementById("xd-settlement");
-        if (settlementEl) settlementEl.textContent = `Délai : ${bench.settlementDays}`;
-
-        const refRateEl = document.getElementById("xd-ref-rate");
-        if (refRateEl) refRateEl.textContent = `1 ${bench.source} = ${fmtNum(bench.refRate, 4)} ${bench.target}`;
-
-        const feeHintEl = document.getElementById("xd-fee-hint");
-        if (feeHintEl) feeHintEl.textContent = bench.fixedFeeHint;
-
+        const bench = window.XaalyaData.computeBankBenchmark({ source, target, amount, ratesData });
         const fxSnapshot = typeof window.XaalyaData.buildFxSnapshot === "function"
           ? window.XaalyaData.buildFxSnapshot({ source, target, ratesData, amount })
           : null;
@@ -732,67 +492,50 @@
           ? window.XaalyaData.buildGovernanceMetadata({ source, target, amount, ratesData })
           : null;
 
+        const setText = (id, txt) => {
+          const el = document.getElementById(id);
+          if (el) el.textContent = txt;
+        };
+
+        setText("xd-rate-source", ratesData && ratesData.__isFallback ? "Source : Repli secours" : "Source : rates.json + XaalyaData");
+        setText("xd-net-central", `${fmtNum(bench.netCentral, 2)} ${bench.target}`);
+        setText("xd-range", `Fourchette : ${fmtNum(bench.netMin, 2)} – ${fmtNum(bench.netMax, 2)} ${bench.target}`);
+        setText("xd-cost-pct", `${fmtNum(bench.effectiveCostPct, 2)} %`);
+        setText("xd-settlement", `Délai : ${bench.settlementDays}`);
+        setText("xd-ref-rate", `1 ${bench.source} = ${fmtNum(bench.refRate, 4)} ${bench.target}`);
+        setText("xd-fee-hint", bench.fixedFeeHint);
+
         if (fxSnapshot) {
-          const metaEl = document.getElementById("xd-fx-meta");
-          if (metaEl) {
-            metaEl.textContent = fxSnapshot.timestamp
-              ? `${fxSnapshot.rateSourceLabel} · ${fxSnapshot.timestamp}`
-              : fxSnapshot.rateSourceLabel;
-          }
-          const crossEl = document.getElementById("xd-fx-cross");
-          if (crossEl) {
-            const pivotInfo = fxSnapshot.pivotToTargetRate
-              ? `Pivot ${fxSnapshot.pivotCurrency}→${fxSnapshot.target}: ${fmtNum(fxSnapshot.pivotToTargetRate, 4)}`
-              : `Pivot ${fxSnapshot.pivotCurrency}`;
-            crossEl.textContent = `Mid ${fmtNum(fxSnapshot.midMarketCrossRate, 4)} (${pivotInfo})`;
-          }
-          const spreadEl = document.getElementById("xd-fx-spread");
-          if (spreadEl) {
-            spreadEl.textContent = `${fmtNum(fxSnapshot.spreadPct, 2)} % (${fxSnapshot.spreadBps} bps) · Net ${fmtNum(fxSnapshot.impliedNetRate, 4)}`;
-          }
-        }
-
-        if (channelComp) {
-          const regimeEl = document.getElementById("xd-fx-regime");
-          if (regimeEl) regimeEl.textContent = channelComp.fxRegime;
-
-          const modesEl = document.getElementById("xd-channel-modes");
-          if (modesEl) {
-            modesEl.textContent = `${channelComp.payoutMethods.join(" · ")} (${channelComp.digitalSettlement})`;
-          }
-
-          const deltaEl = document.getElementById("xd-channel-delta");
-          if (deltaEl) {
-            deltaEl.textContent = `-${fmtNum(channelComp.deltaVsDigitalPct, 2)} pts coût · +${fmtNum(channelComp.deltaVsDigitalAmount, 2)} ${target} vs repère tech (${fmtNum(channelComp.digitalEstimatedCostPct, 2)} %)`;
-          }
-        }
-
-        if (governance) {
-          const badgeEl = document.getElementById("xd-gov-badge");
-          if (badgeEl) badgeEl.textContent = `Schéma v${governance.schemaVersion} · ${governance.freshnessLabel}`;
-
-          const freshEl = document.getElementById("xd-gov-freshness");
-          if (freshEl) freshEl.textContent = `Mode : ${governance.freshnessStatus} · ${governance.privacyMode}`;
-
-          const assumpEl = document.getElementById("xd-gov-assumptions");
-          if (assumpEl) {
-            assumpEl.textContent = `sizeFactor ${governance.modelAssumptions.sizeFactor} · Chow-Lin + SWIFT`;
-          }
+          setText("xd-fx-meta", fxSnapshot.timestamp ? `${fxSnapshot.rateSourceLabel} · ${fxSnapshot.timestamp}` : fxSnapshot.rateSourceLabel);
+          const pivotInfo = fxSnapshot.pivotToTargetRate
+            ? `Pivot ${fxSnapshot.pivotCurrency}→${fxSnapshot.target}: ${fmtNum(fxSnapshot.pivotToTargetRate, 4)}`
+            : `Pivot ${fxSnapshot.pivotCurrency}`;
+          setText("xd-fx-cross", `Mid ${fmtNum(fxSnapshot.midMarketCrossRate, 4)} (${pivotInfo})`);
+          setText("xd-fx-spread", `${fmtNum(fxSnapshot.spreadPct, 2)} % (${fxSnapshot.spreadBps} bps) · Net ${fmtNum(fxSnapshot.impliedNetRate, 4)}`);
         }
 
         const curveTbody = document.getElementById("xd-degressivity-tbody");
         if (curveTbody) {
-          curveTbody.innerHTML = curve
-            .map(
-              (pt) => `
-              <tr>
-                <td class="py-1 pr-2 text-white">${fmtNum(pt.amount, 0)}</td>
-                <td class="py-1 px-2 text-amber-300">${fmtNum(pt.effectiveCostPct, 2)} %</td>
-                <td class="py-1 px-2 text-slate-400">${pt.spreadBps} bps</td>
-                <td class="py-1 pl-2 text-right text-emerald-400">${fmtNum(pt.netCentral, 2)} ${target}</td>
-              </tr>`
-            )
-            .join("");
+          curveTbody.innerHTML = curve.map((pt) => `
+            <tr>
+              <td class="py-1 pr-2 text-white">${fmtNum(pt.amount, 0)}</td>
+              <td class="py-1 px-2 text-amber-300">${fmtNum(pt.effectiveCostPct, 2)} %</td>
+              <td class="py-1 px-2 text-slate-400">${pt.spreadBps} bps</td>
+              <td class="py-1 pl-2 text-right text-emerald-400">${fmtNum(pt.netCentral, 2)} ${target}</td>
+            </tr>
+          `).join("");
+        }
+
+        if (channelComp) {
+          setText("xd-fx-regime", channelComp.fxRegime);
+          setText("xd-channel-modes", `${channelComp.payoutMethods.join(" · ")} (${channelComp.digitalSettlement})`);
+          setText("xd-channel-delta", `-${fmtNum(channelComp.deltaVsDigitalPct, 2)} pts coût · +${fmtNum(channelComp.deltaVsDigitalAmount, 2)} ${target} vs repère tech (${fmtNum(channelComp.digitalEstimatedCostPct, 2)} %)`);
+        }
+
+        if (governance) {
+          setText("xd-gov-badge", `Schéma v${governance.schemaVersion} · ${governance.freshnessLabel}`);
+          setText("xd-gov-freshness", `Mode : ${governance.freshnessStatus} · ${governance.privacyMode}`);
+          setText("xd-gov-assumptions", `sizeFactor ${governance.modelAssumptions.sizeFactor} · Chow-Lin + SWIFT`);
         }
 
         const payload = {
@@ -855,37 +598,12 @@
           preEl.dataset.benchJson = JSON.stringify(bench);
         }
 
-        if (typeof updateMailto === "function") {
-          updateMailto(bench);
-        }
-
-        try {
-          renderMultiCorridors(amount, ratesData);
-        } catch (e) {
-          console.error("Multi-corridors error:", e);
-          if (tbody) {
-            tbody.innerHTML = '<tr><td colspan="6" class="py-4 text-center text-rose-400">Erreur d\'affichage des corridors.</td></tr>';
-          }
-        }
+        updateMailto(bench);
+        renderMultiCorridors(amount, ratesData);
       }
 
-      async function updateMailto(bench) {
-        const contactLink = document.getElementById("b2b-contact-btn");
-        if (!contactLink) return;
-        const profileVal = document.getElementById("b2b-usecase")?.value || "Veille corridors & benchmarks FX";
-        const corridorText = bench && bench.corridor ? bench.corridor : "Multi-corridors";
-        const amountText = bench && bench.amount ? bench.amount : "1000";
-        const subject = encodeURIComponent(`XaalyaData — ${profileVal} (${corridorText})`);
-        const body = encodeURIComponent(
-          `Bonjour l'equipe Xaalya,\n\nJe souhaite echanger au sujet de XaalyaData.\nProfil : ${profileVal}\nCorridor : ${corridorText}\nMontant de reference : ${amountText}\nContact : info@xaalya.com (sous couvert de christjonas2024@gmail.com)\n`
-        );
-        contactLink.setAttribute("href", `mailto:info@xaalya.com?subject=${subject}&body=${body}`);
-      }
-
-      
-
-      document.addEventListener("DOMContentLoaded", async () => {
-        ["xd-source", "xd-target", "xd-amount", "b2b-usecase"].forEach((id) => {
+      document.addEventListener("DOMContentLoaded", () => {
+        ["xd-source", "xd-target", "xd-amount"].forEach((id) => {
           const el = document.getElementById(id);
           if (el) {
             el.addEventListener("change", renderPreview);
@@ -893,132 +611,17 @@
           }
         });
 
-        const copyBtn = document.getElementById("xd-copy-btn");
+        const copyBtn = document.getElementById("xd-copy-json");
         if (copyBtn) {
           copyBtn.addEventListener("click", async () => {
-            const raw = document.getElementById("xd-json-output")?.dataset.rawJson || "";
+            const raw = document.getElementById("xd-json-output")?.dataset.rawJson || document.getElementById("xd-json-output")?.textContent || "";
             if (!raw) return;
             try {
               await navigator.clipboard.writeText(raw);
               const prev = copyBtn.textContent;
               copyBtn.textContent = "Copié ✓";
-              setTimeout(() => { copyBtn.textContent = prev; }, 1600);
-      } catch (_) {
-              // Repli silencieux si le presse-papier est bloqué
-            }
-          });
-        }
-
-        const downloadBtn = document.getElementById("xd-download-btn");
-        if (downloadBtn) {
-          downloadBtn.addEventListener("click", async () => {
-            const raw = document.getElementById("xd-json-output")?.dataset.rawJson || "";
-            if (!raw) return;
-            try {
-              const parsed = JSON.parse(raw);
-              const corridorSlug = String(parsed.corridor || "corridor")
-                .toLowerCase()
-                .replace(/[^a-z0-9]+/g, "-");
-              const amountSlug = String(parsed.amount || "1000").replace(/[^0-9]+/g, "");
-              const fileName = `xaalyadata-${corridorSlug}-${amountSlug || "amt"}.json`;
-
-              const blob = new Blob([raw], { type: "application/json;charset=utf-8" });
-              const url = URL.createObjectURL(blob);
-              const a = document.createElement("a");
-              a.href = url;
-              a.download = fileName;
-              document.body.appendChild(a);
-              a.click();
-              a.remove();
-              setTimeout(() => URL.revokeObjectURL(url), 1000);
-
-              const prev = downloadBtn.textContent;
-              downloadBtn.textContent = "Téléchargé ✓";
-              setTimeout(() => { downloadBtn.textContent = prev; }, 1600);
-            } catch (_) {
-              // Repli silencieux si l'export échoue
-            }
-          });
-        }
-
-        const downloadCsvBtn = document.getElementById("xd-download-csv-btn");
-        if (downloadCsvBtn) {
-          downloadCsvBtn.addEventListener("click", () => {
-            const raw = document.getElementById("xd-json-output")?.dataset.rawJson || "";
-            if (!raw) return;
-            try {
-              const parsed = JSON.parse(raw);
-              const corridorSlug = String(parsed.corridor || "corridor")
-                .toLowerCase()
-                .replace(/[^a-z0-9]+/g, "-");
-              const amountSlug = String(parsed.amount || "1000").replace(/[^0-9]+/g, "");
-              const fileName = `xaalyadata-${corridorSlug}-${amountSlug || "amt"}.csv`;
-
-              const csvContent = buildCsvFromParsed(parsed);
-              const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8" });
-              const url = URL.createObjectURL(blob);
-              const a = document.createElement("a");
-              a.href = url;
-              a.download = fileName;
-              document.body.appendChild(a);
-              a.click();
-              a.remove();
-              setTimeout(() => URL.revokeObjectURL(url), 1000);
-
-              const prev = downloadCsvBtn.textContent;
-              downloadCsvBtn.textContent = "Téléchargé ✓";
-              setTimeout(() => { downloadCsvBtn.textContent = prev; }, 1600);
-            } catch (_) {
-              // Repli silencieux si l'export CSV échoue
-            }
-          });
-        }
-
-        const exportAllBtn = document.getElementById("xd-export-all-csv-btn");
-        if (exportAllBtn) {
-          exportAllBtn.addEventListener("click", () => {
-            const tbody = document.getElementById("xd-multi-tbody");
-            const rawRows = tbody?.dataset.multiRows || "";
-            if (!rawRows) return;
-            try {
-              const rows = JSON.parse(rawRows);
-              const amount = Number(tbody?.dataset.multiAmount || 1000);
-              const csvText = buildMultiCsv(rows, amount);
-              const fileName = `xaalyadata-multi-corridors-${amount}.csv`;
-
-              const blob = new Blob([csvText], { type: "text/csv;charset=utf-8" });
-              const url = URL.createObjectURL(blob);
-              const a = document.createElement("a");
-              a.href = url;
-              a.download = fileName;
-              document.body.appendChild(a);
-              a.click();
-              a.remove();
-              setTimeout(() => URL.revokeObjectURL(url), 1000);
-
-              const prev = exportAllBtn.textContent;
-              exportAllBtn.textContent = "Exporté ✓";
-              setTimeout(() => { exportAllBtn.textContent = prev; }, 1600);
-            } catch (_) {
-              // Repli silencieux si l'export échoue
-            }
-          });
-        }
-
-        const copyBriefBtn = document.getElementById("b2b-copy-brief-btn");
-        const feedbackEl = document.getElementById("b2b-feedback");
-        if (copyBriefBtn && feedbackEl) {
-          copyBriefBtn.addEventListener("click", async () => {
-            const benchRaw = document.getElementById("xd-json-output")?.dataset.benchJson;
-            if (!benchRaw) return;
-            const brief = buildB2bBriefText(JSON.parse(benchRaw));
-            try {
-              await navigator.clipboard.writeText(brief);
-              feedbackEl.textContent = "Brief B2B copié dans le presse-papier.";
-              setTimeout(() => { feedbackEl.textContent = ""; }, 2500);
-            } catch (_) {
-              feedbackEl.textContent = "Écrivez à info@xaalya.com avec votre corridor.";
-            }
+              setTimeout(() => { copyBtn.textContent = prev; }, 1500);
+            } catch (_) {}
           });
         }
 
@@ -1029,7 +632,5 @@
         renderPreview();
       }
     })();
-  </script>
-
-</body>
+    </script></body>
 </html>
