@@ -198,7 +198,7 @@
     },
     en: {
       locale: "en-GB",
-      netTitle: "Xaalya Net Estimate (Chow-Lin Model)",
+      netTitle: "Xaalya Net Estimate",
       refRateLabel: "Reference rate:",
       verifyNotice: "Verify with operators before sending",
       topOpsTitle: "Top non-sponsored operators",
@@ -246,7 +246,7 @@
     },
     de: {
       locale: "de-DE",
-      netTitle: "Xaalya-Nettoschätzung (Chow-Lin-Modell)",
+      netTitle: "Xaalya-Nettoschätzung",
       refRateLabel: "Referenzkurs:",
       verifyNotice: "Vor dem Senden beim Anbieter prüfen",
       topOpsTitle: "Top nicht gesponserte Anbieter",
@@ -262,7 +262,7 @@
     },
     it: {
       locale: "it-IT",
-      netTitle: "Stima netta Xaalya (modello Chow-Lin)",
+      netTitle: "Stima netta Xaalya",
       refRateLabel: "Tasso di riferimento:",
       verifyNotice: "Verifica presso gli operatori prima di inviare",
       topOpsTitle: "Migliori operatori non sponsorizzati",
@@ -294,7 +294,7 @@
     },
     zh: {
       locale: "zh-CN",
-      netTitle: "Xaalya 净额估算（Chow-Lin 模型）",
+      netTitle: "Xaalya 净额估算（ 模型）",
       refRateLabel: "参考汇率：",
       verifyNotice: "汇款前请向汇款机构核实",
       topOpsTitle: "热门非赞助汇款机构",
@@ -310,7 +310,7 @@
     },
     sw: {
       locale: "en-GB",
-      netTitle: "Makadirio halisi ya Xaalya (mfano wa Chow-Lin)",
+      netTitle: "Makadirio halisi ya Xaalya",
       refRateLabel: "Kiwango cha marejeleo:",
       verifyNotice: "Thibitisha na watoa huduma kabla ya kutuma",
       topOpsTitle: "Watoa huduma bora wasiodhaminiwa",
@@ -326,7 +326,7 @@
     },
     am: {
       locale: "en-GB",
-      netTitle: "የXaalya የተጣራ ግምት (Chow-Lin ሞዴል)",
+      netTitle: "የXaalya የተጣራ ግምት",
       refRateLabel: "የማጣቀሻ ተመን:",
       verifyNotice: "ከመላክዎ በፊት ከአገልግሎት ሰጪዎች ጋር ያረጋግጡ",
       topOpsTitle: "ያልተደገፉ ዋና አገልግሎት ሰጪዎች",
@@ -374,7 +374,7 @@
     },
     zu: {
       locale: "en-GB",
-      netTitle: "Isilinganiso esiphelele se-Xaalya (imodeli ye-Chow-Lin)",
+      netTitle: "Isilinganiso esiphelele se-Xaalya",
       refRateLabel: "Izinga lesithenjwa:",
       verifyNotice: "Qinisekisa nabanikezeli ngaphambi kokuthumela",
       topOpsTitle: "Abanikezeli abaphezulu abangaxhasiwe",
@@ -390,7 +390,7 @@
     },
     sn: {
       locale: "en-GB",
-      netTitle: "Fungidziro yakachena yeXaalya (muenzaniso weChow-Lin)",
+      netTitle: "Fungidziro yakachena yeXaalya",
       refRateLabel: "Mutengo wekuyera:",
       verifyNotice: "Ongorora nevanotumira mari usati watumira",
       topOpsTitle: "Vanotumira mari vakasarudzika vasina kushambadzwa",
