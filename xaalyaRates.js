@@ -3,27 +3,27 @@
   const FIXED_CFA_PER_EUR = 655.957;
 
   const OPERATOR_PROFILES = [
-    { id: "nala", name: "Nala", category: "digital", neutralBenchmark: false, url: "https://www.nala.money/" },
-    { id: "sendwave", name: "Sendwave", category: "digital", neutralBenchmark: false, url: "https://www.sendwave.com/fr" },
-    { id: "taptap", name: "Taptap Send", category: "digital", neutralBenchmark: false, url: "https://www.taptapsend.com/" },
-    { id: "lemfi", name: "Lemfi", category: "digital", neutralBenchmark: false, url: "https://lemfi.com/" },
-    { id: "paysend", name: "Paysend", category: "digital", neutralBenchmark: false, url: "https://paysend.com/" },
-    { id: "wise", name: "Wise", category: "digital", neutralBenchmark: false, url: "https://wise.com/fr/send-money/" },
-    { id: "remitly", name: "Remitly", category: "digital", neutralBenchmark: false, url: "https://www.remitly.com/fr/home" },
-    { id: "worldremit", name: "WorldRemit", category: "digital", neutralBenchmark: false, url: "https://www.worldremit.com/fr" },
-    { id: "wu", name: "Western Union", category: "traditional", neutralBenchmark: false, url: "https://www.westernunion.com/fr/fr/web/send-money.html" },
-    { id: "mg", name: "MoneyGram", category: "traditional", neutralBenchmark: false, url: "https://www.moneygram.com/m/fr/fr/send.html" },
-    { id: "ria", name: "Ria Money Transfer", category: "traditional", neutralBenchmark: false, url: "https://www.riamoneytransfer.com/fr/fr/" }
+    { id: "nala", name: "Nala", category: "digital", costOffset: -0.0025, neutralBenchmark: false, url: "https://www.nala.money/" },
+    { id: "sendwave", name: "Sendwave", category: "digital", costOffset: -0.0018, neutralBenchmark: false, url: "https://www.sendwave.com/fr" },
+    { id: "taptap", name: "Taptap Send", category: "digital", costOffset: -0.0012, neutralBenchmark: false, url: "https://www.taptapsend.com/" },
+    { id: "lemfi", name: "Lemfi", category: "digital", costOffset: 0.0000, neutralBenchmark: false, url: "https://lemfi.com/" },
+    { id: "paysend", name: "Paysend", category: "digital", costOffset: 0.0012, neutralBenchmark: false, url: "https://paysend.com/" },
+    { id: "wise", name: "Wise", category: "digital", costOffset: 0.0020, neutralBenchmark: false, url: "https://wise.com/fr/send-money/" },
+    { id: "remitly", name: "Remitly", category: "digital", costOffset: 0.0028, neutralBenchmark: false, url: "https://www.remitly.com/fr/home" },
+    { id: "worldremit", name: "WorldRemit", category: "digital", costOffset: 0.0035, neutralBenchmark: false, url: "https://www.worldremit.com/fr" },
+    { id: "wu", name: "Western Union", category: "traditional", costOffset: -0.0030, neutralBenchmark: false, url: "https://www.westernunion.com/fr/fr/web/send-money.html" },
+    { id: "mg", name: "MoneyGram", category: "traditional", costOffset: 0.0000, neutralBenchmark: false, url: "https://www.moneygram.com/m/fr/fr/send.html" },
+    { id: "ria", name: "Ria Money Transfer", category: "traditional", costOffset: 0.0025, neutralBenchmark: false, url: "https://www.riamoneytransfer.com/fr/fr/" }
   ];
 
   const CORRIDOR_PRIORS = {
     "EUR->XOF": {
-      baseCostByCat: { mobile: 0.014, digital: 0.022, traditional: 0.048, bank_benchmark: 0.065 },
-      spreadHalfWidth: { mobile: 0.004, digital: 0.006, traditional: 0.011, bank_benchmark: 0.014 }
+      baseCostByCat: { mobile: 0.004, digital: 0.0055, traditional: 0.032, bank_benchmark: 0.055 },
+      spreadHalfWidth: { mobile: 0.002, digital: 0.003, traditional: 0.008, bank_benchmark: 0.012 }
     },
     "EUR->XAF": {
-      baseCostByCat: { mobile: 0.015, digital: 0.023, traditional: 0.049, bank_benchmark: 0.066 },
-      spreadHalfWidth: { mobile: 0.004, digital: 0.006, traditional: 0.011, bank_benchmark: 0.014 }
+      baseCostByCat: { mobile: 0.0045, digital: 0.006, traditional: 0.033, bank_benchmark: 0.056 },
+      spreadHalfWidth: { mobile: 0.002, digital: 0.003, traditional: 0.008, bank_benchmark: 0.012 }
     },
     "USD->NGN": {
       baseCostByCat: { mobile: 0.025, digital: 0.031, traditional: 0.056, bank_benchmark: 0.074 },
@@ -84,14 +84,15 @@
       spreadHalfWidth: { mobile: 0.006, digital: 0.008, traditional: 0.014, bank_benchmark: 0.018 }
     };
 
-    const sizeFactor = Math.max(0.75, Math.min(1.25, 300 / Math.max(1, amount)));
+    const sizeFactor = Math.max(0.88, Math.min(1.06, Math.pow(300 / Math.max(1, amount), 0.15)));
     const chowLinAdjustment = Number(ratesData?.chowLinDelta?.[corridorKey]?.[profile.id] || 0);
     const seasonalityWave = Math.sin(((daySeed % 30) / 30) * Math.PI * 2) * 0.002;
 
     const baseCost = prior.baseCostByCat[profile.category] ?? 0.035;
+    const profileOffset = Number(profile.costOffset || 0);
     const netCostRatio = Math.max(
-      0.003,
-      Math.min(0.25, baseCost * sizeFactor + chowLinAdjustment + seasonalityWave)
+      0.001,
+      Math.min(0.25, baseCost * sizeFactor + profileOffset + chowLinAdjustment + seasonalityWave)
     );
 
     const halfSpread = prior.spreadHalfWidth[profile.category] ?? 0.01;
