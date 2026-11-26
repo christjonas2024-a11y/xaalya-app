@@ -118,7 +118,7 @@
 
     container.innerHTML = `
       <div class="space-y-6" data-xaalya-ordered="true">
-        <!-- 2. ESTIMATION NETTE XAALYA (MODÈLE CHOW-LIN) — CENTRÉ -->
+        <!-- 2. ESTIMATION NETTE XAALYA — CENTRÉ -->
         <div id="xaalya-result-block" class="bg-slate-900/90 border border-slate-800 rounded-2xl p-6 text-center space-y-2">
           <div class="text-xs font-semibold uppercase tracking-wider text-slate-200">
             ${getRatesI18n().netTitle}
@@ -182,7 +182,7 @@
   const XAALYA_RATES_I18N = {
     fr: {
       locale: "fr-FR",
-      netTitle: "Estimation nette Xaalya (modèle Chow-Lin)",
+      netTitle: "Estimation nette Xaalya",
       refRateLabel: "Taux de référence :",
       verifyNotice: "Vérifier auprès des opérateurs avant d'envoyer",
       topOpsTitle: "Top opérateurs non sponsorisés",
@@ -214,7 +214,7 @@
     },
     es: {
       locale: "es-ES",
-      netTitle: "Estimación neta Xaalya (modelo Chow-Lin)",
+      netTitle: "Estimación neta Xaalya",
       refRateLabel: "Tipo de referencia:",
       verifyNotice: "Verifica con los operadores antes de enviar",
       topOpsTitle: "Principales operadores no patrocinados",
@@ -230,7 +230,7 @@
     },
     pt: {
       locale: "pt-PT",
-      netTitle: "Estimativa líquida Xaalya (modelo Chow-Lin)",
+      netTitle: "Estimativa líquida Xaalya",
       refRateLabel: "Taxa de referência:",
       verifyNotice: "Verifique com os operadores antes de enviar",
       topOpsTitle: "Principais operadores não patrocinados",
@@ -278,7 +278,7 @@
     },
     ar: {
       locale: "en-GB",
-      netTitle: "تقدير Xaalya الصافي (نموذج Chow-Lin)",
+      netTitle: "تقدير Xaalya الصافي",
       refRateLabel: "سعر الصرف المرجعي:",
       verifyNotice: "تحقق لدى مزوّدي الخدمة قبل الإرسال",
       topOpsTitle: "أفضل مزوّدي التحويل غير المموّلين",
@@ -342,7 +342,7 @@
     },
     yo: {
       locale: "en-GB",
-      netTitle: "Ìṣírò àpapọ̀ Xaalya (àwòkọ́ṣe Chow-Lin)",
+      netTitle: "Ìṣírò àpapọ̀ Xaalya",
       refRateLabel: "Oṣùwọ̀n ìtọ́kasí:",
       verifyNotice: "Ṣàyẹ̀wò pẹ̀lú àwọn olùpèsè kí o tó fi ránṣẹ́",
       topOpsTitle: "Àwọn olùpèsè tó dára jù láìní ìpolówó",
@@ -358,7 +358,7 @@
     },
     ha: {
       locale: "en-GB",
-      netTitle: "Ƙididdigar tsantsa ta Xaalya (tsarin Chow-Lin)",
+      netTitle: "Ƙididdigar tsantsa ta Xaalya",
       refRateLabel: "Farashin musaya na asali:",
       verifyNotice: "Tabbatar da masu aiko da kuɗi kafin ka tura",
       topOpsTitle: "Manyan masu aiko da kuɗi ba tare da talla ba",
@@ -406,7 +406,7 @@
     },
     ln: {
       locale: "fr-FR",
-      netTitle: "Bokaboli ya solo ya Xaalya (modèle Chow-Lin)",
+      netTitle: "Bokaboli ya solo ya Xaalya",
       refRateLabel: "Taux ya référence :",
       verifyNotice: "Tala malamu epai ya ba opérateurs liboso ya kotinda",
       topOpsTitle: "Ba opérateurs minene bazangi sponsor",
@@ -422,7 +422,7 @@
     },
     wo: {
       locale: "fr-FR",
-      netTitle: "Nattub Xaalya bu leer (modèle Chow-Lin)",
+      netTitle: "Nattub Xaalya bu leer",
       refRateLabel: "Nattub wéccoo :",
       verifyNotice: "Seetal ci opérateurs yi bala ngay yónnee",
       topOpsTitle: "Opérateurs yi gën te amul sponsor",
