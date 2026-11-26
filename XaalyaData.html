@@ -49,7 +49,7 @@
             const data = await res.json();
             if (data && typeof data.rates === "object") {
               return data;
-            }
+      }
           }
         } catch (_) {
           // Repli silencieux sur FALLBACK_RATES
@@ -410,7 +410,7 @@
             if (data && typeof data.rates === "object") {
               cachedRatesData = { ...data, __isFallback: Boolean(data.__isFallback) };
               return cachedRatesData;
-            }
+      }
           }
         } catch (_) {
           // Repli silencieux sur FALLBACK_RATES
@@ -623,7 +623,7 @@
           .join("");
 
         tbody.querySelectorAll(".xd-corridor-row").forEach((tr) => {
-          tr.addEventListener("click", () => {
+          tr.addEventListener("click", async () => {
             const srcEl = document.getElementById("xd-source");
             const tgtEl = document.getElementById("xd-target");
             const src = tr.getAttribute("data-src");
@@ -869,7 +869,7 @@
         }
       }
 
-      function updateMailto(bench) {
+      async function updateMailto(bench) {
         const contactLink = document.getElementById("b2b-contact-btn");
         if (!contactLink) return;
         const profileVal = document.getElementById("b2b-usecase")?.value || "Veille corridors & benchmarks FX";
@@ -884,7 +884,7 @@
 
       
 
-      document.addEventListener("DOMContentLoaded", () => {
+      document.addEventListener("DOMContentLoaded", async () => {
         ["xd-source", "xd-target", "xd-amount", "b2b-usecase"].forEach((id) => {
           const el = document.getElementById(id);
           if (el) {
@@ -903,7 +903,7 @@
               const prev = copyBtn.textContent;
               copyBtn.textContent = "Copié ✓";
               setTimeout(() => { copyBtn.textContent = prev; }, 1600);
-            } catch (_) {
+      } catch (_) {
               // Repli silencieux si le presse-papier est bloqué
             }
           });
@@ -911,7 +911,7 @@
 
         const downloadBtn = document.getElementById("xd-download-btn");
         if (downloadBtn) {
-          downloadBtn.addEventListener("click", () => {
+          downloadBtn.addEventListener("click", async () => {
             const raw = document.getElementById("xd-json-output")?.dataset.rawJson || "";
             if (!raw) return;
             try {
