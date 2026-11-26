@@ -420,6 +420,27 @@
     };
   }
 
+  
+  function computeAllCorridors({ amount = 1000, ratesData } = {}) {
+    const keys = Object.keys(SWIFT_BENCHMARKS || {});
+    return keys.map((corridorKey) => {
+      const [source, target] = corridorKey.split("->");
+      const b = computeBankBenchmark({ source, target, amount, ratesData });
+      return {
+        corridor: corridorKey,
+        source,
+        target,
+        refRate: b.refRate,
+        effectiveCostPct: b.effectiveCostPct,
+        netCentral: b.netCentral,
+        netMin: b.netMin,
+        netMax: b.netMax,
+        settlementDays: b.settlementDays,
+        fixedFeeHint: b.fixedFeeHint
+      };
+    });
+  }
+
   return {
     FIXED_CFA_PER_EUR,
     SWIFT_BENCHMARKS,
@@ -431,6 +452,7 @@
     buildDegressivityCurve,
     getCorridorProfile,
     buildChannelComparison,
-    buildGovernanceMetadata
+    buildGovernanceMetadata,
+    computeAllCorridors
   };
 });
