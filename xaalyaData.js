@@ -197,12 +197,82 @@
     };
   }
 
+  
+  function buildFxSnapshot({ source, target, ratesData, amount = 1000 }) {
+    const src = extractCurrencyCode(source) || "EUR";
+    const tgt = extractCurrencyCode(target) || "XOF";
+    const pivotCurrency = extractCurrencyCode(ratesData && ratesData.base) || "EUR";
+    const ratesObj = ratesData && typeof ratesData.rates === "object" ? ratesData.rates : {};
+
+    const pivotToSourceRate = src === pivotCurrency
+      ? 1
+      : (Number.isFinite(Number(ratesObj[src])) && Number(ratesObj[src]) > 0 ? Number(ratesObj[src]) : null);
+
+    const pivotToTargetRate = tgt === pivotCurrency
+      ? 1
+      : (Number.isFinite(Number(ratesObj[tgt])) && Number(ratesObj[tgt]) > 0 ? Number(ratesObj[tgt]) : null);
+
+    const midMarketCrossRate = getReferenceRate(src, tgt, ratesData);
+    const hasRatesPayload = Boolean(ratesData && typeof ratesData.rates === "object");
+    const rateSourceLabel = ratesData && ratesData.source
+      ? String(ratesData.source)
+      : (hasRatesPayload ? "rates.json / fallback" : "fallback");
+    const timestamp = ratesData && (ratesData.timestamp || ratesData.updatedAt || ratesData.date)
+      ? String(ratesData.timestamp || ratesData.updatedAt || ratesData.date)
+      : null;
+
+    const bench = computeBankBenchmark({ source: src, target: tgt, amount, ratesData });
+    const impliedNetRate = amount > 0 ? bench.netCentral / amount : midMarketCrossRate;
+    const spreadRatio = midMarketCrossRate > 0 ? (midMarketCrossRate - impliedNetRate) / midMarketCrossRate : 0;
+    const spreadPct = Number((spreadRatio * 100).toFixed(2));
+    const spreadBps = Math.round(spreadRatio * 10000);
+
+    return {
+      pivotCurrency,
+      source: src,
+      target: tgt,
+      pivotToSourceRate,
+      pivotToTargetRate,
+      midMarketCrossRate,
+      impliedNetRate,
+      spreadPct,
+      spreadBps,
+      rateSourceLabel,
+      timestamp
+    };
+  }
+
+  function buildDegressivityCurve({ source, target, ratesData, tiers = [500, 1000, 5000, 10000] }) {
+    const src = extractCurrencyCode(source) || "EUR";
+    const tgt = extractCurrencyCode(target) || "XOF";
+    const midRate = getReferenceRate(src, tgt, ratesData);
+
+    return tiers.map((tierAmount) => {
+      const b = computeBankBenchmark({
+        source: src,
+        target: tgt,
+        amount: tierAmount,
+        ratesData
+      });
+      const impliedRate = tierAmount > 0 ? b.netCentral / tierAmount : midRate;
+      const spreadBps = midRate > 0 ? Math.round(((midRate - impliedRate) / midRate) * 10000) : 0;
+      return {
+        amount: tierAmount,
+        effectiveCostPct: b.effectiveCostPct,
+        spreadBps,
+        netCentral: b.netCentral
+      };
+    });
+  }
+
   return {
     FIXED_CFA_PER_EUR,
     SWIFT_BENCHMARKS,
     extractCurrencyCode,
     getReferenceRate,
     getSwiftBenchmark,
-    computeBankBenchmark
+    computeBankBenchmark,
+    buildFxSnapshot,
+    buildDegressivityCurve
   };
 });

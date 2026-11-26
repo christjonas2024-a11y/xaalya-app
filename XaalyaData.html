@@ -153,6 +153,41 @@
             <span class="text-slate-400">Taux de référence</span>
             <span id="xd-ref-rate" class="font-mono text-slate-200">—</span>
           </div>
+
+        <div id="xd-fx-market-box" class="bg-slate-950/75 border border-slate-800/90 rounded-xl p-3.5 text-xs space-y-2">
+          <div class="flex items-center justify-between gap-2 border-b border-slate-800/70 pb-1.5">
+            <span class="font-semibold uppercase tracking-wider text-[11px] text-emerald-400">Marché FX &amp; écart implicite</span>
+            <span id="xd-fx-meta" class="font-mono text-[11px] text-slate-400 text-right">—</span>
+          </div>
+          <div class="flex items-center justify-between gap-2">
+            <span class="text-slate-400">Taux pivot &amp; croisé mid-market</span>
+            <span id="xd-fx-cross" class="font-mono text-slate-200 text-right">—</span>
+          </div>
+          <div class="flex items-center justify-between gap-2">
+            <span class="text-slate-400">Écart vs référence (taux net implicite)</span>
+            <span id="xd-fx-spread" class="font-mono text-amber-300 text-right">—</span>
+          </div>
+        </div>
+
+        <div id="xd-degressivity-box" class="bg-slate-950/75 border border-slate-800/90 rounded-xl p-3.5 text-xs space-y-2">
+          <div class="flex items-center justify-between gap-2">
+            <span class="font-semibold uppercase tracking-wider text-[11px] text-slate-200">Sensibilité au montant (dégressivité)</span>
+            <span class="text-[11px] text-slate-400">500 / 1k / 5k / 10k</span>
+          </div>
+          <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse text-[11px] font-mono">
+              <thead>
+                <tr class="border-b border-slate-800 text-slate-400">
+                  <th class="py-1 pr-2">Palier</th>
+                  <th class="py-1 px-2">Coût</th>
+                  <th class="py-1 px-2">Écart</th>
+                  <th class="py-1 pl-2 text-right">Net central</th>
+                </tr>
+              </thead>
+              <tbody id="xd-degressivity-tbody" class="divide-y divide-slate-800/60 text-slate-300"></tbody>
+            </table>
+          </div>
+        </div>
           <div class="flex items-center justify-between gap-2">
             <span class="text-slate-400">Indication frais fixes / correspondants</span>
             <span id="xd-fee-hint" class="text-slate-300 text-right">—</span>
@@ -539,12 +574,48 @@
       }
 
       async function renderPreview() {
-        if (!window.XaalyaData) return;
-        const ratesData = await loadRatesIfAvailable();
+        const fallback = typeof FALLBACK_RATES !== "undefined"
+          ? FALLBACK_RATES
+          : {
+              base: "EUR",
+              rates: {
+                EUR: 1,
+                USD: 1.0989,
+                GBP: 0.83305,
+                XOF: 655.957,
+                XAF: 655.957,
+                NGN: 1481.58685818,
+                MAD: 10.99737431,
+                KES: 143.12795023,
+                GHS: 12.88449254,
+                ZAR: 18.6073,
+                TZS: 2914.80870551,
+                UGX: 4577.12913587,
+                RWF: 1622.90526683
+              }
+            };
 
         const source = document.getElementById("xd-source")?.value || "EUR";
         const target = document.getElementById("xd-target")?.value || "XOF";
         const amount = Math.max(1, Number(document.getElementById("xd-amount")?.value || 1000));
+
+        let ratesData = fallback;
+        try {
+          const loaded = await loadRatesIfAvailable();
+          if (loaded && typeof loaded.rates === "object") {
+            ratesData = loaded;
+          }
+        } catch (_) {
+          ratesData = fallback;
+        }
+
+        const tbody = document.getElementById("xd-multi-tbody");
+        if (!window.XaalyaData || typeof window.XaalyaData.computeBankBenchmark !== "function") {
+          if (tbody) {
+            tbody.innerHTML = '<tr><td colspan="6" class="py-4 text-center text-amber-400">Module xaalyaData.js indisponible.</td></tr>';
+          }
+          return;
+        }
 
         const bench = window.XaalyaData.computeBankBenchmark({
           source,
@@ -553,31 +624,90 @@
           ratesData
         });
 
-        document.getElementById("xd-rate-source").textContent =
-          ratesData && ratesData.rates ? "Source : rates.json + XaalyaData" : "Source : XaalyaData";
+        const rateSourceEl = document.getElementById("xd-rate-source");
+        if (rateSourceEl) {
+          rateSourceEl.textContent =
+            ratesData && ratesData.rates ? "Source : rates.json + XaalyaData" : "Source : XaalyaData";
+        }
 
-        document.getElementById("xd-net-central").textContent =
-          `${fmtNum(bench.netCentral, 2)} ${bench.target}`;
-        document.getElementById("xd-range").textContent =
-          `Fourchette : ${fmtNum(bench.netMin, 2)} – ${fmtNum(bench.netMax, 2)} ${bench.target}`;
-        document.getElementById("xd-cost-pct").textContent =
-          `${fmtNum(bench.effectiveCostPct, 2)} %`;
-        document.getElementById("xd-settlement").textContent =
-          `Délai : ${bench.settlementDays}`;
-        document.getElementById("xd-ref-rate").textContent =
-          `1 ${bench.source} = ${fmtNum(bench.refRate, 4)} ${bench.target}`;
-        document.getElementById("xd-fee-hint").textContent =
-          bench.fixedFeeHint;
+        const netCentralEl = document.getElementById("xd-net-central");
+        if (netCentralEl) netCentralEl.textContent = `${fmtNum(bench.netCentral, 2)} ${bench.target}`;
+
+        const rangeEl = document.getElementById("xd-range");
+        if (rangeEl) rangeEl.textContent = `Fourchette : ${fmtNum(bench.netMin, 2)} – ${fmtNum(bench.netMax, 2)} ${bench.target}`;
+
+        const costPctEl = document.getElementById("xd-cost-pct");
+        if (costPctEl) costPctEl.textContent = `${fmtNum(bench.effectiveCostPct, 2)} %`;
+
+        const settlementEl = document.getElementById("xd-settlement");
+        if (settlementEl) settlementEl.textContent = `Délai : ${bench.settlementDays}`;
+
+        const refRateEl = document.getElementById("xd-ref-rate");
+        if (refRateEl) refRateEl.textContent = `1 ${bench.source} = ${fmtNum(bench.refRate, 4)} ${bench.target}`;
+
+        const feeHintEl = document.getElementById("xd-fee-hint");
+        if (feeHintEl) feeHintEl.textContent = bench.fixedFeeHint;
+
+        const fxSnapshot = typeof window.XaalyaData.buildFxSnapshot === "function"
+          ? window.XaalyaData.buildFxSnapshot({ source, target, ratesData, amount })
+          : null;
+        const curve = typeof window.XaalyaData.buildDegressivityCurve === "function"
+          ? window.XaalyaData.buildDegressivityCurve({ source, target, ratesData })
+          : [];
+
+        if (fxSnapshot) {
+          const metaEl = document.getElementById("xd-fx-meta");
+          if (metaEl) {
+            metaEl.textContent = fxSnapshot.timestamp
+              ? `${fxSnapshot.rateSourceLabel} · ${fxSnapshot.timestamp}`
+              : fxSnapshot.rateSourceLabel;
+          }
+          const crossEl = document.getElementById("xd-fx-cross");
+          if (crossEl) {
+            const pivotInfo = fxSnapshot.pivotToTargetRate
+              ? `Pivot ${fxSnapshot.pivotCurrency}→${fxSnapshot.target}: ${fmtNum(fxSnapshot.pivotToTargetRate, 4)}`
+              : `Pivot ${fxSnapshot.pivotCurrency}`;
+            crossEl.textContent = `Mid ${fmtNum(fxSnapshot.midMarketCrossRate, 4)} (${pivotInfo})`;
+          }
+          const spreadEl = document.getElementById("xd-fx-spread");
+          if (spreadEl) {
+            spreadEl.textContent = `${fmtNum(fxSnapshot.spreadPct, 2)} % (${fxSnapshot.spreadBps} bps) · Net ${fmtNum(fxSnapshot.impliedNetRate, 4)}`;
+          }
+        }
+
+        const curveTbody = document.getElementById("xd-degressivity-tbody");
+        if (curveTbody) {
+          curveTbody.innerHTML = curve
+            .map(
+              (pt) => `
+              <tr>
+                <td class="py-1 pr-2 text-white">${fmtNum(pt.amount, 0)}</td>
+                <td class="py-1 px-2 text-amber-300">${fmtNum(pt.effectiveCostPct, 2)} %</td>
+                <td class="py-1 px-2 text-slate-400">${pt.spreadBps} bps</td>
+                <td class="py-1 pl-2 text-right text-emerald-400">${fmtNum(pt.netCentral, 2)} ${target}</td>
+              </tr>`
+            )
+            .join("");
+        }
 
         const payload = {
           product: "XaalyaData",
-          schemaVersion: "1.0",
+          schemaVersion: "1.1",
           generatedAt: new Date().toISOString(),
           corridor: bench.corridor,
           amount: bench.amount,
           sourceCurrency: bench.source,
           targetCurrency: bench.target,
           refRate: Number(bench.refRate.toFixed(6)),
+          fxMarket: fxSnapshot ? {
+            pivotCurrency: fxSnapshot.pivotCurrency,
+            midMarketCrossRate: Number(fxSnapshot.midMarketCrossRate.toFixed(6)),
+            impliedNetRate: Number(fxSnapshot.impliedNetRate.toFixed(6)),
+            spreadPct: fxSnapshot.spreadPct,
+            spreadBps: fxSnapshot.spreadBps,
+            source: fxSnapshot.rateSourceLabel,
+            timestamp: fxSnapshot.timestamp
+          } : null,
           benchmark: {
             label: bench.label,
             effectiveCostPct: bench.effectiveCostPct,
@@ -586,18 +716,51 @@
             netMax: Number(bench.netMax.toFixed(2)),
             fixedFeeHint: bench.fixedFeeHint,
             settlementDays: bench.settlementDays
-          }
+          },
+          degressivityCurve: curve.map((pt) => ({
+            amount: pt.amount,
+            effectiveCostPct: pt.effectiveCostPct,
+            spreadBps: pt.spreadBps,
+            netCentral: Number(pt.netCentral.toFixed(2))
+          }))
         };
 
         const jsonStr = JSON.stringify(payload, null, 2);
         const preEl = document.getElementById("xd-json-output");
-        preEl.textContent = jsonStr;
-        preEl.dataset.rawJson = jsonStr;
-        preEl.dataset.benchJson = JSON.stringify(bench);
+        if (preEl) {
+          preEl.textContent = jsonStr;
+          preEl.dataset.rawJson = jsonStr;
+          preEl.dataset.benchJson = JSON.stringify(bench);
+        }
 
-        updateMailto(bench);
-        try { renderMultiCorridors(amount, ratesData); } catch (e) { console.error("Multi-corridors error:", e); }
+        if (typeof updateMailto === "function") {
+          updateMailto(bench);
+        }
+
+        try {
+          renderMultiCorridors(amount, ratesData);
+        } catch (e) {
+          console.error("Multi-corridors error:", e);
+          if (tbody) {
+            tbody.innerHTML = '<tr><td colspan="6" class="py-4 text-center text-rose-400">Erreur d\'affichage des corridors.</td></tr>';
+          }
+        }
       }
+
+      function updateMailto(bench) {
+        const contactLink = document.getElementById("b2b-contact-btn");
+        if (!contactLink) return;
+        const profileVal = document.getElementById("b2b-usecase")?.value || "Veille corridors & benchmarks FX";
+        const corridorText = bench && bench.corridor ? bench.corridor : "Multi-corridors";
+        const amountText = bench && bench.amount ? bench.amount : "1000";
+        const subject = encodeURIComponent(`XaalyaData — ${profileVal} (${corridorText})`);
+        const body = encodeURIComponent(
+          `Bonjour l'equipe Xaalya,\n\nJe souhaite echanger au sujet de XaalyaData.\nProfil : ${profileVal}\nCorridor : ${corridorText}\nMontant de reference : ${amountText}\nContact : info@xaalya.com (sous couvert de christjonas2024@gmail.com)\n`
+        );
+        contactLink.setAttribute("href", `mailto:info@xaalya.com?subject=${subject}&body=${body}`);
+      }
+
+      
 
       document.addEventListener("DOMContentLoaded", () => {
         ["xd-source", "xd-target", "xd-amount", "b2b-usecase"].forEach((id) => {
@@ -739,6 +902,10 @@
 
         renderPreview();
       });
+
+      if (document.readyState !== "loading") {
+        renderPreview();
+      }
     })();
   </script>
 
