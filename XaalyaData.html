@@ -175,7 +175,29 @@
             <span class="text-[11px] text-slate-400">500 / 1k / 5k / 10k</span>
           </div>
           <div class="overflow-x-auto">
-            <table class="w-full text-left border-collapse text-[11px] font-mono">
+            
+      <div id="xd-multi-controls" class="mt-4 mb-3 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-3 bg-slate-950/70 border border-slate-800/90 rounded-xl p-3 text-xs">
+        <div class="flex flex-wrap items-center gap-1.5">
+          <span class="text-[11px] uppercase tracking-wider text-slate-400 mr-1">Paliers :</span>
+          <button type="button" data-xd-tier="500" class="xd-tier-btn px-2.5 py-1 rounded-lg font-mono text-[11px] bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 transition cursor-pointer">500</button>
+          <button type="button" data-xd-tier="1000" class="xd-tier-btn px-2.5 py-1 rounded-lg font-mono text-[11px] bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 transition cursor-pointer">1 000</button>
+          <button type="button" data-xd-tier="5000" class="xd-tier-btn px-2.5 py-1 rounded-lg font-mono text-[11px] bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 transition cursor-pointer">5 000</button>
+          <button type="button" data-xd-tier="10000" class="xd-tier-btn px-2.5 py-1 rounded-lg font-mono text-[11px] bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 transition cursor-pointer">10 000</button>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-2">
+          <input id="xd-multi-filter" type="search" placeholder="Filtrer (ex. EUR, XOF, USD->NGN)..." class="bg-slate-900 border border-slate-800 rounded-lg px-2.5 py-1.5 text-[11px] font-mono text-slate-200 placeholder-slate-500 focus:outline-none focus:border-emerald-500 w-56" />
+          <label for="xd-multi-sort" class="text-[11px] text-slate-400">Tri :</label>
+          <select id="xd-multi-sort" class="bg-slate-900 border border-slate-800 rounded-lg px-2.5 py-1.5 text-[11px] font-mono text-slate-200 focus:outline-none focus:border-emerald-500">
+            <option value="corridor_asc">Corridor (A → Z)</option>
+            <option value="net_desc">Net central (décroissant)</option>
+            <option value="cost_asc">Coût estimé (croissant)</option>
+            <option value="cost_desc">Coût estimé (décroissant)</option>
+            <option value="rate_desc">Taux réf. (décroissant)</option>
+          </select>
+        </div>
+      </div>
+      <table class="w-full text-left border-collapse text-[11px] font-mono">
               <thead>
                 <tr class="border-b border-slate-800 text-slate-400">
                   <th class="py-1 pr-2">Palier</th>
@@ -462,20 +484,104 @@
         });
       }
 
+      function getFilteredAndSortedCorridors(amount, ratesData) {
+        if (!window.XaalyaData || typeof window.XaalyaData.computeAllCorridors !== "function") {
+          return { error: "Module xaalyaData.js indisponible.", rows: [] };
+        }
+        let rows = window.XaalyaData.computeAllCorridors({ amount, ratesData });
+        if (!Array.isArray(rows)) rows = [];
+
+        const query = (document.getElementById("xd-multi-filter")?.value || "").trim().toUpperCase();
+        if (query) {
+          rows = rows.filter((r) => {
+            const c = String(r.corridor || "").toUpperCase();
+            const s = String(r.source || "").toUpperCase();
+            const t = String(r.target || "").toUpperCase();
+            return c.includes(query) || s.includes(query) || t.includes(query);
+          });
+        }
+
+        const sortKey = document.getElementById("xd-multi-sort")?.value || "corridor_asc";
+        rows = [...rows].sort((a, b) => {
+          if (sortKey === "net_desc") return Number(b.netCentral || 0) - Number(a.netCentral || 0);
+          if (sortKey === "cost_asc") return Number(a.effectiveCostPct || 0) - Number(b.effectiveCostPct || 0);
+          if (sortKey === "cost_desc") return Number(b.effectiveCostPct || 0) - Number(a.effectiveCostPct || 0);
+          if (sortKey === "rate_desc") return Number(b.refRate || 0) - Number(a.refRate || 0);
+          return String(a.corridor || "").localeCompare(String(b.corridor || ""));
+        });
+
+        return { error: null, rows };
+      }
+
+      function highlightActiveTier(amount) {
+        const btns = document.querySelectorAll(".xd-tier-btn");
+        btns.forEach((btn) => {
+          const val = Number(btn.getAttribute("data-xd-tier"));
+          const active = val === Number(amount);
+          btn.className = active
+            ? "xd-tier-btn px-2.5 py-1 rounded-lg font-mono text-[11px] bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 transition cursor-pointer"
+            : "xd-tier-btn px-2.5 py-1 rounded-lg font-mono text-[11px] bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 transition cursor-pointer";
+        });
+      }
+
+      function syncUrlState(source, target, amount) {
+        try {
+          if (!window.history || typeof window.history.replaceState !== "function") return;
+          const url = new URL(window.location.href);
+          url.searchParams.set("source", source);
+          url.searchParams.set("target", target);
+          url.searchParams.set("amount", String(amount));
+          window.history.replaceState({}, "", url.toString());
+        } catch (_) {}
+      }
+
+      function applyUrlStateToInputs() {
+        try {
+          const params = new URLSearchParams(window.location.search || "");
+          const srcParam = params.get("source");
+          const tgtParam = params.get("target");
+          const amtParam = params.get("amount");
+
+          const srcEl = document.getElementById("xd-source");
+          if (srcParam && srcEl) {
+            const cleanSrc = srcParam.trim().toUpperCase();
+            if ([...srcEl.options].some((o) => o.value.toUpperCase() === cleanSrc)) {
+              srcEl.value = cleanSrc;
+            }
+          }
+
+          const tgtEl = document.getElementById("xd-target");
+          if (tgtParam && tgtEl) {
+            const cleanTgt = tgtParam.trim().toUpperCase();
+            if ([...tgtEl.options].some((o) => o.value.toUpperCase() === cleanTgt)) {
+              tgtEl.value = cleanTgt;
+            }
+          }
+
+          const amtEl = document.getElementById("xd-amount");
+          if (amtParam && amtEl) {
+            const parsedAmt = Number(amtParam);
+            if (Number.isFinite(parsedAmt) && parsedAmt > 0) {
+              amtEl.value = String(parsedAmt);
+            }
+          }
+        } catch (_) {}
+      }
+
       function renderMultiCorridors(amount, ratesData) {
         const tbody = document.getElementById("xd-multi-tbody");
         if (!tbody) return;
-        if (!window.XaalyaData || typeof window.XaalyaData.computeAllCorridors !== "function") {
-          tbody.innerHTML = '<tr><td colspan="6" class="py-4 text-center text-amber-400">Module xaalyaData.js indisponible.</td></tr>';
+        const { error, rows } = getFilteredAndSortedCorridors(amount, ratesData);
+        if (error) {
+          tbody.innerHTML = `<tr><td colspan="6" class="py-4 text-center text-amber-400">${error}</td></tr>`;
           return;
         }
-        const rows = window.XaalyaData.computeAllCorridors({ amount, ratesData });
-        if (!Array.isArray(rows) || rows.length === 0) {
-          tbody.innerHTML = '<tr><td colspan="6" class="py-4 text-center text-slate-400">Aucun corridor disponible.</td></tr>';
+        if (!rows.length) {
+          tbody.innerHTML = '<tr><td colspan="6" class="py-4 text-center text-slate-400">Aucun couloir ne correspond au filtre.</td></tr>';
           return;
         }
         tbody.innerHTML = rows.map((r) => `
-          <tr class="hover:bg-slate-900/70 transition">
+          <tr data-corridor="${r.corridor}" class="hover:bg-slate-900/70 transition cursor-pointer">
             <td class="py-2.5 pr-3 font-mono text-white whitespace-nowrap">${r.corridor}</td>
             <td class="py-2.5 px-3 font-mono text-slate-300 whitespace-nowrap">${fmtNum(r.refRate, 4)}</td>
             <td class="py-2.5 px-3 font-mono text-amber-300 whitespace-nowrap">${fmtNum(r.effectiveCostPct, 2)} %</td>
@@ -484,6 +590,35 @@
             <td class="py-2.5 pl-3 text-slate-400 whitespace-nowrap">${r.settlementDays}</td>
           </tr>
         `).join("");
+
+        tbody.querySelectorAll("tr[data-corridor]").forEach((tr) => {
+          tr.addEventListener("click", () => {
+            const corr = tr.getAttribute("data-corridor") || "";
+            const [s, t] = corr.split("->");
+            const srcEl = document.getElementById("xd-source");
+            const tgtEl = document.getElementById("xd-target");
+            if (s && srcEl && [...srcEl.options].some((o) => o.value === s)) srcEl.value = s;
+            if (t && tgtEl && [...tgtEl.options].some((o) => o.value === t)) tgtEl.value = t;
+            renderPreview();
+
+        document.querySelectorAll(".xd-tier-btn").forEach((btn) => {
+          btn.addEventListener("click", () => {
+            const tierVal = Number(btn.getAttribute("data-xd-tier"));
+            const amtEl = document.getElementById("xd-amount");
+            if (amtEl && Number.isFinite(tierVal) && tierVal > 0) {
+              amtEl.value = String(tierVal);
+              renderPreview();
+            }
+          });
+        });
+
+        const filterEl = document.getElementById("xd-multi-filter");
+        if (filterEl) filterEl.addEventListener("input", renderPreview);
+
+        const sortEl = document.getElementById("xd-multi-sort");
+        if (sortEl) sortEl.addEventListener("change", renderPreview);
+      });
+        });
       }
 
       function updateMailto(bench) {
@@ -633,6 +768,8 @@
           preEl.dataset.benchJson = JSON.stringify(bench);
         }
 
+        highlightActiveTier(amount);
+        syncUrlState(source, target, amount);
         updateMailto(bench);
         renderMultiCorridors(amount, ratesData);
       }
@@ -823,6 +960,7 @@
       }
 
       document.addEventListener("DOMContentLoaded", () => {
+        applyUrlStateToInputs();
         ["xd-source", "xd-target", "xd-amount"].forEach((id) => {
           const el = document.getElementById(id);
           if (el) {
