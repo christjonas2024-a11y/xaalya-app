@@ -706,6 +706,10 @@
           setText("xd-gov-badge", `Schéma v${governance.schemaVersion} · ${governance.freshnessLabel}`);
           setText("xd-gov-freshness", `Mode : ${governance.freshnessStatus} · ${governance.privacyMode}`);
           setText("xd-gov-assumptions", `sizeFactor ${governance.modelAssumptions.sizeFactor} · Chow-Lin + SWIFT`);
+          const instList = Array.isArray(governance.institutionalAnchors) && governance.institutionalAnchors.length
+            ? governance.institutionalAnchors.join(" · ")
+            : "BAD · BCEAO · BEAC";
+          setText("xd-gov-institutions", `Modèle & sources créditées : ${instList} (Chow-Lin + repères SWIFT)`);
         }
 
         const payload = {
@@ -750,6 +754,7 @@
             freshnessStatus: governance.freshnessStatus,
             freshnessLabel: governance.freshnessLabel,
             privacyMode: governance.privacyMode,
+            institutionalAnchors: governance.institutionalAnchors || ["BAD", "BCEAO", "BEAC"],
             modelAssumptions: governance.modelAssumptions
           } : null,
           degressivityCurve: curve.map((pt) => ({

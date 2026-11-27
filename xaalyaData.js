@@ -395,6 +395,47 @@
   }
 
   
+  
+  const INSTITUTIONAL_SOURCES = {
+    bad: {
+      id: "BAD",
+      name: "Banque Africaine de Développement (BAD)",
+      scope: "Séries macroéconomiques & financières panafricaines harmonisées (calibration Chow-Lin & comparaison inter-zones)"
+    },
+    bceao: {
+      id: "BCEAO",
+      name: "Banque Centrale des États de l'Afrique de l'Ouest (BCEAO)",
+      scope: "Référentiel monétaire zone UEMOA (XOF), parité fixe 655,957 XOF/EUR & contrôle des cours de référence"
+    },
+    beac: {
+      id: "BEAC",
+      name: "Banque des États de l'Afrique Centrale (BEAC)",
+      scope: "Référentiel monétaire zone CEMAC (XAF), parité fixe 655,957 XAF/EUR & contrôle des cours de référence"
+    }
+  };
+
+  function getInstitutionalAnchors(source, target) {
+    const s = extractCurrencyCode(source);
+    const t = extractCurrencyCode(target);
+    const anchors = [INSTITUTIONAL_SOURCES.bad];
+    const regimeNotes = ["Ancrage panafricain BAD (variables auxiliaires macro & cohérence inter-couloirs)"];
+
+    if (s === "XOF" || t === "XOF") {
+      anchors.push(INSTITUTIONAL_SOURCES.bceao);
+      regimeNotes.push("Zone UEMOA / BCEAO : parité fixe 655,957 XOF/EUR");
+    }
+    if (s === "XAF" || t === "XAF") {
+      anchors.push(INSTITUTIONAL_SOURCES.beac);
+      regimeNotes.push("Zone CEMAC / BEAC : parité fixe 655,957 XAF/EUR");
+    }
+
+    return {
+      institutions: anchors,
+      creditedNames: anchors.map((a) => a.id),
+      regimeNotes
+    };
+  }
+
   function buildGovernanceMetadata({ source, target, amount, ratesData }) {
     const src = extractCurrencyCode(source) || "EUR";
     const tgt = extractCurrencyCode(target) || "XOF";
@@ -410,7 +451,9 @@
       freshnessStatus,
       freshnessLabel: isFallback ? "Repli secours (fallback)" : "En direct (rates.json)",
       privacyMode: "zero-trace",
-      modelAssumptions: {
+      institutionalAnchors: getInstitutionalAnchors(source, target).creditedNames,
+        institutionalDetails: getInstitutionalAnchors(source, target).regimeNotes,
+        modelAssumptions: {
         methodology: "Chow-Lin econometric estimation + SWIFT corridor benchmarks",
         sizeFactor,
         baseCostRatio: bench.effectiveCostPct ? Number((bench.effectiveCostPct / 100 / (sizeFactor || 1)).toFixed(4)) : null,
@@ -443,6 +486,8 @@
 
   return {
     FIXED_CFA_PER_EUR,
+    INSTITUTIONAL_SOURCES,
+    getInstitutionalAnchors,
     SWIFT_BENCHMARKS,
     extractCurrencyCode,
     getReferenceRate,
